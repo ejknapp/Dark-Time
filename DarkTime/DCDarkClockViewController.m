@@ -8,7 +8,7 @@
 
 #import "DCDarkClockViewController.h"
 #import "DCClockState.h"
-
+#import "DCSettingsViewController.h"
 #import "DCNewClockEditorViewController.h"
 
 @interface DCDarkClockViewController ()

@@ -45,7 +45,7 @@
 -(NSString *)currentSecondsString;
 -(NSString *)currentAmPmString;
 
-
+-(void)changeFontWithFontIndex:(NSInteger)index;
 -(void)changeFontWithName:(NSString *)fontName;
 
 @end

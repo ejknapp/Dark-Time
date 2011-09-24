@@ -50,29 +50,36 @@
     
     if (self) {
         NSDateFormatter *newFormatter = [[NSDateFormatter alloc] init];
-        self.formatter = newFormatter;
-        [self.formatter setTimeStyle:NSDateFormatterShortStyle];
+        _formatter = newFormatter;
+        [_formatter setTimeStyle:NSDateFormatterShortStyle];
         [newFormatter release];
         
         NSCalendar *newCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
         self.calendar = newCalendar;
-        self.clockBrightnessLevel = 1.0;
+        _clockBrightnessLevel = 1.0;
         [newCalendar release];
         
-        self.displayAmPm = YES;
-        self.displaySeconds = YES;
-        self.fontEditorDisplayed = NO;
-        self.infoPageViewDisplayed = NO;
+        _displayAmPm = YES;
+        _displaySeconds = YES;
+        _fontEditorDisplayed = NO;
+        _infoPageViewDisplayed = NO;
         
         [self createFontsArray];
         
-        self.version = @"b7";
-        
-        self.currentFontName = @"Futura-CondensedExtraBold";
+        _version = @"b7";
+        NSLog(@"done with init");
         
     }
     
     return self;
+}
+
+-(void)changeFontWithFontIndex:(NSInteger)index
+{
+    NSLog(@"changeFontWithFontIndex:");
+    self.currentFontIndex = index;
+    self.currentFontName = [self.fontNames objectAtIndex:self.currentFontIndex];
+    self.currentFont = [UIFont fontWithName:self.currentFontName size:350];
 }
 
 -(void)changeFontWithName:(NSString *)fontName
@@ -86,7 +93,7 @@
 
 -(void)createFontsArray 
 {
-    
+    NSLog(@"start of createFontsArray");
     UIFont *futuraFont = [UIFont fontWithName:@"Futura-CondensedExtraBold" size:300.0];
     UIFont *palatinoFont = [UIFont fontWithName:@"Palatino-Bold" size:300.0];
     UIFont *timesNewRomanFont = [UIFont fontWithName:@"TimesNewRomanPS-BoldMT" size:300.0];
@@ -101,8 +108,6 @@
     self.fontChoices = newArray;
     [newArray release];
     
-    self.currentFontIndex = 1;
-    self.currentFont = [self.fontChoices objectAtIndex:self.currentFontIndex];
 
     NSArray *fontNamesArray = [[NSArray alloc] initWithObjects:
                                @"Cochin-Bold",
@@ -121,6 +126,13 @@
     
     self.fontNames = fontNamesArray;
     [fontNamesArray release];
+    
+    self.currentFontIndex = 8;
+    self.currentFontName = [fontNamesArray objectAtIndex:self.currentFontIndex];
+    self.currentFont = [UIFont fontWithName:self.currentFontName size:350];
+
+    NSLog(@"end of createFontsArray");
+
 }
 
 

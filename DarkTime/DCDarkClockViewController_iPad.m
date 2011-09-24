@@ -10,6 +10,7 @@
 #import "DCClockState.h"
 #import "DCNewClockEditorViewController.h"
 #import "DCSettingsTableViewController.h"
+#import "DCSettingsViewController.h"
 
 @interface DCDarkClockViewController_iPad()
 
@@ -45,9 +46,11 @@
 - (IBAction)settingsButtonTapped:(id)sender 
 {
     NSLog(@"In settingsButtonTapped iPad");
+        
+    DCSettingsViewController *settings = [[DCSettingsViewController alloc] 
+                                          initWithNibName:nil bundle:nil];
+    settings.clockState = self.clockState;
     
-    DCSettingsTableViewController *settings = [[DCSettingsTableViewController alloc] 
-                                               initWithStyle:UITableViewStyleGrouped];
     settings.modalPresentationStyle = UIModalPresentationFormSheet;
     
     [self presentModalViewController:settings animated:YES];

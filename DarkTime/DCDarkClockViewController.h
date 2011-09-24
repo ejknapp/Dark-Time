@@ -12,6 +12,7 @@
 @class DCClockState;
 @class DCNewClockEditorViewController;
 
+
 @interface DCDarkClockViewController : UIViewController <UIGestureRecognizerDelegate, UIScrollViewDelegate> 
 
 @property (nonatomic, retain) DCClockState *clockState;

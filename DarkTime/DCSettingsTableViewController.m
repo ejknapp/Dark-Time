@@ -8,6 +8,8 @@
 
 #import "DCSettingsTableViewController.h"
 #import "DCClockState.h"
+#import "DCSettingsViewController.h"
+#import "DCFontSelectTableViewController.h"
 
 @interface DCSettingsTableViewController()
 
@@ -37,28 +39,36 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.title = @"Clock Settings";
     
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    NSDictionary *ampmSection = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                 @"Display AM/PM", @"header",
+                                 @"YES", @"display",
+                                 nil];
+
+    NSDictionary *secondsSection = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                 @"Display Seconds", @"header",
+                                 @"YES", @"display",
+                                 nil];
+
+    NSDictionary *fontSection = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                    @"Select Font", @"header",
+                                    nil];
+
+    NSArray *sections = [[NSArray alloc] initWithObjects:ampmSection, secondsSection, fontSection, nil];
+
+    self.settingsArray = sections;
     
-    UIImageView *imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"carbon.png"] ];
-    self.tableView.backgroundView = imageView;
-    
-    [imageView release];
-    
-    self.tableView.backgroundColor = [UIColor clearColor];
-    
-    
+    [ampmSection release];
+    [secondsSection release];
+    [sections release];
 }
 
 - (void)viewDidUnload
@@ -71,6 +81,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [self.tableView reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -96,18 +108,34 @@
 
 #pragma mark - Table view data source
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSDictionary *sectionDictionary = [self.settingsArray objectAtIndex:section];
+    
+    return [sectionDictionary objectForKey:@"header"];
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
 
     // Return the number of sections.
-    return 1;
+    return [self.settingsArray count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 
     // Return the number of rows in the section.
-    return 3;
+    NSInteger rowCount;
+    
+    if (section == 0) {
+        rowCount = 2;
+    } else if (section == 1) {
+        rowCount = 2;
+    } else if (section == 3) {
+        rowCount = 1;
+    }
+    return rowCount;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -116,10 +144,47 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
+                                       reuseIdentifier:CellIdentifier] autorelease];
     }
     
     // Configure the cell...
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            cell.textLabel.text = @"Yes";
+            if (self.clockState.displayAmPm) {
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            } else {
+                cell.accessoryType = UITableViewCellAccessoryNone;
+            }
+        } else if (indexPath.row == 1) {
+            cell.textLabel.text = @"No";
+            if (self.clockState.displayAmPm) {
+                cell.accessoryType = UITableViewCellAccessoryNone;
+            } else {
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            }
+        }
+    } else if (indexPath.section == 1) {
+        if (indexPath.row == 0) {
+            cell.textLabel.text = @"Yes";
+            if (self.clockState.displaySeconds) {
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            } else {
+                cell.accessoryType = UITableViewCellAccessoryNone;
+            }
+        } else if (indexPath.row == 1) {
+            cell.textLabel.text = @"No";
+            if (self.clockState.displaySeconds) {
+                cell.accessoryType = UITableViewCellAccessoryNone;
+            } else {
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            }
+        }
+    } else if (indexPath.section == 2) {
+        cell.textLabel.text = self.clockState.currentFontName;
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
     
     return cell;
 }
@@ -165,23 +230,48 @@
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView 
-  willDisplayCell:(UITableViewCell *)cell 
-forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    cell.backgroundColor = [UIColor grayColor];
-}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+    NSIndexPath *nextPath = [NSIndexPath indexPathForRow:(indexPath.row + 1) inSection:indexPath.section];
+    NSIndexPath *previousPath = [NSIndexPath indexPathForRow:(indexPath.row - 1) inSection:indexPath.section];
+
+    UITableViewCell *tappedCell = [tableView cellForRowAtIndexPath:indexPath];
+    UITableViewCell *nextCell = [tableView cellForRowAtIndexPath:nextPath];
+    UITableViewCell *previousCell = [tableView cellForRowAtIndexPath:previousPath];
+    
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            self.clockState.displayAmPm = YES;
+            tappedCell.accessoryType = UITableViewCellAccessoryCheckmark;
+            nextCell.accessoryType = UITableViewCellAccessoryNone;
+        } else if (indexPath.row == 1) {
+            self.clockState.displayAmPm = NO;
+            tappedCell.accessoryType = UITableViewCellAccessoryCheckmark;
+            previousCell.accessoryType = UITableViewCellAccessoryNone;
+        }
+    } else if (indexPath.section == 1) {
+        if (indexPath.row == 0) {
+            self.clockState.displaySeconds = YES;
+            tappedCell.accessoryType = UITableViewCellAccessoryCheckmark;
+            nextCell.accessoryType = UITableViewCellAccessoryNone;
+        } else if (indexPath.row == 1) {
+            self.clockState.displaySeconds = NO;
+            tappedCell.accessoryType = UITableViewCellAccessoryCheckmark;
+            previousCell.accessoryType = UITableViewCellAccessoryNone;
+        }
+    } else if (indexPath.section == 2) {
+        // Navigation logic may go here. Create and push another view controller.
+        
+        DCFontSelectTableViewController *fontViewController = [[DCFontSelectTableViewController alloc] 
+                                                               initWithNibName:@"DCFontSelectTableViewController"
+                                                               bundle:nil];
+        fontViewController.clockState = self.clockState;
+        
+        [self.navigationController pushViewController:fontViewController animated:YES];
+        [fontViewController release];
+    }
+         
 }
 
 @end

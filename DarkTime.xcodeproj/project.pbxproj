@@ -37,9 +37,13 @@
 		9F43F4361428DF02003093A8 /* DCDarkClockViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F43F4341428DF02003093A8 /* DCDarkClockViewController_iPad.xib */; };
 		9F59DA9B142D75100020A795 /* DCSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F59DA99142D750F0020A795 /* DCSettingsTableViewController.m */; };
 		9F59DA9C142D75100020A795 /* DCSettingsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F59DA9A142D750F0020A795 /* DCSettingsTableViewController.xib */; };
-		9F59DA9F142D7F9A0020A795 /* carbon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F59DA9E142D7F9A0020A795 /* carbon.png */; };
 		9F59DAAA142D8B250020A795 /* DCSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F59DAA8142D8B250020A795 /* DCSettingsViewController.m */; };
 		9F59DAAB142D8B250020A795 /* DCSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F59DAA9142D8B250020A795 /* DCSettingsViewController.xib */; };
+		9F59DADC142E367A0020A795 /* carbon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F59DADB142E367A0020A795 /* carbon.png */; };
+		9F59DAE2142E3D650020A795 /* carbon-tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F59DAE1142E3D650020A795 /* carbon-tile.png */; };
+		9F59DAE4142E41B70020A795 /* carbon-tile2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F59DAE3142E41B70020A795 /* carbon-tile2.png */; };
+		9F59DAE8142E5E6C0020A795 /* DCFontSelectTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F59DAE6142E5E6B0020A795 /* DCFontSelectTableViewController.m */; };
+		9F59DAE9142E5E6C0020A795 /* DCFontSelectTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F59DAE7142E5E6B0020A795 /* DCFontSelectTableViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,10 +90,15 @@
 		9F59DA98142D750F0020A795 /* DCSettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCSettingsTableViewController.h; sourceTree = "<group>"; };
 		9F59DA99142D750F0020A795 /* DCSettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCSettingsTableViewController.m; sourceTree = "<group>"; };
 		9F59DA9A142D750F0020A795 /* DCSettingsTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DCSettingsTableViewController.xib; sourceTree = "<group>"; };
-		9F59DA9E142D7F9A0020A795 /* carbon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = carbon.png; sourceTree = "<group>"; };
 		9F59DAA7142D8B250020A795 /* DCSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCSettingsViewController.h; sourceTree = "<group>"; };
 		9F59DAA8142D8B250020A795 /* DCSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCSettingsViewController.m; sourceTree = "<group>"; };
 		9F59DAA9142D8B250020A795 /* DCSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DCSettingsViewController.xib; sourceTree = "<group>"; };
+		9F59DADB142E367A0020A795 /* carbon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = carbon.png; sourceTree = "<group>"; };
+		9F59DAE1142E3D650020A795 /* carbon-tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "carbon-tile.png"; sourceTree = "<group>"; };
+		9F59DAE3142E41B70020A795 /* carbon-tile2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "carbon-tile2.png"; sourceTree = "<group>"; };
+		9F59DAE5142E5E6B0020A795 /* DCFontSelectTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCFontSelectTableViewController.h; sourceTree = "<group>"; };
+		9F59DAE6142E5E6B0020A795 /* DCFontSelectTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCFontSelectTableViewController.m; sourceTree = "<group>"; };
+		9F59DAE7142E5E6B0020A795 /* DCFontSelectTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DCFontSelectTableViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +211,9 @@
 				9F59DA98142D750F0020A795 /* DCSettingsTableViewController.h */,
 				9F59DA99142D750F0020A795 /* DCSettingsTableViewController.m */,
 				9F59DA9A142D750F0020A795 /* DCSettingsTableViewController.xib */,
+				9F59DAE5142E5E6B0020A795 /* DCFontSelectTableViewController.h */,
+				9F59DAE6142E5E6B0020A795 /* DCFontSelectTableViewController.m */,
+				9F59DAE7142E5E6B0020A795 /* DCFontSelectTableViewController.xib */,
 				9F59DAA7142D8B250020A795 /* DCSettingsViewController.h */,
 				9F59DAA8142D8B250020A795 /* DCSettingsViewController.m */,
 				9F59DAA9142D8B250020A795 /* DCSettingsViewController.xib */,
@@ -212,7 +224,9 @@
 		9F43F4261428DD08003093A8 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				9F59DA9E142D7F9A0020A795 /* carbon.png */,
+				9F59DAE3142E41B70020A795 /* carbon-tile2.png */,
+				9F59DAE1142E3D650020A795 /* carbon-tile.png */,
+				9F59DADB142E367A0020A795 /* carbon.png */,
 				9F43F4271428DD21003093A8 /* red-info2.png */,
 				9F43F4281428DD21003093A8 /* red-info2@2x.png */,
 			);
@@ -305,8 +319,11 @@
 				9F43F4311428DEE5003093A8 /* DCDarkClockViewController_iPhone.xib in Resources */,
 				9F43F4361428DF02003093A8 /* DCDarkClockViewController_iPad.xib in Resources */,
 				9F59DA9C142D75100020A795 /* DCSettingsTableViewController.xib in Resources */,
-				9F59DA9F142D7F9A0020A795 /* carbon.png in Resources */,
 				9F59DAAB142D8B250020A795 /* DCSettingsViewController.xib in Resources */,
+				9F59DADC142E367A0020A795 /* carbon.png in Resources */,
+				9F59DAE2142E3D650020A795 /* carbon-tile.png in Resources */,
+				9F59DAE4142E41B70020A795 /* carbon-tile2.png in Resources */,
+				9F59DAE9142E5E6C0020A795 /* DCFontSelectTableViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +346,7 @@
 				9F43F4351428DF02003093A8 /* DCDarkClockViewController_iPad.m in Sources */,
 				9F59DA9B142D75100020A795 /* DCSettingsTableViewController.m in Sources */,
 				9F59DAAA142D8B250020A795 /* DCSettingsViewController.m in Sources */,
+				9F59DAE8142E5E6C0020A795 /* DCFontSelectTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
