@@ -67,7 +67,6 @@
         [self createFontsArray];
         
         _version = @"b7";
-        NSLog(@"done with init");
         
     }
     
@@ -76,38 +75,39 @@
 
 -(void)changeFontWithFontIndex:(NSInteger)index
 {
-    NSLog(@"changeFontWithFontIndex:");
     self.currentFontIndex = index;
     self.currentFontName = [self.fontNames objectAtIndex:self.currentFontIndex];
-    self.currentFont = [UIFont fontWithName:self.currentFontName size:350];
+    UIFont *newFont = [UIFont fontWithName:self.currentFontName size:500];
+
+    CGFloat realFontSize;
+    [@"12:58" sizeWithFont:newFont 
+               minFontSize:24  
+            actualFontSize:&realFontSize 
+                  forWidth:1024 
+             lineBreakMode:UILineBreakModeWordWrap];
+    
+    NSLog(@"The real size! %f", realFontSize);
+    self.currentFont = [newFont fontWithSize:realFontSize];
+    
 }
 
 -(void)changeFontWithName:(NSString *)fontName
 {
     
-    self.currentFont = [UIFont fontWithName:fontName size:225];
+    self.currentFont = [UIFont fontWithName:fontName size:500];
     self.currentFontName = fontName;
-    self.displayLabelY = (320 - self.currentFont.ascender - 107) / 2;
-    
+    self.displayLabelY = (375 - self.currentFont.ascender - 107) / 2;
+    NSLog(@"2Y %d", self.displayLabelY);
+    NSLog(@"font2 %f, %f, %f, %f",self.currentFont.lineHeight, self.currentFont.ascender, self.currentFont.descender, self.currentFont.descender - self.currentFont.ascender);
+    CGSize stringSize=[@"12:58" sizeWithFont:self.currentFont 
+                           constrainedToSize:CGSizeMake(1024, 768)
+                               lineBreakMode:UILineBreakModeWordWrap];
+    CGFloat offset = (768 - stringSize.height) / 2;
+    NSLog(@"12:58 size %@, %f", NSStringFromCGSize(stringSize), offset);
 }
 
 -(void)createFontsArray 
 {
-    NSLog(@"start of createFontsArray");
-    UIFont *futuraFont = [UIFont fontWithName:@"Futura-CondensedExtraBold" size:300.0];
-    UIFont *palatinoFont = [UIFont fontWithName:@"Palatino-Bold" size:300.0];
-    UIFont *timesNewRomanFont = [UIFont fontWithName:@"TimesNewRomanPS-BoldMT" size:300.0];
-    UIFont *typewriterFont = [UIFont fontWithName:@"AmericanTypewriter-Bold" size:300.0];
-    
-    NSArray *newArray = [[NSArray alloc] initWithObjects: 
-                         palatinoFont,
-                         futuraFont,
-                         timesNewRomanFont, 
-                         typewriterFont, 
-                         nil];
-    self.fontChoices = newArray;
-    [newArray release];
-    
 
     NSArray *fontNamesArray = [[NSArray alloc] initWithObjects:
                                @"Cochin-Bold",
@@ -128,11 +128,7 @@
     [fontNamesArray release];
     
     self.currentFontIndex = 8;
-    self.currentFontName = [fontNamesArray objectAtIndex:self.currentFontIndex];
-    self.currentFont = [UIFont fontWithName:self.currentFontName size:350];
-
-    NSLog(@"end of createFontsArray");
-
+    [self changeFontWithFontIndex:self.currentFontIndex];
 }
 
 
@@ -158,8 +154,10 @@
     
     timeString = [NSString stringWithFormat:@"%d:%02d", displayHour, minute];
     
+//    return @"12:58";
+//    return @"1:11";
     return timeString;
-//    return @":58";
+
 }
 
 -(NSString *)currentSecondsString
@@ -220,18 +218,31 @@
         self.clockBrightnessLevel = 1.0;
     }
         
-    NSString *fontName = [userDefaults stringForKey:@"currentFontName"];    
     
-    if (fontName) {
-        self.currentFontName = fontName;
-        [self changeFontWithName:self.currentFontName];
+    NSInteger fontIndex = [userDefaults integerForKey:@"currentFontIndex"];
+    
+    if (fontIndex >= 0) {
+        [self changeFontWithFontIndex:fontIndex];
     } else {
-        [self changeFontWithName:@"Futura-CondensedExtraBold"];
+        [self changeFontWithFontIndex:8];
     }
     
+    BOOL ampm = [userDefaults boolForKey:@"displayAmPm"];
+    
+    if (ampm) {
+        self.displayAmPm = YES;
+    } else {
+        self.displayAmPm = NO;
+    }
 
+    BOOL seconds = [userDefaults boolForKey:@"displaySeconds"];
+    
+    if (seconds) {
+        self.displaySeconds = YES;
+    } else {
+        self.displaySeconds = NO;
+    }
 
-//    self.clockBrightnessLevel = 1.0;
 }
 
 - (void) saveClockState 
@@ -239,9 +250,13 @@
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
-    [userDefaults setObject:self.currentFontName forKey:@"currentFontName"];
+    [userDefaults setInteger:self.currentFontIndex forKey:@"currentFontIndex"];
     
     [userDefaults setFloat:self.clockBrightnessLevel forKey:@"clockBrightnessLevel"];
+    
+    [userDefaults setBool:self.displayAmPm forKey:@"displayAmPm"];
+    
+    [userDefaults setBool:self.displaySeconds forKey:@"displaySeconds"];
     
 }
 

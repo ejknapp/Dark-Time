@@ -53,7 +53,6 @@
 
 - (void)loadView
 {
-    NSLog(@"In font editor loadView");
     UIView *baseView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 480, 320)];
     self.view = baseView;
     [baseView release];
@@ -65,8 +64,6 @@
     [self createAmPmSwitch];
     [self createSecondsSwitch];
     
-    NSLog(@"In font editor end of loadView");
-
 }
 
 - (void)viewDidUnload

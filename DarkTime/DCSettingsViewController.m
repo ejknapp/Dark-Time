@@ -34,14 +34,13 @@
 
 -(void)doneButtonTapped:(id)sender
 {
-    NSLog(@"in super doneButtonTapped:");
-    
     [self dismissModalViewControllerAnimated:YES];
+    self.navigationController = nil;
 }
 
 -(void)helpButtonTapped:(id)sender
 {
-    NSLog(@"in helpButtonTapped:");
+
 }
 
 
@@ -59,6 +58,7 @@
     
     UINavigationController *navController = [[UINavigationController alloc] 
                                              initWithRootViewController:tableViewController];
+
     navController.navigationBar.barStyle = UIBarStyleBlack;
         
     UIBarButtonItem *done = [[UIBarButtonItem alloc] initWithTitle:@"Done" 
@@ -73,10 +73,13 @@
     
     tableViewController.navigationItem.leftBarButtonItem = help;
     tableViewController.navigationItem.rightBarButtonItem = done;
+    [help release];
+    [done release];
 
     [tableViewController release];
    
     self.navigationController = navController;
+    [navController release];
     
   
     [self.view addSubview:self.navigationController.view];
@@ -84,7 +87,9 @@
 
 - (void)viewDidUnload
 {
-    [self setNavigationController:nil];
+    self.navigationController = nil;
+    self.clockState = nil;
+    
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -98,6 +103,7 @@
 
 - (void)dealloc {
     [_navigationController release];
+    [_clockState release];
     [super dealloc];
 }
 @end

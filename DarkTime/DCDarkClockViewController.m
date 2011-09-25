@@ -9,7 +9,7 @@
 #import "DCDarkClockViewController.h"
 #import "DCClockState.h"
 #import "DCSettingsViewController.h"
-#import "DCNewClockEditorViewController.h"
+
 
 @interface DCDarkClockViewController ()
 
@@ -111,10 +111,10 @@
                          options:NSKeyValueObservingOptionNew
                          context:NULL];
     
-//    [self.clockState addObserver:self 
-//                      forKeyPath:@"fontEditorDisplayed" 
-//                         options:NSKeyValueObservingOptionNew
-//                         context:NULL];
+    [self.clockState addObserver:self 
+                      forKeyPath:@"fontEditorDisplayed" 
+                         options:NSKeyValueObservingOptionNew
+                         context:NULL];
     
     [self updateDisplayFont];
     
@@ -127,8 +127,11 @@
 {
     
     if ([keyPath isEqualToString:@"fontEditorDisplayed"]) {
-        if ([self.clockState isFontEditorDisplayed]) {
-            DCNewClockEditorViewController *editor = [[DCNewClockEditorViewController alloc] initWithNibName:nil bundle:nil];
+        if (self.clockState.isFontEditorDisplayed) {
+            DCSettingsViewController *editor = [[DCSettingsViewController alloc] 
+                                                initWithNibName:nil 
+                                                bundle:nil];
+            editor.modalPresentationStyle = UIModalPresentationFormSheet;
             editor.clockState = self.clockState;
             self.fontEditor = editor;
             [self presentModalViewController:editor animated:YES];
@@ -139,6 +142,11 @@
         }
     }
     
+    if ([keyPath isEqualToString:@"currentFont"]) {
+        [self updateDisplayFont];
+    }
+    
+    NSLog(@"About to call updateDisplayFont");
     [self updateDisplayFont];
     
     [self changeDisplayBrightnessWithBrightness:self.clockState.clockBrightnessLevel];
@@ -146,15 +154,12 @@
 
 -(void)updateDisplayFont
 {
-    //    DCClockState *clockState = [DCClockState sharedClockTimerState];
-    
-    self.timeLabel.font = self.clockState.currentFont;
-    self.ampmLabel.font = [self.clockState.currentFont fontWithSize:36];
-    self.secondsLabel.font = [self.clockState.currentFont fontWithSize:36];
-    
-    self.timeLabel.frame = CGRectMake(0, self.clockState.displayLabelY, 480, 320);
-    
-    [self changeDisplayBrightnessWithBrightness:self.clockState.clockBrightnessLevel];
+    NSLog(@"adjusting label frame");
+    CGRect newFrame = CGRectMake(0, (768 - self.clockState.currentFont.lineHeight) / 2, 
+                                 1024, 
+                                 self.clockState.currentFont.lineHeight);
+    self.timeLabel.frame = newFrame;
+
 }
 
 -(void)handleBrightnessSwipeRight:(UISwipeGestureRecognizer *)recognizer

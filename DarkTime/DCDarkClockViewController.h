@@ -10,7 +10,7 @@
 
 
 @class DCClockState;
-@class DCNewClockEditorViewController;
+@class DCSettingsViewController;
 
 
 @interface DCDarkClockViewController : UIViewController <UIGestureRecognizerDelegate, UIScrollViewDelegate> 
@@ -31,11 +31,12 @@
 @property (nonatomic, retain) IBOutlet UIButton *clockSettingsButton;
 @property (nonatomic, retain) UIButton *editorModeDoneButton;
 
-@property (nonatomic, retain) DCNewClockEditorViewController *fontEditor;
+@property (nonatomic, retain) DCSettingsViewController *fontEditor;
 
 @property (nonatomic, assign) CGPoint startingOrigin;
 
 -(void)changeDisplayBrightnessWithBrightness:(CGFloat)brightness;
 -(void)updateClock;
+-(void)updateDisplayFont;
 
 @end

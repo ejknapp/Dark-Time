@@ -15,12 +15,14 @@
 
 @property (nonatomic, retain) NSArray *settingsArray;
 
+
 @end
 
 @implementation DCSettingsTableViewController
 
 @synthesize clockState = _clockState;
 @synthesize settingsArray = _settingsArray;
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -132,7 +134,7 @@
         rowCount = 2;
     } else if (section == 1) {
         rowCount = 2;
-    } else if (section == 3) {
+    } else if (section == 2) {
         rowCount = 1;
     }
     return rowCount;
@@ -182,6 +184,7 @@
             }
         }
     } else if (indexPath.section == 2) {
+        NSLog(@"current font %@", self.clockState.currentFontName);
         cell.textLabel.text = self.clockState.currentFontName;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
