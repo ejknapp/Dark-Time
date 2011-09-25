@@ -9,9 +9,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface DCClockState : NSObject {
-    
-}
+@interface DCClockState : NSObject
 
 @property (nonatomic, retain) UIColor *displayBackgroundColor;
 @property (nonatomic, retain) UIColor *timeTextColor;
@@ -25,6 +23,7 @@
 @property (nonatomic, assign) BOOL savedDisplaySeconds;
 @property (nonatomic, assign) BOOL displayAmPm;
 @property (nonatomic, assign) BOOL savedDisplayAmPm;
+@property (nonatomic, assign) BOOL suspendSleep;
 @property (nonatomic, retain) UIFont *currentFont;
 @property (nonatomic, retain) NSString *currentFontName;
 @property (nonatomic, assign) NSUInteger currentFontIndex;
@@ -45,7 +44,7 @@
 -(NSString *)currentSecondsString;
 -(NSString *)currentAmPmString;
 
--(void)changeFontWithFontIndex:(NSInteger)index;
+-(void)changeFontWithFontIndex:(NSInteger)index viewWidth:(CGFloat)width;
 -(void)changeFontWithName:(NSString *)fontName;
 
 @end

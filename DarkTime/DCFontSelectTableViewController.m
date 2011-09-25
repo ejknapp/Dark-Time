@@ -11,7 +11,6 @@
 
 @interface DCFontSelectTableViewController()
 
-@property (nonatomic, retain) UITableViewCell *currentCheckedCell;
 
 @end
 
@@ -90,7 +89,14 @@
                                        reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    cell.textLabel.text = [self.clockState.fontNames objectAtIndex:indexPath.row];
+    cell.selectionStyle = UITableViewCellSelectionStyleGray;
+    NSString *fontName = [self.clockState.fontNames objectAtIndex:indexPath.row];
+    NSString *cellText = [[NSString alloc] initWithFormat:@"%@ - 6:34", fontName];
+    cell.textLabel.text = cellText;
+    [cellText release];
+    UIFont *cellFont = [UIFont fontWithName:fontName size:19];
+    cell.textLabel.font = cellFont;
+    cell.accessoryType = UITableViewCellAccessoryNone;
     if (self.clockState.currentFontIndex == indexPath.row) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
         self.currentCheckedCell = cell;
@@ -101,19 +107,23 @@
 
 #pragma mark - Table view delegate
 
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"in didSelectRowAtIndexPath: iPad");
     
     NSInteger selectedRow = indexPath.row;
     UITableViewCell *tappedCell = [tableView cellForRowAtIndexPath:indexPath];
     
     self.currentCheckedCell.accessoryType = UITableViewCellAccessoryNone;
-    [self.clockState changeFontWithFontIndex:selectedRow];
+    
+    CGRect screenRect = [[UIScreen mainScreen] applicationFrame];
+    [self.clockState changeFontWithFontIndex:selectedRow viewWidth:screenRect.size.height];
     
     tappedCell.accessoryType = UITableViewCellAccessoryCheckmark;
     self.currentCheckedCell = tappedCell;
-    
-    
+        
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
 }
 

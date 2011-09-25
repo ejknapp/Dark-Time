@@ -24,13 +24,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
-    self.clockState = [[DCClockState alloc] init];
+    DCClockState *state = [[DCClockState alloc] init];
+    self.clockState = state;
     self.viewController.clockState = self.clockState;
     [self.clockState loadClockState];
+    [state release];
     
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];    
-    [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
+    [[UIApplication sharedApplication] setIdleTimerDisabled:self.clockState.suspendSleep];
 
 
     [self.window addSubview:self.viewController.view];
@@ -76,7 +77,7 @@
      */
     
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];    
-    [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
+    [[UIApplication sharedApplication] setIdleTimerDisabled:self.clockState.suspendSleep];
     
     [self.clockState loadClockState];
 
@@ -89,7 +90,7 @@
      */
     
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];    
-    [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
+    [[UIApplication sharedApplication] setIdleTimerDisabled:self.clockState.suspendSleep];
     
     [self.clockState loadClockState];
 
@@ -104,7 +105,7 @@
      */
     
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];    
-    [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
+    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
     
     [self.clockState saveClockState];
 

@@ -30,6 +30,7 @@
     [super didReceiveMemoryWarning];
     
     // Release any cached data, images, etc that aren't in use.
+    
 }
 
 -(void)doneButtonTapped:(id)sender
@@ -46,18 +47,30 @@
 
 #pragma mark - View lifecycle
 
+-(DCSettingsTableViewController *)createTableViewController
+{
+    NSLog(@"in createTableViewController super");
+    DCSettingsTableViewController *tableViewController = [[[DCSettingsTableViewController alloc] 
+                                                          initWithStyle:UITableViewStyleGrouped] autorelease];    
+    
+    tableViewController.clockState = self.clockState;
+
+    return tableViewController;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    NSLog(@"in viewDidLoad for settings view controller");
     
-    DCSettingsTableViewController *tableViewController = [[DCSettingsTableViewController alloc] 
-                                                          initWithStyle:UITableViewStyleGrouped];
-    tableViewController.clockState = self.clockState;
-    
+    DCSettingsTableViewController *tableViewController = [self createTableViewController];
+
+        
     UINavigationController *navController = [[UINavigationController alloc] 
                                              initWithRootViewController:tableViewController];
+
 
     navController.navigationBar.barStyle = UIBarStyleBlack;
         
@@ -73,10 +86,9 @@
     
     tableViewController.navigationItem.leftBarButtonItem = help;
     tableViewController.navigationItem.rightBarButtonItem = done;
+
     [help release];
     [done release];
-
-    [tableViewController release];
    
     self.navigationController = navController;
     [navController release];
@@ -87,12 +99,13 @@
 
 - (void)viewDidUnload
 {
-    self.navigationController = nil;
-    self.clockState = nil;
     
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+    self.navigationController = nil;
+    self.clockState = nil;
+
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

@@ -70,6 +70,7 @@
 {
     [super viewDidLoad];
     
+    
     NSCalendar *newCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     self.calendar = newCalendar;
     [newCalendar release];
@@ -116,6 +117,9 @@
                          options:NSKeyValueObservingOptionNew
                          context:NULL];
     
+    CGRect screenRect = [[UIScreen mainScreen] applicationFrame];
+    [self.clockState changeFontWithFontIndex:self.clockState.currentFontIndex viewWidth:screenRect.size.height];
+
     [self updateDisplayFont];
     
 }
@@ -126,6 +130,7 @@
                        context:(void *)context
 {
     
+    NSLog(@"in observeValueForKeyPath: super");
     if ([keyPath isEqualToString:@"fontEditorDisplayed"]) {
         if (self.clockState.isFontEditorDisplayed) {
             DCSettingsViewController *editor = [[DCSettingsViewController alloc] 
@@ -146,7 +151,7 @@
         [self updateDisplayFont];
     }
     
-    NSLog(@"About to call updateDisplayFont");
+//    NSLog(@"About to call updateDisplayFont");
     [self updateDisplayFont];
     
     [self changeDisplayBrightnessWithBrightness:self.clockState.clockBrightnessLevel];
@@ -154,11 +159,6 @@
 
 -(void)updateDisplayFont
 {
-    NSLog(@"adjusting label frame");
-    CGRect newFrame = CGRectMake(0, (768 - self.clockState.currentFont.lineHeight) / 2, 
-                                 1024, 
-                                 self.clockState.currentFont.lineHeight);
-    self.timeLabel.frame = newFrame;
 
 }
 
@@ -240,78 +240,12 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
 -(void)handleBrightnessDrag:(UIPanGestureRecognizer *)recognizer
 {
     
-    //    if (self.clockState.fontEditorDisplayed) {
-    //        return;
-    //    }
-    //    
-    //    CGPoint location = [recognizer locationInView:[[self.view superview] superview]];
-    //    CGFloat deltaX = 0;
-    //    CGFloat deltaY = 0;
-    //    
-    //    if (recognizer.state == UIGestureRecognizerStateBegan) {
-    //        self.startingOrigin = self.view.frame.origin;
-    //        self.clockState.startingDragLocation = location;
-    //        return;
-    //    } else if (recognizer.state == UIGestureRecognizerStateChanged) {
-    //        deltaX = fabs(self.clockState.startingDragLocation.x - location.x);
-    //        deltaY = fabs(self.clockState.startingDragLocation.y - location.y);
-    //        self.clockState.clockDeltaX = deltaX;
-    //        self.clockState.clockDeltaY = deltaY;
-    //                
-    //        if (deltaX < 10) {
-    //            return;
-    //        } else if (deltaY > 20) {
-    //            return;
-    //        }
-    //
-    //    } else if (recognizer.state == UIGestureRecognizerStateEnded) {
-    //        return;
-    //    }
-    //    
-    //    CGRect screen = [[UIScreen mainScreen] applicationFrame];
-    //    
-    //    CGFloat currentBrightness = self.clockState.clockBrightnessLevel;
-    //    
-    //    CGFloat adjustment = (location.x - self.clockState.startingDragLocation.x) / screen.size.height;
-    //    
-    //    CGFloat brightness = currentBrightness + adjustment;
-    //    
-    //    if (brightness >= 0.1) {
-    //        self.clockState.clockBrightnessLevel = brightness;            
-    //        [self changeDisplayBrightnessWithBrightness:brightness];
-    //    }
-    //    
-}
-
--(void)handleBrightnessTap:(UIPanGestureRecognizer *)recognizer
-{
-    
-    if (self.clockState.fontEditorDisplayed) {
-        return;
-    }
-    
-    CGPoint location = [recognizer locationInView:[[self.view superview] superview]];
-    
-    CGRect screen = [[UIScreen mainScreen] applicationFrame];
-    
-    
-    CGFloat brightness = location.x / screen.size.height;
-    
-    NSLog(@"in handleBrightnessTap: %f", brightness);
-    if (brightness >= 0.1) {
-        self.clockState.clockBrightnessLevel = brightness;          
-        [self changeDisplayBrightnessWithBrightness:brightness];
-    } else {
-        [self changeDisplayBrightnessWithBrightness:0.1];
-    }
-    
 }
 
 
 -(void)changeDisplayBrightnessWithBrightness:(CGFloat)brightness
 {
     
-
     self.brightnessLevel = brightness;
     self.timeLabel.alpha = brightness;
     self.ampmLabel.alpha = brightness;
@@ -320,11 +254,6 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
     self.clockState.clockBrightnessLevel = brightness;
     
 }
-
-
-
-#pragma mark - Scroll View Delegate Methods
-
 
 #pragma mark - Clock Methods
 

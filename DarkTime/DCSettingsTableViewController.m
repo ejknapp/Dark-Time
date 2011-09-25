@@ -14,7 +14,19 @@
 @interface DCSettingsTableViewController()
 
 @property (nonatomic, retain) NSArray *settingsArray;
+@property (nonatomic, retain) UITableViewCell *fontCell;
 
+
+- (void)createAmPmCell:(NSIndexPath *)indexPath 
+                  cell:(UITableViewCell *)cell;
+
+- (void)createSecondsCell:(NSIndexPath *)indexPath 
+                     cell:(UITableViewCell *)cell;
+
+- (void)createFontSelectionCell:(UITableViewCell *)cell;
+
+- (void)createSuspendSleepCell:(NSIndexPath *)indexPath 
+                          cell:(UITableViewCell *)cell;
 
 @end
 
@@ -22,6 +34,7 @@
 
 @synthesize clockState = _clockState;
 @synthesize settingsArray = _settingsArray;
+@synthesize fontCell = _fontCell;
 
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -44,33 +57,83 @@
 
 #pragma mark - View lifecycle
 
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    
+    [super viewWillAppear:animated];
+    
+    NSLog(@"in DCSettingsTableViewController viewWillAppear:");
+    [self.tableView reloadData];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
     self.title = @"Clock Settings";
     
+    
     NSDictionary *ampmSection = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                 @"Display AM/PM", @"header",
+                                 @"AM/PM", @"header",
+                                 @"Display AM/PM", @"cellText",
+                                 @"", @"footer",
                                  @"YES", @"display",
                                  nil];
 
     NSDictionary *secondsSection = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                 @"Display Seconds", @"header",
+                                 @"Seconds", @"header",
+                                 @"Display Seconds", @"cellText",
+                                 @"", @"footer",
                                  @"YES", @"display",
                                  nil];
 
     NSDictionary *fontSection = [[NSDictionary alloc] initWithObjectsAndKeys:
                                     @"Select Font", @"header",
+                                    @"", @"cellText",
+                                    @"", @"footer",
                                     nil];
 
-    NSArray *sections = [[NSArray alloc] initWithObjects:ampmSection, secondsSection, fontSection, nil];
+    NSDictionary *sleepSection = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                 @"Sleep", @"header",
+                                 @"Suspend Sleep", @"cellText",
+                                 @"Caution: this may affect battery life if not using power source.", @"footer",
+                                 nil];
+
+    NSArray *sections = [[NSArray alloc] initWithObjects:
+                         ampmSection, 
+                         secondsSection, 
+                         fontSection,
+                         sleepSection,
+                         nil];
 
     self.settingsArray = sections;
     
+    
+    [self.clockState addObserver:self 
+                      forKeyPath:@"currentFontName" 
+                         options:NSKeyValueObservingOptionNew
+                         context:NULL];
+
+    
     [ampmSection release];
     [secondsSection release];
+    [fontSection release];
+    [sleepSection release];
     [sections release];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath 
+                      ofObject:(id)object 
+                        change:(NSDictionary *)change 
+                       context:(void *)context
+{
+
+    if ([keyPath isEqualToString:@"currentFontName"]) {
+        self.fontCell.textLabel.text = self.clockState.currentFontName;
+        self.fontCell.textLabel.font = [self.clockState.currentFont fontWithSize:18];
+    }
+    
 }
 
 - (void)viewDidUnload
@@ -78,28 +141,8 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
     
-    [self.tableView reloadData];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
+    self.settingsArray = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -115,6 +158,14 @@
     NSDictionary *sectionDictionary = [self.settingsArray objectAtIndex:section];
     
     return [sectionDictionary objectForKey:@"header"];
+
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
+{
+    NSDictionary *sectionDictionary = [self.settingsArray objectAtIndex:section];
+    
+    return [sectionDictionary objectForKey:@"footer"];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -127,20 +178,69 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 
-    // Return the number of rows in the section.
-    NSInteger rowCount;
-    
-    if (section == 0) {
-        rowCount = 2;
-    } else if (section == 1) {
-        rowCount = 2;
-    } else if (section == 2) {
-        rowCount = 1;
-    }
-    return rowCount;
+    return 1;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+#pragma mark - Cell Configuration
+
+- (void)createAmPmCell:(NSIndexPath *)indexPath cell:(UITableViewCell *)cell
+{
+  UISwitch *cellSwitch = [[[UISwitch alloc] initWithFrame:CGRectZero] autorelease];
+        cell.textLabel.text = [[self.settingsArray objectAtIndex:indexPath.section] 
+                               objectForKey:@"cellText"];
+        
+        [cellSwitch addTarget:self 
+                       action:@selector(toggleAmPm:) 
+             forControlEvents:UIControlEventValueChanged];
+        
+        cellSwitch.on = self.clockState.displayAmPm;
+        cell.accessoryView = cellSwitch;
+
+}
+
+- (void)createSecondsCell:(NSIndexPath *)indexPath cell:(UITableViewCell *)cell
+{
+  UISwitch *cellSwitch = [[[UISwitch alloc] initWithFrame:CGRectZero] autorelease];
+        cell.textLabel.text = [[self.settingsArray objectAtIndex:indexPath.section] 
+                               objectForKey:@"cellText"];
+        
+        [cellSwitch addTarget:self 
+                       action:@selector(toggleSeconds:) 
+             forControlEvents:UIControlEventValueChanged];
+        
+        cellSwitch.on = self.clockState.displaySeconds;
+        cell.accessoryView = cellSwitch;
+
+}
+
+- (void)createFontSelectionCell:(UITableViewCell *)cell
+{
+    NSLog(@"in createFontSelectionCell: %@", self.clockState.currentFontName);
+    cell.textLabel.text = self.clockState.currentFontName;
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.selectionStyle = UITableViewCellSelectionStyleGray;
+    cell.textLabel.font = [self.clockState.currentFont fontWithSize:18];
+    self.fontCell = cell;
+
+}
+
+- (void)createSuspendSleepCell:(NSIndexPath *)indexPath cell:(UITableViewCell *)cell
+{
+  UISwitch *cellSwitch = [[[UISwitch alloc] initWithFrame:CGRectZero] autorelease];
+        cell.textLabel.text = [[self.settingsArray objectAtIndex:indexPath.section] 
+                               objectForKey:@"cellText"];
+        
+        [cellSwitch addTarget:self 
+                       action:@selector(toggleSuspendSleep:) 
+             forControlEvents:UIControlEventValueChanged];
+        
+        cellSwitch.on = self.clockState.suspendSleep;
+        cell.accessoryView = cellSwitch;
+
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView 
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
     
@@ -151,130 +251,65 @@
     }
     
     // Configure the cell...
-    if (indexPath.section == 0) {
-        if (indexPath.row == 0) {
-            cell.textLabel.text = @"Yes";
-            if (self.clockState.displayAmPm) {
-                cell.accessoryType = UITableViewCellAccessoryCheckmark;
-            } else {
-                cell.accessoryType = UITableViewCellAccessoryNone;
-            }
-        } else if (indexPath.row == 1) {
-            cell.textLabel.text = @"No";
-            if (self.clockState.displayAmPm) {
-                cell.accessoryType = UITableViewCellAccessoryNone;
-            } else {
-                cell.accessoryType = UITableViewCellAccessoryCheckmark;
-            }
-        }
-    } else if (indexPath.section == 1) {
-        if (indexPath.row == 0) {
-            cell.textLabel.text = @"Yes";
-            if (self.clockState.displaySeconds) {
-                cell.accessoryType = UITableViewCellAccessoryCheckmark;
-            } else {
-                cell.accessoryType = UITableViewCellAccessoryNone;
-            }
-        } else if (indexPath.row == 1) {
-            cell.textLabel.text = @"No";
-            if (self.clockState.displaySeconds) {
-                cell.accessoryType = UITableViewCellAccessoryNone;
-            } else {
-                cell.accessoryType = UITableViewCellAccessoryCheckmark;
-            }
-        }
-    } else if (indexPath.section == 2) {
-        NSLog(@"current font %@", self.clockState.currentFontName);
-        cell.textLabel.text = self.clockState.currentFontName;
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    }
+//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
+    if (indexPath.section == 0) {
+        [self createAmPmCell:indexPath cell:cell];
+    } else if (indexPath.section == 1) {
+        [self createSecondsCell:indexPath cell:cell];
+    } else if (indexPath.section == 2) {
+        [self createFontSelectionCell:cell];
+    } else if (indexPath.section == 3) {
+        [self createSuspendSleepCell:indexPath cell:cell];
+    }
+        
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+-(void)toggleAmPm:(id)sender
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+    UISwitch *ampmSwitch = (UISwitch *)sender;
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    self.clockState.displayAmPm = ampmSwitch.on;
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+-(void)toggleSeconds:(id)sender
 {
+    UISwitch *secondsSwitch = (UISwitch *)sender;
+    self.clockState.displaySeconds = secondsSwitch.on;
 }
-*/
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+-(void)toggleSuspendSleep:(id)sender
 {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
+    UISwitch *sleepSwitch = (UISwitch *)sender;
+    self.clockState.suspendSleep = sleepSwitch.on;
 }
-*/
 
 #pragma mark - Table view delegate
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSIndexPath *nextPath = [NSIndexPath indexPathForRow:(indexPath.row + 1) inSection:indexPath.section];
-    NSIndexPath *previousPath = [NSIndexPath indexPathForRow:(indexPath.row - 1) inSection:indexPath.section];
-
-    UITableViewCell *tappedCell = [tableView cellForRowAtIndexPath:indexPath];
-    UITableViewCell *nextCell = [tableView cellForRowAtIndexPath:nextPath];
-    UITableViewCell *previousCell = [tableView cellForRowAtIndexPath:previousPath];
-    
-    if (indexPath.section == 0) {
-        if (indexPath.row == 0) {
-            self.clockState.displayAmPm = YES;
-            tappedCell.accessoryType = UITableViewCellAccessoryCheckmark;
-            nextCell.accessoryType = UITableViewCellAccessoryNone;
-        } else if (indexPath.row == 1) {
-            self.clockState.displayAmPm = NO;
-            tappedCell.accessoryType = UITableViewCellAccessoryCheckmark;
-            previousCell.accessoryType = UITableViewCellAccessoryNone;
-        }
-    } else if (indexPath.section == 1) {
-        if (indexPath.row == 0) {
-            self.clockState.displaySeconds = YES;
-            tappedCell.accessoryType = UITableViewCellAccessoryCheckmark;
-            nextCell.accessoryType = UITableViewCellAccessoryNone;
-        } else if (indexPath.row == 1) {
-            self.clockState.displaySeconds = NO;
-            tappedCell.accessoryType = UITableViewCellAccessoryCheckmark;
-            previousCell.accessoryType = UITableViewCellAccessoryNone;
-        }
-    } else if (indexPath.section == 2) {
-        // Navigation logic may go here. Create and push another view controller.
+    if (indexPath.section == 2) {
         
-        DCFontSelectTableViewController *fontViewController = [[DCFontSelectTableViewController alloc] 
-                                                               initWithNibName:@"DCFontSelectTableViewController"
-                                                               bundle:nil];
-        fontViewController.clockState = self.clockState;
+        DCFontSelectTableViewController *controller = [[DCFontSelectTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+        controller.clockState = self.clockState;
         
-        [self.navigationController pushViewController:fontViewController animated:YES];
-        [fontViewController release];
+        [self.navigationController pushViewController:controller animated:YES];
+        [controller release];
+        
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
          
+}
+
+-(void)dealloc
+{
+    [_fontCell release];
+    [_clockState release];
+    [_settingsArray release];
+    
+    [super dealloc];
 }
 
 @end

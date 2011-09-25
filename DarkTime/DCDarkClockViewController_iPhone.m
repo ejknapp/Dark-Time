@@ -9,6 +9,7 @@
 #import "DCDarkClockViewController_iPhone.h"
 #import "DCDarkClockViewController.h"
 #import "DCSettingsViewController.h"
+#import "DCSettingsViewController_iPhone.h"
 #import "DCClockState.h"
 
 @implementation DCDarkClockViewController_iPhone
@@ -19,49 +20,56 @@
     self.clockState.fontEditorDisplayed = YES;
 }
 
--(void)updateDisplayFont
+- (void)observeValueForKeyPath:(NSString *)keyPath 
+                      ofObject:(id)object 
+                        change:(NSDictionary *)change 
+                       context:(void *)context
 {
-    [super updateDisplayFont];
-    self.timeLabel.font = [self.clockState.currentFont fontWithSize:225];
-    self.ampmLabel.font = [self.clockState.currentFont fontWithSize:36];
-    self.secondsLabel.font = [self.clockState.currentFont fontWithSize:36];
+    NSLog(@"observeValueForKeyPath: iPhone");
     
-//    self.timeLabel.frame = CGRectMake(0, self.clockState.displayLabelY, 480, 320);
+    if ([keyPath isEqualToString:@"fontEditorDisplayed"]) {
+        if (self.clockState.isFontEditorDisplayed) {
+            DCSettingsViewController_iPhone *editor = [[DCSettingsViewController_iPhone alloc] 
+                                                initWithNibName:@"DCSettingView_iPhone" 
+                                                bundle:nil];
+            editor.clockState = self.clockState;
+            self.fontEditor = editor;
+            [self presentModalViewController:editor animated:YES];
+            [editor release];
+        } else {
+            [self.fontEditor dismissModalViewControllerAnimated:YES];
+            self.fontEditor = nil;
+        }
+    }
+    
+    if ([keyPath isEqualToString:@"currentFont"]) {
+        [self updateDisplayFont];
+    }
+    
+    [self updateDisplayFont];
     
     [self changeDisplayBrightnessWithBrightness:self.clockState.clockBrightnessLevel];
 }
 
 
-- (void)didReceiveMemoryWarning
+-(void)updateDisplayFont
 {
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
+    CGRect screenRect = [[UIScreen mainScreen] applicationFrame];
+    CGFloat width = screenRect.size.width;
+    CGFloat height = screenRect.size.height;
     
-    // Release any cached data, images, etc that aren't in use.
-}
-
-#pragma mark - View lifecycle
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
+    NSLog(@"iPhone line h: %f", self.clockState.currentFont.lineHeight);
     
+    CGRect newFrame = CGRectMake(0, (width - self.clockState.currentFont.lineHeight) / 2, 
+                                 height, 
+                                 self.clockState.currentFont.lineHeight);
+    self.timeLabel.frame = newFrame;
+    self.timeLabel.font = self.clockState.currentFont;
+    self.ampmLabel.font = [self.clockState.currentFont fontWithSize:36];
+    self.secondsLabel.font = [self.clockState.currentFont fontWithSize:36];
+        
+    [self changeDisplayBrightnessWithBrightness:self.clockState.clockBrightnessLevel];
 }
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft 
-            || interfaceOrientation == UIInterfaceOrientationLandscapeRight);
-}
-
 
 @end
 

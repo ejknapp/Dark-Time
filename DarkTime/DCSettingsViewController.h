@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @class DCClockState;
+@class DCSettingsTableViewController;
 
-@interface DCSettingsViewController : UIViewController
-
+@interface DCSettingsViewController : UIViewController 
 
 @property (nonatomic, retain) DCClockState *clockState;
 @property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
+
+-(DCSettingsTableViewController *)createTableViewController;
 
 @end

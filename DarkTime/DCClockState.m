@@ -30,6 +30,7 @@
 @synthesize savedDisplaySeconds = _savedDisplaySeconds;
 @synthesize displayAmPm = _displayAmPm;
 @synthesize savedDisplayAmPm = _savedDisplayAmPm;
+@synthesize suspendSleep = _suspendSleep;
 @synthesize currentFont =_currentFont;
 @synthesize currentFontName = _currentFontName;
 @synthesize currentFontIndex = _currentFontIndex;
@@ -61,6 +62,7 @@
         
         _displayAmPm = YES;
         _displaySeconds = YES;
+        _suspendSleep = YES;
         _fontEditorDisplayed = NO;
         _infoPageViewDisplayed = NO;
         
@@ -68,13 +70,32 @@
         
         _version = @"b7";
         
+        [self addObserver:self 
+               forKeyPath:@"suspendSleep" 
+                  options:NSKeyValueObservingOptionNew
+                  context:NULL];
+
+        
     }
     
     return self;
 }
 
--(void)changeFontWithFontIndex:(NSInteger)index
+- (void)observeValueForKeyPath:(NSString *)keyPath 
+                      ofObject:(id)object 
+                        change:(NSDictionary *)change 
+                       context:(void *)context
 {
+    if ([keyPath isEqualToString:@"suspendSleep"]) {
+        NSLog(@"changing sleep state");
+        [[UIApplication sharedApplication] setIdleTimerDisabled:self.suspendSleep];
+    }
+}
+
+-(void)changeFontWithFontIndex:(NSInteger)index viewWidth:(CGFloat)width
+{
+    
+    
     self.currentFontIndex = index;
     self.currentFontName = [self.fontNames objectAtIndex:self.currentFontIndex];
     UIFont *newFont = [UIFont fontWithName:self.currentFontName size:500];
@@ -83,10 +104,10 @@
     [@"12:58" sizeWithFont:newFont 
                minFontSize:24  
             actualFontSize:&realFontSize 
-                  forWidth:1024 
+                  forWidth:width 
              lineBreakMode:UILineBreakModeWordWrap];
     
-    NSLog(@"The real size! %f", realFontSize);
+//    NSLog(@"The real size! %f", realFontSize);
     self.currentFont = [newFont fontWithSize:realFontSize];
     
 }
@@ -94,16 +115,9 @@
 -(void)changeFontWithName:(NSString *)fontName
 {
     
-    self.currentFont = [UIFont fontWithName:fontName size:500];
-    self.currentFontName = fontName;
-    self.displayLabelY = (375 - self.currentFont.ascender - 107) / 2;
-    NSLog(@"2Y %d", self.displayLabelY);
-    NSLog(@"font2 %f, %f, %f, %f",self.currentFont.lineHeight, self.currentFont.ascender, self.currentFont.descender, self.currentFont.descender - self.currentFont.ascender);
-    CGSize stringSize=[@"12:58" sizeWithFont:self.currentFont 
-                           constrainedToSize:CGSizeMake(1024, 768)
-                               lineBreakMode:UILineBreakModeWordWrap];
-    CGFloat offset = (768 - stringSize.height) / 2;
-    NSLog(@"12:58 size %@, %f", NSStringFromCGSize(stringSize), offset);
+//    self.currentFont = [UIFont fontWithName:fontName size:500];
+//    self.currentFontName = fontName;
+//    self.displayLabelY = (375 - self.currentFont.ascender - 107) / 2;
 }
 
 -(void)createFontsArray 
@@ -128,7 +142,7 @@
     [fontNamesArray release];
     
     self.currentFontIndex = 8;
-    [self changeFontWithFontIndex:self.currentFontIndex];
+    [self changeFontWithFontIndex:self.currentFontIndex viewWidth:480];
 }
 
 
@@ -221,10 +235,12 @@
     
     NSInteger fontIndex = [userDefaults integerForKey:@"currentFontIndex"];
     
+    CGRect screenRect = [[UIScreen mainScreen] applicationFrame];
+    
     if (fontIndex >= 0) {
-        [self changeFontWithFontIndex:fontIndex];
+        [self changeFontWithFontIndex:fontIndex viewWidth:screenRect.size.height];
     } else {
-        [self changeFontWithFontIndex:8];
+        [self changeFontWithFontIndex:8 viewWidth:screenRect.size.height];
     }
     
     BOOL ampm = [userDefaults boolForKey:@"displayAmPm"];
@@ -243,6 +259,13 @@
         self.displaySeconds = NO;
     }
 
+    BOOL sleep = [userDefaults boolForKey:@"suspendSleep"];
+    
+    if (sleep) {
+        self.suspendSleep = YES;
+    } else {
+        self.suspendSleep = NO;
+    }
 }
 
 - (void) saveClockState 
@@ -257,6 +280,8 @@
     [userDefaults setBool:self.displayAmPm forKey:@"displayAmPm"];
     
     [userDefaults setBool:self.displaySeconds forKey:@"displaySeconds"];
+    
+    [userDefaults setBool:self.suspendSleep forKey:@"suspendSleep"];
     
 }
 
