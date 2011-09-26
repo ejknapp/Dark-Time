@@ -19,7 +19,6 @@
 
 -(DCSettingsTableViewController *)createTableViewController
 {
-    NSLog(@"in createTableViewController iPhone");
 
     DCSettingsTableViewController_iPhone *tableViewController = 
             [[[DCSettingsTableViewController_iPhone alloc] 

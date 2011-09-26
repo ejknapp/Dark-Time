@@ -14,4 +14,6 @@
 
 @property (nonatomic, retain) DCClockState *clockState;
 
+-(void)updateFontCellDisplay;
+
 @end

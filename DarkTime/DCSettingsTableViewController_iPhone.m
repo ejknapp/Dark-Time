@@ -11,15 +11,6 @@
 
 @implementation DCSettingsTableViewController_iPhone
 
--(void)viewWillAppear:(BOOL)animated
-{
-    NSLog(@"in DCSettingsTableViewController_iPhone viewWillAppear:");
-
-    [super viewWillAppear:animated];
-
-    [self.tableView reloadData];
-}
-
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

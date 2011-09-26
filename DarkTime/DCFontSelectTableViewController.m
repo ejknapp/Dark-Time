@@ -110,7 +110,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"in didSelectRowAtIndexPath: iPad");
+//    NSLog(@"in didSelectRowAtIndexPath: iPad");
     
     NSInteger selectedRow = indexPath.row;
     UITableViewCell *tappedCell = [tableView cellForRowAtIndexPath:indexPath];

@@ -58,15 +58,6 @@
 #pragma mark - View lifecycle
 
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    
-    [super viewWillAppear:animated];
-    
-    NSLog(@"in DCSettingsTableViewController viewWillAppear:");
-    [self.tableView reloadData];
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -110,12 +101,6 @@
     self.settingsArray = sections;
     
     
-    [self.clockState addObserver:self 
-                      forKeyPath:@"currentFontName" 
-                         options:NSKeyValueObservingOptionNew
-                         context:NULL];
-
-    
     [ampmSection release];
     [secondsSection release];
     [fontSection release];
@@ -123,17 +108,16 @@
     [sections release];
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath 
-                      ofObject:(id)object 
-                        change:(NSDictionary *)change 
-                       context:(void *)context
-{
 
-    if ([keyPath isEqualToString:@"currentFontName"]) {
+-(void)updateFontCellDisplay
+{
+//    NSLog(@"updateFontCellDisplay: for DCSettingsTableViewController");
+        
+    if (self.fontCell) {
         self.fontCell.textLabel.text = self.clockState.currentFontName;
         self.fontCell.textLabel.font = [self.clockState.currentFont fontWithSize:18];
     }
-    
+
 }
 
 - (void)viewDidUnload
@@ -143,6 +127,7 @@
     // e.g. self.myOutlet = nil;
     
     self.settingsArray = nil;
+    
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -185,37 +170,39 @@
 
 - (void)createAmPmCell:(NSIndexPath *)indexPath cell:(UITableViewCell *)cell
 {
-  UISwitch *cellSwitch = [[[UISwitch alloc] initWithFrame:CGRectZero] autorelease];
-        cell.textLabel.text = [[self.settingsArray objectAtIndex:indexPath.section] 
-                               objectForKey:@"cellText"];
-        
-        [cellSwitch addTarget:self 
-                       action:@selector(toggleAmPm:) 
-             forControlEvents:UIControlEventValueChanged];
-        
-        cellSwitch.on = self.clockState.displayAmPm;
-        cell.accessoryView = cellSwitch;
+    UISwitch *cellSwitch = [[[UISwitch alloc] initWithFrame:CGRectZero] autorelease];
+    cell.textLabel.text = [[self.settingsArray objectAtIndex:indexPath.section] 
+                           objectForKey:@"cellText"];
+    
+    [cellSwitch addTarget:self 
+                   action:@selector(toggleAmPm:) 
+         forControlEvents:UIControlEventValueChanged];
+    
+    cellSwitch.on = self.clockState.displayAmPm;
+    cell.accessoryView = cellSwitch;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
 }
 
 - (void)createSecondsCell:(NSIndexPath *)indexPath cell:(UITableViewCell *)cell
 {
-  UISwitch *cellSwitch = [[[UISwitch alloc] initWithFrame:CGRectZero] autorelease];
-        cell.textLabel.text = [[self.settingsArray objectAtIndex:indexPath.section] 
-                               objectForKey:@"cellText"];
-        
-        [cellSwitch addTarget:self 
-                       action:@selector(toggleSeconds:) 
-             forControlEvents:UIControlEventValueChanged];
-        
-        cellSwitch.on = self.clockState.displaySeconds;
-        cell.accessoryView = cellSwitch;
+    UISwitch *cellSwitch = [[[UISwitch alloc] initWithFrame:CGRectZero] autorelease];
+    cell.textLabel.text = [[self.settingsArray objectAtIndex:indexPath.section] 
+                           objectForKey:@"cellText"];
+    
+    [cellSwitch addTarget:self 
+                   action:@selector(toggleSeconds:) 
+         forControlEvents:UIControlEventValueChanged];
+    
+    cellSwitch.on = self.clockState.displaySeconds;
+    cell.accessoryView = cellSwitch;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
 }
 
 - (void)createFontSelectionCell:(UITableViewCell *)cell
 {
-    NSLog(@"in createFontSelectionCell: %@", self.clockState.currentFontName);
+//    NSLog(@"in createFontSelectionCell: %@", self.clockState.currentFontName);
     cell.textLabel.text = self.clockState.currentFontName;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.selectionStyle = UITableViewCellSelectionStyleGray;
@@ -226,16 +213,17 @@
 
 - (void)createSuspendSleepCell:(NSIndexPath *)indexPath cell:(UITableViewCell *)cell
 {
-  UISwitch *cellSwitch = [[[UISwitch alloc] initWithFrame:CGRectZero] autorelease];
-        cell.textLabel.text = [[self.settingsArray objectAtIndex:indexPath.section] 
-                               objectForKey:@"cellText"];
-        
-        [cellSwitch addTarget:self 
-                       action:@selector(toggleSuspendSleep:) 
-             forControlEvents:UIControlEventValueChanged];
-        
-        cellSwitch.on = self.clockState.suspendSleep;
-        cell.accessoryView = cellSwitch;
+    UISwitch *cellSwitch = [[[UISwitch alloc] initWithFrame:CGRectZero] autorelease];
+    cell.textLabel.text = [[self.settingsArray objectAtIndex:indexPath.section] 
+                           objectForKey:@"cellText"];
+    
+    [cellSwitch addTarget:self 
+                   action:@selector(toggleSuspendSleep:) 
+         forControlEvents:UIControlEventValueChanged];
+    
+    cellSwitch.on = self.clockState.suspendSleep;
+    cell.accessoryView = cellSwitch;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
 }
 

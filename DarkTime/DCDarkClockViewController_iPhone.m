@@ -25,10 +25,10 @@
                         change:(NSDictionary *)change 
                        context:(void *)context
 {
-    NSLog(@"observeValueForKeyPath: iPhone");
     
     if ([keyPath isEqualToString:@"fontEditorDisplayed"]) {
         if (self.clockState.isFontEditorDisplayed) {
+
             DCSettingsViewController_iPhone *editor = [[DCSettingsViewController_iPhone alloc] 
                                                 initWithNibName:@"DCSettingView_iPhone" 
                                                 bundle:nil];
@@ -40,10 +40,12 @@
             [self.fontEditor dismissModalViewControllerAnimated:YES];
             self.fontEditor = nil;
         }
-    }
-    
-    if ([keyPath isEqualToString:@"currentFont"]) {
+    } else if ([keyPath isEqualToString:@"currentFont"]) {
         [self updateDisplayFont];
+        
+        if (self.fontEditor) {
+            [self.fontEditor updateFontCellDisplay];
+        }
     }
     
     [self updateDisplayFont];
@@ -52,14 +54,45 @@
 }
 
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    UISwipeGestureRecognizer *swipeRecognizer = 
+    [[UISwipeGestureRecognizer alloc] 
+     initWithTarget:self 
+     action:@selector(handleBrightnessSwipeRight:)];
+    
+    swipeRecognizer.numberOfTouchesRequired = 1;
+    swipeRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
+    
+    self.brightnessSwipeRight = swipeRecognizer;
+    [self.view addGestureRecognizer:self.brightnessSwipeRight];
+    [swipeRecognizer release];
+    
+    UISwipeGestureRecognizer *leftSwipeRecognizer = 
+    [[UISwipeGestureRecognizer alloc] 
+     initWithTarget:self 
+     action:@selector(handleBrightnessSwipeLeft:)];
+    
+    leftSwipeRecognizer.numberOfTouchesRequired = 1;
+    leftSwipeRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
+    
+    self.brightnessSwipeLeft = leftSwipeRecognizer;
+    [self.view addGestureRecognizer:self.brightnessSwipeLeft];
+    [leftSwipeRecognizer release];
+    
+    
+    [self updateDisplayFont];
+}
+
+
 -(void)updateDisplayFont
 {
     CGRect screenRect = [[UIScreen mainScreen] applicationFrame];
     CGFloat width = screenRect.size.width;
     CGFloat height = screenRect.size.height;
-    
-    NSLog(@"iPhone line h: %f", self.clockState.currentFont.lineHeight);
-    
+        
     CGRect newFrame = CGRectMake(0, (width - self.clockState.currentFont.lineHeight) / 2, 
                                  height, 
                                  self.clockState.currentFont.lineHeight);

@@ -15,7 +15,9 @@
 
 @property (nonatomic, retain) DCClockState *clockState;
 @property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
+@property (nonatomic, retain) DCSettingsTableViewController *settingsTableViewController;
 
 -(DCSettingsTableViewController *)createTableViewController;
+-(void)updateFontCellDisplay;
 
 @end

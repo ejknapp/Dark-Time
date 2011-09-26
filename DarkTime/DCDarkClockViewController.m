@@ -13,8 +13,6 @@
 
 @interface DCDarkClockViewController ()
 
-@property (nonatomic, retain) UISwipeGestureRecognizer *brightnessSwipeRight;
-@property (nonatomic, retain) UISwipeGestureRecognizer *brightnessSwipeLeft;
 
 
 -(void)handleBrightnessDrag:(UIPanGestureRecognizer *)recognizer;
@@ -65,11 +63,9 @@
 
 #pragma mark - View lifecycle
 
-
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-    
+    [super viewDidLoad];    
     
     NSCalendar *newCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     self.calendar = newCalendar;
@@ -82,29 +78,29 @@
                                                      repeats:YES];
     self.appTimer = timer;
     
-    UISwipeGestureRecognizer *swipeRecognizer = 
-                            [[UISwipeGestureRecognizer alloc] 
-                             initWithTarget:self 
-                             action:@selector(handleBrightnessSwipeRight:)];
-    
-    swipeRecognizer.numberOfTouchesRequired = 1;
-    swipeRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
-    
-    self.brightnessSwipeRight = swipeRecognizer;
-    [self.view addGestureRecognizer:self.brightnessSwipeRight];
-    [swipeRecognizer release];
-    
-    UISwipeGestureRecognizer *leftSwipeRecognizer = 
-                    [[UISwipeGestureRecognizer alloc] 
-                     initWithTarget:self 
-                     action:@selector(handleBrightnessSwipeLeft:)];
-    
-    leftSwipeRecognizer.numberOfTouchesRequired = 1;
-    leftSwipeRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
-    
-    self.brightnessSwipeLeft = leftSwipeRecognizer;
-    [self.view addGestureRecognizer:self.brightnessSwipeLeft];
-    [leftSwipeRecognizer release];
+//    UISwipeGestureRecognizer *swipeRecognizer = 
+//                            [[UISwipeGestureRecognizer alloc] 
+//                             initWithTarget:self 
+//                             action:@selector(handleBrightnessSwipeRight:)];
+//    
+//    swipeRecognizer.numberOfTouchesRequired = 1;
+//    swipeRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
+//    
+//    self.brightnessSwipeRight = swipeRecognizer;
+//    [self.view addGestureRecognizer:self.brightnessSwipeRight];
+//    [swipeRecognizer release];
+//    
+//    UISwipeGestureRecognizer *leftSwipeRecognizer = 
+//                    [[UISwipeGestureRecognizer alloc] 
+//                     initWithTarget:self 
+//                     action:@selector(handleBrightnessSwipeLeft:)];
+//    
+//    leftSwipeRecognizer.numberOfTouchesRequired = 1;
+//    leftSwipeRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
+//    
+//    self.brightnessSwipeLeft = leftSwipeRecognizer;
+//    [self.view addGestureRecognizer:self.brightnessSwipeLeft];
+//    [leftSwipeRecognizer release];
 
     
     [self.clockState addObserver:self 
@@ -130,31 +126,33 @@
                        context:(void *)context
 {
     
-    NSLog(@"in observeValueForKeyPath: super");
-    if ([keyPath isEqualToString:@"fontEditorDisplayed"]) {
-        if (self.clockState.isFontEditorDisplayed) {
-            DCSettingsViewController *editor = [[DCSettingsViewController alloc] 
-                                                initWithNibName:nil 
-                                                bundle:nil];
-            editor.modalPresentationStyle = UIModalPresentationFormSheet;
-            editor.clockState = self.clockState;
-            self.fontEditor = editor;
-            [self presentModalViewController:editor animated:YES];
-            [editor release];
-        } else {
-            [self.fontEditor dismissModalViewControllerAnimated:YES];
-            self.fontEditor = nil;
-        }
-    }
-    
-    if ([keyPath isEqualToString:@"currentFont"]) {
-        [self updateDisplayFont];
-    }
-    
-//    NSLog(@"About to call updateDisplayFont");
-    [self updateDisplayFont];
-    
-    [self changeDisplayBrightnessWithBrightness:self.clockState.clockBrightnessLevel];
+    NSLog(@"In super observer");
+//    NSLog(@"in observeValueForKeyPath: super");
+//    if ([keyPath isEqualToString:@"fontEditorDisplayed"]) {
+//        if (self.clockState.isFontEditorDisplayed) {
+//            DCSettingsViewController *editor = [[DCSettingsViewController alloc] 
+//                                                initWithNibName:nil 
+//                                                bundle:nil];
+//            editor.modalPresentationStyle = UIModalPresentationFormSheet;
+//            editor.clockState = self.clockState;
+//            self.fontEditor = editor;
+//            [self presentModalViewController:editor animated:YES];
+//            [editor release];
+//        } else {
+//            [self.fontEditor dismissModalViewControllerAnimated:YES];
+//            self.fontEditor = nil;
+//        }
+//    } else if ([keyPath isEqualToString:@"currentFont"]) {
+//        [self updateDisplayFont];
+//        
+//        if (self.fontEditor) {
+//            NSLog(@"fontEditor is displayed. super");
+//        }
+//    }
+//    
+//    [self updateDisplayFont];
+//    
+//    [self changeDisplayBrightnessWithBrightness:self.clockState.clockBrightnessLevel];
 }
 
 -(void)updateDisplayFont
@@ -185,18 +183,18 @@
 -(void)handleBrightnessSwipeLeft:(UISwipeGestureRecognizer *)recognizer
 {
     
+
     if (self.clockState.fontEditorDisplayed) {
         return;
     }
     
-    CGFloat currentBrightness;
-    currentBrightness = self.clockState.clockBrightnessLevel;
+    CGFloat currentBrightness = self.clockState.clockBrightnessLevel;
     
     CGFloat brightness = currentBrightness - 0.1;
     if (brightness > 1.0) {
         brightness = 1.0;
     } else if (brightness < 0.15) {
-        brightness = 0.15;
+        brightness = 0.1;
     }
     
     [self changeDisplayBrightnessWithBrightness:brightness];

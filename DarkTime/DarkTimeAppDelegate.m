@@ -27,7 +27,7 @@
     DCClockState *state = [[DCClockState alloc] init];
     self.clockState = state;
     self.viewController.clockState = self.clockState;
-    [self.clockState loadClockState];
+//    [self.clockState loadClockState];
     [state release];
     
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];    
@@ -73,7 +73,8 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     /*
-     Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+     Called as part of the transition from the background to the inactive state; here you can undo 
+     many of the changes made on entering the background.
      */
     
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];    
@@ -122,6 +123,8 @@
     NSString *appVersion = clockState.version;
     
     if (!firstTimeFlag || ![defaultsVersion isEqualToString:appVersion]) {
+        
+        [self.clockState saveClockState];
         
         UIAlertView *alert = [[UIAlertView alloc] 
                               initWithTitle:@"Be Careful!" 

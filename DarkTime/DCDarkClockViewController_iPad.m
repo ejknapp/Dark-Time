@@ -14,14 +14,13 @@
 
 @interface DCDarkClockViewController_iPad()
 
-@property (nonatomic, retain) UIPopoverController *settingsPopover;
+-(void)addRecognizers;
+-(void)removeRecognizers;
 
 @end
 
 
 @implementation DCDarkClockViewController_iPad
-
-@synthesize settingsPopover = _settingsPopover;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,9 +36,9 @@
                         change:(NSDictionary *)change 
                        context:(void *)context
 {
-    NSLog(@"observeValueForKeyPath: iPad");
     if ([keyPath isEqualToString:@"fontEditorDisplayed"]) {
         if (self.clockState.isFontEditorDisplayed) {
+
             DCSettingsViewController *editor = [[DCSettingsViewController alloc] 
                                                 initWithNibName:nil 
                                                 bundle:nil];
@@ -52,14 +51,16 @@
         } else {
             [self.fontEditor dismissModalViewControllerAnimated:YES];
             self.fontEditor = nil;
+
         }
-    }
-    
-    if ([keyPath isEqualToString:@"currentFont"]) {
+    } else if ([keyPath isEqualToString:@"currentFont"]) {
         [self updateDisplayFont];
-    }
-    
-    //    NSLog(@"About to call updateDisplayFont");
+        
+        if (self.fontEditor) {
+            [self.fontEditor updateFontCellDisplay];
+        }
+    }    
+
     [self updateDisplayFont];
     
     [self changeDisplayBrightnessWithBrightness:self.clockState.clockBrightnessLevel];
@@ -72,7 +73,6 @@
     CGFloat width = screenRect.size.width;
     CGFloat height = screenRect.size.height;
     
-    NSLog(@"iPad app rect %@", NSStringFromCGRect(screenRect));
     CGRect newFrame = CGRectMake(0, (width - self.clockState.currentFont.lineHeight) / 2, 
                                  height, 
                                  self.clockState.currentFont.lineHeight);
@@ -89,6 +89,7 @@
 
 - (IBAction)settingsButtonTapped:(id)sender 
 {
+
     self.clockState.fontEditorDisplayed = YES;
 }
 
@@ -103,19 +104,78 @@
 
 #pragma mark - View lifecycle
 
+
+-(void)addRecognizers
+{
+    UISwipeGestureRecognizer *swipeRecognizer = 
+    [[UISwipeGestureRecognizer alloc] 
+     initWithTarget:self 
+     action:@selector(handleBrightnessSwipeRight:)];
+    
+    swipeRecognizer.numberOfTouchesRequired = 1;
+    swipeRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
+    
+    self.brightnessSwipeRight = swipeRecognizer;
+    [self.view addGestureRecognizer:self.brightnessSwipeRight];
+    [swipeRecognizer release];
+    
+    UISwipeGestureRecognizer *leftSwipeRecognizer = 
+    [[UISwipeGestureRecognizer alloc] 
+     initWithTarget:self 
+     action:@selector(handleBrightnessSwipeLeft:)];
+    
+    leftSwipeRecognizer.numberOfTouchesRequired = 1;
+    leftSwipeRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
+    
+    self.brightnessSwipeLeft = leftSwipeRecognizer;
+    [self.view addGestureRecognizer:self.brightnessSwipeLeft];
+    [leftSwipeRecognizer release];
+
+}
+
+-(void)removeRecognizers
+{
+    [self.view removeGestureRecognizer:self.brightnessSwipeLeft];
+    [self.view removeGestureRecognizer:self.brightnessSwipeRight];
+    
+    self.brightnessSwipeRight = nil;
+    self.brightnessSwipeLeft = nil;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
+    [self addRecognizers];
+    
+//    UISwipeGestureRecognizer *swipeRecognizer = 
+//    [[UISwipeGestureRecognizer alloc] 
+//     initWithTarget:self 
+//     action:@selector(handleBrightnessSwipeRight:)];
+//    
+//    swipeRecognizer.numberOfTouchesRequired = 1;
+//    swipeRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
+//    
+//    self.brightnessSwipeRight = swipeRecognizer;
+//    [self.view addGestureRecognizer:self.brightnessSwipeRight];
+//    [swipeRecognizer release];
+//    
+//    UISwipeGestureRecognizer *leftSwipeRecognizer = 
+//    [[UISwipeGestureRecognizer alloc] 
+//     initWithTarget:self 
+//     action:@selector(handleBrightnessSwipeLeft:)];
+//    
+//    leftSwipeRecognizer.numberOfTouchesRequired = 1;
+//    leftSwipeRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
+//    
+//    self.brightnessSwipeLeft = leftSwipeRecognizer;
+//    [self.view addGestureRecognizer:self.brightnessSwipeLeft];
+//    [leftSwipeRecognizer release];
+//    
+    
     [self updateDisplayFont];
 }
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
 
 
 

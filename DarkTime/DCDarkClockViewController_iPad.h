@@ -8,6 +8,6 @@
 
 #import "DCDarkClockViewController.h"
 
-@interface DCDarkClockViewController_iPad : DCDarkClockViewController <UIPopoverControllerDelegate>
+@interface DCDarkClockViewController_iPad : DCDarkClockViewController 
 
 @end

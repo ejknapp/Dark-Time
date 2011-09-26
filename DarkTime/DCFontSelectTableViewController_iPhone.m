@@ -16,7 +16,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"in didSelectRowAtIndexPath: iPhone");
     NSInteger selectedRow = indexPath.row;
     UITableViewCell *tappedCell = [tableView cellForRowAtIndexPath:indexPath];
     

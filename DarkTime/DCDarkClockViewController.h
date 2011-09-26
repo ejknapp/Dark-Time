@@ -35,6 +35,10 @@
 
 @property (nonatomic, assign) CGPoint startingOrigin;
 
+@property (nonatomic, retain) UISwipeGestureRecognizer *brightnessSwipeRight;
+@property (nonatomic, retain) UISwipeGestureRecognizer *brightnessSwipeLeft;
+
+
 -(void)changeDisplayBrightnessWithBrightness:(CGFloat)brightness;
 -(void)updateClock;
 -(void)updateDisplayFont;

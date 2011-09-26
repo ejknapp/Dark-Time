@@ -14,6 +14,7 @@
 
 @synthesize navigationController = _navigationController;
 @synthesize clockState = _clockState;
+@synthesize settingsTableViewController = _settingsTableViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,8 +36,7 @@
 
 -(void)doneButtonTapped:(id)sender
 {
-    [self dismissModalViewControllerAnimated:YES];
-    self.navigationController = nil;
+    self.clockState.fontEditorDisplayed = NO;
 }
 
 -(void)helpButtonTapped:(id)sender
@@ -44,12 +44,15 @@
 
 }
 
+-(void)updateFontCellDisplay
+{
+    [self.settingsTableViewController updateFontCellDisplay];
+}
 
 #pragma mark - View lifecycle
 
 -(DCSettingsTableViewController *)createTableViewController
 {
-    NSLog(@"in createTableViewController super");
     DCSettingsTableViewController *tableViewController = [[[DCSettingsTableViewController alloc] 
                                                           initWithStyle:UITableViewStyleGrouped] autorelease];    
     
@@ -58,15 +61,15 @@
     return tableViewController;
 }
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    NSLog(@"in viewDidLoad for settings view controller");
-    
     DCSettingsTableViewController *tableViewController = [self createTableViewController];
 
+    self.settingsTableViewController = tableViewController;
         
     UINavigationController *navController = [[UINavigationController alloc] 
                                              initWithRootViewController:tableViewController];

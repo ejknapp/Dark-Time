@@ -87,7 +87,6 @@
                        context:(void *)context
 {
     if ([keyPath isEqualToString:@"suspendSleep"]) {
-        NSLog(@"changing sleep state");
         [[UIApplication sharedApplication] setIdleTimerDisabled:self.suspendSleep];
     }
 }
@@ -95,8 +94,8 @@
 -(void)changeFontWithFontIndex:(NSInteger)index viewWidth:(CGFloat)width
 {
     
-    
     self.currentFontIndex = index;
+    
     self.currentFontName = [self.fontNames objectAtIndex:self.currentFontIndex];
     UIFont *newFont = [UIFont fontWithName:self.currentFontName size:500];
 
@@ -107,7 +106,6 @@
                   forWidth:width 
              lineBreakMode:UILineBreakModeWordWrap];
     
-//    NSLog(@"The real size! %f", realFontSize);
     self.currentFont = [newFont fontWithSize:realFontSize];
     
 }
@@ -236,7 +234,7 @@
     NSInteger fontIndex = [userDefaults integerForKey:@"currentFontIndex"];
     
     CGRect screenRect = [[UIScreen mainScreen] applicationFrame];
-    
+        
     if (fontIndex >= 0) {
         [self changeFontWithFontIndex:fontIndex viewWidth:screenRect.size.height];
     } else {
