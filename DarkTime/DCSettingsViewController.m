@@ -9,12 +9,21 @@
 #import "DCSettingsViewController.h"
 #import "DCSettingsTableViewController.h"
 #import "DCClockState.h"
+#import "DCInfoViewController.h"
+
+@interface DCSettingsViewController()
+
+
+
+@end
 
 @implementation DCSettingsViewController
 
 @synthesize navigationController = _navigationController;
 @synthesize clockState = _clockState;
 @synthesize settingsTableViewController = _settingsTableViewController;
+@synthesize infoController = _infoController;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,10 +48,22 @@
     self.clockState.fontEditorDisplayed = NO;
 }
 
--(void)helpButtonTapped:(id)sender
+
+-(void)displayInfoPage
 {
 
+    DCInfoViewController *controller = [[DCInfoViewController alloc] initWithNibName:nil bundle:nil];
+    self.infoController = controller;
+    [controller release];
+    
+    [self.navigationController pushViewController:self.infoController animated:YES];
+    
 }
+
+-(void)dismissInfoPage
+{
+}
+
 
 -(void)updateFontCellDisplay
 {
@@ -82,15 +103,8 @@
                                                             target:self 
                                                             action:@selector(doneButtonTapped:)];
     
-    UIBarButtonItem *help = [[UIBarButtonItem alloc] initWithTitle:@"Help" 
-                                                             style:UIBarButtonItemStylePlain 
-                                                            target:self 
-                                                            action:@selector(helpButtonTapped:)];
-    
-    tableViewController.navigationItem.leftBarButtonItem = help;
     tableViewController.navigationItem.rightBarButtonItem = done;
 
-    [help release];
     [done release];
    
     self.navigationController = navController;

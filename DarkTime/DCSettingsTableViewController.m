@@ -10,11 +10,13 @@
 #import "DCClockState.h"
 #import "DCSettingsViewController.h"
 #import "DCFontSelectTableViewController.h"
+#import "DCInfoViewController.h"
 
 @interface DCSettingsTableViewController()
 
 @property (nonatomic, retain) NSArray *settingsArray;
 @property (nonatomic, retain) UITableViewCell *fontCell;
+@property (nonatomic, retain) UITableViewCell *helpCell;
 
 
 - (void)createAmPmCell:(NSIndexPath *)indexPath 
@@ -28,6 +30,8 @@
 - (void)createSuspendSleepCell:(NSIndexPath *)indexPath 
                           cell:(UITableViewCell *)cell;
 
+- (void)createHelpSelectionCell:(UITableViewCell *)cell 
+                      indexPath:(NSIndexPath *)indexPath;
 @end
 
 @implementation DCSettingsTableViewController
@@ -35,6 +39,7 @@
 @synthesize clockState = _clockState;
 @synthesize settingsArray = _settingsArray;
 @synthesize fontCell = _fontCell;
+@synthesize helpCell = _helpCell;
 
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -91,11 +96,18 @@
                                  @"Caution: this may affect battery life if not using power source.", @"footer",
                                  nil];
 
+    NSDictionary *helpSection = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                  @"Help", @"header",
+                                  @"Dark Time Help", @"cellText",
+                                  @"", @"footer",
+                                  nil];
+
     NSArray *sections = [[NSArray alloc] initWithObjects:
                          ampmSection, 
                          secondsSection, 
                          fontSection,
                          sleepSection,
+                         helpSection,
                          nil];
 
     self.settingsArray = sections;
@@ -105,6 +117,7 @@
     [secondsSection release];
     [fontSection release];
     [sleepSection release];
+    [helpSection release];
     [sections release];
 }
 
@@ -227,6 +240,19 @@
 
 }
 
+- (void)createHelpSelectionCell:(UITableViewCell *)cell indexPath:(NSIndexPath *)indexPath
+{
+    //    NSLog(@"in createFontSelectionCell: %@", self.clockState.currentFontName);
+    cell.textLabel.text = [[self.settingsArray objectAtIndex:indexPath.section] 
+                           objectForKey:@"cellText"];
+    
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.selectionStyle = UITableViewCellSelectionStyleGray;
+    self.helpCell = cell;
+    
+}
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView 
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -249,6 +275,8 @@
         [self createFontSelectionCell:cell];
     } else if (indexPath.section == 3) {
         [self createSuspendSleepCell:indexPath cell:cell];
+    } else if (indexPath.section == 4) {
+        [self createHelpSelectionCell:cell indexPath:indexPath];
     }
         
     return cell;
@@ -285,6 +313,12 @@
         
         [self.navigationController pushViewController:controller animated:YES];
         [controller release];
+        
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    } else if (indexPath.section == 4) {
+        DCInfoViewController *controller = [[DCInfoViewController alloc] initWithNibName:nil bundle:nil];
+        
+        [self.navigationController pushViewController:controller animated:YES];
         
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }

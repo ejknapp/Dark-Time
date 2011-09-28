@@ -1,0 +1,112 @@
+body {
+  background-color: #353535;
+  margin:15px;
+}
+
+body, p, ol, ul, td {
+	font-family: sans-serif;
+	font-size:large;
+	color:lightgray;
+}
+
+.toc {
+  font-size:smaller;
+  text-align:center;
+  padding-bottom:20px;
+}
+
+li {
+  padding-top:10px;
+
+}
+
+a:link {
+  color:darkgray;
+}
+
+a:hover {
+  color:lightgray;
+}
+
+a:visited {
+  color:lightgray;
+}
+
+.toc a:link {
+  color:darkgray;
+}
+
+.toc a:hover {
+  color:lightgray;
+}
+
+div.text {
+  margin-left:20px;
+  margin-right:20px;
+}
+
+h4 {
+  margin-left:10px;
+}
+
+div.content {
+  padding-top:20px;
+  padding-left:20px;
+  padding-right:20px;
+  padding-bottom:20px;
+  background-color: #fff;
+  border: 1px solid #bbb;
+  background-color:#222;
+}
+
+div.centered {
+  text-align:center;
+  width:100%;
+}
+
+.fullImage {
+  text-align:center;
+  width:100%;
+  margin.left:-13px;
+}
+
+img.cell {
+  border:1px solid black;
+}
+
+img.logo {
+    float:left;
+    margin-right: 1em;
+    margin-top: -12px;
+}
+
+img.tool_palette {
+	float:left;
+	padding-right:0.5em;
+	margin-top:-22px;
+	margin-left:-10px;
+}
+
+img.tool_header {
+	float:left;
+	padding-right:0.5em;
+}
+
+img.tool_inline {
+	float:left;
+	padding-right:0.5em;
+	margin-top:3px;
+}
+
+div.example {
+    text-align:center;
+}
+
+div.copyright {
+    margin-top:2em;
+    text-align:center;
+    font-size:smaller;
+    color:#666;
+}
+
+

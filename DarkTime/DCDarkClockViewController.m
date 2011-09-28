@@ -9,6 +9,7 @@
 #import "DCDarkClockViewController.h"
 #import "DCClockState.h"
 #import "DCSettingsViewController.h"
+#import "DCInfoViewController.h"
 
 
 @interface DCDarkClockViewController ()
@@ -18,8 +19,6 @@
 -(void)handleBrightnessDrag:(UIPanGestureRecognizer *)recognizer;
 -(void)appBecomeActive;
 -(void)appEnteredBackground;
-
-
 -(IBAction)settingsButtonTapped:(id)sender;
 -(void)updateDisplayFont;
 
@@ -30,7 +29,7 @@
 
 @synthesize brightnessSwipeRight = _brightnessSwipeRight;
 @synthesize brightnessSwipeLeft = _brightnessSwipeLeft;
-
+@synthesize infoController = _infoController;
 
 @synthesize clockState = _clockState;
 @synthesize calendar = _calendar;
@@ -78,41 +77,22 @@
                                                      repeats:YES];
     self.appTimer = timer;
     
-//    UISwipeGestureRecognizer *swipeRecognizer = 
-//                            [[UISwipeGestureRecognizer alloc] 
-//                             initWithTarget:self 
-//                             action:@selector(handleBrightnessSwipeRight:)];
-//    
-//    swipeRecognizer.numberOfTouchesRequired = 1;
-//    swipeRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
-//    
-//    self.brightnessSwipeRight = swipeRecognizer;
-//    [self.view addGestureRecognizer:self.brightnessSwipeRight];
-//    [swipeRecognizer release];
-//    
-//    UISwipeGestureRecognizer *leftSwipeRecognizer = 
-//                    [[UISwipeGestureRecognizer alloc] 
-//                     initWithTarget:self 
-//                     action:@selector(handleBrightnessSwipeLeft:)];
-//    
-//    leftSwipeRecognizer.numberOfTouchesRequired = 1;
-//    leftSwipeRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
-//    
-//    self.brightnessSwipeLeft = leftSwipeRecognizer;
-//    [self.view addGestureRecognizer:self.brightnessSwipeLeft];
-//    [leftSwipeRecognizer release];
-
-    
+   
     [self.clockState addObserver:self 
                       forKeyPath:@"currentFont" 
                          options:NSKeyValueObservingOptionNew
                          context:NULL];
     
-    [self.clockState addObserver:self 
+     [self.clockState addObserver:self 
                       forKeyPath:@"fontEditorDisplayed" 
                          options:NSKeyValueObservingOptionNew
                          context:NULL];
-    
+
+    [self.clockState addObserver:self 
+                      forKeyPath:@"infoPageViewDisplayed" 
+                         options:NSKeyValueObservingOptionNew
+                         context:NULL];
+
     CGRect screenRect = [[UIScreen mainScreen] applicationFrame];
     [self.clockState changeFontWithFontIndex:self.clockState.currentFontIndex viewWidth:screenRect.size.height];
 
@@ -127,33 +107,33 @@
 {
     
     NSLog(@"In super observer");
-//    NSLog(@"in observeValueForKeyPath: super");
-//    if ([keyPath isEqualToString:@"fontEditorDisplayed"]) {
-//        if (self.clockState.isFontEditorDisplayed) {
-//            DCSettingsViewController *editor = [[DCSettingsViewController alloc] 
-//                                                initWithNibName:nil 
-//                                                bundle:nil];
-//            editor.modalPresentationStyle = UIModalPresentationFormSheet;
-//            editor.clockState = self.clockState;
-//            self.fontEditor = editor;
-//            [self presentModalViewController:editor animated:YES];
-//            [editor release];
-//        } else {
-//            [self.fontEditor dismissModalViewControllerAnimated:YES];
-//            self.fontEditor = nil;
-//        }
-//    } else if ([keyPath isEqualToString:@"currentFont"]) {
-//        [self updateDisplayFont];
-//        
-//        if (self.fontEditor) {
-//            NSLog(@"fontEditor is displayed. super");
-//        }
-//    }
-//    
-//    [self updateDisplayFont];
-//    
-//    [self changeDisplayBrightnessWithBrightness:self.clockState.clockBrightnessLevel];
+    
 }
+
+-(void)displayInfoPage
+{
+//    NSLog(@"in displayInfoPage");
+//    DCInfoViewController *infoController = [[DCInfoViewController alloc] 
+//                                            initWithNibName:nil 
+//                                            bundle:nil];
+//    infoController.clockState = self.clockState;
+//    self.infoController = infoController;
+//    [infoController release];
+//    
+//    NSLog(@"about to call presentModalViewController:");
+//    [self presentModalViewController:self.infoController animated:YES];
+}
+
+-(void)dismissInfoPage
+{
+//    NSLog(@"dismissInfoPage");
+//    [self.infoController dismissModalViewControllerAnimated:YES];
+//    
+//    [self.infoController.infoWebView loadHTMLString:@"" baseURL:nil];
+//    
+//    self.infoController = nil;
+}
+
 
 -(void)updateDisplayFont
 {

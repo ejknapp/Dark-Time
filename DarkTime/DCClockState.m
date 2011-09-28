@@ -100,7 +100,7 @@
     UIFont *newFont = [UIFont fontWithName:self.currentFontName size:500];
 
     CGFloat realFontSize;
-    [@"12:58" sizeWithFont:newFont 
+    [@"8:88" sizeWithFont:newFont 
                minFontSize:24  
             actualFontSize:&realFontSize 
                   forWidth:width 

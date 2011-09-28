@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F0F8C731433791E003B2BAB /* Info in Resources */ = {isa = PBXBuildFile; fileRef = 9F0F8C721433791E003B2BAB /* Info */; };
 		9F14946B142FA0E100F4175C /* DCSettingView_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F14946A142FA0E100F4175C /* DCSettingView_iPhone.xib */; };
 		9F14946D142FA2E400F4175C /* DCFontSelectTableView_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F14946C142FA2E400F4175C /* DCFontSelectTableView_iPhone.xib */; };
 		9F149470142FA38300F4175C /* DCSettingsTableViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F14946F142FA38300F4175C /* DCSettingsTableViewController_iPhone.m */; };
@@ -25,13 +26,6 @@
 		9F43F4141428DCB7003093A8 /* DCDarkClockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F43F40C1428DCB7003093A8 /* DCDarkClockViewController.xib */; };
 		9F43F4151428DCB7003093A8 /* DCClockState.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F43F40E1428DCB7003093A8 /* DCClockState.m */; };
 		9F43F4161428DCB7003093A8 /* DCClockConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F43F4101428DCB7003093A8 /* DCClockConstants.m */; };
-		9F43F41F1428DCD8003093A8 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F43F4181428DCD8003093A8 /* Icon-72.png */; };
-		9F43F4201428DCD8003093A8 /* Icon-AppStore.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9F43F4191428DCD8003093A8 /* Icon-AppStore.jpg */; };
-		9F43F4211428DCD8003093A8 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F43F41A1428DCD8003093A8 /* Icon-Small-50.png */; };
-		9F43F4221428DCD8003093A8 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F43F41B1428DCD8003093A8 /* Icon-Small.png */; };
-		9F43F4231428DCD8003093A8 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F43F41C1428DCD8003093A8 /* Icon-Small@2x.png */; };
-		9F43F4241428DCD8003093A8 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F43F41D1428DCD8003093A8 /* Icon.png */; };
-		9F43F4251428DCD8003093A8 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F43F41E1428DCD8003093A8 /* Icon@2x.png */; };
 		9F43F4291428DD21003093A8 /* red-info2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F43F4271428DD21003093A8 /* red-info2.png */; };
 		9F43F42A1428DD21003093A8 /* red-info2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F43F4281428DD21003093A8 /* red-info2@2x.png */; };
 		9F43F4301428DEE5003093A8 /* DCDarkClockViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F43F42E1428DEE5003093A8 /* DCDarkClockViewController_iPhone.m */; };
@@ -46,9 +40,18 @@
 		9F59DAE9142E5E6C0020A795 /* DCFontSelectTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F59DAE7142E5E6B0020A795 /* DCFontSelectTableViewController.xib */; };
 		9F9C4F40142FB70100530BEA /* DCSettingsTableView_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F9C4F3F142FB70000530BEA /* DCSettingsTableView_iPhone.xib */; };
 		9F9C4F43142FB9B300530BEA /* DCFontSelectTableViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C4F42142FB9B300530BEA /* DCFontSelectTableViewController_iPhone.m */; };
+		9FF89EA414311FA5002DA909 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FF89E9D14311FA5002DA909 /* Icon-72.png */; };
+		9FF89EA514311FA5002DA909 /* Icon-AppStore.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9FF89E9E14311FA5002DA909 /* Icon-AppStore.jpg */; };
+		9FF89EA614311FA5002DA909 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FF89E9F14311FA5002DA909 /* Icon-Small-50.png */; };
+		9FF89EA714311FA5002DA909 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FF89EA014311FA5002DA909 /* Icon-Small.png */; };
+		9FF89EA814311FA5002DA909 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FF89EA114311FA5002DA909 /* Icon-Small@2x.png */; };
+		9FF89EA914311FA5002DA909 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FF89EA214311FA5002DA909 /* Icon.png */; };
+		9FF89EAA14311FA5002DA909 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FF89EA314311FA5002DA909 /* Icon@2x.png */; };
+		9FF89EB014312325002DA909 /* DCInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FF89EAF14312325002DA909 /* DCInfoViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9F0F8C721433791E003B2BAB /* Info */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Info; sourceTree = "<group>"; };
 		9F14946A142FA0E100F4175C /* DCSettingView_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DCSettingView_iPhone.xib; sourceTree = "<group>"; };
 		9F14946C142FA2E400F4175C /* DCFontSelectTableView_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DCFontSelectTableView_iPhone.xib; sourceTree = "<group>"; };
 		9F14946E142FA38300F4175C /* DCSettingsTableViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCSettingsTableViewController_iPhone.h; sourceTree = "<group>"; };
@@ -78,13 +81,6 @@
 		9F43F40E1428DCB7003093A8 /* DCClockState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCClockState.m; sourceTree = "<group>"; };
 		9F43F40F1428DCB7003093A8 /* DCClockConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCClockConstants.h; sourceTree = "<group>"; };
 		9F43F4101428DCB7003093A8 /* DCClockConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCClockConstants.m; sourceTree = "<group>"; };
-		9F43F4181428DCD8003093A8 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
-		9F43F4191428DCD8003093A8 /* Icon-AppStore.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Icon-AppStore.jpg"; sourceTree = "<group>"; };
-		9F43F41A1428DCD8003093A8 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
-		9F43F41B1428DCD8003093A8 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
-		9F43F41C1428DCD8003093A8 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
-		9F43F41D1428DCD8003093A8 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		9F43F41E1428DCD8003093A8 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		9F43F4271428DD21003093A8 /* red-info2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "red-info2.png"; sourceTree = "<group>"; };
 		9F43F4281428DD21003093A8 /* red-info2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "red-info2@2x.png"; sourceTree = "<group>"; };
 		9F43F42D1428DEE5003093A8 /* DCDarkClockViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCDarkClockViewController_iPhone.h; sourceTree = "<group>"; };
@@ -105,6 +101,15 @@
 		9F9C4F3F142FB70000530BEA /* DCSettingsTableView_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DCSettingsTableView_iPhone.xib; sourceTree = "<group>"; };
 		9F9C4F41142FB9B300530BEA /* DCFontSelectTableViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCFontSelectTableViewController_iPhone.h; sourceTree = "<group>"; };
 		9F9C4F42142FB9B300530BEA /* DCFontSelectTableViewController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCFontSelectTableViewController_iPhone.m; sourceTree = "<group>"; };
+		9FF89E9D14311FA5002DA909 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
+		9FF89E9E14311FA5002DA909 /* Icon-AppStore.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Icon-AppStore.jpg"; sourceTree = "<group>"; };
+		9FF89E9F14311FA5002DA909 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
+		9FF89EA014311FA5002DA909 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
+		9FF89EA114311FA5002DA909 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
+		9FF89EA214311FA5002DA909 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		9FF89EA314311FA5002DA909 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		9FF89EAE14312325002DA909 /* DCInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCInfoViewController.h; sourceTree = "<group>"; };
+		9FF89EAF14312325002DA909 /* DCInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCInfoViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,14 +169,15 @@
 		9F43F3EB1428DC58003093A8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9F0F8C721433791E003B2BAB /* Info */,
 				9F43F4261428DD08003093A8 /* Images */,
-				9F43F4181428DCD8003093A8 /* Icon-72.png */,
-				9F43F4191428DCD8003093A8 /* Icon-AppStore.jpg */,
-				9F43F41A1428DCD8003093A8 /* Icon-Small-50.png */,
-				9F43F41B1428DCD8003093A8 /* Icon-Small.png */,
-				9F43F41C1428DCD8003093A8 /* Icon-Small@2x.png */,
-				9F43F41D1428DCD8003093A8 /* Icon.png */,
-				9F43F41E1428DCD8003093A8 /* Icon@2x.png */,
+				9FF89E9D14311FA5002DA909 /* Icon-72.png */,
+				9FF89E9E14311FA5002DA909 /* Icon-AppStore.jpg */,
+				9FF89E9F14311FA5002DA909 /* Icon-Small-50.png */,
+				9FF89EA014311FA5002DA909 /* Icon-Small.png */,
+				9FF89EA114311FA5002DA909 /* Icon-Small@2x.png */,
+				9FF89EA214311FA5002DA909 /* Icon.png */,
+				9FF89EA314311FA5002DA909 /* Icon@2x.png */,
 				9F43F3EC1428DC58003093A8 /* DarkTime-Info.plist */,
 				9F43F3ED1428DC58003093A8 /* InfoPlist.strings */,
 				9F43F3F01428DC58003093A8 /* main.m */,
@@ -203,6 +209,7 @@
 		9F43F4091428DC92003093A8 /* Clock Classes */ = {
 			isa = PBXGroup;
 			children = (
+				9FF89EAD1431230F002DA909 /* Info Controller */,
 				9F43F42C1428DEAA003093A8 /* iPad */,
 				9F43F42B1428DE9D003093A8 /* iPhone */,
 				9F43F40A1428DCB7003093A8 /* DCDarkClockViewController.h */,
@@ -263,6 +270,15 @@
 			name = iPad;
 			sourceTree = "<group>";
 		};
+		9FF89EAD1431230F002DA909 /* Info Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9FF89EAE14312325002DA909 /* DCInfoViewController.h */,
+				9FF89EAF14312325002DA909 /* DCInfoViewController.m */,
+			);
+			name = "Info Controller";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -317,13 +333,6 @@
 				9F43F3FC1428DC58003093A8 /* MainWindow_iPhone.xib in Resources */,
 				9F43F4031428DC58003093A8 /* MainWindow_iPad.xib in Resources */,
 				9F43F4141428DCB7003093A8 /* DCDarkClockViewController.xib in Resources */,
-				9F43F41F1428DCD8003093A8 /* Icon-72.png in Resources */,
-				9F43F4201428DCD8003093A8 /* Icon-AppStore.jpg in Resources */,
-				9F43F4211428DCD8003093A8 /* Icon-Small-50.png in Resources */,
-				9F43F4221428DCD8003093A8 /* Icon-Small.png in Resources */,
-				9F43F4231428DCD8003093A8 /* Icon-Small@2x.png in Resources */,
-				9F43F4241428DCD8003093A8 /* Icon.png in Resources */,
-				9F43F4251428DCD8003093A8 /* Icon@2x.png in Resources */,
 				9F43F4291428DD21003093A8 /* red-info2.png in Resources */,
 				9F43F42A1428DD21003093A8 /* red-info2@2x.png in Resources */,
 				9F43F4311428DEE5003093A8 /* DCDarkClockViewController_iPhone.xib in Resources */,
@@ -334,6 +343,14 @@
 				9F14946B142FA0E100F4175C /* DCSettingView_iPhone.xib in Resources */,
 				9F14946D142FA2E400F4175C /* DCFontSelectTableView_iPhone.xib in Resources */,
 				9F9C4F40142FB70100530BEA /* DCSettingsTableView_iPhone.xib in Resources */,
+				9FF89EA414311FA5002DA909 /* Icon-72.png in Resources */,
+				9FF89EA514311FA5002DA909 /* Icon-AppStore.jpg in Resources */,
+				9FF89EA614311FA5002DA909 /* Icon-Small-50.png in Resources */,
+				9FF89EA714311FA5002DA909 /* Icon-Small.png in Resources */,
+				9FF89EA814311FA5002DA909 /* Icon-Small@2x.png in Resources */,
+				9FF89EA914311FA5002DA909 /* Icon.png in Resources */,
+				9FF89EAA14311FA5002DA909 /* Icon@2x.png in Resources */,
+				9F0F8C731433791E003B2BAB /* Info in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,6 +376,7 @@
 				9F149470142FA38300F4175C /* DCSettingsTableViewController_iPhone.m in Sources */,
 				9F149473142FA3EF00F4175C /* DCSettingsViewController_iPhone.m in Sources */,
 				9F9C4F43142FB9B300530BEA /* DCFontSelectTableViewController_iPhone.m in Sources */,
+				9FF89EB014312325002DA909 /* DCInfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

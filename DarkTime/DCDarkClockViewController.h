@@ -11,6 +11,7 @@
 
 @class DCClockState;
 @class DCSettingsViewController;
+@class DCInfoViewController;
 
 
 @interface DCDarkClockViewController : UIViewController <UIGestureRecognizerDelegate, UIScrollViewDelegate> 
@@ -18,6 +19,7 @@
 @property (nonatomic, retain) DCClockState *clockState;
 @property (nonatomic, retain) NSTimer *appTimer;
 
+@property (nonatomic, retain) DCInfoViewController *infoController;
 @property (nonatomic, retain) NSCalendar *calendar;
 
 @property (nonatomic, retain) IBOutlet UILabel *timeLabel;
@@ -42,5 +44,8 @@
 -(void)changeDisplayBrightnessWithBrightness:(CGFloat)brightness;
 -(void)updateClock;
 -(void)updateDisplayFont;
+-(void)displayInfoPage;
+-(void)dismissInfoPage;
+
 
 @end
