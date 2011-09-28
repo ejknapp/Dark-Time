@@ -7,28 +7,22 @@
 //
 
 #import "DCSettingsTableViewController_iPhone.h"
-#import "DCFontSelectTableViewController_iPhone.h"
+#import "DCInfoViewController.h"
 
 @implementation DCSettingsTableViewController_iPhone
 
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.section == 2) {
-        
-        DCFontSelectTableViewController_iPhone *controller = [[DCFontSelectTableViewController_iPhone alloc] 
-                                                              initWithStyle:UITableViewStyleGrouped];
-        controller.clockState = self.clockState;
-
-        controller.clockState = self.clockState;
-        
-        [self.navigationController pushViewController:controller animated:YES];
-        [controller release];
-        
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    }
-    
-}
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    if (indexPath.section == 4) {
+//        DCInfoViewController *controller = [[DCInfoViewController alloc] initWithNibName:nil bundle:nil];
+//        
+//        [self.navigationController pushViewController:controller animated:YES];
+//        
+//        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    }
+//    
+//}
 
 
 @end

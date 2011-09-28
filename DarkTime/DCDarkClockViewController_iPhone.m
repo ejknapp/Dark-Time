@@ -32,7 +32,7 @@
     if ([keyPath isEqualToString:@"fontEditorDisplayed"]) {
         if (self.clockState.isFontEditorDisplayed) {
 
-            DCSettingsViewController_iPhone *editor = [[DCSettingsViewController_iPhone alloc] 
+            DCSettingsViewController *editor = [[DCSettingsViewController alloc] 
                                                 initWithNibName:@"DCSettingView_iPhone" 
                                                 bundle:nil];
             editor.clockState = self.clockState;
@@ -49,47 +49,12 @@
         if (self.fontEditor) {
             [self.fontEditor updateFontCellDisplay];
         }
-    } else if ([keyPath isEqualToString:@"infoPageViewDisplayed"]) {
-        NSLog(@"info page %d, %d", self.clockState.infoPageViewDisplayed, self.clockState.fontEditorDisplayed);
-        if (self.clockState.infoPageViewDisplayed) {
-            if (self.clockState.fontEditorDisplayed) {
-                [self.fontEditor dismissModalViewControllerAnimated:YES];
-                self.fontEditor = nil;
-            }
-            [self displayInfoPage];
-        } else {
-            [self dismissInfoPage];
-        }
-    }
+    } 
     
     [self updateDisplayFont];
     
     [self changeDisplayBrightnessWithBrightness:self.clockState.clockBrightnessLevel];
 }
-
--(void)displayInfoPage
-{
-    NSLog(@"in displayInfoPage");
-    DCInfoViewController *infoController = [[DCInfoViewController alloc] 
-                                            initWithNibName:nil 
-                                            bundle:nil];
-    self.infoController = infoController;
-    [infoController release];
-    
-    NSLog(@"about to call presentModalViewController:");
-    [self presentModalViewController:self.infoController animated:YES];
-}
-
--(void)dismissInfoPage
-{
-    NSLog(@"dismissInfoPage");
-    [self.infoController dismissModalViewControllerAnimated:YES];
-    
-    [self.infoController.infoWebView loadHTMLString:@"" baseURL:nil];
-    
-    self.infoController = nil;
-}
-
 
 - (void)viewDidLoad
 {

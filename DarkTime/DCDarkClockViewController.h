@@ -44,8 +44,6 @@
 -(void)changeDisplayBrightnessWithBrightness:(CGFloat)brightness;
 -(void)updateClock;
 -(void)updateDisplayFont;
--(void)displayInfoPage;
--(void)dismissInfoPage;
 
 
 @end

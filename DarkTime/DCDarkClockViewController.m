@@ -100,40 +100,6 @@
     
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath 
-                      ofObject:(id)object 
-                        change:(NSDictionary *)change 
-                       context:(void *)context
-{
-    
-    NSLog(@"In super observer");
-    
-}
-
--(void)displayInfoPage
-{
-//    NSLog(@"in displayInfoPage");
-//    DCInfoViewController *infoController = [[DCInfoViewController alloc] 
-//                                            initWithNibName:nil 
-//                                            bundle:nil];
-//    infoController.clockState = self.clockState;
-//    self.infoController = infoController;
-//    [infoController release];
-//    
-//    NSLog(@"about to call presentModalViewController:");
-//    [self presentModalViewController:self.infoController animated:YES];
-}
-
--(void)dismissInfoPage
-{
-//    NSLog(@"dismissInfoPage");
-//    [self.infoController dismissModalViewControllerAnimated:YES];
-//    
-//    [self.infoController.infoWebView loadHTMLString:@"" baseURL:nil];
-//    
-//    self.infoController = nil;
-}
-
 
 -(void)updateDisplayFont
 {

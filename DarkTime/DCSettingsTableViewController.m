@@ -8,6 +8,7 @@
 
 #import "DCSettingsTableViewController.h"
 #import "DCClockState.h"
+#import "DCClockConstants.h"
 #import "DCSettingsViewController.h"
 #import "DCFontSelectTableViewController.h"
 #import "DCInfoViewController.h"
@@ -75,6 +76,7 @@
                                  @"Display AM/PM", @"cellText",
                                  @"", @"footer",
                                  @"YES", @"display",
+                                 @"switch", @"cell-identifier",
                                  nil];
 
     NSDictionary *secondsSection = [[NSDictionary alloc] initWithObjectsAndKeys:
@@ -82,24 +84,28 @@
                                  @"Display Seconds", @"cellText",
                                  @"", @"footer",
                                  @"YES", @"display",
+                                 @"switch", @"cell-identifier",
                                  nil];
 
     NSDictionary *fontSection = [[NSDictionary alloc] initWithObjectsAndKeys:
                                     @"Select Font", @"header",
                                     @"", @"cellText",
                                     @"", @"footer",
+                                    @"disclosure", @"cell-identifier",
                                     nil];
 
     NSDictionary *sleepSection = [[NSDictionary alloc] initWithObjectsAndKeys:
                                  @"Sleep", @"header",
                                  @"Suspend Sleep", @"cellText",
                                  @"Caution: this may affect battery life if not using power source.", @"footer",
+                                 @"switch", @"cell-identifier",
                                  nil];
 
     NSDictionary *helpSection = [[NSDictionary alloc] initWithObjectsAndKeys:
                                   @"Help", @"header",
                                   @"Dark Time Help", @"cellText",
                                   @"", @"footer",
+                                  @"disclosure", @"cell-identifier",
                                   nil];
 
     NSArray *sections = [[NSArray alloc] initWithObjects:
@@ -256,7 +262,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView 
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    NSString *CellIdentifier = [[self.settingsArray objectAtIndex:indexPath.section] 
+                                objectForKey:@"cell-identifier"];
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
@@ -267,15 +274,15 @@
     // Configure the cell...
 //    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    if (indexPath.section == 0) {
+    if (indexPath.section == DCDarkTimeSettingsRowDisplayAmPm) {
         [self createAmPmCell:indexPath cell:cell];
-    } else if (indexPath.section == 1) {
+    } else if (indexPath.section == DCDarkTimeSettingsRowDisplaySeconds) {
         [self createSecondsCell:indexPath cell:cell];
-    } else if (indexPath.section == 2) {
+    } else if (indexPath.section == DCDarkTimeSettingsRowFontSelector) {
         [self createFontSelectionCell:cell];
-    } else if (indexPath.section == 3) {
+    } else if (indexPath.section == DCDarkTimeSettingsRowSuspendSleep) {
         [self createSuspendSleepCell:indexPath cell:cell];
-    } else if (indexPath.section == 4) {
+    } else if (indexPath.section == DCDarkTimeSettingsRowHelp) {
         [self createHelpSelectionCell:cell indexPath:indexPath];
     }
         

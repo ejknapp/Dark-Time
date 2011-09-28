@@ -9,7 +9,8 @@
 #import "DCSettingsViewController_iPhone.h"
 #import "DCSettingsTableViewController.h"
 #import "DCSettingsTableViewController_iPhone.h"
-#import "DCFontSelectTableViewController_iPhone.h"
+#import "DCFontSelectTableViewController.h"
+
 
 @implementation DCSettingsViewController_iPhone
 
@@ -35,7 +36,7 @@
 {
     if (indexPath.section == 2) {
         
-        DCFontSelectTableViewController_iPhone *fontViewController = [[DCFontSelectTableViewController_iPhone alloc] 
+        DCFontSelectTableViewController *fontViewController = [[DCFontSelectTableViewController alloc] 
                                                                initWithNibName:@"DCFontSelectTableView_iPhone"
                                                                bundle:nil];
         fontViewController.clockState = self.clockState;
