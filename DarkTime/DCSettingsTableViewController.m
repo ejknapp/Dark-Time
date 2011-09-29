@@ -3,7 +3,7 @@
 //  DarkTime
 //
 //  Created by Eric Knapp on 9/23/11.
-//  Copyright 2011 Madison Area Technical College. All rights reserved.
+//  Copyright 2011 Eric Knapp. All rights reserved.
 //
 
 #import "DCSettingsTableViewController.h"
@@ -140,8 +140,7 @@
 
 -(void)updateFontCellDisplay
 {
-//    NSLog(@"updateFontCellDisplay: for DCSettingsTableViewController");
-        
+
     if (self.fontCell) {
         self.fontCell.textLabel.text = self.clockState.currentFontName;
         self.fontCell.textLabel.font = [self.clockState.currentFont fontWithSize:18];
@@ -360,8 +359,8 @@
     
     CGFloat newBrightness;
     
-    if (brightnessSlider.value < 0.15) {
-        newBrightness = 0.15;
+    if (brightnessSlider.value < DCMinimumScreenBrightness) {
+        newBrightness = DCMinimumScreenBrightness;
     } else {
         newBrightness = brightnessSlider.value;
     }

@@ -36,10 +36,8 @@ typedef enum {
 extern NSUInteger const iPadAmPmSecondsFontSize;
 extern NSUInteger const iPhoneAmPmSecondsFontSize;
 
+extern CGFloat const DCMinimumScreenBrightness;
 
-
-@interface DCClockConstants : NSObject {
-    
-}
+@interface DCClockConstants : NSObject 
 
 @end

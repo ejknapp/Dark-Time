@@ -24,6 +24,8 @@ NSString * const DCSettingsViewNibNameiPhone = @"DCSettingsView_iPhone";
 NSUInteger const iPadAmPmSecondsFontSize = 64;
 NSUInteger const iPhoneAmPmSecondsFontSize = 36;
 
+CGFloat const DCMinimumScreenBrightness = 0.15;
+
 @implementation DCClockConstants
 
 @end
