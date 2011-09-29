@@ -10,7 +10,7 @@
 *.pbxuser
 *.xcodeproj/project.xcworkspace/*
 *.xcodeproj/xcuserdata/
-
+*.ipa
 
 
 # Generated files
