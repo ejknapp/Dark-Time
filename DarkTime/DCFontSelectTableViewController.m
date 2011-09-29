@@ -9,24 +9,12 @@
 #import "DCFontSelectTableViewController.h"
 #import "DCClockState.h"
 
-@interface DCFontSelectTableViewController()
-
-
-@end
 
 @implementation DCFontSelectTableViewController
 
 @synthesize clockState = _clockState;
 @synthesize currentCheckedCell = _currentCheckedCell;
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)didReceiveMemoryWarning
 {
@@ -38,28 +26,13 @@
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-}
-
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+
+    self.currentCheckedCell = nil;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-	return YES;
-}
 
 #pragma mark - Table view data source
 
@@ -97,6 +70,7 @@
     UIFont *cellFont = [UIFont fontWithName:fontName size:19];
     cell.textLabel.font = cellFont;
     cell.accessoryType = UITableViewCellAccessoryNone;
+    
     if (self.clockState.currentFontIndex == indexPath.row) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
         self.currentCheckedCell = cell;
@@ -110,7 +84,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    NSLog(@"in didSelectRowAtIndexPath: iPad");
     
     NSInteger selectedRow = indexPath.row;
     UITableViewCell *tappedCell = [tableView cellForRowAtIndexPath:indexPath];
@@ -130,6 +103,7 @@
 -(void)dealloc
 {
     [_clockState release];
+    [_currentCheckedCell release];
     
     [super dealloc];
 }

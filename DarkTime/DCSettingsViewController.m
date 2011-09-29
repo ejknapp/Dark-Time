@@ -11,11 +11,6 @@
 #import "DCClockState.h"
 #import "DCInfoViewController.h"
 
-@interface DCSettingsViewController()
-
-
-
-@end
 
 @implementation DCSettingsViewController
 
@@ -24,15 +19,6 @@
 @synthesize settingsTableViewController = _settingsTableViewController;
 @synthesize infoController = _infoController;
 
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)didReceiveMemoryWarning
 {
@@ -45,7 +31,14 @@
 
 -(void)doneButtonTapped:(id)sender
 {
-    self.clockState.fontEditorDisplayed = NO;
+
+    NSLog(@"in doneButtonTapped for settings");
+    [self dismissModalViewControllerAnimated:YES];
+    
+    self.settingsTableViewController = nil;
+    [self.infoController.infoWebView loadHTMLString:@"" baseURL:nil];
+    self.infoController = nil;
+    
 }
 
 
@@ -58,10 +51,6 @@
     
     [self.navigationController pushViewController:self.infoController animated:YES];
     
-}
-
--(void)dismissInfoPage
-{
 }
 
 
@@ -116,24 +105,29 @@
 
 - (void)viewDidUnload
 {
-    
+
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+
     self.navigationController = nil;
     self.clockState = nil;
+    self.settingsTableViewController = nil;
+    self.infoController = nil;
 
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-	return YES;
+    return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft 
+            || interfaceOrientation == UIInterfaceOrientationLandscapeRight);
 }
 
 - (void)dealloc {
     [_navigationController release];
     [_clockState release];
+    [_settingsTableViewController release];
+    [_infoController release];
+    
     [super dealloc];
 }
 @end

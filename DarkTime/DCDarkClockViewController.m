@@ -15,10 +15,6 @@
 @interface DCDarkClockViewController ()
 
 
-
--(void)handleBrightnessDrag:(UIPanGestureRecognizer *)recognizer;
--(void)appBecomeActive;
--(void)appEnteredBackground;
 -(IBAction)settingsButtonTapped:(id)sender;
 -(void)updateDisplayFont;
 
@@ -38,17 +34,18 @@
 @synthesize timeLabel = _timeLabel;
 @synthesize ampmLabel = _ampmLabel;
 @synthesize secondsLabel = _secondsLabel;
+@synthesize clockSettingsButton = _clockSettingsButton;
+
 @synthesize brightnessPanRecognizer = _brightnessPanRecognizer;
 @synthesize brightnessTapRecognizer = _brightnessTapRecognizer;
 @synthesize savedSeconds = _savedSeconds;
 @synthesize brightnessLevel = _brightnessLevel;
-@synthesize clockSettingsButton = _clockSettingsButton;
 
-@synthesize editorModeDoneButton = _editorModeDoneButton;
 
 @synthesize fontEditor = _fontEditor;
 
-@synthesize startingOrigin = _startingOrigin;
+@synthesize modalStyle = _modalStyle;
+@synthesize settingsViewNib = _settingsViewNib;
 
 
 
@@ -77,6 +74,31 @@
                                                      repeats:YES];
     self.appTimer = timer;
     
+    UISwipeGestureRecognizer *swipeRecognizer = 
+        [[UISwipeGestureRecognizer alloc] 
+         initWithTarget:self 
+         action:@selector(handleBrightnessSwipeRight:)];
+    
+    swipeRecognizer.numberOfTouchesRequired = 1;
+    swipeRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
+    
+    self.brightnessSwipeRight = swipeRecognizer;
+    [self.view addGestureRecognizer:self.brightnessSwipeRight];
+    [swipeRecognizer release];
+    
+    UISwipeGestureRecognizer *leftSwipeRecognizer = 
+        [[UISwipeGestureRecognizer alloc] 
+         initWithTarget:self 
+         action:@selector(handleBrightnessSwipeLeft:)];
+    
+    leftSwipeRecognizer.numberOfTouchesRequired = 1;
+    leftSwipeRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
+    
+    self.brightnessSwipeLeft = leftSwipeRecognizer;
+    [self.view addGestureRecognizer:self.brightnessSwipeLeft];
+    [leftSwipeRecognizer release];
+
+    
    
     [self.clockState addObserver:self 
                       forKeyPath:@"currentFont" 
@@ -84,27 +106,37 @@
                          context:NULL];
     
      [self.clockState addObserver:self 
-                      forKeyPath:@"fontEditorDisplayed" 
-                         options:NSKeyValueObservingOptionNew
-                         context:NULL];
-
-    [self.clockState addObserver:self 
-                      forKeyPath:@"infoPageViewDisplayed" 
+                      forKeyPath:@"clockBrightnessLevel" 
                          options:NSKeyValueObservingOptionNew
                          context:NULL];
 
     CGRect screenRect = [[UIScreen mainScreen] applicationFrame];
-    [self.clockState changeFontWithFontIndex:self.clockState.currentFontIndex viewWidth:screenRect.size.height];
+    [self.clockState changeFontWithFontIndex:self.clockState.currentFontIndex 
+                                   viewWidth:screenRect.size.height];
 
     [self updateDisplayFont];
     
 }
 
-
--(void)updateDisplayFont
+- (void)observeValueForKeyPath:(NSString *)keyPath 
+                      ofObject:(id)object 
+                        change:(NSDictionary *)change 
+                       context:(void *)context
 {
-
+    
+    if ([keyPath isEqualToString:@"currentFont"]) {
+        [self updateDisplayFont];
+        
+        if (self.fontEditor) {
+            [self.fontEditor updateFontCellDisplay];
+        }
+    } 
+    
+    [self updateDisplayFont];
+    
+    [self changeDisplayBrightnessWithBrightness:self.clockState.clockBrightnessLevel];
 }
+
 
 -(void)handleBrightnessSwipeRight:(UISwipeGestureRecognizer *)recognizer
 {
@@ -123,7 +155,8 @@
         brightness = 0.15;
     }
     
-    [self changeDisplayBrightnessWithBrightness:brightness];
+    self.clockState.clockBrightnessLevel = brightness;
+//    [self changeDisplayBrightnessWithBrightness:brightness];
 }
 
 -(void)handleBrightnessSwipeLeft:(UISwipeGestureRecognizer *)recognizer
@@ -142,24 +175,62 @@
     } else if (brightness < 0.15) {
         brightness = 0.1;
     }
-    
-    [self changeDisplayBrightnessWithBrightness:brightness];
+
+    self.clockState.clockBrightnessLevel = brightness;
+
+//    [self changeDisplayBrightnessWithBrightness:brightness];
 }
 
+- (IBAction)settingsButtonTapped:(id)sender 
+{
+    
+    DCSettingsViewController *editor = [[DCSettingsViewController alloc] 
+                                        initWithNibName:self.settingsViewNib
+                                        bundle:nil];
+    editor.modalPresentationStyle = self.modalStyle;
+    editor.clockState = self.clockState;
+    self.fontEditor = editor;
+    [self presentModalViewController:editor animated:YES];
+    [editor release];
 
 
+}
+
+-(void)updateDisplayFontWithFontSize:(NSInteger)fontSize
+{
+    
+    CGRect screenRect = [[UIScreen mainScreen] applicationFrame];
+    CGFloat width = screenRect.size.width;
+    CGFloat height = screenRect.size.height;
+    
+    CGRect newFrame = CGRectMake(0, (width - self.clockState.currentFont.lineHeight) / 2, 
+                                 height, 
+                                 self.clockState.currentFont.lineHeight);
+    self.timeLabel.frame = newFrame;
+    
+    self.timeLabel.font = self.clockState.currentFont;
+    self.ampmLabel.font = [self.clockState.currentFont fontWithSize:fontSize];
+    self.secondsLabel.font = [self.clockState.currentFont fontWithSize:fontSize];
+    
+    
+    [self changeDisplayBrightnessWithBrightness:self.clockState.clockBrightnessLevel];
+    
+}
+
+-(void)updateDisplayFont
+{
+    
+}
 
 - (void)viewDidUnload
 {
     [self setTimeLabel:nil];
     [self setAmpmLabel:nil];
     [self setSecondsLabel:nil];
-    [self setClockSettingsButton:nil];
-
     
     self.calendar = nil;
     self.brightnessPanRecognizer = nil;
-    self.editorModeDoneButton = nil;
+
     
     [super viewDidUnload];
     // Release any retained subviews of the main view.
@@ -181,11 +252,6 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
     return YES;
 }
 
--(void)handleBrightnessDrag:(UIPanGestureRecognizer *)recognizer
-{
-    
-}
-
 
 -(void)changeDisplayBrightnessWithBrightness:(CGFloat)brightness
 {
@@ -195,7 +261,7 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
     self.ampmLabel.alpha = brightness;
     self.secondsLabel.alpha = brightness;
     self.clockSettingsButton.alpha = brightness;
-    self.clockState.clockBrightnessLevel = brightness;
+//    self.clockState.clockBrightnessLevel = brightness;
     
 }
 
@@ -227,22 +293,6 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
     
 }
 
--(void)appBecomeActive
-{
-    
-}
-
--(void)appEnteredBackground
-{
-    
-}
-
--(IBAction)settingsButtonTapped:(id)sender
-{
-    NSLog(@"this should not get called");
-}
-
-
 
 - (void)dealloc
 {
@@ -251,9 +301,6 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
     [_ampmLabel release];
     [_secondsLabel release];
     [_brightnessPanRecognizer release];
-    [_clockSettingsButton release];
-    [_editorModeDoneButton release];
-
     
     [super dealloc];
 }

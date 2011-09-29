@@ -13,6 +13,16 @@ NSString * const kAmDisplay = @"AM";
 NSString * const kPmDisplay = @"PM";
 NSString * const kAmPmNoDisplay = @"";
 
+NSString * const DCSettingsTableViewHeader = @"header";
+NSString * const DCSettingsTableViewCellText = @"cellText";
+NSString * const DCSettingsTableViewFooter = @"footer";
+NSString * const DCSettingsTableViewCellIdentifier = @"cell-identifier";
+
+NSString * const DCSettingsViewNibNameiPad = @"DCSettingsViewController";
+NSString * const DCSettingsViewNibNameiPhone = @"DCSettingsView_iPhone";
+
+NSUInteger const iPadAmPmSecondsFontSize = 64;
+NSUInteger const iPhoneAmPmSecondsFontSize = 36;
 
 @implementation DCClockConstants
 

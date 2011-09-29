@@ -14,13 +14,28 @@ extern NSString * const kAmDisplay;
 extern NSString * const kPmDisplay;
 extern NSString * const kAmPmNoDisplay;
 
+extern NSString * const DCSettingsTableViewHeader;
+extern NSString * const DCSettingsTableViewCellText;
+extern NSString * const DCSettingsTableViewFooter;
+extern NSString * const DCSettingsTableViewCellIdentifier;
+
+
+extern NSString * const DCSettingsViewNibNameiPad;
+extern NSString * const DCSettingsViewNibNameiPhone;
+
 typedef enum {
     DCDarkTimeSettingsRowDisplayAmPm = 0,
     DCDarkTimeSettingsRowDisplaySeconds,
+    DCDarkTimeSettingsRowAdjustBrightness,
     DCDarkTimeSettingsRowFontSelector,
     DCDarkTimeSettingsRowSuspendSleep,
     DCDarkTimeSettingsRowHelp,
 } DCDarkTimeSettingsRow;
+
+
+extern NSUInteger const iPadAmPmSecondsFontSize;
+extern NSUInteger const iPhoneAmPmSecondsFontSize;
+
 
 
 @interface DCClockConstants : NSObject {

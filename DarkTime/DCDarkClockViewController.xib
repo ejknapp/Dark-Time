@@ -191,10 +191,10 @@
 						<reference key="object" ref="191373211"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="1067705451"/>
 							<reference ref="953457981"/>
 							<reference ref="602598563"/>
 							<reference ref="574491035"/>
+							<reference ref="1067705451"/>
 						</object>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">View</string>
@@ -284,14 +284,12 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>ampmLabel</string>
-							<string>clockSettingsButton</string>
 							<string>secondsLabel</string>
 							<string>timeLabel</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UILabel</string>
-							<string>UIButton</string>
 							<string>UILabel</string>
 							<string>UILabel</string>
 						</object>
@@ -301,7 +299,6 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>ampmLabel</string>
-							<string>clockSettingsButton</string>
 							<string>secondsLabel</string>
 							<string>timeLabel</string>
 						</object>
@@ -310,10 +307,6 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">ampmLabel</string>
 								<string key="candidateClassName">UILabel</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">clockSettingsButton</string>
-								<string key="candidateClassName">UIButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">secondsLabel</string>

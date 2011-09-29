@@ -26,6 +26,9 @@
 - (void)createSecondsCell:(NSIndexPath *)indexPath 
                      cell:(UITableViewCell *)cell;
 
+- (void)createBrightnessCell:(NSIndexPath *)indexPath 
+                     cell:(UITableViewCell *)cell;
+
 - (void)createFontSelectionCell:(UITableViewCell *)cell;
 
 - (void)createSuspendSleepCell:(NSIndexPath *)indexPath 
@@ -72,45 +75,51 @@
     
     
     NSDictionary *ampmSection = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                 @"AM/PM", @"header",
-                                 @"Display AM/PM", @"cellText",
-                                 @"", @"footer",
-                                 @"YES", @"display",
-                                 @"switch", @"cell-identifier",
+                                 @"AM/PM", DCSettingsTableViewHeader,
+                                 @"Display AM/PM", DCSettingsTableViewCellText,
+                                 @"", DCSettingsTableViewFooter,
+                                 @"switch", DCSettingsTableViewCellIdentifier,
                                  nil];
 
     NSDictionary *secondsSection = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                 @"Seconds", @"header",
-                                 @"Display Seconds", @"cellText",
-                                 @"", @"footer",
-                                 @"YES", @"display",
-                                 @"switch", @"cell-identifier",
+                                 @"Seconds", DCSettingsTableViewHeader,
+                                 @"Display Seconds", DCSettingsTableViewCellText,
+                                 @"", DCSettingsTableViewFooter,
+                                 @"switch", DCSettingsTableViewCellIdentifier,
                                  nil];
 
+    NSDictionary *brightnessSection = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                    @"Brightness", DCSettingsTableViewHeader,
+                                    @"Adjust Brightness", DCSettingsTableViewCellText,
+                                    @"You can also swipe left and right on the clock screen to adjust brightness.", DCSettingsTableViewFooter,
+                                    @"slider", DCSettingsTableViewCellIdentifier,
+                                    nil];
+
     NSDictionary *fontSection = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                    @"Select Font", @"header",
-                                    @"", @"cellText",
-                                    @"", @"footer",
-                                    @"disclosure", @"cell-identifier",
+                                    @"Select Font", DCSettingsTableViewHeader,
+                                    @"", DCSettingsTableViewCellText,
+                                    @"", DCSettingsTableViewFooter,
+                                    @"disclosure", DCSettingsTableViewCellIdentifier,
                                     nil];
 
     NSDictionary *sleepSection = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                 @"Sleep", @"header",
-                                 @"Suspend Sleep", @"cellText",
-                                 @"Caution: this may affect battery life if not using power source.", @"footer",
-                                 @"switch", @"cell-identifier",
+                                 @"Sleep", DCSettingsTableViewHeader,
+                                 @"Suspend Sleep", DCSettingsTableViewCellText,
+                                 @"Caution: this may affect battery life if not using power source.", DCSettingsTableViewFooter,
+                                 @"switch", DCSettingsTableViewCellIdentifier,
                                  nil];
 
     NSDictionary *helpSection = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                  @"Help", @"header",
-                                  @"Dark Time Help", @"cellText",
-                                  @"", @"footer",
-                                  @"disclosure", @"cell-identifier",
+                                  @"Help", DCSettingsTableViewHeader,
+                                  @"Dark Time Help", DCSettingsTableViewCellText,
+                                  @"", DCSettingsTableViewFooter,
+                                  @"disclosure", DCSettingsTableViewCellIdentifier,
                                   nil];
 
     NSArray *sections = [[NSArray alloc] initWithObjects:
                          ampmSection, 
                          secondsSection, 
+                         brightnessSection,
                          fontSection,
                          sleepSection,
                          helpSection,
@@ -121,6 +130,7 @@
     
     [ampmSection release];
     [secondsSection release];
+    [brightnessSection release];
     [fontSection release];
     [sleepSection release];
     [helpSection release];
@@ -161,7 +171,7 @@
 {
     NSDictionary *sectionDictionary = [self.settingsArray objectAtIndex:section];
     
-    return [sectionDictionary objectForKey:@"header"];
+    return [sectionDictionary objectForKey:DCSettingsTableViewHeader];
 
 }
 
@@ -169,7 +179,7 @@
 {
     NSDictionary *sectionDictionary = [self.settingsArray objectAtIndex:section];
     
-    return [sectionDictionary objectForKey:@"footer"];
+    return [sectionDictionary objectForKey:DCSettingsTableViewFooter];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -191,7 +201,7 @@
 {
     UISwitch *cellSwitch = [[[UISwitch alloc] initWithFrame:CGRectZero] autorelease];
     cell.textLabel.text = [[self.settingsArray objectAtIndex:indexPath.section] 
-                           objectForKey:@"cellText"];
+                           objectForKey:DCSettingsTableViewCellText];
     
     [cellSwitch addTarget:self 
                    action:@selector(toggleAmPm:) 
@@ -207,7 +217,7 @@
 {
     UISwitch *cellSwitch = [[[UISwitch alloc] initWithFrame:CGRectZero] autorelease];
     cell.textLabel.text = [[self.settingsArray objectAtIndex:indexPath.section] 
-                           objectForKey:@"cellText"];
+                           objectForKey:DCSettingsTableViewCellText];
     
     [cellSwitch addTarget:self 
                    action:@selector(toggleSeconds:) 
@@ -217,6 +227,49 @@
     cell.accessoryView = cellSwitch;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
+}
+
+- (void)createBrightnessCell:(NSIndexPath *)indexPath cell:(UITableViewCell *)cell
+{
+    CGRect sliderRect = CGRectMake(170, 0, 280, 45);
+    UISlider *slider = [[[UISlider alloc] initWithFrame:sliderRect] autorelease];
+    slider.minimumValue = 0.0;
+    slider.maximumValue = 1.0;
+    
+    NSString *path = [[NSBundle mainBundle] 
+                      pathForResource:@"brightness-dim" 
+                      ofType:@"png"];
+
+    UIImage *dim = [[UIImage alloc] initWithContentsOfFile:path];
+    
+    slider.minimumValueImage = dim;
+    
+    [dim release];
+    
+    path = [[NSBundle mainBundle] 
+            pathForResource:@"brightness-bright" 
+            ofType:@"png"];
+    
+    UIImage *bright = [[UIImage alloc] initWithContentsOfFile:path];
+    
+    slider.maximumValueImage = bright;
+    [bright release];
+    
+
+    cell.textLabel.text = [[self.settingsArray objectAtIndex:indexPath.section] 
+                           objectForKey:DCSettingsTableViewCellText];
+    
+    
+    [slider addTarget:self 
+                   action:@selector(adjustBrightness:) 
+         forControlEvents:UIControlEventValueChanged];
+    
+    slider.value = self.clockState.clockBrightnessLevel;
+    
+    [cell.contentView addSubview:slider];
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
 }
 
 - (void)createFontSelectionCell:(UITableViewCell *)cell
@@ -234,7 +287,7 @@
 {
     UISwitch *cellSwitch = [[[UISwitch alloc] initWithFrame:CGRectZero] autorelease];
     cell.textLabel.text = [[self.settingsArray objectAtIndex:indexPath.section] 
-                           objectForKey:@"cellText"];
+                           objectForKey:DCSettingsTableViewCellText];
     
     [cellSwitch addTarget:self 
                    action:@selector(toggleSuspendSleep:) 
@@ -250,7 +303,7 @@
 {
     //    NSLog(@"in createFontSelectionCell: %@", self.clockState.currentFontName);
     cell.textLabel.text = [[self.settingsArray objectAtIndex:indexPath.section] 
-                           objectForKey:@"cellText"];
+                           objectForKey:DCSettingsTableViewCellText];
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.selectionStyle = UITableViewCellSelectionStyleGray;
@@ -263,7 +316,7 @@
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *CellIdentifier = [[self.settingsArray objectAtIndex:indexPath.section] 
-                                objectForKey:@"cell-identifier"];
+                                objectForKey:DCSettingsTableViewCellIdentifier];
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
@@ -271,13 +324,12 @@
                                        reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    // Configure the cell...
-//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
     if (indexPath.section == DCDarkTimeSettingsRowDisplayAmPm) {
         [self createAmPmCell:indexPath cell:cell];
     } else if (indexPath.section == DCDarkTimeSettingsRowDisplaySeconds) {
         [self createSecondsCell:indexPath cell:cell];
+    } else if (indexPath.section == DCDarkTimeSettingsRowAdjustBrightness) {
+        [self createBrightnessCell:indexPath cell:cell];
     } else if (indexPath.section == DCDarkTimeSettingsRowFontSelector) {
         [self createFontSelectionCell:cell];
     } else if (indexPath.section == DCDarkTimeSettingsRowSuspendSleep) {
@@ -302,6 +354,21 @@
     self.clockState.displaySeconds = secondsSwitch.on;
 }
 
+-(void)adjustBrightness:(id)sender
+{
+    UISlider *brightnessSlider = (UISlider *)sender;
+    
+    CGFloat newBrightness;
+    
+    if (brightnessSlider.value < 0.15) {
+        newBrightness = 0.15;
+    } else {
+        newBrightness = brightnessSlider.value;
+    }
+    
+    self.clockState.clockBrightnessLevel = newBrightness;
+}
+
 -(void)toggleSuspendSleep:(id)sender
 {
     UISwitch *sleepSwitch = (UISwitch *)sender;
@@ -313,7 +380,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 2) {
+    if (indexPath.section == DCDarkTimeSettingsRowFontSelector) {
         
         DCFontSelectTableViewController *controller = [[DCFontSelectTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
         controller.clockState = self.clockState;
@@ -322,7 +389,7 @@
         [controller release];
         
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    } else if (indexPath.section == 4) {
+    } else if (indexPath.section == DCDarkTimeSettingsRowHelp) {
         DCInfoViewController *controller = [[DCInfoViewController alloc] initWithNibName:nil bundle:nil];
         
         [self.navigationController pushViewController:controller animated:YES];

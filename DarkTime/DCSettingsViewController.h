@@ -22,7 +22,6 @@
 -(DCSettingsTableViewController *)createTableViewController;
 -(void)updateFontCellDisplay;
 
--(void)dismissInfoPage;
 -(void)displayInfoPage;
 
 @end

@@ -27,7 +27,7 @@
     DCClockState *state = [[DCClockState alloc] init];
     self.clockState = state;
     self.viewController.clockState = self.clockState;
-//    [self.clockState loadClockState];
+
     [state release];
     
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];    

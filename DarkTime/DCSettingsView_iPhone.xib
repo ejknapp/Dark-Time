@@ -78,6 +78,7 @@
 						<int key="objectID">1</int>
 						<reference key="object" ref="191373211"/>
 						<reference key="parent" ref="0"/>
+						<string key="objectName">View</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">-1</int>
