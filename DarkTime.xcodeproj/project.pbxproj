@@ -37,6 +37,7 @@
 		9F89BB0B1433F1EB007655C9 /* DCSettingsView_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F89BB0A1433F1EB007655C9 /* DCSettingsView_iPhone.xib */; };
 		9F89BB12143409AE007655C9 /* brightness-bright.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F89BB10143409AE007655C9 /* brightness-bright.png */; };
 		9F89BB13143409AE007655C9 /* brightness-dim.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F89BB11143409AE007655C9 /* brightness-dim.png */; };
+		9F89BB261434B523007655C9 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9F89BB251434B523007655C9 /* Entitlements.plist */; };
 		9FF89EA414311FA5002DA909 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FF89E9D14311FA5002DA909 /* Icon-72.png */; };
 		9FF89EA514311FA5002DA909 /* Icon-AppStore.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9FF89E9E14311FA5002DA909 /* Icon-AppStore.jpg */; };
 		9FF89EA614311FA5002DA909 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FF89E9F14311FA5002DA909 /* Icon-Small-50.png */; };
@@ -92,6 +93,7 @@
 		9F89BB0A1433F1EB007655C9 /* DCSettingsView_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DCSettingsView_iPhone.xib; sourceTree = "<group>"; };
 		9F89BB10143409AE007655C9 /* brightness-bright.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brightness-bright.png"; sourceTree = "<group>"; };
 		9F89BB11143409AE007655C9 /* brightness-dim.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brightness-dim.png"; sourceTree = "<group>"; };
+		9F89BB251434B523007655C9 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		9FF89E9D14311FA5002DA909 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		9FF89E9E14311FA5002DA909 /* Icon-AppStore.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Icon-AppStore.jpg"; sourceTree = "<group>"; };
 		9FF89E9F14311FA5002DA909 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 		9F43F3D51428DC58003093A8 = {
 			isa = PBXGroup;
 			children = (
+				9F89BB251434B523007655C9 /* Entitlements.plist */,
 				9F43F3EA1428DC58003093A8 /* DarkTime */,
 				9F43F3E31428DC58003093A8 /* Frameworks */,
 				9F43F3E11428DC58003093A8 /* Products */,
@@ -336,6 +339,7 @@
 				9F89BB0B1433F1EB007655C9 /* DCSettingsView_iPhone.xib in Resources */,
 				9F89BB12143409AE007655C9 /* brightness-bright.png in Resources */,
 				9F89BB13143409AE007655C9 /* brightness-dim.png in Resources */,
+				9F89BB261434B523007655C9 /* Entitlements.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,6 +467,40 @@
 			};
 			name = Release;
 		};
+		9F89BB231434B442007655C9 /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "Ad Hoc";
+		};
+		9F89BB241434B442007655C9 /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DarkTime/DarkTime-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INFOPLIST_FILE = "DarkTime/DarkTime-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = "Ad Hoc";
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -471,6 +509,7 @@
 			buildConfigurations = (
 				9F43F4041428DC58003093A8 /* Debug */,
 				9F43F4051428DC58003093A8 /* Release */,
+				9F89BB231434B442007655C9 /* Ad Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -480,6 +519,7 @@
 			buildConfigurations = (
 				9F43F4071428DC58003093A8 /* Debug */,
 				9F43F4081428DC58003093A8 /* Release */,
+				9F89BB241434B442007655C9 /* Ad Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

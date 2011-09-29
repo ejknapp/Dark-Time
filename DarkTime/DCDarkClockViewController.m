@@ -36,8 +36,7 @@
 @synthesize secondsLabel = _secondsLabel;
 @synthesize clockSettingsButton = _clockSettingsButton;
 
-@synthesize brightnessPanRecognizer = _brightnessPanRecognizer;
-@synthesize brightnessTapRecognizer = _brightnessTapRecognizer;
+
 @synthesize savedSeconds = _savedSeconds;
 @synthesize brightnessLevel = _brightnessLevel;
 
@@ -196,6 +195,15 @@
 
 }
 
+- (void)dismissModalViewControllerAnimated:(BOOL)animated
+{
+    
+    [self.fontEditor dismissModalViewControllerAnimated:YES];
+    
+    [self.fontEditor.infoController.infoWebView loadHTMLString:@"" baseURL:nil];
+    self.fontEditor = nil;
+}
+
 -(void)updateDisplayFontWithFontSize:(NSInteger)fontSize
 {
     
@@ -229,7 +237,7 @@
     [self setSecondsLabel:nil];
     
     self.calendar = nil;
-    self.brightnessPanRecognizer = nil;
+
 
     
     [super viewDidUnload];
@@ -297,10 +305,13 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
 - (void)dealloc
 {
     [_clockState release];
+    [_appTimer release];
     [_timeLabel release];
     [_ampmLabel release];
     [_secondsLabel release];
-    [_brightnessPanRecognizer release];
+    [_infoController release];
+    [_clockSettingsButton release];
+    [_fontEditor release];
     
     [super dealloc];
 }

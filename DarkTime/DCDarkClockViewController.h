@@ -26,8 +26,8 @@
 @property (nonatomic, retain) IBOutlet UILabel *ampmLabel;
 @property (nonatomic, retain) IBOutlet UILabel *secondsLabel;
 @property (nonatomic, retain) IBOutlet UIButton *clockSettingsButton;
-@property (nonatomic, retain) UIPanGestureRecognizer *brightnessPanRecognizer;
-@property (nonatomic, retain) UITapGestureRecognizer *brightnessTapRecognizer;
+
+
 @property (nonatomic, assign) NSUInteger savedSeconds;
 @property (nonatomic, assign) CGFloat brightnessLevel;
 

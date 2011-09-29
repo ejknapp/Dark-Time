@@ -225,6 +225,7 @@
     cellSwitch.on = self.clockState.displaySeconds;
     cell.accessoryView = cellSwitch;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
 
 }
 
@@ -269,6 +270,7 @@
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
+    
 }
 
 - (void)createFontSelectionCell:(UITableViewCell *)cell
@@ -295,6 +297,8 @@
     cellSwitch.on = self.clockState.suspendSleep;
     cell.accessoryView = cellSwitch;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    
 
 }
 
@@ -392,6 +396,7 @@
         DCInfoViewController *controller = [[DCInfoViewController alloc] initWithNibName:nil bundle:nil];
         
         [self.navigationController pushViewController:controller animated:YES];
+        [controller release];
         
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
@@ -401,6 +406,7 @@
 -(void)dealloc
 {
     [_fontCell release];
+    [_helpCell release];
     [_clockState release];
     [_settingsArray release];
     

@@ -33,11 +33,9 @@
 {
 
     NSLog(@"in doneButtonTapped for settings");
-    [self dismissModalViewControllerAnimated:YES];
+    [[self parentViewController] dismissModalViewControllerAnimated:YES];
     
-    self.settingsTableViewController = nil;
-    [self.infoController.infoWebView loadHTMLString:@"" baseURL:nil];
-    self.infoController = nil;
+    
     
 }
 
