@@ -38,6 +38,9 @@
 		9F89BB12143409AE007655C9 /* brightness-bright.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F89BB10143409AE007655C9 /* brightness-bright.png */; };
 		9F89BB13143409AE007655C9 /* brightness-dim.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F89BB11143409AE007655C9 /* brightness-dim.png */; };
 		9F89BB261434B523007655C9 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9F89BB251434B523007655C9 /* Entitlements.plist */; };
+		9F89BB901436AB4D007655C9 /* DCHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F89BB8E1436AB4D007655C9 /* DCHelpViewController.m */; };
+		9F89BB911436AB4D007655C9 /* DCHelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F89BB8F1436AB4D007655C9 /* DCHelpViewController.xib */; };
+		9F89BB941436B0B7007655C9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F89BB931436B0B7007655C9 /* QuartzCore.framework */; };
 		9FF89EA414311FA5002DA909 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FF89E9D14311FA5002DA909 /* Icon-72.png */; };
 		9FF89EA514311FA5002DA909 /* Icon-AppStore.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9FF89E9E14311FA5002DA909 /* Icon-AppStore.jpg */; };
 		9FF89EA614311FA5002DA909 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FF89E9F14311FA5002DA909 /* Icon-Small-50.png */; };
@@ -94,6 +97,10 @@
 		9F89BB10143409AE007655C9 /* brightness-bright.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brightness-bright.png"; sourceTree = "<group>"; };
 		9F89BB11143409AE007655C9 /* brightness-dim.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brightness-dim.png"; sourceTree = "<group>"; };
 		9F89BB251434B523007655C9 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
+		9F89BB8D1436AB4D007655C9 /* DCHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCHelpViewController.h; sourceTree = "<group>"; };
+		9F89BB8E1436AB4D007655C9 /* DCHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCHelpViewController.m; sourceTree = "<group>"; };
+		9F89BB8F1436AB4D007655C9 /* DCHelpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DCHelpViewController.xib; sourceTree = "<group>"; };
+		9F89BB931436B0B7007655C9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9FF89E9D14311FA5002DA909 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		9FF89E9E14311FA5002DA909 /* Icon-AppStore.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Icon-AppStore.jpg"; sourceTree = "<group>"; };
 		9FF89E9F14311FA5002DA909 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
@@ -110,6 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F89BB941436B0B7007655C9 /* QuartzCore.framework in Frameworks */,
 				9F43F3E51428DC58003093A8 /* UIKit.framework in Frameworks */,
 				9F43F3E71428DC58003093A8 /* Foundation.framework in Frameworks */,
 				9F43F3E91428DC58003093A8 /* CoreGraphics.framework in Frameworks */,
@@ -122,6 +130,7 @@
 		9F43F3D51428DC58003093A8 = {
 			isa = PBXGroup;
 			children = (
+				9F89BB931436B0B7007655C9 /* QuartzCore.framework */,
 				9F89BB251434B523007655C9 /* Entitlements.plist */,
 				9F43F3EA1428DC58003093A8 /* DarkTime */,
 				9F43F3E31428DC58003093A8 /* Frameworks */,
@@ -263,6 +272,9 @@
 			children = (
 				9FF89EAE14312325002DA909 /* DCInfoViewController.h */,
 				9FF89EAF14312325002DA909 /* DCInfoViewController.m */,
+				9F89BB8D1436AB4D007655C9 /* DCHelpViewController.h */,
+				9F89BB8E1436AB4D007655C9 /* DCHelpViewController.m */,
+				9F89BB8F1436AB4D007655C9 /* DCHelpViewController.xib */,
 			);
 			name = "Info Controller";
 			sourceTree = "<group>";
@@ -340,6 +352,7 @@
 				9F89BB12143409AE007655C9 /* brightness-bright.png in Resources */,
 				9F89BB13143409AE007655C9 /* brightness-dim.png in Resources */,
 				9F89BB261434B523007655C9 /* Entitlements.plist in Resources */,
+				9F89BB911436AB4D007655C9 /* DCHelpViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,6 +376,7 @@
 				9F59DAAA142D8B250020A795 /* DCSettingsViewController.m in Sources */,
 				9F59DAE8142E5E6C0020A795 /* DCFontSelectTableViewController.m in Sources */,
 				9FF89EB014312325002DA909 /* DCInfoViewController.m in Sources */,
+				9F89BB901436AB4D007655C9 /* DCHelpViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

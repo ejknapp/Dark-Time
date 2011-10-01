@@ -12,6 +12,7 @@
 #import "DCSettingsViewController.h"
 #import "DCFontSelectTableViewController.h"
 #import "DCInfoViewController.h"
+#import "DCHelpViewController.h"
 
 @interface DCSettingsTableViewController()
 
@@ -394,6 +395,7 @@
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
     } else if (indexPath.section == DCDarkTimeSettingsRowHelp) {
         DCInfoViewController *controller = [[DCInfoViewController alloc] initWithNibName:nil bundle:nil];
+//        DCHelpViewController *controller = [[DCHelpViewController alloc] initWithNibName:nil bundle:nil];
         
         [self.navigationController pushViewController:controller animated:YES];
         [controller release];
