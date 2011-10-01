@@ -28,7 +28,7 @@
 }
 
 
--(void)updateDisplayFont
+- (void) updateDisplayFont
 {
     
     [self updateDisplayFontWithFontSize:iPhoneAmPmSecondsFontSize];
