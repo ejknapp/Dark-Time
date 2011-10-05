@@ -44,7 +44,6 @@
     UIView *newView = [[UIView alloc] initWithFrame:CGRectZero];
     newView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.view = newView;
-    [newView release];
     
     self.view.backgroundColor = [UIColor blackColor];
     
@@ -63,15 +62,12 @@
     self.infoWebView = newWebView;
 
     self.infoWebView.delegate = self;
-    [newWebView release];
     
     self.infoWebView.backgroundColor = [UIColor blackColor];
     
     [self.infoWebView loadHTMLString:html baseURL:baseURL];
     [self.view addSubview:self.infoWebView];
     
-    [html release];
-    [baseURL release];
 
 }
 
@@ -106,13 +102,5 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
     return YES;
 }
 
--(void)dealloc
-{
-    [_clockState release];
-
-    [_infoWebView release];
-    
-    [super dealloc];
-}
 
 @end

@@ -62,40 +62,34 @@
 {
     [super viewDidLoad];    
     
-    NSCalendar *newCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    self.calendar = newCalendar;
-    [newCalendar release];
+    self.calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+
     
-    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.1
+    self.appTimer = [NSTimer scheduledTimerWithTimeInterval:0.1
                                                       target:self
                                                     selector:@selector(updateClock)
                                                     userInfo:nil
                                                      repeats:YES];
-    self.appTimer = timer;
     
-    UISwipeGestureRecognizer *swipeRecognizer = 
+    self.brightnessSwipeRight = 
         [[UISwipeGestureRecognizer alloc] 
          initWithTarget:self 
          action:@selector(handleBrightnessSwipeRight:)];
     
-    swipeRecognizer.numberOfTouchesRequired = 1;
-    swipeRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
+    self.brightnessSwipeRight.numberOfTouchesRequired = 1;
+    self.brightnessSwipeRight.direction = UISwipeGestureRecognizerDirectionRight;
     
-    self.brightnessSwipeRight = swipeRecognizer;
     [self.view addGestureRecognizer:self.brightnessSwipeRight];
-    [swipeRecognizer release];
     
-    UISwipeGestureRecognizer *leftSwipeRecognizer = 
+    self.brightnessSwipeLeft = 
         [[UISwipeGestureRecognizer alloc] 
          initWithTarget:self 
          action:@selector(handleBrightnessSwipeLeft:)];
     
-    leftSwipeRecognizer.numberOfTouchesRequired = 1;
-    leftSwipeRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
+    self.brightnessSwipeLeft.numberOfTouchesRequired = 1;
+    self.brightnessSwipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
     
-    self.brightnessSwipeLeft = leftSwipeRecognizer;
     [self.view addGestureRecognizer:self.brightnessSwipeLeft];
-    [leftSwipeRecognizer release];
 
     
    
@@ -183,21 +177,20 @@
 - (IBAction)settingsButtonTapped:(id)sender 
 {
     
-    DCSettingsViewController *editor = [[DCSettingsViewController alloc] 
+    self.fontEditor = [[DCSettingsViewController alloc] 
                                         initWithNibName:self.settingsViewNib
                                         bundle:nil];
-    editor.modalPresentationStyle = self.modalStyle;
-    editor.clockState = self.clockState;
-    self.fontEditor = editor;
-    [self presentModalViewController:editor animated:YES];
-    [editor release];
+    self.fontEditor.modalPresentationStyle = self.modalStyle;
+    self.fontEditor.clockState = self.clockState;
+
+    [self presentModalViewController:self.fontEditor animated:YES];
 
 
 }
 
 - (void)dismissModalViewControllerAnimated:(BOOL)animated
 {
-    
+    NSLog(@"in dismissModalViewControllerAnimated: in super");
     [self.fontEditor dismissModalViewControllerAnimated:YES];
     
     [self.fontEditor.infoController.infoWebView loadHTMLString:@"" baseURL:nil];
@@ -215,7 +208,6 @@
                                  height, 
                                  self.clockState.currentFont.lineHeight);
     self.timeLabel.frame = newFrame;
-    
     self.timeLabel.font = self.clockState.currentFont;
     self.ampmLabel.font = [self.clockState.currentFont fontWithSize:fontSize];
     self.secondsLabel.font = [self.clockState.currentFont fontWithSize:fontSize];
@@ -263,14 +255,9 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
 
 -(void)changeDisplayBrightnessWithBrightness:(CGFloat)brightness
 {
-    
-    self.brightnessLevel = brightness;
-    self.timeLabel.alpha = brightness;
-    self.ampmLabel.alpha = brightness;
-    self.secondsLabel.alpha = brightness;
-    self.clockSettingsButton.alpha = brightness;
-//    self.clockState.clockBrightnessLevel = brightness;
-    
+
+    UIScreen *screen = [UIScreen mainScreen];
+    screen.brightness = brightness;
 }
 
 #pragma mark - Clock Methods
@@ -302,19 +289,6 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
 }
 
 
-- (void)dealloc
-{
-    [_clockState release];
-    [_appTimer release];
-    [_timeLabel release];
-    [_ampmLabel release];
-    [_secondsLabel release];
-    [_infoController release];
-    [_clockSettingsButton release];
-    [_fontEditor release];
-    
-    [super dealloc];
-}
 
 
 

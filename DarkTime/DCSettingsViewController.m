@@ -32,10 +32,9 @@
 -(void)doneButtonTapped:(id)sender
 {
 
-    NSLog(@"in doneButtonTapped for settings");
-    [[self parentViewController] dismissModalViewControllerAnimated:YES];
+    NSLog(@"in doneButtonTapped for settings %@", [self parentViewController]);
     
-    
+    [self.presentingViewController dismissModalViewControllerAnimated:YES];
     
 }
 
@@ -43,9 +42,7 @@
 -(void)displayInfoPage
 {
 
-    DCInfoViewController *controller = [[DCInfoViewController alloc] initWithNibName:nil bundle:nil];
-    self.infoController = controller;
-    [controller release];
+    self.infoController = [[DCInfoViewController alloc] initWithNibName:nil bundle:nil];
     
     [self.navigationController pushViewController:self.infoController animated:YES];
     
@@ -61,8 +58,8 @@
 
 -(DCSettingsTableViewController *)createTableViewController
 {
-    DCSettingsTableViewController *tableViewController = [[[DCSettingsTableViewController alloc] 
-                                                          initWithStyle:UITableViewStyleGrouped] autorelease];    
+    DCSettingsTableViewController *tableViewController = [[DCSettingsTableViewController alloc] 
+                                                          initWithStyle:UITableViewStyleGrouped];    
     
     tableViewController.clockState = self.clockState;
 
@@ -75,28 +72,20 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    DCSettingsTableViewController *tableViewController = [self createTableViewController];
-
-    self.settingsTableViewController = tableViewController;
+    self.settingsTableViewController = [self createTableViewController];
         
-    UINavigationController *navController = [[UINavigationController alloc] 
-                                             initWithRootViewController:tableViewController];
+    self.navigationController = [[UINavigationController alloc] 
+                                             initWithRootViewController:self.settingsTableViewController];
 
 
-    navController.navigationBar.barStyle = UIBarStyleBlack;
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
         
     UIBarButtonItem *done = [[UIBarButtonItem alloc] initWithTitle:@"Done" 
                                                              style:UIBarButtonItemStylePlain 
                                                             target:self 
                                                             action:@selector(doneButtonTapped:)];
     
-    tableViewController.navigationItem.rightBarButtonItem = done;
-
-    [done release];
-   
-    self.navigationController = navController;
-    [navController release];
-    
+    self.settingsTableViewController.navigationItem.rightBarButtonItem = done;
   
     [self.view addSubview:self.navigationController.view];
 }
@@ -120,12 +109,4 @@
             || interfaceOrientation == UIInterfaceOrientationLandscapeRight);
 }
 
-- (void)dealloc {
-    [_navigationController release];
-    [_clockState release];
-    [_settingsTableViewController release];
-    [_infoController release];
-    
-    [super dealloc];
-}
 @end

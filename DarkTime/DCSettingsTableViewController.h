@@ -12,7 +12,7 @@
 
 @interface DCSettingsTableViewController : UITableViewController
 
-@property (nonatomic, retain) DCClockState *clockState;
+@property (nonatomic, strong) DCClockState *clockState;
 
 -(void)updateFontCellDisplay;
 

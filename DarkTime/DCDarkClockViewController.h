@@ -16,27 +16,27 @@
 
 @interface DCDarkClockViewController : UIViewController <UIGestureRecognizerDelegate> 
 
-@property (nonatomic, retain) DCClockState *clockState;
-@property (nonatomic, retain) NSTimer *appTimer;
+@property (nonatomic, strong) DCClockState *clockState;
+@property (nonatomic, strong) NSTimer *appTimer;
 
-@property (nonatomic, retain) DCInfoViewController *infoController;
-@property (nonatomic, retain) NSCalendar *calendar;
+@property (nonatomic, strong) DCInfoViewController *infoController;
+@property (nonatomic, strong) NSCalendar *calendar;
 
-@property (nonatomic, retain) IBOutlet UILabel *timeLabel;
-@property (nonatomic, retain) IBOutlet UILabel *ampmLabel;
-@property (nonatomic, retain) IBOutlet UILabel *secondsLabel;
-@property (nonatomic, retain) IBOutlet UIButton *clockSettingsButton;
+@property (nonatomic, strong) IBOutlet UILabel *timeLabel;
+@property (nonatomic, strong) IBOutlet UILabel *ampmLabel;
+@property (nonatomic, strong) IBOutlet UILabel *secondsLabel;
+@property (nonatomic, strong) IBOutlet UIButton *clockSettingsButton;
 
 
 @property (nonatomic, assign) NSUInteger savedSeconds;
 @property (nonatomic, assign) CGFloat brightnessLevel;
 
-@property (nonatomic, retain) DCSettingsViewController *fontEditor;
+@property (nonatomic, strong) DCSettingsViewController *fontEditor;
 
-@property (nonatomic, retain) UISwipeGestureRecognizer *brightnessSwipeRight;
-@property (nonatomic, retain) UISwipeGestureRecognizer *brightnessSwipeLeft;
+@property (nonatomic, strong) UISwipeGestureRecognizer *brightnessSwipeRight;
+@property (nonatomic, strong) UISwipeGestureRecognizer *brightnessSwipeLeft;
 @property (nonatomic, assign) UIModalPresentationStyle modalStyle;
-@property (nonatomic, retain) NSString *settingsViewNib;
+@property (nonatomic, strong) NSString *settingsViewNib;
 
 
 -(void)changeDisplayBrightnessWithBrightness:(CGFloat)brightness;

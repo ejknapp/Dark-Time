@@ -12,8 +12,8 @@
 
 @interface DCInfoViewController : UIViewController <UIWebViewDelegate>
 
-@property (nonatomic, retain) DCClockState *clockState;
-@property (nonatomic, retain) UIWebView *infoWebView;
+@property (nonatomic, strong) DCClockState *clockState;
+@property (nonatomic, strong) UIWebView *infoWebView;
 
 -(id)initWithViewFrame:(CGRect)viewFrame;
 

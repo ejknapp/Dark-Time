@@ -58,15 +58,14 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
-                                       reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
+                                       reuseIdentifier:CellIdentifier];
     }
     
     cell.selectionStyle = UITableViewCellSelectionStyleGray;
     NSString *fontName = [self.clockState.fontNames objectAtIndex:indexPath.row];
-    NSString *cellText = [[NSString alloc] initWithFormat:@"%@ - 6:34", fontName];
-    cell.textLabel.text = cellText;
-    [cellText release];
+    cell.textLabel.text = [[NSString alloc] initWithFormat:@"%@ - 6:34", fontName];
+
     UIFont *cellFont = [UIFont fontWithName:fontName size:19];
     cell.textLabel.font = cellFont;
     cell.accessoryType = UITableViewCellAccessoryNone;
@@ -100,12 +99,5 @@
     
 }
 
--(void)dealloc
-{
-    [_clockState release];
-    [_currentCheckedCell release];
-    
-    [super dealloc];
-}
 
 @end

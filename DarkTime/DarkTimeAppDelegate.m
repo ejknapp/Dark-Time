@@ -24,15 +24,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    DCClockState *state = [[DCClockState alloc] init];
-    self.clockState = state;
+    self.clockState = [[DCClockState alloc] init];
     self.viewController.clockState = self.clockState;
+    
+    UIScreen *screen = [UIScreen mainScreen];    
+    screen.wantsSoftwareDimming = YES;
 
-    [state release];
+    self.window.rootViewController = self.viewController;
     
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];    
     [[UIApplication sharedApplication] setIdleTimerDisabled:self.clockState.suspendSleep];
-
 
     [self.window addSubview:self.viewController.view];
     [self.window makeKeyAndVisible];
@@ -135,7 +136,6 @@
         
         [alert show];
         
-        [alert release];
         
         [defaults setBool:YES forKey:@"firstTimeFlag"];
         [defaults setObject:appVersion forKey:@"DarkTime_version"];
@@ -143,13 +143,5 @@
 }
 
 
-- (void)dealloc
-{
-    [_clockState release];
-    [_viewController release];
-    
-    [_window release];
-    [super dealloc];
-}
 
 @end

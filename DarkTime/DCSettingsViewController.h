@@ -14,10 +14,10 @@
 
 @interface DCSettingsViewController : UIViewController <UIWebViewDelegate>
 
-@property (nonatomic, retain) DCClockState *clockState;
-@property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
-@property (nonatomic, retain) DCSettingsTableViewController *settingsTableViewController;
-@property (nonatomic, retain) DCInfoViewController *infoController;
+@property (nonatomic, strong) DCClockState *clockState;
+@property (nonatomic, strong) IBOutlet UINavigationController *navigationController;
+@property (nonatomic, strong) DCSettingsTableViewController *settingsTableViewController;
+@property (nonatomic, strong) DCInfoViewController *infoController;
 
 -(DCSettingsTableViewController *)createTableViewController;
 -(void)updateFontCellDisplay;

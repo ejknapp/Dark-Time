@@ -12,8 +12,8 @@
 
 @interface DCFontSelectTableViewController : UITableViewController
 
-@property (nonatomic, retain) DCClockState *clockState;
-@property (nonatomic, retain) UITableViewCell *currentCheckedCell;
+@property (nonatomic, strong) DCClockState *clockState;
+@property (nonatomic, strong) UITableViewCell *currentCheckedCell;
 
 
 @end

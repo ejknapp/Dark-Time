@@ -50,15 +50,11 @@
     self = [super init];
     
     if (self) {
-        NSDateFormatter *newFormatter = [[NSDateFormatter alloc] init];
-        _formatter = newFormatter;
+        _formatter = [[NSDateFormatter alloc] init];
         [_formatter setTimeStyle:NSDateFormatterShortStyle];
-        [newFormatter release];
         
-        NSCalendar *newCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-        self.calendar = newCalendar;
+        _calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
         _clockBrightnessLevel = 1.0;
-        [newCalendar release];
         
         _displayAmPm = YES;
         _displaySeconds = YES;
@@ -121,7 +117,7 @@
 -(void)createFontsArray 
 {
 
-    NSArray *fontNamesArray = [[NSArray alloc] initWithObjects:
+    self.fontNames = [[NSArray alloc] initWithObjects:
                                @"Cochin-Bold",
                                @"Baskerville-Bold",
                                @"Palatino-Bold",
@@ -135,9 +131,6 @@
                                @"TrebuchetMS-Bold",
                                @"SnellRoundhand-Bold",
                                nil];
-    
-    self.fontNames = fontNamesArray;
-    [fontNamesArray release];
     
     self.currentFontIndex = 8;
     [self changeFontWithFontIndex:self.currentFontIndex viewWidth:480];
@@ -164,7 +157,7 @@
         displayHour = 12;
     }
     
-    timeString = [NSString stringWithFormat:@"%d:%02d", displayHour, minute];
+    timeString = [[NSString alloc] initWithFormat:@"%d:%02d", displayHour, minute];
     
 //    return @"12:58";
 //    return @"1:11";
@@ -196,7 +189,6 @@
     NSDate* now = [[NSDate alloc] init];
     
     int hour = [[self.calendar components:NSHourCalendarUnit fromDate:now] hour];
-    [now release];
     
     if (self.displayAmPm) {
         if (hour < 12) {
@@ -283,24 +275,6 @@
     
 }
 
-- (void)dealloc
-{
-
-    [_displayBackgroundColor release];
-    [_timeTextColor release];
-    [_savedColorForClock release];
-    [_calendar release];
-    [_formatter release];
-    [_previousNow release];
-    [_currentFont release];
-    [_currentFontName release];
-    [_fontChoices release];
-    [_version release];
-    [_fontNames release];
-    
-    
-    [super dealloc];
-}
 
 
 @end

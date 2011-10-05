@@ -13,9 +13,9 @@
 
 @interface DarkTimeAppDelegate : NSObject <UIApplicationDelegate>
 
-@property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) IBOutlet DCDarkClockViewController *viewController;
+@property (nonatomic, strong) IBOutlet UIWindow *window;
+@property (nonatomic, strong) IBOutlet DCDarkClockViewController *viewController;
 
-@property (nonatomic, retain) DCClockState *clockState;
+@property (nonatomic, strong) DCClockState *clockState;
 
 @end

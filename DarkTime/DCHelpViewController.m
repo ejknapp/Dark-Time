@@ -11,7 +11,7 @@
 
 @interface DCHelpViewController()
 
-@property (nonatomic, retain) UIView *baseView;
+@property (nonatomic, strong) UIView *baseView;
 
 @end
 
@@ -57,7 +57,6 @@
     view.layer.borderWidth = 1;
     
     self.baseView = view;
-    [view release];
     
     [self.scrollView addSubview:self.baseView];
     
@@ -69,7 +68,6 @@
     welcome.font = [UIFont boldSystemFontOfSize:40];
     
     [self.baseView addSubview:welcome];
-    [welcome release];
     
     NSString *path = [[NSBundle mainBundle] 
             pathForResource:@"logo" 
@@ -80,9 +78,7 @@
     logo.center = CGPointMake(75, 140);
     
     [self.baseView addSubview:logo];
-    [path release];
-    [image release];
-    [logo release];
+
     
     UITextView *firstText = [[UITextView alloc] initWithFrame:CGRectMake(140, 85, 320, 125)];
     firstText.text = @"   Dark Time is a simple clock. It has one simple goal, to allow you to see the time, especially when it's dark. It doesn't try to look like a physical clock. It uses a very readable font";
@@ -94,7 +90,6 @@
 
     
     [self.baseView addSubview:firstText];
-    [firstText release];
 
     
     UITextView *secondText = [[UITextView alloc] initWithFrame:CGRectMake(10, 195, 450, 100)];
@@ -106,7 +101,6 @@
     secondText.editable = NO;
     
     [self.baseView addSubview:secondText];
-    [secondText release];
 
     
     UILabel *dark = [[UILabel alloc] initWithFrame:CGRectMake(148, 88, 100, 24)];
@@ -116,7 +110,6 @@
     dark.font = [UIFont boldSystemFontOfSize:20];
     
     [self.baseView addSubview:dark];
-    [dark release];
     
 }
 
@@ -134,8 +127,4 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (void)dealloc {
-    [_scrollView release];
-    [super dealloc];
-}
 @end
