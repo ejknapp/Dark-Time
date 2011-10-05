@@ -305,6 +305,7 @@
 		9F43F3D71428DC58003093A8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastUpgradeCheck = 0420;
 				ORGANIZATIONNAME = "Madison Area Technical College";
 			};
 			buildConfigurationList = 9F43F3DA1428DC58003093A8 /* Build configuration list for PBXProject "DarkTime" */;
