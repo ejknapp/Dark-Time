@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<string>Cochin-Bold</string>
+	<string>Baskerville-Bold</string>
+	<string>Palatino-Bold</string>
+	<string>Verdana-Bold</string>
+	<string>MarkerFelt-Wide</string>
+	<string>Courier-Bold</string>
+	<string>AmericanTypewriter-Bold</string>
+	<string>Helvetica-Bold</string>
+	<string>Futura-CondensedExtraBold</string>
+	<string>TimesNewRomanPS-BoldMT</string>
+	<string>TrebuchetMS-Bold</string>
+	<string>SnellRoundhand-Bold</string>
+</array>
+</plist>

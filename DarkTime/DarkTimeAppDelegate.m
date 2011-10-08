@@ -12,7 +12,12 @@
 
 @interface DarkTimeAppDelegate()
 
+@property (nonatomic, assign) CGFloat savedScreenBrightness;
+@property (nonatomic, assign) BOOL savedScreenWantsSoftwareDimming;
+
 -(void)firstTime;
+-(void)rememberScreenBrightness;
+-(void)restoreScreenBrightness;
 
 @end
 
@@ -21,14 +26,19 @@
 @synthesize window = _window;
 @synthesize viewController = _viewController;
 @synthesize clockState = _clockState;
+@synthesize savedScreenBrightness = _savedScreenBrightness;
+@synthesize savedScreenWantsSoftwareDimming = _savedScreenWantsSoftwareDimming;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.clockState = [[DCClockState alloc] init];
     self.viewController.clockState = self.clockState;
     
+//    NSLog(@"remember 1");
+//    [self rememberScreenBrightness];
+    
     UIScreen *screen = [UIScreen mainScreen];    
-    screen.wantsSoftwareDimming = YES;
+    screen.wantsSoftwareDimming = NO;
 
     self.window.rootViewController = self.viewController;
     
@@ -46,11 +56,23 @@
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     /*
-     Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-     Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+     Sent when the application is about to move from active to inactive state. This can occur 
+     for certain types of temporary interruptions (such as an incoming phone call or SMS message) 
+     or when the user quits the application and it begins the transition to the background state.
+     Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. 
+     Games should use this method to pause the game.
      */
     
+    NSLog(@"applicationWillResignActive:");
+    
+    [[NSUserDefaults standardUserDefaults] setFloat:self.clockState.clockBrightnessLevel 
+                                             forKey:@"clockBrightnessLevel"];
+    
+    [UIScreen mainScreen].brightness = [[NSUserDefaults standardUserDefaults]
+                                        floatForKey:@"savedSystemBrightness"];
+    
     [self.clockState saveClockState];
+//    [self restoreScreenBrightness];
     
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:NO];
     [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
@@ -60,14 +82,20 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
     /*
-     Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
-     If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+     Use this method to release shared resources, save user data, invalidate timers, and store 
+     enough application state information to restore your application to its current state in 
+     case it is terminated later. 
+     If your application supports background execution, this method is called instead of 
+     applicationWillTerminate: when the user quits.
      */
     
-    [self.clockState saveClockState];
+//    NSLog(@"applicationDidEnterBackground:");
     
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:NO];
-    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
+//    [self.clockState saveClockState];
+//    [self restoreScreenBrightness];
+//    
+//    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:NO];
+//    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
 
 }
 
@@ -78,25 +106,40 @@
      many of the changes made on entering the background.
      */
     
-    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];    
-    [[UIApplication sharedApplication] setIdleTimerDisabled:self.clockState.suspendSleep];
+//    NSLog(@"applicationWillEnterForeground:");
     
-    [self.clockState loadClockState];
+//    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];    
+//    [[UIApplication sharedApplication] setIdleTimerDisabled:self.clockState.suspendSleep];
+//    
+//    NSLog(@"remember 2");
+//    [self rememberScreenBrightness];
+//    [self.clockState loadClockState];
 
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     /*
-     Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+     Restart any tasks that were paused (or not yet started) while the application was inactive. 
+     If the application was previously in the background, optionally refresh the user interface.
      */
+    
+    NSLog(@"applicationDidBecomeActive:");
     
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];    
     [[UIApplication sharedApplication] setIdleTimerDisabled:self.clockState.suspendSleep];
     
+//    [self rememberScreenBrightness];
     [self.clockState loadClockState];
 
+    [[NSUserDefaults standardUserDefaults] setFloat:[[UIScreen mainScreen] brightness]
+                                             forKey:@"savedSystemBrightness"];
+    
+    [UIScreen mainScreen].brightness = [[NSUserDefaults standardUserDefaults]
+                                        floatForKey:@"clockBrightnessLevel"];
+
 }
+
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
@@ -106,12 +149,17 @@
      See also applicationDidEnterBackground:.
      */
     
-    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];    
-    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
+//    NSLog(@"applicationWillTerminate:");
     
-    [self.clockState saveClockState];
+//    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];    
+//    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
+//    
+//    [self.clockState saveClockState];
+//    [self restoreScreenBrightness];
 
 }
+
+
 
 -(void)firstTime
 {
@@ -136,10 +184,24 @@
         
         [alert show];
         
-        
         [defaults setBool:YES forKey:@"firstTimeFlag"];
         [defaults setObject:appVersion forKey:@"DarkTime_version"];
     }
+}
+
+-(void)rememberScreenBrightness
+{
+    self.savedScreenBrightness = [[UIScreen mainScreen] brightness];
+    self.savedScreenWantsSoftwareDimming = [[UIScreen mainScreen] wantsSoftwareDimming];
+    NSLog(@"remember bright %f, dim %d", self.savedScreenBrightness, self.savedScreenWantsSoftwareDimming);
+}
+
+-(void)restoreScreenBrightness
+{
+    NSLog(@"restore bright %f, dim %d", self.savedScreenBrightness, self.savedScreenWantsSoftwareDimming);
+    UIScreen *screen = [UIScreen mainScreen];
+    screen.brightness = self.savedScreenBrightness;
+    screen.wantsSoftwareDimming = self.savedScreenWantsSoftwareDimming;
 }
 
 

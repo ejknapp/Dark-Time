@@ -98,10 +98,10 @@
                          options:NSKeyValueObservingOptionNew
                          context:NULL];
     
-     [self.clockState addObserver:self 
-                      forKeyPath:@"clockBrightnessLevel" 
-                         options:NSKeyValueObservingOptionNew
-                         context:NULL];
+//     [self.clockState addObserver:self 
+//                      forKeyPath:@"clockBrightnessLevel" 
+//                         options:NSKeyValueObservingOptionNew
+//                         context:NULL];
 
     CGRect screenRect = [[UIScreen mainScreen] applicationFrame];
     [self.clockState changeFontWithFontIndex:self.clockState.currentFontIndex 
@@ -127,7 +127,8 @@
     
     [self updateDisplayFont];
     
-    [self changeDisplayBrightnessWithBrightness:self.clockState.clockBrightnessLevel];
+//    NSLog(@"DCDarkClockViewController - observeValueForKeyPath: - about to call changeDisplayBrightnessWithBrightness:");
+//    [self changeDisplayBrightnessWithBrightness:self.clockState.clockBrightnessLevel];
 }
 
 
@@ -141,20 +142,21 @@
     CGFloat currentBrightness;
     currentBrightness = self.clockState.clockBrightnessLevel;
     
-    CGFloat brightness = currentBrightness + 0.1;
+    CGFloat brightness = currentBrightness + 0.05;
     if (brightness > 1.0) {
         brightness = 1.0;
-    } else if (brightness < 0.15) {
-        brightness = 0.15;
+    } else if (brightness < 0.0) {
+        brightness = 0.0;
     }
     
+    [UIScreen mainScreen].brightness = brightness;
     self.clockState.clockBrightnessLevel = brightness;
-//    [self changeDisplayBrightnessWithBrightness:brightness];
+    [[NSUserDefaults standardUserDefaults] setFloat:brightness forKey:@"clockBrightnessLevel"];
+
 }
 
 -(void)handleBrightnessSwipeLeft:(UISwipeGestureRecognizer *)recognizer
 {
-    
 
     if (self.clockState.fontEditorDisplayed) {
         return;
@@ -162,16 +164,17 @@
     
     CGFloat currentBrightness = self.clockState.clockBrightnessLevel;
     
-    CGFloat brightness = currentBrightness - 0.1;
+    CGFloat brightness = currentBrightness - 0.05;
     if (brightness > 1.0) {
         brightness = 1.0;
-    } else if (brightness < 0.15) {
-        brightness = 0.1;
+    } else if (brightness < 0.0) {
+        brightness = 0.0;
     }
 
+    [UIScreen mainScreen].brightness = brightness;
     self.clockState.clockBrightnessLevel = brightness;
+    [[NSUserDefaults standardUserDefaults] setFloat:brightness forKey:@"clockBrightnessLevel"];
 
-//    [self changeDisplayBrightnessWithBrightness:brightness];
 }
 
 - (IBAction)settingsButtonTapped:(id)sender 
@@ -212,8 +215,9 @@
     self.ampmLabel.font = [self.clockState.currentFont fontWithSize:fontSize];
     self.secondsLabel.font = [self.clockState.currentFont fontWithSize:fontSize];
     
-    
-    [self changeDisplayBrightnessWithBrightness:self.clockState.clockBrightnessLevel];
+//    NSLog(@"DCDarkClockViewController - updateDisplayFontWithFontSize: - about to call changeDisplayBrightnessWithBrightness:");
+
+//    [self changeDisplayBrightnessWithBrightness:self.clockState.clockBrightnessLevel];
     
 }
 
@@ -256,8 +260,8 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
 -(void)changeDisplayBrightnessWithBrightness:(CGFloat)brightness
 {
 
-    UIScreen *screen = [UIScreen mainScreen];
-    screen.brightness = brightness;
+//    UIScreen *screen = [UIScreen mainScreen];
+//    screen.brightness = brightness;
 }
 
 #pragma mark - Clock Methods

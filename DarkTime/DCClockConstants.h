@@ -38,6 +38,8 @@ extern NSUInteger const iPhoneAmPmSecondsFontSize;
 
 extern CGFloat const DCMinimumScreenBrightness;
 
+extern NSInteger const DCInitialFontIndex;
+
 @interface DCClockConstants : NSObject 
 
 @end

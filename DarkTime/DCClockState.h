@@ -24,6 +24,7 @@
 @property (nonatomic, assign) BOOL displayAmPm;
 @property (nonatomic, assign) BOOL savedDisplayAmPm;
 @property (nonatomic, assign) BOOL suspendSleep;
+@property (nonatomic, assign) BOOL screenWantsSoftwareDimming;
 @property (nonatomic, strong) UIFont *currentFont;
 @property (nonatomic, strong) NSString *currentFontName;
 @property (nonatomic, assign) NSUInteger currentFontIndex;
@@ -45,6 +46,6 @@
 -(NSString *)currentAmPmString;
 
 -(void)changeFontWithFontIndex:(NSInteger)index viewWidth:(CGFloat)width;
--(void)changeFontWithName:(NSString *)fontName;
+
 
 @end

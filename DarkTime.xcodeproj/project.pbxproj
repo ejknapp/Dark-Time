@@ -34,6 +34,7 @@
 		9F59DAAB142D8B250020A795 /* DCSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F59DAA9142D8B250020A795 /* DCSettingsViewController.xib */; };
 		9F59DAE8142E5E6C0020A795 /* DCFontSelectTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F59DAE6142E5E6B0020A795 /* DCFontSelectTableViewController.m */; };
 		9F59DAE9142E5E6C0020A795 /* DCFontSelectTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F59DAE7142E5E6B0020A795 /* DCFontSelectTableViewController.xib */; };
+		9F7D215F143F53550024617C /* fontNames.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9F7D215E143F53550024617C /* fontNames.plist */; };
 		9F89BB0B1433F1EB007655C9 /* DCSettingsView_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F89BB0A1433F1EB007655C9 /* DCSettingsView_iPhone.xib */; };
 		9F89BB12143409AE007655C9 /* brightness-bright.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F89BB10143409AE007655C9 /* brightness-bright.png */; };
 		9F89BB13143409AE007655C9 /* brightness-dim.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F89BB11143409AE007655C9 /* brightness-dim.png */; };
@@ -93,6 +94,7 @@
 		9F59DAE5142E5E6B0020A795 /* DCFontSelectTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCFontSelectTableViewController.h; sourceTree = "<group>"; };
 		9F59DAE6142E5E6B0020A795 /* DCFontSelectTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCFontSelectTableViewController.m; sourceTree = "<group>"; };
 		9F59DAE7142E5E6B0020A795 /* DCFontSelectTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DCFontSelectTableViewController.xib; sourceTree = "<group>"; };
+		9F7D215E143F53550024617C /* fontNames.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = fontNames.plist; sourceTree = "<group>"; };
 		9F89BB0A1433F1EB007655C9 /* DCSettingsView_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DCSettingsView_iPhone.xib; sourceTree = "<group>"; };
 		9F89BB10143409AE007655C9 /* brightness-bright.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brightness-bright.png"; sourceTree = "<group>"; };
 		9F89BB11143409AE007655C9 /* brightness-dim.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brightness-dim.png"; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				9F43F3EC1428DC58003093A8 /* DarkTime-Info.plist */,
 				9F43F3ED1428DC58003093A8 /* InfoPlist.strings */,
 				9F43F3F01428DC58003093A8 /* main.m */,
+				9F7D215E143F53550024617C /* fontNames.plist */,
 				9F43F3F21428DC58003093A8 /* DarkTime-Prefix.pch */,
 			);
 			name = "Supporting Files";
@@ -354,6 +357,7 @@
 				9F89BB13143409AE007655C9 /* brightness-dim.png in Resources */,
 				9F89BB261434B523007655C9 /* Entitlements.plist in Resources */,
 				9F89BB911436AB4D007655C9 /* DCHelpViewController.xib in Resources */,
+				9F7D215F143F53550024617C /* fontNames.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

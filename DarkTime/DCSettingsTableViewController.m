@@ -351,13 +351,14 @@
     
     CGFloat newBrightness;
     
-    if (brightnessSlider.value < DCMinimumScreenBrightness) {
-        newBrightness = DCMinimumScreenBrightness;
-    } else {
-        newBrightness = brightnessSlider.value;
-    }
+    newBrightness = brightnessSlider.value;
     
+    NSLog(@"DCSettingsTableViewController - adjustBrightness: - about to set screen brightness: %f", newBrightness);
+    
+    [UIScreen mainScreen].brightness = newBrightness;
     self.clockState.clockBrightnessLevel = newBrightness;
+    [[NSUserDefaults standardUserDefaults] setFloat:newBrightness forKey:@"clockBrightnessLevel"];
+    
 }
 
 -(void)toggleSuspendSleep:(id)sender

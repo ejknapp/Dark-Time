@@ -12,6 +12,7 @@
 @interface DCClockState ()
 
 -(void)createFontsArray;
+- (NSString *)applicationDocumentsDirectory;
 
 @end
 
@@ -31,6 +32,7 @@
 @synthesize displayAmPm = _displayAmPm;
 @synthesize savedDisplayAmPm = _savedDisplayAmPm;
 @synthesize suspendSleep = _suspendSleep;
+@synthesize screenWantsSoftwareDimming = _screenWantsSoftwareDimming;
 @synthesize currentFont =_currentFont;
 @synthesize currentFontName = _currentFontName;
 @synthesize currentFontIndex = _currentFontIndex;
@@ -106,35 +108,23 @@
     
 }
 
--(void)changeFontWithName:(NSString *)fontName
-{
-    
-//    self.currentFont = [UIFont fontWithName:fontName size:500];
-//    self.currentFontName = fontName;
-//    self.displayLabelY = (375 - self.currentFont.ascender - 107) / 2;
-}
-
 -(void)createFontsArray 
 {
 
-    self.fontNames = [[NSArray alloc] initWithObjects:
-                               @"Cochin-Bold",
-                               @"Baskerville-Bold",
-                               @"Palatino-Bold",
-                               @"Verdana-Bold",
-                               @"MarkerFelt-Wide",
-                               @"Courier-Bold",
-                               @"AmericanTypewriter-Bold",
-                               @"Helvetica-Bold",
-                               @"Futura-CondensedExtraBold",
-                               @"TimesNewRomanPS-BoldMT",
-                               @"TrebuchetMS-Bold",
-                               @"SnellRoundhand-Bold",
-                               nil];
-    
-    self.currentFontIndex = 8;
+    NSString *fontFilePath = [[NSBundle mainBundle] pathForResource:@"fontNames" ofType:@"plist"];
+    self.fontNames = [[NSArray alloc] initWithContentsOfFile:fontFilePath];
+
+    self.currentFontIndex = DCInitialFontIndex;
     [self changeFontWithFontIndex:self.currentFontIndex viewWidth:480];
 }
+
+- (NSString *)applicationDocumentsDirectory
+{
+     
+     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+     NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
+     return basePath;
+ }
 
 
 -(NSString *)currentTimeString
@@ -213,15 +203,24 @@
     CGFloat brightness = [userDefaults floatForKey:@"clockBrightnessLevel"];
     
     if (brightness) {
-        if (brightness >= 0.1) {
+        if (brightness >= 0.0) {
             self.clockBrightnessLevel = brightness;
         } else {
-            self.clockBrightnessLevel = 1.0;
+            NSLog(@"brightness not >= 0.0, setting to 0.6");
+            self.clockBrightnessLevel = 0.6;
         }
     } else {
-        self.clockBrightnessLevel = 1.0;
+        NSLog(@"brightness is zero");
+        self.clockBrightnessLevel = 0.0;
     }
-        
+    
+//    [UIScreen mainScreen].brightness = self.clockBrightnessLevel;
+    
+//    self.screenWantsSoftwareDimming = [userDefaults boolForKey:@"screenWantsSoftwareDimming"];
+    
+    [UIScreen mainScreen].wantsSoftwareDimming = self.screenWantsSoftwareDimming;
+    
+    NSLog(@"loaded bright %f, dim %d", self.clockBrightnessLevel, self.screenWantsSoftwareDimming);
     
     NSInteger fontIndex = [userDefaults integerForKey:@"currentFontIndex"];
     
@@ -258,23 +257,31 @@
     }
 }
 
-- (void) saveClockState 
+- (void) saveClockState
 {
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
     [userDefaults setInteger:self.currentFontIndex forKey:@"currentFontIndex"];
     
-    [userDefaults setFloat:self.clockBrightnessLevel forKey:@"clockBrightnessLevel"];
+//    [userDefaults setFloat:self.clockBrightnessLevel forKey:@"clockBrightnessLevel"];
+    
+//    [userDefaults setBool:self.screenWantsSoftwareDimming forKey:@"screenWantsSoftwareDimming"];
     
     [userDefaults setBool:self.displayAmPm forKey:@"displayAmPm"];
     
     [userDefaults setBool:self.displaySeconds forKey:@"displaySeconds"];
     
     [userDefaults setBool:self.suspendSleep forKey:@"suspendSleep"];
-    
+
 }
 
 
-
 @end
+
+
+
+
+
+
+
