@@ -9,6 +9,7 @@
 #import "DarkTimeAppDelegate.h"
 #import "DCDarkClockViewController.h"
 #import "DCClockState.h"
+#import "DCDarkClockViewController.h"
 
 @interface DarkTimeAppDelegate()
 
@@ -33,10 +34,7 @@
 {
     self.clockState = [[DCClockState alloc] init];
     self.viewController.clockState = self.clockState;
-    
-//    NSLog(@"remember 1");
-//    [self rememberScreenBrightness];
-    
+        
     UIScreen *screen = [UIScreen mainScreen];    
     screen.wantsSoftwareDimming = NO;
 
@@ -137,7 +135,8 @@
     
     [UIScreen mainScreen].brightness = [[NSUserDefaults standardUserDefaults]
                                         floatForKey:@"clockBrightnessLevel"];
-
+    
+    [self.viewController updateClockDisplayColorWithBrightness:[UIScreen mainScreen].brightness];
 }
 
 

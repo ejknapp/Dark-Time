@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @class DCClockState;
+@class DCDarkClockViewController;
 
 @interface DCSettingsTableViewController : UITableViewController
 
 @property (nonatomic, strong) DCClockState *clockState;
+@property (nonatomic, weak) DCDarkClockViewController *clockViewController;
 
 -(void)updateFontCellDisplay;
 

@@ -43,6 +43,7 @@
 -(void)updateClock;
 -(void)updateDisplayFontWithFontSize:(NSInteger)fontSize;
 -(void)updateDisplayFont;
+-(void)updateClockDisplayColorWithBrightness:(CGFloat)brightness;
 
 
 @end

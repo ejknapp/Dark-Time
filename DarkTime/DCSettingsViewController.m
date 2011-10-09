@@ -10,6 +10,7 @@
 #import "DCSettingsTableViewController.h"
 #import "DCClockState.h"
 #import "DCInfoViewController.h"
+#import "DCDarkClockViewController.h"
 
 
 @implementation DCSettingsViewController
@@ -18,6 +19,8 @@
 @synthesize clockState = _clockState;
 @synthesize settingsTableViewController = _settingsTableViewController;
 @synthesize infoController = _infoController;
+
+@synthesize clockViewController = _clockViewController;
 
 
 - (void)didReceiveMemoryWarning
@@ -61,6 +64,7 @@
     DCSettingsTableViewController *tableViewController = [[DCSettingsTableViewController alloc] 
                                                           initWithStyle:UITableViewStyleGrouped];    
     
+    tableViewController.clockViewController = self.clockViewController;
     tableViewController.clockState = self.clockState;
 
     return tableViewController;

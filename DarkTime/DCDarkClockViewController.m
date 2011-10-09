@@ -151,6 +151,8 @@
     
     [UIScreen mainScreen].brightness = brightness;
     self.clockState.clockBrightnessLevel = brightness;
+    [self updateClockDisplayColorWithBrightness:brightness];
+
     [[NSUserDefaults standardUserDefaults] setFloat:brightness forKey:@"clockBrightnessLevel"];
 
 }
@@ -173,6 +175,7 @@
 
     [UIScreen mainScreen].brightness = brightness;
     self.clockState.clockBrightnessLevel = brightness;
+    [self updateClockDisplayColorWithBrightness:brightness];
     [[NSUserDefaults standardUserDefaults] setFloat:brightness forKey:@"clockBrightnessLevel"];
 
 }
@@ -183,6 +186,7 @@
     self.fontEditor = [[DCSettingsViewController alloc] 
                                         initWithNibName:self.settingsViewNib
                                         bundle:nil];
+    self.fontEditor.clockViewController = self;
     self.fontEditor.modalPresentationStyle = self.modalStyle;
     self.fontEditor.clockState = self.clockState;
 
@@ -224,6 +228,24 @@
 -(void)updateDisplayFont
 {
     
+}
+
+-(void)updateClockDisplayColorWithBrightness:(CGFloat)brightness
+{
+    CGFloat redFactor;
+    UIColor *color;
+    
+    if (brightness <= 0.6) {
+        redFactor = brightness + 0.3;
+    } else {
+        redFactor = 1.0;
+    }
+
+    color = [UIColor colorWithRed:redFactor green:0.0 blue:0.0 alpha:1.0];
+    self.timeLabel.textColor = color;
+    self.ampmLabel.textColor = color;
+    self.secondsLabel.textColor = color;
+    self.clockSettingsButton.alpha = redFactor + 0.2;
 }
 
 - (void)viewDidUnload

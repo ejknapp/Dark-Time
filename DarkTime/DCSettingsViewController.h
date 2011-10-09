@@ -11,6 +11,7 @@
 @class DCClockState;
 @class DCSettingsTableViewController;
 @class DCInfoViewController;
+@class DCDarkClockViewController;
 
 @interface DCSettingsViewController : UIViewController <UIWebViewDelegate>
 
@@ -18,6 +19,8 @@
 @property (nonatomic, strong) IBOutlet UINavigationController *navigationController;
 @property (nonatomic, strong) DCSettingsTableViewController *settingsTableViewController;
 @property (nonatomic, strong) DCInfoViewController *infoController;
+
+@property (nonatomic, weak) DCDarkClockViewController *clockViewController;
 
 -(DCSettingsTableViewController *)createTableViewController;
 -(void)updateFontCellDisplay;

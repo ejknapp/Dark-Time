@@ -12,7 +12,7 @@
 #import "DCSettingsViewController.h"
 #import "DCFontSelectTableViewController.h"
 #import "DCInfoViewController.h"
-#import "DCHelpViewController.h"
+#import "DCDarkClockViewController.h"
 
 @interface DCSettingsTableViewController()
 
@@ -46,6 +46,7 @@
 @synthesize fontCell = _fontCell;
 @synthesize helpCell = _helpCell;
 
+@synthesize clockViewController = _clockViewController;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -332,6 +333,8 @@
     return cell;
 }
 
+#pragma mark - Interface Action Methods
+
 -(void)toggleAmPm:(id)sender
 {
     UISwitch *ampmSwitch = (UISwitch *)sender;
@@ -349,15 +352,13 @@
 {
     UISlider *brightnessSlider = (UISlider *)sender;
     
-    CGFloat newBrightness;
-    
-    newBrightness = brightnessSlider.value;
-    
-    NSLog(@"DCSettingsTableViewController - adjustBrightness: - about to set screen brightness: %f", newBrightness);
-    
-    [UIScreen mainScreen].brightness = newBrightness;
-    self.clockState.clockBrightnessLevel = newBrightness;
-    [[NSUserDefaults standardUserDefaults] setFloat:newBrightness forKey:@"clockBrightnessLevel"];
+    CGFloat brightness;
+    brightness = brightnessSlider.value;
+        
+    [UIScreen mainScreen].brightness = brightness;
+    self.clockState.clockBrightnessLevel = brightness;
+    [self.clockViewController updateClockDisplayColorWithBrightness:brightness];
+    [[NSUserDefaults standardUserDefaults] setFloat:brightness forKey:@"clockBrightnessLevel"];
     
 }
 
