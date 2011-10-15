@@ -1,0 +1,14 @@
+h2. Dark Time
+
+Dark Time is a simple clock. It has one simple goal, to allow you to see the time, especially when it's dark. It doesn't try to look like a physical clock. It uses a very readable font and color scheme to make the time as readable as possible.
+
+Dark Time was created from a need to see the time in the middle of the night without your iOS device being too bright overall. Some of us are light sensitive and the need for a clock that isn't too bright but is highly visible has existed for a long time.
+
+The author is an instructor of programming at a college in Wisconsin. The app is the result of the author's own journey in learning iOS development. He now teaches iOS development at the college and uses this app as a demo and example. This app is released under an open source license here:
+
+* "https://github.com/ejknapp/Dark-Time":https://github.com/ejknapp/Dark-Time
+
+h2. Feedback Requested
+
+I'm fairly new to Objective-C and iOS development. I would love to get feedback so I can improve the code quality of the app. I intend to use this project as a teaching tool for the iOS development courses I teach at "Madison College":http://matcmadison.edu in Madison, WI.
+
