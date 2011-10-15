@@ -41,9 +41,8 @@
 - (void)loadView
 {
     
-    UIView *newView = [[UIView alloc] initWithFrame:CGRectZero];
-    newView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    self.view = newView;
+    self.view = [[UIView alloc] initWithFrame:CGRectZero];
+    self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     self.view.backgroundColor = [UIColor blackColor];
     
@@ -57,12 +56,9 @@
                                                          inDirectory:@"Info"] 
                                                encoding:NSUTF8StringEncoding error:nil];
     
-    UIWebView *newWebView = [[UIWebView alloc] initWithFrame:CGRectZero];
-    newWebView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    self.infoWebView = newWebView;
-
+    self.infoWebView = [[UIWebView alloc] initWithFrame:CGRectZero];
+    self.infoWebView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.infoWebView.delegate = self;
-    
     self.infoWebView.backgroundColor = [UIColor blackColor];
     
     [self.infoWebView loadHTMLString:html baseURL:baseURL];

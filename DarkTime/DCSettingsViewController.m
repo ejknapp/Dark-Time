@@ -34,11 +34,7 @@
 
 -(void)doneButtonTapped:(id)sender
 {
-
-    NSLog(@"in doneButtonTapped for settings %@", [self parentViewController]);
-    
     [self.presentingViewController dismissModalViewControllerAnimated:YES];
-    
 }
 
 
@@ -79,7 +75,7 @@
     self.settingsTableViewController = [self createTableViewController];
         
     self.navigationController = [[UINavigationController alloc] 
-                                             initWithRootViewController:self.settingsTableViewController];
+                                initWithRootViewController:self.settingsTableViewController];
 
 
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;

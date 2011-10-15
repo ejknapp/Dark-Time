@@ -14,7 +14,6 @@
 
 @interface DCDarkClockViewController ()
 
-
 -(IBAction)settingsButtonTapped:(id)sender;
 -(void)updateDisplayFont;
 
@@ -98,11 +97,6 @@
                          options:NSKeyValueObservingOptionNew
                          context:NULL];
     
-//     [self.clockState addObserver:self 
-//                      forKeyPath:@"clockBrightnessLevel" 
-//                         options:NSKeyValueObservingOptionNew
-//                         context:NULL];
-
     CGRect screenRect = [[UIScreen mainScreen] applicationFrame];
     [self.clockState changeFontWithFontIndex:self.clockState.currentFontIndex 
                                    viewWidth:screenRect.size.height];
@@ -127,8 +121,6 @@
     
     [self updateDisplayFont];
     
-//    NSLog(@"DCDarkClockViewController - observeValueForKeyPath: - about to call changeDisplayBrightnessWithBrightness:");
-//    [self changeDisplayBrightnessWithBrightness:self.clockState.clockBrightnessLevel];
 }
 
 
@@ -197,8 +189,9 @@
 
 - (void)dismissModalViewControllerAnimated:(BOOL)animated
 {
-    NSLog(@"in dismissModalViewControllerAnimated: in super");
     [self.fontEditor dismissModalViewControllerAnimated:YES];
+    
+    [[NSURLCache sharedURLCache] removeAllCachedResponses];
     
     [self.fontEditor.infoController.infoWebView loadHTMLString:@"" baseURL:nil];
     self.fontEditor = nil;
@@ -218,11 +211,7 @@
     self.timeLabel.font = self.clockState.currentFont;
     self.ampmLabel.font = [self.clockState.currentFont fontWithSize:fontSize];
     self.secondsLabel.font = [self.clockState.currentFont fontWithSize:fontSize];
-    
-//    NSLog(@"DCDarkClockViewController - updateDisplayFontWithFontSize: - about to call changeDisplayBrightnessWithBrightness:");
-
-//    [self changeDisplayBrightnessWithBrightness:self.clockState.clockBrightnessLevel];
-    
+        
 }
 
 -(void)updateDisplayFont
@@ -255,12 +244,8 @@
     [self setSecondsLabel:nil];
     
     self.calendar = nil;
-
-
     
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -282,8 +267,6 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
 -(void)changeDisplayBrightnessWithBrightness:(CGFloat)brightness
 {
 
-//    UIScreen *screen = [UIScreen mainScreen];
-//    screen.brightness = brightness;
 }
 
 #pragma mark - Clock Methods
@@ -302,16 +285,11 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
     self.savedSeconds = second;
     
     self.timeLabel.text = [self.clockState currentTimeString];
-    //self.timeLabel.text = @"8:58";
     
     self.secondsLabel.text = [self.clockState currentSecondsString];
     
     self.ampmLabel.text = [self.clockState currentAmPmString];
-    
-    
-    
-    //❋ ☸  U+2699⚙
-    
+        
 }
 
 

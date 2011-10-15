@@ -98,7 +98,7 @@
     UIFont *newFont = [UIFont fontWithName:self.currentFontName size:500];
 
     CGFloat realFontSize;
-    [@"8:88" sizeWithFont:newFont 
+    [DCFontSizeCalculationString sizeWithFont:newFont 
                minFontSize:24  
             actualFontSize:&realFontSize 
                   forWidth:width 
@@ -120,7 +120,6 @@
 
 - (NSString *)applicationDocumentsDirectory
 {
-     
      NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
      NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
      return basePath;
@@ -130,7 +129,7 @@
 -(NSString *)currentTimeString
 {
     
-    NSDate* now = [NSDate date];
+    NSDate *now = [NSDate date];
     NSString *timeString;
     
     int hour = [[self.calendar components:NSHourCalendarUnit fromDate:now] hour];
@@ -149,20 +148,16 @@
     
     timeString = [[NSString alloc] initWithFormat:@"%d:%02d", displayHour, minute];
     
-//    return @"12:58";
-//    return @"1:11";
     return timeString;
-
 }
 
 -(NSString *)currentSecondsString
 {
     
-    NSDate* now = [NSDate date];
+    NSDate *now = [NSDate date];
     int second = [[self.calendar components:NSSecondCalendarUnit fromDate:now] second];
     
     NSString *secondsString;
-    
     
     if (self.displaySeconds) {
         secondsString = [NSString stringWithFormat:@"%02d", second];
@@ -176,7 +171,7 @@
 
 -(NSString *)currentAmPmString
 {
-    NSDate* now = [[NSDate alloc] init];
+    NSDate *now = [[NSDate alloc] init];
     
     int hour = [[self.calendar components:NSHourCalendarUnit fromDate:now] hour];
     
@@ -213,14 +208,8 @@
         NSLog(@"brightness is zero");
         self.clockBrightnessLevel = 0.0;
     }
-    
-//    [UIScreen mainScreen].brightness = self.clockBrightnessLevel;
-    
-//    self.screenWantsSoftwareDimming = [userDefaults boolForKey:@"screenWantsSoftwareDimming"];
-    
+        
     [UIScreen mainScreen].wantsSoftwareDimming = self.screenWantsSoftwareDimming;
-    
-    NSLog(@"loaded bright %f, dim %d", self.clockBrightnessLevel, self.screenWantsSoftwareDimming);
     
     NSInteger fontIndex = [userDefaults integerForKey:@"currentFontIndex"];
     
@@ -263,10 +252,6 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
     [userDefaults setInteger:self.currentFontIndex forKey:@"currentFontIndex"];
-    
-//    [userDefaults setFloat:self.clockBrightnessLevel forKey:@"clockBrightnessLevel"];
-    
-//    [userDefaults setBool:self.screenWantsSoftwareDimming forKey:@"screenWantsSoftwareDimming"];
     
     [userDefaults setBool:self.displayAmPm forKey:@"displayAmPm"];
     

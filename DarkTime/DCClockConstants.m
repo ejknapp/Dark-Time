@@ -18,6 +18,8 @@ NSString * const DCSettingsTableViewCellText = @"cellText";
 NSString * const DCSettingsTableViewFooter = @"footer";
 NSString * const DCSettingsTableViewCellIdentifier = @"cell-identifier";
 
+NSString * const DCFontSizeCalculationString = @"8:88";
+
 NSString * const DCSettingsViewNibNameiPad = @"DCSettingsViewController";
 NSString * const DCSettingsViewNibNameiPhone = @"DCSettingsView_iPhone";
 

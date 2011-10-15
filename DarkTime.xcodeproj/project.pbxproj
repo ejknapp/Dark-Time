@@ -39,16 +39,13 @@
 		9F89BB12143409AE007655C9 /* brightness-bright.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F89BB10143409AE007655C9 /* brightness-bright.png */; };
 		9F89BB13143409AE007655C9 /* brightness-dim.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F89BB11143409AE007655C9 /* brightness-dim.png */; };
 		9F89BB261434B523007655C9 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9F89BB251434B523007655C9 /* Entitlements.plist */; };
-		9F89BB901436AB4D007655C9 /* DCHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F89BB8E1436AB4D007655C9 /* DCHelpViewController.m */; };
-		9F89BB911436AB4D007655C9 /* DCHelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F89BB8F1436AB4D007655C9 /* DCHelpViewController.xib */; };
 		9F89BB941436B0B7007655C9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F89BB931436B0B7007655C9 /* QuartzCore.framework */; };
-		9FF89EA414311FA5002DA909 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FF89E9D14311FA5002DA909 /* Icon-72.png */; };
-		9FF89EA514311FA5002DA909 /* Icon-AppStore.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9FF89E9E14311FA5002DA909 /* Icon-AppStore.jpg */; };
-		9FF89EA614311FA5002DA909 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FF89E9F14311FA5002DA909 /* Icon-Small-50.png */; };
-		9FF89EA714311FA5002DA909 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FF89EA014311FA5002DA909 /* Icon-Small.png */; };
-		9FF89EA814311FA5002DA909 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FF89EA114311FA5002DA909 /* Icon-Small@2x.png */; };
-		9FF89EA914311FA5002DA909 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FF89EA214311FA5002DA909 /* Icon.png */; };
-		9FF89EAA14311FA5002DA909 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FF89EA314311FA5002DA909 /* Icon@2x.png */; };
+		9FB4A5C51448EDCD00E1E754 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FB4A5BF1448EDCC00E1E754 /* Icon-72.png */; };
+		9FB4A5C61448EDCD00E1E754 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FB4A5C01448EDCC00E1E754 /* Icon-Small-50.png */; };
+		9FB4A5C71448EDCD00E1E754 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FB4A5C11448EDCC00E1E754 /* Icon-Small.png */; };
+		9FB4A5C81448EDCD00E1E754 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FB4A5C21448EDCC00E1E754 /* Icon-Small@2x.png */; };
+		9FB4A5C91448EDCD00E1E754 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FB4A5C31448EDCC00E1E754 /* Icon.png */; };
+		9FB4A5CA1448EDCD00E1E754 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FB4A5C41448EDCC00E1E754 /* Icon@2x.png */; };
 		9FF89EB014312325002DA909 /* DCInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FF89EAF14312325002DA909 /* DCInfoViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -99,17 +96,13 @@
 		9F89BB10143409AE007655C9 /* brightness-bright.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brightness-bright.png"; sourceTree = "<group>"; };
 		9F89BB11143409AE007655C9 /* brightness-dim.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brightness-dim.png"; sourceTree = "<group>"; };
 		9F89BB251434B523007655C9 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
-		9F89BB8D1436AB4D007655C9 /* DCHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCHelpViewController.h; sourceTree = "<group>"; };
-		9F89BB8E1436AB4D007655C9 /* DCHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCHelpViewController.m; sourceTree = "<group>"; };
-		9F89BB8F1436AB4D007655C9 /* DCHelpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DCHelpViewController.xib; sourceTree = "<group>"; };
 		9F89BB931436B0B7007655C9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		9FF89E9D14311FA5002DA909 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
-		9FF89E9E14311FA5002DA909 /* Icon-AppStore.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Icon-AppStore.jpg"; sourceTree = "<group>"; };
-		9FF89E9F14311FA5002DA909 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
-		9FF89EA014311FA5002DA909 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
-		9FF89EA114311FA5002DA909 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
-		9FF89EA214311FA5002DA909 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		9FF89EA314311FA5002DA909 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		9FB4A5BF1448EDCC00E1E754 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
+		9FB4A5C01448EDCC00E1E754 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
+		9FB4A5C11448EDCC00E1E754 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
+		9FB4A5C21448EDCC00E1E754 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
+		9FB4A5C31448EDCC00E1E754 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		9FB4A5C41448EDCC00E1E754 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		9FF89EAE14312325002DA909 /* DCInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCInfoViewController.h; sourceTree = "<group>"; };
 		9FF89EAF14312325002DA909 /* DCInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCInfoViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -176,13 +169,12 @@
 			children = (
 				9F0F8C721433791E003B2BAB /* Info */,
 				9F43F4261428DD08003093A8 /* Images */,
-				9FF89E9D14311FA5002DA909 /* Icon-72.png */,
-				9FF89E9E14311FA5002DA909 /* Icon-AppStore.jpg */,
-				9FF89E9F14311FA5002DA909 /* Icon-Small-50.png */,
-				9FF89EA014311FA5002DA909 /* Icon-Small.png */,
-				9FF89EA114311FA5002DA909 /* Icon-Small@2x.png */,
-				9FF89EA214311FA5002DA909 /* Icon.png */,
-				9FF89EA314311FA5002DA909 /* Icon@2x.png */,
+				9FB4A5BF1448EDCC00E1E754 /* Icon-72.png */,
+				9FB4A5C01448EDCC00E1E754 /* Icon-Small-50.png */,
+				9FB4A5C11448EDCC00E1E754 /* Icon-Small.png */,
+				9FB4A5C21448EDCC00E1E754 /* Icon-Small@2x.png */,
+				9FB4A5C31448EDCC00E1E754 /* Icon.png */,
+				9FB4A5C41448EDCC00E1E754 /* Icon@2x.png */,
 				9F43F3EC1428DC58003093A8 /* DarkTime-Info.plist */,
 				9F43F3ED1428DC58003093A8 /* InfoPlist.strings */,
 				9F43F3F01428DC58003093A8 /* main.m */,
@@ -275,9 +267,6 @@
 			children = (
 				9FF89EAE14312325002DA909 /* DCInfoViewController.h */,
 				9FF89EAF14312325002DA909 /* DCInfoViewController.m */,
-				9F89BB8D1436AB4D007655C9 /* DCHelpViewController.h */,
-				9F89BB8E1436AB4D007655C9 /* DCHelpViewController.m */,
-				9F89BB8F1436AB4D007655C9 /* DCHelpViewController.xib */,
 			);
 			name = "Info Controller";
 			sourceTree = "<group>";
@@ -344,20 +333,18 @@
 				9F59DA9C142D75100020A795 /* DCSettingsTableViewController.xib in Resources */,
 				9F59DAAB142D8B250020A795 /* DCSettingsViewController.xib in Resources */,
 				9F59DAE9142E5E6C0020A795 /* DCFontSelectTableViewController.xib in Resources */,
-				9FF89EA414311FA5002DA909 /* Icon-72.png in Resources */,
-				9FF89EA514311FA5002DA909 /* Icon-AppStore.jpg in Resources */,
-				9FF89EA614311FA5002DA909 /* Icon-Small-50.png in Resources */,
-				9FF89EA714311FA5002DA909 /* Icon-Small.png in Resources */,
-				9FF89EA814311FA5002DA909 /* Icon-Small@2x.png in Resources */,
-				9FF89EA914311FA5002DA909 /* Icon.png in Resources */,
-				9FF89EAA14311FA5002DA909 /* Icon@2x.png in Resources */,
 				9F0F8C731433791E003B2BAB /* Info in Resources */,
 				9F89BB0B1433F1EB007655C9 /* DCSettingsView_iPhone.xib in Resources */,
 				9F89BB12143409AE007655C9 /* brightness-bright.png in Resources */,
 				9F89BB13143409AE007655C9 /* brightness-dim.png in Resources */,
 				9F89BB261434B523007655C9 /* Entitlements.plist in Resources */,
-				9F89BB911436AB4D007655C9 /* DCHelpViewController.xib in Resources */,
 				9F7D215F143F53550024617C /* fontNames.plist in Resources */,
+				9FB4A5C51448EDCD00E1E754 /* Icon-72.png in Resources */,
+				9FB4A5C61448EDCD00E1E754 /* Icon-Small-50.png in Resources */,
+				9FB4A5C71448EDCD00E1E754 /* Icon-Small.png in Resources */,
+				9FB4A5C81448EDCD00E1E754 /* Icon-Small@2x.png in Resources */,
+				9FB4A5C91448EDCD00E1E754 /* Icon.png in Resources */,
+				9FB4A5CA1448EDCD00E1E754 /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,7 +368,6 @@
 				9F59DAAA142D8B250020A795 /* DCSettingsViewController.m in Sources */,
 				9F59DAE8142E5E6C0020A795 /* DCFontSelectTableViewController.m in Sources */,
 				9FF89EB014312325002DA909 /* DCInfoViewController.m in Sources */,
-				9F89BB901436AB4D007655C9 /* DCHelpViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

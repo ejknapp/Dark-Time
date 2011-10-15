@@ -14,13 +14,6 @@
 #import "DCSettingsViewController.h"
 #import "DCInfoViewController.h"
 
-@interface DCDarkClockViewController_iPad()
-
-
-
-
-@end
-
 
 @implementation DCDarkClockViewController_iPad
 

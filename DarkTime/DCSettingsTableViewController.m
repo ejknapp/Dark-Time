@@ -216,7 +216,6 @@
     cellSwitch.on = self.clockState.displaySeconds;
     cell.accessoryView = cellSwitch;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
 
 }
 
@@ -235,7 +234,6 @@
     
     slider.minimumValueImage = dim;
     
-    
     path = [[NSBundle mainBundle] 
             pathForResource:@"brightness-bright" 
             ofType:@"png"];
@@ -247,7 +245,6 @@
 
     cell.textLabel.text = [[self.settingsArray objectAtIndex:indexPath.section] 
                            objectForKey:DCSettingsTableViewCellText];
-    
     
     [slider addTarget:self 
                    action:@selector(adjustBrightness:) 
@@ -264,7 +261,6 @@
 
 - (void)createFontSelectionCell:(UITableViewCell *)cell
 {
-//    NSLog(@"in createFontSelectionCell: %@", self.clockState.currentFontName);
     cell.textLabel.text = self.clockState.currentFontName;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.selectionStyle = UITableViewCellSelectionStyleGray;
@@ -293,7 +289,6 @@
 
 - (void)createHelpSelectionCell:(UITableViewCell *)cell indexPath:(NSIndexPath *)indexPath
 {
-    //    NSLog(@"in createFontSelectionCell: %@", self.clockState.currentFontName);
     cell.textLabel.text = [[self.settingsArray objectAtIndex:indexPath.section] 
                            objectForKey:DCSettingsTableViewCellText];
     
@@ -337,23 +332,17 @@
 
 -(void)toggleAmPm:(id)sender
 {
-    UISwitch *ampmSwitch = (UISwitch *)sender;
-
-    self.clockState.displayAmPm = ampmSwitch.on;
+    self.clockState.displayAmPm = ((UISwitch *)sender).on;
 }
 
 -(void)toggleSeconds:(id)sender
 {
-    UISwitch *secondsSwitch = (UISwitch *)sender;
-    self.clockState.displaySeconds = secondsSwitch.on;
+    self.clockState.displaySeconds = ((UISwitch *)sender).on;
 }
 
 -(void)adjustBrightness:(id)sender
 {
-    UISlider *brightnessSlider = (UISlider *)sender;
-    
-    CGFloat brightness;
-    brightness = brightnessSlider.value;
+    CGFloat brightness = ((UISlider *)sender).value;
         
     [UIScreen mainScreen].brightness = brightness;
     self.clockState.clockBrightnessLevel = brightness;
@@ -364,8 +353,7 @@
 
 -(void)toggleSuspendSleep:(id)sender
 {
-    UISwitch *sleepSwitch = (UISwitch *)sender;
-    self.clockState.suspendSleep = sleepSwitch.on;
+    self.clockState.suspendSleep = ((UISwitch *)sender).on;
 }
 
 #pragma mark - Table view delegate
@@ -382,7 +370,9 @@
         [self.navigationController pushViewController:controller animated:YES];
         
     } else if (indexPath.section == DCDarkTimeSettingsRowHelp) {
-        DCInfoViewController *controller = [[DCInfoViewController alloc] initWithNibName:nil bundle:nil];
+        DCInfoViewController *controller = [[DCInfoViewController alloc] 
+                                            initWithNibName:nil 
+                                            bundle:nil];
         
         [self.navigationController pushViewController:controller animated:YES];
         

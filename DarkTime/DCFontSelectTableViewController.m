@@ -66,8 +66,7 @@
     NSString *fontName = [self.clockState.fontNames objectAtIndex:indexPath.row];
     cell.textLabel.text = [[NSString alloc] initWithFormat:@"%@ - 6:34", fontName];
 
-    UIFont *cellFont = [UIFont fontWithName:fontName size:19];
-    cell.textLabel.font = cellFont;
+    cell.textLabel.font = [UIFont fontWithName:fontName size:19];
     cell.accessoryType = UITableViewCellAccessoryNone;
     
     if (self.clockState.currentFontIndex == indexPath.row) {

@@ -17,8 +17,7 @@
 @property (nonatomic, assign) BOOL savedScreenWantsSoftwareDimming;
 
 -(void)firstTime;
--(void)rememberScreenBrightness;
--(void)restoreScreenBrightness;
+
 
 @end
 
@@ -70,7 +69,7 @@
                                         floatForKey:@"savedSystemBrightness"];
     
     [self.clockState saveClockState];
-//    [self restoreScreenBrightness];
+
     
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:NO];
     [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
@@ -87,13 +86,6 @@
      applicationWillTerminate: when the user quits.
      */
     
-//    NSLog(@"applicationDidEnterBackground:");
-    
-//    [self.clockState saveClockState];
-//    [self restoreScreenBrightness];
-//    
-//    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:NO];
-//    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
 
 }
 
@@ -104,14 +96,6 @@
      many of the changes made on entering the background.
      */
     
-//    NSLog(@"applicationWillEnterForeground:");
-    
-//    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];    
-//    [[UIApplication sharedApplication] setIdleTimerDisabled:self.clockState.suspendSleep];
-//    
-//    NSLog(@"remember 2");
-//    [self rememberScreenBrightness];
-//    [self.clockState loadClockState];
 
 }
 
@@ -127,7 +111,6 @@
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];    
     [[UIApplication sharedApplication] setIdleTimerDisabled:self.clockState.suspendSleep];
     
-//    [self rememberScreenBrightness];
     [self.clockState loadClockState];
 
     [[NSUserDefaults standardUserDefaults] setFloat:[[UIScreen mainScreen] brightness]
@@ -148,16 +131,8 @@
      See also applicationDidEnterBackground:.
      */
     
-//    NSLog(@"applicationWillTerminate:");
-    
-//    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];    
-//    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
-//    
-//    [self.clockState saveClockState];
-//    [self restoreScreenBrightness];
 
 }
-
 
 
 -(void)firstTime
@@ -186,21 +161,6 @@
         [defaults setBool:YES forKey:@"firstTimeFlag"];
         [defaults setObject:appVersion forKey:@"DarkTime_version"];
     }
-}
-
--(void)rememberScreenBrightness
-{
-    self.savedScreenBrightness = [[UIScreen mainScreen] brightness];
-    self.savedScreenWantsSoftwareDimming = [[UIScreen mainScreen] wantsSoftwareDimming];
-    NSLog(@"remember bright %f, dim %d", self.savedScreenBrightness, self.savedScreenWantsSoftwareDimming);
-}
-
--(void)restoreScreenBrightness
-{
-    NSLog(@"restore bright %f, dim %d", self.savedScreenBrightness, self.savedScreenWantsSoftwareDimming);
-    UIScreen *screen = [UIScreen mainScreen];
-    screen.brightness = self.savedScreenBrightness;
-    screen.wantsSoftwareDimming = self.savedScreenWantsSoftwareDimming;
 }
 
 
