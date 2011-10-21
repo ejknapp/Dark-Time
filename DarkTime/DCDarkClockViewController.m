@@ -10,6 +10,7 @@
 #import "DCClockState.h"
 #import "DCSettingsViewController.h"
 #import "DCInfoViewController.h"
+#import "DCClockConstants.h"
 
 
 @interface DCDarkClockViewController ()
@@ -138,10 +139,11 @@
     if (brightness > 1.0) {
         brightness = 1.0;
     } else if (brightness < 0.0) {
-        brightness = 0.0;
+        brightness = DCMinimumScreenBrightness;
     }
     
     [UIScreen mainScreen].brightness = brightness;
+
     self.clockState.clockBrightnessLevel = brightness;
     [self updateClockDisplayColorWithBrightness:brightness];
 
@@ -162,10 +164,11 @@
     if (brightness > 1.0) {
         brightness = 1.0;
     } else if (brightness < 0.0) {
-        brightness = 0.0;
+        brightness = DCMinimumScreenBrightness;
     }
 
     [UIScreen mainScreen].brightness = brightness;
+
     self.clockState.clockBrightnessLevel = brightness;
     [self updateClockDisplayColorWithBrightness:brightness];
     [[NSUserDefaults standardUserDefaults] setFloat:brightness forKey:@"clockBrightnessLevel"];

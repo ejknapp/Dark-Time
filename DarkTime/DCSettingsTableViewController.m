@@ -343,8 +343,9 @@
 -(void)adjustBrightness:(id)sender
 {
     CGFloat brightness = ((UISlider *)sender).value;
-        
+    
     [UIScreen mainScreen].brightness = brightness;
+
     self.clockState.clockBrightnessLevel = brightness;
     [self.clockViewController updateClockDisplayColorWithBrightness:brightness];
     [[NSUserDefaults standardUserDefaults] setFloat:brightness forKey:@"clockBrightnessLevel"];

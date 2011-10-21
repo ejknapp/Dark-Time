@@ -60,7 +60,6 @@
      Games should use this method to pause the game.
      */
     
-    NSLog(@"applicationWillResignActive:");
     
     [[NSUserDefaults standardUserDefaults] setFloat:self.clockState.clockBrightnessLevel 
                                              forKey:@"clockBrightnessLevel"];
@@ -106,7 +105,6 @@
      If the application was previously in the background, optionally refresh the user interface.
      */
     
-    NSLog(@"applicationDidBecomeActive:");
     
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];    
     [[UIApplication sharedApplication] setIdleTimerDisabled:self.clockState.suspendSleep];
@@ -118,7 +116,7 @@
     
     [UIScreen mainScreen].brightness = [[NSUserDefaults standardUserDefaults]
                                         floatForKey:@"clockBrightnessLevel"];
-    
+
     [self.viewController updateClockDisplayColorWithBrightness:[UIScreen mainScreen].brightness];
 }
 
@@ -146,6 +144,10 @@
     NSString *appVersion = clockState.version;
     
     if (!firstTimeFlag || ![defaultsVersion isEqualToString:appVersion]) {
+        
+        [UIScreen mainScreen].brightness = 0.6;
+        [[NSUserDefaults standardUserDefaults] setFloat:[[UIScreen mainScreen] brightness]
+                                                 forKey:@"clockBrightnessLevel"];
         
         [self.clockState saveClockState];
         

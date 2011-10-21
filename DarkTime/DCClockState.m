@@ -56,7 +56,7 @@
         [_formatter setTimeStyle:NSDateFormatterShortStyle];
         
         _calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-        _clockBrightnessLevel = 1.0;
+        _clockBrightnessLevel = 0.6;
         
         _displayAmPm = YES;
         _displaySeconds = YES;
@@ -201,12 +201,15 @@
         if (brightness >= 0.0) {
             self.clockBrightnessLevel = brightness;
         } else {
-            NSLog(@"brightness not >= 0.0, setting to 0.6");
             self.clockBrightnessLevel = 0.6;
+            [[NSUserDefaults standardUserDefaults] setFloat:[[UIScreen mainScreen] brightness]
+                                                     forKey:@"clockBrightnessLevel"];
         }
     } else {
-        NSLog(@"brightness is zero");
-        self.clockBrightnessLevel = 0.0;
+        self.clockBrightnessLevel = 0.6;
+        [[NSUserDefaults standardUserDefaults] setFloat:[[UIScreen mainScreen] brightness]
+                                                 forKey:@"clockBrightnessLevel"];
+
     }
         
     [UIScreen mainScreen].wantsSoftwareDimming = self.screenWantsSoftwareDimming;
