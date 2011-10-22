@@ -222,14 +222,13 @@
 
 - (void)createBrightnessCell:(NSIndexPath *)indexPath cell:(UITableViewCell *)cell
 {
-    CGRect sliderRect = CGRectMake(170, 0, 280, 45);
-    
     if (!self.brightnessSlider) {
-        self.brightnessSlider = [[UISlider alloc] initWithFrame:sliderRect];
+        CGRect sliderRect = CGRectMake(170, 0, 280, 45);
+        
+        self.brightnessSlider               = [[UISlider alloc] initWithFrame:sliderRect];
+        self.brightnessSlider.minimumValue  = 0.0;
+        self.brightnessSlider.maximumValue  = 1.0;
     }
-    
-    self.brightnessSlider.minimumValue = 0.0;
-    self.brightnessSlider.maximumValue = 1.0;
     
     NSString *path = [[NSBundle mainBundle] 
                       pathForResource:@"brightness-dim" 
