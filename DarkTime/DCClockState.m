@@ -195,22 +195,22 @@
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
-    CGFloat brightness = [userDefaults floatForKey:@"clockBrightnessLevel"];
-    
-    if (brightness) {
-        if (brightness >= 0.0) {
-            self.clockBrightnessLevel = brightness;
-        } else {
-            self.clockBrightnessLevel = 0.6;
-            [[NSUserDefaults standardUserDefaults] setFloat:[[UIScreen mainScreen] brightness]
-                                                     forKey:@"clockBrightnessLevel"];
-        }
-    } else {
-        self.clockBrightnessLevel = 0.6;
-        [[NSUserDefaults standardUserDefaults] setFloat:[[UIScreen mainScreen] brightness]
-                                                 forKey:@"clockBrightnessLevel"];
-
-    }
+//    CGFloat brightness = [userDefaults floatForKey:@"clockBrightnessLevel"];
+//    
+//    if (brightness) {
+//        if (brightness >= 0.0) {
+//            self.clockBrightnessLevel = brightness;
+//        } else {
+//            self.clockBrightnessLevel = 0.6;
+//            [[NSUserDefaults standardUserDefaults] setFloat:[[UIScreen mainScreen] brightness]
+//                                                     forKey:@"clockBrightnessLevel"];
+//        }
+//    } else {
+//        self.clockBrightnessLevel = 0.6;
+//        [[NSUserDefaults standardUserDefaults] setFloat:[[UIScreen mainScreen] brightness]
+//                                                 forKey:@"clockBrightnessLevel"];
+//
+//    }
         
     [UIScreen mainScreen].wantsSoftwareDimming = self.screenWantsSoftwareDimming;
     

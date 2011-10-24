@@ -3,7 +3,7 @@
 //  DarkTime
 //
 //  Created by Eric Knapp on 9/23/11.
-//  Copyright 2011 Eric Knapp. All rights reserved.
+//  Copyright 2011 Dovetail Computing, Inc.. All rights reserved.
 //
 
 #import "DCSettingsTableViewController.h"
@@ -19,6 +19,7 @@
 @property (nonatomic, strong) NSArray *settingsArray;
 @property (nonatomic, strong) UITableViewCell *fontCell;
 @property (nonatomic, strong) UITableViewCell *helpCell;
+@property (nonatomic, strong) UISlider *brightnessSlider;
 
 
 - (void)createAmPmCell:(NSIndexPath *)indexPath 
@@ -45,6 +46,7 @@
 @synthesize settingsArray = _settingsArray;
 @synthesize fontCell = _fontCell;
 @synthesize helpCell = _helpCell;
+@synthesize brightnessSlider = _brightnessSlider;
 
 @synthesize clockViewController = _clockViewController;
 
@@ -222,9 +224,13 @@
 - (void)createBrightnessCell:(NSIndexPath *)indexPath cell:(UITableViewCell *)cell
 {
     CGRect sliderRect = CGRectMake(170, 0, 280, 45);
-    UISlider *slider = [[UISlider alloc] initWithFrame:sliderRect];
-    slider.minimumValue = 0.0;
-    slider.maximumValue = 1.0;
+    
+    if (!self.brightnessSlider) {
+        self.brightnessSlider = [[UISlider alloc] initWithFrame:sliderRect];
+    }
+    
+    self.brightnessSlider.minimumValue = 0.0;
+    self.brightnessSlider.maximumValue = 1.0;
     
     NSString *path = [[NSBundle mainBundle] 
                       pathForResource:@"brightness-dim" 
@@ -232,7 +238,7 @@
 
     UIImage *dim = [[UIImage alloc] initWithContentsOfFile:path];
     
-    slider.minimumValueImage = dim;
+    self.brightnessSlider.minimumValueImage = dim;
     
     path = [[NSBundle mainBundle] 
             pathForResource:@"brightness-bright" 
@@ -240,22 +246,21 @@
     
     UIImage *bright = [[UIImage alloc] initWithContentsOfFile:path];
     
-    slider.maximumValueImage = bright;
+    self.brightnessSlider.maximumValueImage = bright;
     
 
     cell.textLabel.text = [[self.settingsArray objectAtIndex:indexPath.section] 
                            objectForKey:DCSettingsTableViewCellText];
     
-    [slider addTarget:self 
+    [self.brightnessSlider addTarget:self 
                    action:@selector(adjustBrightness:) 
          forControlEvents:UIControlEventValueChanged];
     
-    slider.value = self.clockState.clockBrightnessLevel;
+    self.brightnessSlider.value = self.clockState.clockBrightnessLevel;
     
-    [cell.contentView addSubview:slider];
+    [cell.contentView addSubview:self.brightnessSlider];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
     
 }
 
@@ -344,12 +349,20 @@
 {
     CGFloat brightness = ((UISlider *)sender).value;
     
-    [UIScreen mainScreen].brightness = brightness;
-
+    NSLog(@"adjustBrightness before %f", [UIScreen mainScreen].brightness);
+    
+    if (brightness <= DCMinimumScreenBrightness) {
+        [UIScreen mainScreen].brightness = DCMinimumScreenBrightness;
+    } else {
+        [UIScreen mainScreen].brightness = brightness;
+    }
+    
+    
+    
     self.clockState.clockBrightnessLevel = brightness;
     [self.clockViewController updateClockDisplayColorWithBrightness:brightness];
     [[NSUserDefaults standardUserDefaults] setFloat:brightness forKey:@"clockBrightnessLevel"];
-    
+    NSLog(@"adjustBrightness after %f", [UIScreen mainScreen].brightness);
 }
 
 -(void)toggleSuspendSleep:(id)sender

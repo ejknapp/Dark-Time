@@ -3,7 +3,7 @@
 //  DarkTime
 //
 //  Created by Eric Knapp on 9/20/11.
-//  Copyright 2011 Eric Knapp. All rights reserved.
+//  Copyright 2011 Dovetail Computing, Inc.. All rights reserved.
 //
 
 #import "DarkTimeAppDelegate.h"
@@ -64,11 +64,14 @@
     [[NSUserDefaults standardUserDefaults] setFloat:self.clockState.clockBrightnessLevel 
                                              forKey:@"clockBrightnessLevel"];
     
+    NSLog(@"applicationWillResignActive before %f", [UIScreen mainScreen].brightness);
+    
     [UIScreen mainScreen].brightness = [[NSUserDefaults standardUserDefaults]
                                         floatForKey:@"savedSystemBrightness"];
     
     [self.clockState saveClockState];
 
+    NSLog(@"applicationWillResignActive after %f", [UIScreen mainScreen].brightness);
     
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:NO];
     [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
@@ -111,11 +114,13 @@
     
     [self.clockState loadClockState];
 
+    NSLog(@"applicationDidBecomeActive before %f", [UIScreen mainScreen].brightness);
     [[NSUserDefaults standardUserDefaults] setFloat:[[UIScreen mainScreen] brightness]
                                              forKey:@"savedSystemBrightness"];
     
     [UIScreen mainScreen].brightness = [[NSUserDefaults standardUserDefaults]
                                         floatForKey:@"clockBrightnessLevel"];
+    NSLog(@"applicationDidBecomeActive after %f", [UIScreen mainScreen].brightness);
 
     [self.viewController updateClockDisplayColorWithBrightness:[UIScreen mainScreen].brightness];
 }
@@ -145,9 +150,13 @@
     
     if (!firstTimeFlag || ![defaultsVersion isEqualToString:appVersion]) {
         
+        NSLog(@"firstTime before %f", [UIScreen mainScreen].brightness);
+        
         [UIScreen mainScreen].brightness = 0.6;
         [[NSUserDefaults standardUserDefaults] setFloat:[[UIScreen mainScreen] brightness]
                                                  forKey:@"clockBrightnessLevel"];
+        
+        NSLog(@"firstTime after %f", [UIScreen mainScreen].brightness);
         
         [self.clockState saveClockState];
         

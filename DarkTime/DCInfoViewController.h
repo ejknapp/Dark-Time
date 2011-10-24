@@ -3,7 +3,7 @@
 //  DarkTimePhone
 //
 //  Created by Eric Knapp on 6/22/11.
-//  Copyright 2011 Eric Knapp. All rights reserved.
+//  Copyright 2011 Dovetail Computing, Inc.. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
