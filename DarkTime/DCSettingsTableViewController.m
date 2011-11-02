@@ -349,7 +349,6 @@
 {
     CGFloat brightness = ((UISlider *)sender).value;
     
-    NSLog(@"adjustBrightness before %f", [UIScreen mainScreen].brightness);
     
     if (brightness <= DCMinimumScreenBrightness) {
         [UIScreen mainScreen].brightness = DCMinimumScreenBrightness;
@@ -362,7 +361,6 @@
     self.clockState.clockBrightnessLevel = brightness;
     [self.clockViewController updateClockDisplayColorWithBrightness:brightness];
     [[NSUserDefaults standardUserDefaults] setFloat:brightness forKey:@"clockBrightnessLevel"];
-    NSLog(@"adjustBrightness after %f", [UIScreen mainScreen].brightness);
 }
 
 -(void)toggleSuspendSleep:(id)sender

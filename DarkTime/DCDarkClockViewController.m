@@ -142,14 +142,11 @@
         brightness = DCMinimumScreenBrightness;
     }
     
-    NSLog(@"handleBrightnessSwipeRight before %f", [UIScreen mainScreen].brightness);
     [UIScreen mainScreen].brightness = brightness;
 
     self.clockState.clockBrightnessLevel = brightness;
     [self updateClockDisplayColorWithBrightness:brightness];
     
-    NSLog(@"handleBrightnessSwipeRight after %f", [UIScreen mainScreen].brightness);
-
     [[NSUserDefaults standardUserDefaults] setFloat:brightness forKey:@"clockBrightnessLevel"];
 
 }
