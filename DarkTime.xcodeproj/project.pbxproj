@@ -125,7 +125,6 @@
 		9F43F3D51428DC58003093A8 = {
 			isa = PBXGroup;
 			children = (
-				9F89BB931436B0B7007655C9 /* QuartzCore.framework */,
 				9F89BB251434B523007655C9 /* Entitlements.plist */,
 				9F43F3EA1428DC58003093A8 /* DarkTime */,
 				9F43F3E31428DC58003093A8 /* Frameworks */,
@@ -144,6 +143,7 @@
 		9F43F3E31428DC58003093A8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9F89BB931436B0B7007655C9 /* QuartzCore.framework */,
 				9F43F3E41428DC58003093A8 /* UIKit.framework */,
 				9F43F3E61428DC58003093A8 /* Foundation.framework */,
 				9F43F3E81428DC58003093A8 /* CoreGraphics.framework */,
