@@ -37,7 +37,8 @@
     
     [super viewDidLoad];
         
-    [self updateDisplayFont];
+//    [self updateDisplayFont];
+    
 }
 
 

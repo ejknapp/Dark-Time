@@ -77,7 +77,8 @@
          action:@selector(handleBrightnessSwipeRight:)];
     
     self.brightnessSwipeRight.numberOfTouchesRequired = 1;
-    self.brightnessSwipeRight.direction = UISwipeGestureRecognizerDirectionRight;
+    self.brightnessSwipeRight.direction = UISwipeGestureRecognizerDirectionRight 
+            | UISwipeGestureRecognizerDirectionUp;
     
     [self.view addGestureRecognizer:self.brightnessSwipeRight];
     
@@ -87,7 +88,8 @@
          action:@selector(handleBrightnessSwipeLeft:)];
     
     self.brightnessSwipeLeft.numberOfTouchesRequired = 1;
-    self.brightnessSwipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+    self.brightnessSwipeLeft.direction = UISwipeGestureRecognizerDirectionLeft 
+            | UISwipeGestureRecognizerDirectionDown;
     
     [self.view addGestureRecognizer:self.brightnessSwipeLeft];
 
@@ -98,11 +100,15 @@
                          options:NSKeyValueObservingOptionNew
                          context:NULL];
     
+    NSLog(@"current font index %d", self.clockState.currentFontIndex);
+    
     CGRect screenRect = [[UIScreen mainScreen] applicationFrame];
     [self.clockState changeFontWithFontIndex:self.clockState.currentFontIndex 
                                    viewWidth:screenRect.size.height];
+    
 
-    [self updateDisplayFont];
+//    [self updateDisplayFont];
+    
     
 }
 
@@ -120,6 +126,7 @@
         }
     } 
     
+    NSLog(@"about to call updateDisplayFont");
     [self updateDisplayFont];
     
 }
@@ -202,15 +209,15 @@
 
 -(void)updateDisplayFontWithFontSize:(NSInteger)fontSize
 {
+    NSLog(@"In updateDisplayFontWithFontSize");
+//    CGRect screenRect = [[UIScreen mainScreen] applicationFrame];
+//    CGFloat width = screenRect.size.width;
+//    CGFloat height = screenRect.size.height;
     
-    CGRect screenRect = [[UIScreen mainScreen] applicationFrame];
-    CGFloat width = screenRect.size.width;
-    CGFloat height = screenRect.size.height;
-    
-    CGRect newFrame = CGRectMake(0, (width - self.clockState.currentFont.lineHeight) / 2, 
-                                 height, 
-                                 self.clockState.currentFont.lineHeight);
-    self.timeLabel.frame = newFrame;
+//    CGRect newFrame = CGRectMake(0, (width - self.clockState.currentFont.lineHeight) / 2, 
+//                                 height, 
+//                                 self.clockState.currentFont.lineHeight);
+//    self.timeLabel.frame = newFrame;
     self.timeLabel.font = self.clockState.currentFont;
     self.ampmLabel.font = [self.clockState.currentFont fontWithSize:fontSize];
     self.secondsLabel.font = [self.clockState.currentFont fontWithSize:fontSize];
@@ -254,8 +261,10 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft 
-            || interfaceOrientation == UIInterfaceOrientationLandscapeRight);
+//    return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft 
+//            || interfaceOrientation == UIInterfaceOrientationLandscapeRight);
+
+    return YES;
 }
 
 #pragma mark - View Gesture methods

@@ -78,6 +78,7 @@
                                 initWithRootViewController:self.settingsTableViewController];
 
 
+
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
         
     UIBarButtonItem *done = [[UIBarButtonItem alloc] initWithTitle:@"Done" 
@@ -105,8 +106,10 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft 
-            || interfaceOrientation == UIInterfaceOrientationLandscapeRight);
+//    return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft 
+//            || interfaceOrientation == UIInterfaceOrientationLandscapeRight);
+
+    return YES;
 }
 
 @end
