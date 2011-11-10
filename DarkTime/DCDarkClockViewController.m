@@ -15,6 +15,8 @@
 
 @interface DCDarkClockViewController ()
 
+@property (assign, nonatomic) UIInterfaceOrientation currentOrientation;
+
 -(IBAction)settingsButtonTapped:(id)sender;
 -(void)updateDisplayFont;
 
@@ -36,6 +38,14 @@
 @synthesize secondsLabel = _secondsLabel;
 @synthesize clockSettingsButton = _clockSettingsButton;
 
+@synthesize timeLabelHoursPortrait = _timeLabelHoursPortrait;
+@synthesize timeLabelMinutesPortrait = _timeLabelMinutesPortrait;
+@synthesize ampmLabelPortrait = _ampmLabelPortrait;
+@synthesize secondsLabelPortrait = _secondsLabelPortrait;
+@synthesize clockSettingsButtonPortrait = _clockSettingsButtonPortrait;
+
+@synthesize landscapeView = _landscapeView;
+@synthesize portraitView = _portraitView;
 
 @synthesize savedSeconds = _savedSeconds;
 @synthesize brightnessLevel = _brightnessLevel;
@@ -46,7 +56,7 @@
 @synthesize modalStyle = _modalStyle;
 @synthesize settingsViewNib = _settingsViewNib;
 
-
+@synthesize currentOrientation = _currentOrientation;
 
 - (void)didReceiveMemoryWarning
 {
@@ -61,6 +71,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];    
+ 
+    self.currentOrientation = UIInterfaceOrientationPortrait;
+    
+    self.timeLabelHoursPortrait.text = @"";
+    self.timeLabelMinutesPortrait.text = @"";
+    self.ampmLabelPortrait.text = @"";
+    self.secondsLabelPortrait.text = @"";
     
     self.calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
 
@@ -100,7 +117,7 @@
                          options:NSKeyValueObservingOptionNew
                          context:NULL];
     
-    NSLog(@"current font index %d", self.clockState.currentFontIndex);
+//    NSLog(@"current font index %d", self.clockState.currentFontIndex);
     
     CGRect screenRect = [[UIScreen mainScreen] applicationFrame];
     [self.clockState changeFontWithFontIndex:self.clockState.currentFontIndex 
@@ -126,7 +143,7 @@
         }
     } 
     
-    NSLog(@"about to call updateDisplayFont");
+//    NSLog(@"about to call updateDisplayFont");
     [self updateDisplayFont];
     
 }
@@ -199,6 +216,9 @@
 
 - (void)dismissModalViewControllerAnimated:(BOOL)animated
 {
+    
+    NSLog(@"In super dismiss");
+    
     [self.fontEditor dismissModalViewControllerAnimated:YES];
     
     [[NSURLCache sharedURLCache] removeAllCachedResponses];
@@ -209,18 +229,16 @@
 
 -(void)updateDisplayFontWithFontSize:(NSInteger)fontSize
 {
-    NSLog(@"In updateDisplayFontWithFontSize");
-//    CGRect screenRect = [[UIScreen mainScreen] applicationFrame];
-//    CGFloat width = screenRect.size.width;
-//    CGFloat height = screenRect.size.height;
-    
-//    CGRect newFrame = CGRectMake(0, (width - self.clockState.currentFont.lineHeight) / 2, 
-//                                 height, 
-//                                 self.clockState.currentFont.lineHeight);
-//    self.timeLabel.frame = newFrame;
+//    NSLog(@"In updateDisplayFontWithFontSize");
     self.timeLabel.font = self.clockState.currentFont;
+    self.timeLabelHoursPortrait.font = self.clockState.currentFont;
+    self.timeLabelMinutesPortrait.font = self.clockState.currentFont;
+    
     self.ampmLabel.font = [self.clockState.currentFont fontWithSize:fontSize];
+    self.ampmLabelPortrait.font = [self.clockState.currentFont fontWithSize:fontSize];
+    
     self.secondsLabel.font = [self.clockState.currentFont fontWithSize:fontSize];
+    self.secondsLabelPortrait.font = [self.clockState.currentFont fontWithSize:fontSize];
         
 }
 
@@ -267,6 +285,19 @@
     return YES;
 }
 
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation 
+                                         duration:(NSTimeInterval)duration
+{
+    self.currentOrientation = interfaceOrientation;
+    
+    if (UIInterfaceOrientationIsPortrait(interfaceOrientation)) {
+        [self.view bringSubviewToFront:self.portraitView];
+    } else {
+        [self.view bringSubviewToFront:self.landscapeView];
+    }
+        
+}
+
 #pragma mark - View Gesture methods
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer 
@@ -296,11 +327,25 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
     
     self.savedSeconds = second;
     
-    self.timeLabel.text = [self.clockState currentTimeString];
+    if (self.currentOrientation == UIInterfaceOrientationLandscapeLeft 
+            || self.currentOrientation == UIInterfaceOrientationLandscapeRight) {
+        self.timeLabel.text = [self.clockState currentTimeString];
+        
+        self.secondsLabel.text = [self.clockState currentSecondsString];
+        
+        self.ampmLabel.text = [self.clockState currentAmPmString];
+    } else {
+        self.timeLabelHoursPortrait.text = [self.clockState currentHourString];
+        
+        self.timeLabelMinutesPortrait.text = [self.clockState currentMinutesString];
+        
+        self.secondsLabelPortrait.text = [self.clockState currentSecondsString];
+        
+        self.ampmLabelPortrait.text = [self.clockState currentAmPmString];
+    }
     
-    self.secondsLabel.text = [self.clockState currentSecondsString];
     
-    self.ampmLabel.text = [self.clockState currentAmPmString];
+    
         
 }
 

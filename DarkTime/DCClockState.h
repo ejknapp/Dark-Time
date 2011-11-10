@@ -42,6 +42,8 @@
 -(void)saveClockState;
 
 -(NSString *)currentTimeString;
+-(NSString *)currentHourString;
+-(NSString *)currentMinutesString;
 -(NSString *)currentSecondsString;
 -(NSString *)currentAmPmString;
 

@@ -34,7 +34,7 @@
 
 -(void)doneButtonTapped:(id)sender
 {
-    [self.presentingViewController dismissModalViewControllerAnimated:YES];
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 

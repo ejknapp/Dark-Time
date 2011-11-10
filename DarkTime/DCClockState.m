@@ -151,6 +151,40 @@
     return timeString;
 }
 
+-(NSString *)currentHourString
+{
+    NSDate *now = [NSDate date];
+    NSString *hourString;
+    
+    int hour = [[self.calendar components:NSHourCalendarUnit fromDate:now] hour];
+
+    int displayHour = hour;
+    
+    if (hour > 12) {
+        displayHour -= 12;
+    }
+    
+    if (displayHour == 0) {
+        displayHour = 12;
+    }
+    
+    hourString = [[NSString alloc] initWithFormat:@"%d", displayHour];
+    
+    return hourString;
+}
+
+-(NSString *)currentMinutesString
+{
+    NSDate *now = [NSDate date];
+    NSString *minutesString;
+
+    int minute = [[self.calendar components:NSMinuteCalendarUnit fromDate:now] minute];
+
+    minutesString = [[NSString alloc] initWithFormat:@"%02d", minute];
+    
+    return minutesString;
+}
+
 -(NSString *)currentSecondsString
 {
     
@@ -158,6 +192,7 @@
     int second = [[self.calendar components:NSSecondCalendarUnit fromDate:now] second];
     
     NSString *secondsString;
+    
     
     if (self.displaySeconds) {
         secondsString = [NSString stringWithFormat:@"%02d", second];

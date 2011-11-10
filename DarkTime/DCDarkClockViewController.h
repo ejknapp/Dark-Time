@@ -27,6 +27,15 @@
 @property (nonatomic, strong) IBOutlet UILabel *secondsLabel;
 @property (nonatomic, strong) IBOutlet UIButton *clockSettingsButton;
 
+@property (nonatomic, strong) IBOutlet UILabel *timeLabelHoursPortrait;
+@property (nonatomic, strong) IBOutlet UILabel *timeLabelMinutesPortrait;
+
+@property (nonatomic, strong) IBOutlet UILabel *ampmLabelPortrait;
+@property (nonatomic, strong) IBOutlet UILabel *secondsLabelPortrait;
+@property (nonatomic, strong) IBOutlet UIButton *clockSettingsButtonPortrait;
+
+@property (nonatomic, strong) IBOutlet UIView *landscapeView;
+@property (nonatomic, strong) IBOutlet UIView *portraitView;
 
 @property (nonatomic, assign) NSUInteger savedSeconds;
 @property (nonatomic, assign) CGFloat brightnessLevel;

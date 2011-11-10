@@ -93,7 +93,7 @@
 
     NSDictionary *brightnessSection = [[NSDictionary alloc] initWithObjectsAndKeys:
                                     @"Brightness", DCSettingsTableViewHeader,
-                                    @"Adjust Brightness", DCSettingsTableViewCellText,
+                                    @"", DCSettingsTableViewCellText,
                                     @"You can also swipe left and right on the clock screen to adjust brightness.", DCSettingsTableViewFooter,
                                     @"slider", DCSettingsTableViewCellIdentifier,
                                     nil];
@@ -224,7 +224,7 @@
 {
 
     if (!self.brightnessSlider) {
-        CGRect sliderRect = CGRectMake(170, 0, 280, 45);
+        CGRect sliderRect = CGRectMake(10, 0, 280, 45);
         
         self.brightnessSlider               = [[UISlider alloc] initWithFrame:sliderRect];
         self.brightnessSlider.minimumValue  = 0.0;

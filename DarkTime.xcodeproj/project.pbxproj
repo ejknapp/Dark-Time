@@ -46,6 +46,8 @@
 		9FB4A5C81448EDCD00E1E754 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FB4A5C21448EDCC00E1E754 /* Icon-Small@2x.png */; };
 		9FB4A5C91448EDCD00E1E754 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FB4A5C31448EDCC00E1E754 /* Icon.png */; };
 		9FB4A5CA1448EDCD00E1E754 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FB4A5C41448EDCC00E1E754 /* Icon@2x.png */; };
+		9FCB263E146B0A1000853087 /* dottedLine.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FCB263C146B0A1000853087 /* dottedLine.png */; };
+		9FCB263F146B0A1000853087 /* dottedLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FCB263D146B0A1000853087 /* dottedLine@2x.png */; };
 		9FF89EB014312325002DA909 /* DCInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FF89EAF14312325002DA909 /* DCInfoViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -103,6 +105,8 @@
 		9FB4A5C21448EDCC00E1E754 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
 		9FB4A5C31448EDCC00E1E754 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		9FB4A5C41448EDCC00E1E754 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		9FCB263C146B0A1000853087 /* dottedLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dottedLine.png; sourceTree = "<group>"; };
+		9FCB263D146B0A1000853087 /* dottedLine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dottedLine@2x.png"; sourceTree = "<group>"; };
 		9FF89EAE14312325002DA909 /* DCInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCInfoViewController.h; sourceTree = "<group>"; };
 		9FF89EAF14312325002DA909 /* DCInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCInfoViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -234,6 +238,8 @@
 		9F43F4261428DD08003093A8 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				9FCB263C146B0A1000853087 /* dottedLine.png */,
+				9FCB263D146B0A1000853087 /* dottedLine@2x.png */,
 				9F89BB10143409AE007655C9 /* brightness-bright.png */,
 				9F89BB11143409AE007655C9 /* brightness-dim.png */,
 				9F43F4271428DD21003093A8 /* red-info2.png */,
@@ -345,6 +351,8 @@
 				9FB4A5C81448EDCD00E1E754 /* Icon-Small@2x.png in Resources */,
 				9FB4A5C91448EDCD00E1E754 /* Icon.png in Resources */,
 				9FB4A5CA1448EDCD00E1E754 /* Icon@2x.png in Resources */,
+				9FCB263E146B0A1000853087 /* dottedLine.png in Resources */,
+				9FCB263F146B0A1000853087 /* dottedLine@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
