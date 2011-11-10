@@ -15,8 +15,6 @@
 
 @interface DCDarkClockViewController ()
 
-@property (assign, nonatomic) UIInterfaceOrientation currentOrientation;
-
 -(IBAction)settingsButtonTapped:(id)sender;
 -(void)updateDisplayFont;
 
@@ -56,8 +54,6 @@
 @synthesize modalStyle = _modalStyle;
 @synthesize settingsViewNib = _settingsViewNib;
 
-@synthesize currentOrientation = _currentOrientation;
-
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
@@ -72,7 +68,7 @@
 {
     [super viewDidLoad];    
  
-    self.currentOrientation = UIInterfaceOrientationPortrait;
+    self.clockState.currentOrientation = UIInterfaceOrientationPortrait;
     
     self.timeLabelHoursPortrait.text = @"";
     self.timeLabelMinutesPortrait.text = @"";
@@ -288,7 +284,7 @@
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation 
                                          duration:(NSTimeInterval)duration
 {
-    self.currentOrientation = interfaceOrientation;
+    self.clockState.currentOrientation = interfaceOrientation;
     
     if (UIInterfaceOrientationIsPortrait(interfaceOrientation)) {
         [self.view bringSubviewToFront:self.portraitView];
@@ -327,8 +323,8 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
     
     self.savedSeconds = second;
     
-    if (self.currentOrientation == UIInterfaceOrientationLandscapeLeft 
-            || self.currentOrientation == UIInterfaceOrientationLandscapeRight) {
+    if (self.clockState.currentOrientation == UIInterfaceOrientationLandscapeLeft 
+            || self.clockState.currentOrientation == UIInterfaceOrientationLandscapeRight) {
         self.timeLabel.text = [self.clockState currentTimeString];
         
         self.secondsLabel.text = [self.clockState currentSecondsString];

@@ -183,7 +183,7 @@
 								<reference key="IBUIFont" ref="460677684"/>
 							</object>
 						</object>
-						<string key="NSFrame">{{0, -10}, {320, 480}}</string>
+						<string key="NSFrameSize">{320, 480}</string>
 						<reference key="NSSuperview" ref="874137603"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="733601466"/>
@@ -201,7 +201,7 @@
 							<object class="IBUILabel" id="792979349">
 								<reference key="NSNextResponder" ref="444808117"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{0, 10}, {320, 215}}</string>
+								<string key="NSFrame">{{0, -86}, {320, 400}}</string>
 								<reference key="NSSuperview" ref="444808117"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="721891203"/>
@@ -214,42 +214,49 @@
 								<string key="IBUIText">12</string>
 								<reference key="IBUITextColor" ref="798984047"/>
 								<nil key="IBUIHighlightedColor"/>
-								<int key="IBUIBaselineAdjustment">1</int>
+								<int key="IBUIBaselineAdjustment">0</int>
 								<float key="IBUIMinimumFontSize">10</float>
 								<int key="IBUITextAlignment">1</int>
-								<object class="IBUIFontDescription" key="IBUIFontDescription" id="307792773">
+								<object class="IBUIFontDescription" key="IBUIFontDescription">
 									<string key="name">Futura-CondensedExtraBold</string>
 									<string key="family">Futura</string>
 									<int key="traits">2</int>
-									<double key="pointSize">200</double>
+									<double key="pointSize">190</double>
 								</object>
-								<object class="NSFont" key="IBUIFont" id="279976307">
+								<object class="NSFont" key="IBUIFont">
 									<string key="NSName">Futura-CondensedExtraBold</string>
-									<double key="NSSize">200</double>
+									<double key="NSSize">190</double>
 									<int key="NSfFlags">16</int>
 								</object>
 							</object>
 							<object class="IBUILabel" id="889567957">
 								<reference key="NSNextResponder" ref="444808117"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{0, 243}, {320, 215}}</string>
+								<string key="NSFrame">{{0, 153}, {320, 400}}</string>
 								<reference key="NSSuperview" ref="444808117"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="906595103"/>
 								<string key="NSReuseIdentifierKey">_NS:328</string>
-								<reference key="IBUIBackgroundColor" ref="386437450"/>
+								<reference key="IBUIBackgroundColor" ref="89715914"/>
 								<bool key="IBUIClipsSubviews">YES</bool>
-								<int key="IBUIContentMode">5</int>
-								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<int key="IBUIContentMode">4</int>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<string key="IBUIText">58</string>
 								<reference key="IBUITextColor" ref="798984047"/>
 								<nil key="IBUIHighlightedColor"/>
-								<int key="IBUIBaselineAdjustment">1</int>
 								<float key="IBUIMinimumFontSize">10</float>
 								<int key="IBUITextAlignment">1</int>
-								<reference key="IBUIFontDescription" ref="307792773"/>
-								<reference key="IBUIFont" ref="279976307"/>
+								<object class="IBUIFontDescription" key="IBUIFontDescription">
+									<string key="name">Futura-CondensedExtraBold</string>
+									<string key="family">Futura</string>
+									<int key="traits">2</int>
+									<double key="pointSize">200</double>
+								</object>
+								<object class="NSFont" key="IBUIFont">
+									<string key="NSName">Futura-CondensedExtraBold</string>
+									<double key="NSSize">200</double>
+									<int key="NSfFlags">16</int>
+								</object>
 							</object>
 							<object class="IBUILabel" id="291824343">
 								<reference key="NSNextResponder" ref="444808117"/>
@@ -347,7 +354,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
 				</object>
-				<string key="NSFrameSize">{320, 460}</string>
+				<string key="NSFrameSize">{320, 480}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="191373211"/>
@@ -546,10 +553,10 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="721891203"/>
 							<reference ref="291824343"/>
-							<reference ref="889567957"/>
 							<reference ref="792979349"/>
 							<reference ref="749492670"/>
 							<reference ref="906595103"/>
+							<reference ref="889567957"/>
 						</object>
 						<reference key="parent" ref="874137603"/>
 						<string key="objectName">portrait view</string>

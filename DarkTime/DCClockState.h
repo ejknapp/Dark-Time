@@ -37,6 +37,7 @@
 @property (nonatomic, assign) CGPoint displayCenter;
 
 @property (nonatomic, strong) NSArray *fontNames;
+@property (assign, nonatomic) UIInterfaceOrientation currentOrientation;
 
 -(void)loadClockState;
 -(void)saveClockState;

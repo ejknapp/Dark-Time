@@ -45,6 +45,7 @@
 @synthesize displayCenter = _displayCenter;
 
 @synthesize fontNames = _fontNames;
+@synthesize currentOrientation = _currentOrientation;
 
 -(id)init
 {
@@ -93,18 +94,28 @@
 {
     
     self.currentFontIndex = index;
+    CGFloat fontSize;
+    UIFont *newFont;
     
     self.currentFontName = [self.fontNames objectAtIndex:self.currentFontIndex];
-    UIFont *newFont = [UIFont fontWithName:self.currentFontName size:500];
-
-    CGFloat realFontSize;
-    [DCFontSizeCalculationString sizeWithFont:newFont 
-               minFontSize:24  
-            actualFontSize:&realFontSize 
-                  forWidth:width 
-             lineBreakMode:UILineBreakModeWordWrap];
     
-    self.currentFont = [newFont fontWithSize:realFontSize];
+    
+    if (UIInterfaceOrientationIsPortrait(self.currentOrientation)) {
+        fontSize = 200;
+        self.currentFont = [UIFont fontWithName:self.currentFontName size:fontSize];
+    } else {
+        fontSize = 500;
+        newFont = [UIFont fontWithName:self.currentFontName size:fontSize];
+        CGFloat realFontSize;
+        [DCFontSizeCalculationString sizeWithFont:newFont 
+                                      minFontSize:24  
+                                   actualFontSize:&realFontSize 
+                                         forWidth:width 
+                                    lineBreakMode:UILineBreakModeWordWrap];
+        self.currentFont = [newFont fontWithSize:realFontSize];
+    }
+       
+    NSLog(@"%@, %f, %f, %f, ", self.currentFont, self.currentFont.ascender, self.currentFont.descender, self.currentFont.lineHeight);
     
 }
 
