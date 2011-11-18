@@ -291,7 +291,7 @@
     } else {
         [self.view bringSubviewToFront:self.landscapeView];
     }
-        
+
 }
 
 #pragma mark - View Gesture methods
