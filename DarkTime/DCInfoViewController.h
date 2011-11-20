@@ -9,11 +9,14 @@
 #import <UIKit/UIKit.h>
 
 @class DCClockState;
+@class DCDarkClockViewController;
+
 
 @interface DCInfoViewController : UIViewController <UIWebViewDelegate>
 
 @property (nonatomic, strong) DCClockState *clockState;
 @property (nonatomic, strong) UIWebView *infoWebView;
+@property (nonatomic, weak) DCDarkClockViewController *clockViewController;
 
 -(id)initWithViewFrame:(CGRect)viewFrame;
 

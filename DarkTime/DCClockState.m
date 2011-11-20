@@ -115,7 +115,7 @@
         self.currentFont = [newFont fontWithSize:realFontSize];
     }
        
-    NSLog(@"%@, %f, %f, %f, ", self.currentFont, self.currentFont.ascender, self.currentFont.descender, self.currentFont.lineHeight);
+//    NSLog(@"%@, %f, %f, %f, ", self.currentFont, self.currentFont.ascender, self.currentFont.descender, self.currentFont.lineHeight);
     
 }
 

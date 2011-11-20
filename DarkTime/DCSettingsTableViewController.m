@@ -76,6 +76,12 @@
 
     self.title = @"Clock Settings";
     
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Done" 
+                                                                              style:UIBarButtonItemStylePlain 
+                                                                             target:self 
+                                                                             action:@selector(doneButtonTapped)];
+
+    
     
     NSDictionary *ampmSection = [[NSDictionary alloc] initWithObjectsAndKeys:
                                  @"AM/PM", DCSettingsTableViewHeader,
@@ -129,6 +135,11 @@
                          nil];
 }
 
+-(void)doneButtonTapped
+{
+    [self.presentingViewController dismissModalViewControllerAnimated:YES];
+}
+
 
 -(void)updateFontCellDisplay
 {
@@ -147,13 +158,28 @@
     // e.g. self.myOutlet = nil;
     
     self.settingsArray = nil;
+    self.fontCell = nil;
+    self.helpCell = nil;
+    self.brightnessSlider = nil;
+    
     
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    // Return YES for supported orientations
 	return YES;
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation 
+                                duration:(NSTimeInterval)duration
+{
+    self.clockState.currentOrientation = toInterfaceOrientation;
+    
+    [self.clockViewController switchToOrientationView:self.clockState.currentOrientation];
+    
+    [self.clockViewController.view layoutIfNeeded];
+
+        
 }
 
 #pragma mark - Table view data source
@@ -223,10 +249,14 @@
 - (void)createBrightnessCell:(NSIndexPath *)indexPath cell:(UITableViewCell *)cell
 {
 
+    //UIInterfaceOrientation orientation = 
+    
+    CGRect sliderRect;
     if (!self.brightnessSlider) {
-        CGRect sliderRect = CGRectMake(10, 0, 280, 45);
+        sliderRect = CGRectMake(10, 0, 295, 45);
         
         self.brightnessSlider               = [[UISlider alloc] initWithFrame:sliderRect];
+        self.brightnessSlider.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         self.brightnessSlider.minimumValue  = 0.0;
         self.brightnessSlider.maximumValue  = 1.0;
     }
@@ -378,6 +408,7 @@
         DCFontSelectTableViewController *controller = [[DCFontSelectTableViewController alloc] 
                                                        initWithStyle:UITableViewStyleGrouped];
         controller.clockState = self.clockState;
+        controller.clockViewController = self.clockViewController;
         
         [self.navigationController pushViewController:controller animated:YES];
         
@@ -385,6 +416,8 @@
         DCInfoViewController *controller = [[DCInfoViewController alloc] 
                                             initWithNibName:nil 
                                             bundle:nil];
+        controller.clockViewController = self.clockViewController;
+        controller.clockState = self.clockState;
         
         [self.navigationController pushViewController:controller animated:YES];
         

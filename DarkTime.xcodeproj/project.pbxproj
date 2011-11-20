@@ -30,12 +30,9 @@
 		9F43F4361428DF02003093A8 /* DCDarkClockViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F43F4341428DF02003093A8 /* DCDarkClockViewController_iPad.xib */; };
 		9F59DA9B142D75100020A795 /* DCSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F59DA99142D750F0020A795 /* DCSettingsTableViewController.m */; };
 		9F59DA9C142D75100020A795 /* DCSettingsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F59DA9A142D750F0020A795 /* DCSettingsTableViewController.xib */; };
-		9F59DAAA142D8B250020A795 /* DCSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F59DAA8142D8B250020A795 /* DCSettingsViewController.m */; };
-		9F59DAAB142D8B250020A795 /* DCSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F59DAA9142D8B250020A795 /* DCSettingsViewController.xib */; };
 		9F59DAE8142E5E6C0020A795 /* DCFontSelectTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F59DAE6142E5E6B0020A795 /* DCFontSelectTableViewController.m */; };
 		9F59DAE9142E5E6C0020A795 /* DCFontSelectTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F59DAE7142E5E6B0020A795 /* DCFontSelectTableViewController.xib */; };
 		9F7D215F143F53550024617C /* fontNames.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9F7D215E143F53550024617C /* fontNames.plist */; };
-		9F89BB0B1433F1EB007655C9 /* DCSettingsView_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F89BB0A1433F1EB007655C9 /* DCSettingsView_iPhone.xib */; };
 		9F89BB12143409AE007655C9 /* brightness-bright.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F89BB10143409AE007655C9 /* brightness-bright.png */; };
 		9F89BB13143409AE007655C9 /* brightness-dim.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F89BB11143409AE007655C9 /* brightness-dim.png */; };
 		9F89BB261434B523007655C9 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9F89BB251434B523007655C9 /* Entitlements.plist */; };
@@ -87,14 +84,10 @@
 		9F59DA98142D750F0020A795 /* DCSettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCSettingsTableViewController.h; sourceTree = "<group>"; };
 		9F59DA99142D750F0020A795 /* DCSettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCSettingsTableViewController.m; sourceTree = "<group>"; };
 		9F59DA9A142D750F0020A795 /* DCSettingsTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DCSettingsTableViewController.xib; sourceTree = "<group>"; };
-		9F59DAA7142D8B250020A795 /* DCSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCSettingsViewController.h; sourceTree = "<group>"; };
-		9F59DAA8142D8B250020A795 /* DCSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCSettingsViewController.m; sourceTree = "<group>"; };
-		9F59DAA9142D8B250020A795 /* DCSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DCSettingsViewController.xib; sourceTree = "<group>"; };
 		9F59DAE5142E5E6B0020A795 /* DCFontSelectTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCFontSelectTableViewController.h; sourceTree = "<group>"; };
 		9F59DAE6142E5E6B0020A795 /* DCFontSelectTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCFontSelectTableViewController.m; sourceTree = "<group>"; };
 		9F59DAE7142E5E6B0020A795 /* DCFontSelectTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DCFontSelectTableViewController.xib; sourceTree = "<group>"; };
 		9F7D215E143F53550024617C /* fontNames.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = fontNames.plist; sourceTree = "<group>"; };
-		9F89BB0A1433F1EB007655C9 /* DCSettingsView_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DCSettingsView_iPhone.xib; sourceTree = "<group>"; };
 		9F89BB10143409AE007655C9 /* brightness-bright.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brightness-bright.png"; sourceTree = "<group>"; };
 		9F89BB11143409AE007655C9 /* brightness-dim.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brightness-dim.png"; sourceTree = "<group>"; };
 		9F89BB251434B523007655C9 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
@@ -227,10 +220,6 @@
 				9F59DAE5142E5E6B0020A795 /* DCFontSelectTableViewController.h */,
 				9F59DAE6142E5E6B0020A795 /* DCFontSelectTableViewController.m */,
 				9F59DAE7142E5E6B0020A795 /* DCFontSelectTableViewController.xib */,
-				9F59DAA7142D8B250020A795 /* DCSettingsViewController.h */,
-				9F59DAA8142D8B250020A795 /* DCSettingsViewController.m */,
-				9F59DAA9142D8B250020A795 /* DCSettingsViewController.xib */,
-				9F89BB0A1433F1EB007655C9 /* DCSettingsView_iPhone.xib */,
 			);
 			name = "Clock Classes";
 			sourceTree = "<group>";
@@ -337,10 +326,8 @@
 				9F43F4311428DEE5003093A8 /* DCDarkClockViewController_iPhone.xib in Resources */,
 				9F43F4361428DF02003093A8 /* DCDarkClockViewController_iPad.xib in Resources */,
 				9F59DA9C142D75100020A795 /* DCSettingsTableViewController.xib in Resources */,
-				9F59DAAB142D8B250020A795 /* DCSettingsViewController.xib in Resources */,
 				9F59DAE9142E5E6C0020A795 /* DCFontSelectTableViewController.xib in Resources */,
 				9F0F8C731433791E003B2BAB /* Info in Resources */,
-				9F89BB0B1433F1EB007655C9 /* DCSettingsView_iPhone.xib in Resources */,
 				9F89BB12143409AE007655C9 /* brightness-bright.png in Resources */,
 				9F89BB13143409AE007655C9 /* brightness-dim.png in Resources */,
 				9F89BB261434B523007655C9 /* Entitlements.plist in Resources */,
@@ -373,7 +360,6 @@
 				9F43F4301428DEE5003093A8 /* DCDarkClockViewController_iPhone.m in Sources */,
 				9F43F4351428DF02003093A8 /* DCDarkClockViewController_iPad.m in Sources */,
 				9F59DA9B142D75100020A795 /* DCSettingsTableViewController.m in Sources */,
-				9F59DAAA142D8B250020A795 /* DCSettingsViewController.m in Sources */,
 				9F59DAE8142E5E6C0020A795 /* DCFontSelectTableViewController.m in Sources */,
 				9FF89EB014312325002DA909 /* DCInfoViewController.m in Sources */,
 			);

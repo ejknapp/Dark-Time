@@ -8,6 +8,7 @@
 
 #import "DCInfoViewController.h"
 #import "DCClockState.h"
+#import "DCDarkClockViewController.h"
 
 @interface DCInfoViewController ()
 
@@ -20,6 +21,7 @@
 
 @synthesize clockState = _clockState;
 @synthesize infoWebView = _infoWebView;
+@synthesize clockViewController = _clockViewController;
 
 -(id)initWithViewFrame:(CGRect)viewFrame
 {
@@ -42,7 +44,7 @@
 {
     
     self.view = [[UIView alloc] initWithFrame:CGRectZero];
-    self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+//    self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     self.view.backgroundColor = [UIColor blackColor];
     
@@ -82,8 +84,19 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft 
-            || interfaceOrientation == UIInterfaceOrientationLandscapeRight);
+    return YES;
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation 
+                                duration:(NSTimeInterval)duration
+{
+//    NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d\n\tOrientation\t=>\t%d", __func__, __LINE__, toInterfaceOrientation);
+    self.clockState.currentOrientation = toInterfaceOrientation;
+    
+    [self.clockViewController switchToOrientationView:self.clockState.currentOrientation];
+    
+    [self.clockViewController.view layoutIfNeeded];
+    
 }
 
 - (BOOL)webView:(UIWebView *)webView 

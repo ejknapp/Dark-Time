@@ -11,9 +11,12 @@
 #import "DCSettingsViewController.h"
 #import "DCInfoViewController.h"
 #import "DCClockConstants.h"
+#import "DCSettingsTableViewController.h"
 
 
 @interface DCDarkClockViewController ()
+
+@property (strong, nonatomic) UINavigationController *settingsNavController;
 
 -(IBAction)settingsButtonTapped:(id)sender;
 -(void)updateDisplayFont;
@@ -22,6 +25,8 @@
 
 
 @implementation DCDarkClockViewController
+
+@synthesize settingsNavController = _settingsNavController;
 
 @synthesize brightnessSwipeRight = _brightnessSwipeRight;
 @synthesize brightnessSwipeLeft = _brightnessSwipeLeft;
@@ -49,7 +54,7 @@
 @synthesize brightnessLevel = _brightnessLevel;
 
 
-@synthesize fontEditor = _fontEditor;
+@synthesize settingsEditor = _settingsEditor;
 
 @synthesize modalStyle = _modalStyle;
 @synthesize settingsViewNib = _settingsViewNib;
@@ -134,8 +139,8 @@
     if ([keyPath isEqualToString:@"currentFont"]) {
         [self updateDisplayFont];
         
-        if (self.fontEditor) {
-            [self.fontEditor updateFontCellDisplay];
+        if (self.settingsEditor) {
+            [self.settingsEditor updateFontCellDisplay];
         }
     } 
     
@@ -198,29 +203,52 @@
 - (IBAction)settingsButtonTapped:(id)sender 
 {
     
-    self.fontEditor = [[DCSettingsViewController alloc] 
+    self.settingsEditor = [[DCSettingsTableViewController alloc] 
                                         initWithNibName:self.settingsViewNib
                                         bundle:nil];
-    self.fontEditor.clockViewController = self;
-    self.fontEditor.modalPresentationStyle = self.modalStyle;
-    self.fontEditor.clockState = self.clockState;
+    self.settingsEditor.clockViewController = self;
+    self.settingsEditor.modalPresentationStyle = self.modalStyle;
+    self.settingsEditor.clockState = self.clockState;
+    
+    self.settingsNavController = [[UINavigationController alloc] 
+                                  initWithRootViewController:self.settingsEditor];
+    self.settingsNavController.navigationBar.barStyle = UIBarStyleBlack;
+    self.settingsNavController.modalPresentationStyle = self.modalStyle;
 
-    [self presentModalViewController:self.fontEditor animated:YES];
+    [self presentViewController:self.settingsNavController animated:YES 
+                     completion:
+     ^{
+         
+                     
+    }];
 
 
 }
+
+//- (void)layoutSubviews
+//{
+//    NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
+//    
+//    if (UIInterfaceOrientationIsPortrait(self.clockState.currentOrientation)) {
+//        [self.view bringSubviewToFront:self.portraitView];
+//    } else {
+//        [self.view bringSubviewToFront:self.landscapeView];
+//    }
+//}
 
 - (void)dismissModalViewControllerAnimated:(BOOL)animated
 {
     
     NSLog(@"In super dismiss");
     
-    [self.fontEditor dismissModalViewControllerAnimated:YES];
+    [self.settingsEditor dismissModalViewControllerAnimated:YES];
     
     [[NSURLCache sharedURLCache] removeAllCachedResponses];
     
-    [self.fontEditor.infoController.infoWebView loadHTMLString:@"" baseURL:nil];
-    self.fontEditor = nil;
+//    [self.settingsEditor.infoController.infoWebView loadHTMLString:@"" baseURL:nil];
+    self.settingsEditor = nil;
+    
+    [self switchToOrientationView:self.clockState.currentOrientation];
 }
 
 -(void)updateDisplayFontWithFontSize:(NSInteger)fontSize
@@ -268,29 +296,45 @@
     [self setSecondsLabel:nil];
     
     self.calendar = nil;
+    self.appTimer = nil;
+    self.settingsEditor = nil;
+    self.landscapeView = nil;
+    self.portraitView = nil;
+    self.ampmLabelPortrait = nil;
+    self.timeLabelHoursPortrait = nil;
+    self.timeLabelMinutesPortrait = nil;
+    self.infoController = nil;
+    self.clockSettingsButton = nil;
+    self.secondsLabelPortrait = nil;
+    self.clockSettingsButtonPortrait = nil;
+
     
     [super viewDidUnload];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    // Return YES for supported orientations
-//    return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft 
-//            || interfaceOrientation == UIInterfaceOrientationLandscapeRight);
-
     return YES;
+}
+
+- (void)switchToOrientationView:(UIInterfaceOrientation)interfaceOrientation
+{
+//    NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d\n\tOrientation\t=>\t%d", __func__, __LINE__, interfaceOrientation);
+    if (UIInterfaceOrientationIsPortrait(interfaceOrientation)) {
+        [self.view bringSubviewToFront:self.portraitView];
+    } else {
+        [self.view bringSubviewToFront:self.landscapeView];
+    }
 }
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation 
                                          duration:(NSTimeInterval)duration
 {
     self.clockState.currentOrientation = interfaceOrientation;
-    
-    if (UIInterfaceOrientationIsPortrait(interfaceOrientation)) {
-        [self.view bringSubviewToFront:self.portraitView];
-    } else {
-        [self.view bringSubviewToFront:self.landscapeView];
-    }
+        
+    [self switchToOrientationView:self.clockState.currentOrientation];
+
+    [self.view layoutIfNeeded];
 
 }
 

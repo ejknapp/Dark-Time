@@ -12,6 +12,7 @@
 @class DCClockState;
 @class DCSettingsViewController;
 @class DCInfoViewController;
+@class DCSettingsTableViewController;
 
 
 @interface DCDarkClockViewController : UIViewController <UIGestureRecognizerDelegate> 
@@ -40,7 +41,7 @@
 @property (nonatomic, assign) NSUInteger savedSeconds;
 @property (nonatomic, assign) CGFloat brightnessLevel;
 
-@property (nonatomic, strong) DCSettingsViewController *fontEditor;
+@property (nonatomic, strong) DCSettingsTableViewController *settingsEditor;
 
 @property (nonatomic, strong) UISwipeGestureRecognizer *brightnessSwipeRight;
 @property (nonatomic, strong) UISwipeGestureRecognizer *brightnessSwipeLeft;
@@ -53,6 +54,8 @@
 -(void)updateDisplayFontWithFontSize:(NSInteger)fontSize;
 -(void)updateDisplayFont;
 -(void)updateClockDisplayColorWithBrightness:(CGFloat)brightness;
+-(void)switchToOrientationView:(UIInterfaceOrientation)interfaceOrientation;
+
 
 
 @end

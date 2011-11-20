@@ -20,8 +20,8 @@ NSString * const DCSettingsTableViewCellIdentifier = @"cell-identifier";
 
 NSString * const DCFontSizeCalculationString = @"8:88";
 
-NSString * const DCSettingsViewNibNameiPad = @"DCSettingsViewController";
-NSString * const DCSettingsViewNibNameiPhone = @"DCSettingsView_iPhone";
+NSString * const DCSettingsViewNibNameiPad = @"DCSettingsTableViewController";
+NSString * const DCSettingsViewNibNameiPhone = @"DCSettingsTableViewController";
 
 NSUInteger const iPadAmPmSecondsFontSize = 64;
 NSUInteger const iPhoneAmPmSecondsFontSize = 36;

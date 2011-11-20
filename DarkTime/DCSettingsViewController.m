@@ -34,7 +34,9 @@
 
 -(void)doneButtonTapped:(id)sender
 {
-    [self dismissModalViewControllerAnimated:YES];
+//    [self dismissModalViewControllerAnimated:YES];
+    
+    [self.presentingViewController dismissModalViewControllerAnimated:YES];
 }
 
 
@@ -58,8 +60,9 @@
 -(DCSettingsTableViewController *)createTableViewController
 {
     DCSettingsTableViewController *tableViewController = [[DCSettingsTableViewController alloc] 
-                                                          initWithStyle:UITableViewStyleGrouped];    
-    
+                                                          initWithNibName:@"DCSettingsTableViewController" 
+                                                          bundle:nil];    
+
     tableViewController.clockViewController = self.clockViewController;
     tableViewController.clockState = self.clockState;
 
@@ -67,28 +70,33 @@
 }
 
 
-- (void)viewDidLoad
+- (void)createNavigationController
 {
-    [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.settingsTableViewController = [self createTableViewController];
-        
+    if (!self.settingsTableViewController) {
+        self.settingsTableViewController = [self createTableViewController];
+    }
+    
     self.navigationController = [[UINavigationController alloc] 
-                                initWithRootViewController:self.settingsTableViewController];
-
-
-
+                                 initWithRootViewController:self.settingsTableViewController];
+    
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
-        
+    
     UIBarButtonItem *done = [[UIBarButtonItem alloc] initWithTitle:@"Done" 
                                                              style:UIBarButtonItemStylePlain 
                                                             target:self 
                                                             action:@selector(doneButtonTapped:)];
     
     self.settingsTableViewController.navigationItem.rightBarButtonItem = done;
-  
+    
     [self.view addSubview:self.navigationController.view];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    [self createNavigationController];
 }
 
 - (void)viewDidUnload
@@ -105,11 +113,24 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    // Return YES for supported orientations
-//    return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft 
-//            || interfaceOrientation == UIInterfaceOrientationLandscapeRight);
 
     return YES;
 }
 
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation 
+                                duration:(NSTimeInterval)duration
+{
+    NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d\n\tOrientation\t=>\t%d", __func__, __LINE__, toInterfaceOrientation);
+    NSLog(@"Frame %@, Bounds %@", NSStringFromCGRect(self.view.frame), NSStringFromCGRect(self.view.bounds));
+    self.clockState.currentOrientation = toInterfaceOrientation;
+    
+
+}
+
+
 @end
+
+
+
+
+

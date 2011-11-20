@@ -8,13 +8,14 @@
 
 #import "DCFontSelectTableViewController.h"
 #import "DCClockState.h"
+#import "DCDarkClockViewController.h"
 
 
 @implementation DCFontSelectTableViewController
 
 @synthesize clockState = _clockState;
 @synthesize currentCheckedCell = _currentCheckedCell;
-
+@synthesize clockViewController = _clockViewController;
 
 - (void)didReceiveMemoryWarning
 {
@@ -32,6 +33,25 @@
 
     self.currentCheckedCell = nil;
 }
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    // Return YES for supported orientations
+    return YES;
+}
+
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation 
+                                duration:(NSTimeInterval)duration
+{
+    self.clockState.currentOrientation = toInterfaceOrientation;
+    
+    [self.clockViewController switchToOrientationView:self.clockState.currentOrientation];
+    
+    [self.clockViewController.view layoutIfNeeded];
+
+}
+
 
 
 #pragma mark - Table view data source
