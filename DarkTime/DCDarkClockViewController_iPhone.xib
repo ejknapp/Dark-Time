@@ -51,6 +51,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{0, -86}, {320, 400}}</string>
 								<reference key="NSSuperview" ref="444808117"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="721891203"/>
 								<string key="NSReuseIdentifierKey">_NS:328</string>
 								<object class="NSColor" key="IBUIBackgroundColor" id="386437450">
@@ -70,15 +71,15 @@
 								<int key="IBUIBaselineAdjustment">0</int>
 								<float key="IBUIMinimumFontSize">10</float>
 								<int key="IBUITextAlignment">1</int>
-								<object class="IBUIFontDescription" key="IBUIFontDescription">
+								<object class="IBUIFontDescription" key="IBUIFontDescription" id="832672753">
 									<string key="name">Futura-CondensedExtraBold</string>
 									<string key="family">Futura</string>
 									<int key="traits">2</int>
-									<double key="pointSize">190</double>
+									<double key="pointSize">220</double>
 								</object>
-								<object class="NSFont" key="IBUIFont">
+								<object class="NSFont" key="IBUIFont" id="364920666">
 									<string key="NSName">Futura-CondensedExtraBold</string>
-									<double key="NSSize">190</double>
+									<double key="NSSize">220</double>
 									<int key="NSfFlags">16</int>
 								</object>
 							</object>
@@ -87,6 +88,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{0, 153}, {320, 400}}</string>
 								<reference key="NSSuperview" ref="444808117"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="906595103"/>
 								<string key="NSReuseIdentifierKey">_NS:328</string>
 								<object class="NSColor" key="IBUIBackgroundColor" id="89715914">
@@ -95,29 +97,22 @@
 								</object>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">4</int>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<string key="IBUIText">58</string>
 								<reference key="IBUITextColor" ref="798984047"/>
 								<nil key="IBUIHighlightedColor"/>
 								<float key="IBUIMinimumFontSize">10</float>
 								<int key="IBUITextAlignment">1</int>
-								<object class="IBUIFontDescription" key="IBUIFontDescription">
-									<string key="name">Futura-CondensedExtraBold</string>
-									<string key="family">Futura</string>
-									<int key="traits">2</int>
-									<double key="pointSize">200</double>
-								</object>
-								<object class="NSFont" key="IBUIFont">
-									<string key="NSName">Futura-CondensedExtraBold</string>
-									<double key="NSSize">200</double>
-									<int key="NSfFlags">16</int>
-								</object>
+								<reference key="IBUIFontDescription" ref="832672753"/>
+								<reference key="IBUIFont" ref="364920666"/>
 							</object>
 							<object class="IBUILabel" id="291824343">
 								<reference key="NSNextResponder" ref="444808117"/>
 								<int key="NSvFlags">265</int>
 								<string key="NSFrame">{{257, 440}, {50, 42}}</string>
 								<reference key="NSSuperview" ref="444808117"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="191373211"/>
 								<reference key="IBUIBackgroundColor" ref="89715914"/>
 								<bool key="IBUIOpaque">NO</bool>
@@ -148,6 +143,7 @@
 								<int key="NSvFlags">268</int>
 								<string key="NSFrame">{{7, 440}, {53, 42}}</string>
 								<reference key="NSSuperview" ref="444808117"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="291824343"/>
 								<reference key="IBUIBackgroundColor" ref="89715914"/>
 								<bool key="IBUIOpaque">NO</bool>
@@ -168,6 +164,7 @@
 								<int key="NSvFlags">289</int>
 								<string key="NSFrame">{{271, 1}, {50, 50}}</string>
 								<reference key="NSSuperview" ref="444808117"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="889567957"/>
 								<reference key="IBUIBackgroundColor" ref="89715914"/>
 								<bool key="IBUIOpaque">NO</bool>
@@ -213,6 +210,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{44, 223}, {232, 20}}</string>
 								<reference key="NSSuperview" ref="444808117"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="749492670"/>
 								<string key="NSReuseIdentifierKey">_NS:567</string>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -225,6 +223,7 @@
 						</object>
 						<string key="NSFrameSize">{320, 480}</string>
 						<reference key="NSSuperview" ref="874137603"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="792979349"/>
 						<string key="NSReuseIdentifierKey">_NS:196</string>
 						<reference key="IBUIBackgroundColor" ref="386437450"/>
@@ -240,10 +239,12 @@
 								<int key="NSvFlags">274</int>
 								<string key="NSFrameSize">{320, 480}</string>
 								<reference key="NSSuperview" ref="191373211"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="956256804"/>
 								<reference key="IBUIBackgroundColor" ref="386437450"/>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<string key="IBUIText">12:58</string>
 								<reference key="IBUITextColor" ref="798984047"/>
@@ -255,11 +256,11 @@
 									<string key="name">Futura-CondensedExtraBold</string>
 									<string key="family">Futura</string>
 									<int key="traits">2</int>
-									<double key="pointSize">225</double>
+									<double key="pointSize">300</double>
 								</object>
 								<object class="NSFont" key="IBUIFont">
 									<string key="NSName">Futura-CondensedExtraBold</string>
-									<double key="NSSize">225</double>
+									<double key="NSSize">300</double>
 									<int key="NSfFlags">16</int>
 								</object>
 							</object>
@@ -268,6 +269,7 @@
 								<int key="NSvFlags">265</int>
 								<string key="NSFrame">{{153, 405}, {149, 92}}</string>
 								<reference key="NSSuperview" ref="191373211"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView"/>
 								<reference key="IBUIBackgroundColor" ref="89715914"/>
 								<bool key="IBUIOpaque">NO</bool>
@@ -289,6 +291,7 @@
 								<int key="NSvFlags">289</int>
 								<string key="NSFrame">{{254, 11}, {65, 65}}</string>
 								<reference key="NSSuperview" ref="191373211"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="829008629"/>
 								<reference key="IBUIBackgroundColor" ref="89715914"/>
 								<bool key="IBUIOpaque">NO</bool>
@@ -316,6 +319,7 @@
 								<int key="NSvFlags">268</int>
 								<string key="NSFrame">{{8, 405}, {156, 92}}</string>
 								<reference key="NSSuperview" ref="191373211"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="1006846501"/>
 								<reference key="IBUIBackgroundColor" ref="89715914"/>
 								<bool key="IBUIOpaque">NO</bool>
@@ -334,6 +338,7 @@
 						</object>
 						<string key="NSFrameSize">{320, 480}</string>
 						<reference key="NSSuperview" ref="874137603"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="733601466"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
@@ -344,6 +349,7 @@
 				</object>
 				<string key="NSFrameSize">{320, 480}</string>
 				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="444808117"/>
 				<string key="NSReuseIdentifierKey">_NS:196</string>
 				<reference key="IBUIBackgroundColor" ref="386437450"/>
@@ -448,6 +454,14 @@
 						<reference key="destination" ref="444808117"/>
 					</object>
 					<int key="connectionID">32</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">dottedLine</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="906595103"/>
+					</object>
+					<int key="connectionID">33</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -635,7 +649,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">32</int>
+			<int key="maxID">33</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -662,6 +676,7 @@
 							<string>ampmLabelPortrait</string>
 							<string>clockSettingsButton</string>
 							<string>clockSettingsButtonPortrait</string>
+							<string>dottedLine</string>
 							<string>landscapeView</string>
 							<string>portraitView</string>
 							<string>secondsLabel</string>
@@ -676,6 +691,7 @@
 							<string>UILabel</string>
 							<string>UIButton</string>
 							<string>UIButton</string>
+							<string>UIImageView</string>
 							<string>UIView</string>
 							<string>UIView</string>
 							<string>UILabel</string>
@@ -693,6 +709,7 @@
 							<string>ampmLabelPortrait</string>
 							<string>clockSettingsButton</string>
 							<string>clockSettingsButtonPortrait</string>
+							<string>dottedLine</string>
 							<string>landscapeView</string>
 							<string>portraitView</string>
 							<string>secondsLabel</string>
@@ -718,6 +735,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">clockSettingsButtonPortrait</string>
 								<string key="candidateClassName">UIButton</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">dottedLine</string>
+								<string key="candidateClassName">UIImageView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">landscapeView</string>

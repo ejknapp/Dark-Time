@@ -25,10 +25,12 @@ NSString * const DCSettingsViewNibNameiPhone = @"DCSettingsTableViewController";
 
 NSUInteger const iPadAmPmSecondsFontSize = 64;
 NSUInteger const iPhoneAmPmSecondsFontSize = 36;
+NSUInteger const DCiPhoneLandscapeTimeLabelFontSize = 500;
+NSUInteger const DCiPhonePortraitTimeLabelsFontSize = 220;
 
 CGFloat const DCMinimumScreenBrightness = 0.01;
 
-NSInteger const DCInitialFontIndex = 8;
+NSInteger const DCInitialFontIndex = 7;
 
 @implementation DCClockConstants
 

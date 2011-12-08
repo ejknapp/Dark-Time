@@ -34,6 +34,7 @@
 @property (nonatomic, strong) IBOutlet UILabel *ampmLabelPortrait;
 @property (nonatomic, strong) IBOutlet UILabel *secondsLabelPortrait;
 @property (nonatomic, strong) IBOutlet UIButton *clockSettingsButtonPortrait;
+@property (nonatomic, strong) IBOutlet UIImageView *dottedLine;
 
 @property (nonatomic, strong) IBOutlet UIView *landscapeView;
 @property (nonatomic, strong) IBOutlet UIView *portraitView;
@@ -44,7 +45,9 @@
 @property (nonatomic, strong) DCSettingsTableViewController *settingsEditor;
 
 @property (nonatomic, strong) UISwipeGestureRecognizer *brightnessSwipeRight;
+@property (nonatomic, strong) UISwipeGestureRecognizer *brightnessSwipeUp;
 @property (nonatomic, strong) UISwipeGestureRecognizer *brightnessSwipeLeft;
+@property (nonatomic, strong) UISwipeGestureRecognizer *brightnessSwipeDown;
 @property (nonatomic, assign) UIModalPresentationStyle modalStyle;
 @property (nonatomic, strong) NSString *settingsViewNib;
 

@@ -36,6 +36,8 @@ typedef enum {
 
 extern NSUInteger const iPadAmPmSecondsFontSize;
 extern NSUInteger const iPhoneAmPmSecondsFontSize;
+extern NSUInteger const DCiPhoneLandscapeTimeLabelFontSize;
+extern NSUInteger const DCiPhonePortraitTimeLabelsFontSize;
 
 extern CGFloat const DCMinimumScreenBrightness;
 

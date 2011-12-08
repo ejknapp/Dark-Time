@@ -92,30 +92,18 @@
 
 -(void)changeFontWithFontIndex:(NSInteger)index viewWidth:(CGFloat)width
 {
-    
+
     self.currentFontIndex = index;
     CGFloat fontSize;
-    UIFont *newFont;
     
     self.currentFontName = [self.fontNames objectAtIndex:self.currentFontIndex];
     
-    
     if (UIInterfaceOrientationIsPortrait(self.currentOrientation)) {
-        fontSize = 200;
-        self.currentFont = [UIFont fontWithName:self.currentFontName size:fontSize];
+        fontSize = DCiPhonePortraitTimeLabelsFontSize;
     } else {
-        fontSize = 500;
-        newFont = [UIFont fontWithName:self.currentFontName size:fontSize];
-        CGFloat realFontSize;
-        [DCFontSizeCalculationString sizeWithFont:newFont 
-                                      minFontSize:24  
-                                   actualFontSize:&realFontSize 
-                                         forWidth:width 
-                                    lineBreakMode:UILineBreakModeWordWrap];
-        self.currentFont = [newFont fontWithSize:realFontSize];
+        fontSize = DCiPhoneLandscapeTimeLabelFontSize;
     }
-       
-//    NSLog(@"%@, %f, %f, %f, ", self.currentFont, self.currentFont.ascender, self.currentFont.descender, self.currentFont.lineHeight);
+    self.currentFont = [UIFont fontWithName:self.currentFontName size:fontSize];
     
 }
 
@@ -240,24 +228,7 @@
 {
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    
-//    CGFloat brightness = [userDefaults floatForKey:@"clockBrightnessLevel"];
-//    
-//    if (brightness) {
-//        if (brightness >= 0.0) {
-//            self.clockBrightnessLevel = brightness;
-//        } else {
-//            self.clockBrightnessLevel = 0.6;
-//            [[NSUserDefaults standardUserDefaults] setFloat:[[UIScreen mainScreen] brightness]
-//                                                     forKey:@"clockBrightnessLevel"];
-//        }
-//    } else {
-//        self.clockBrightnessLevel = 0.6;
-//        [[NSUserDefaults standardUserDefaults] setFloat:[[UIScreen mainScreen] brightness]
-//                                                 forKey:@"clockBrightnessLevel"];
-//
-//    }
-        
+            
     [UIScreen mainScreen].wantsSoftwareDimming = self.screenWantsSoftwareDimming;
     
     NSInteger fontIndex = [userDefaults integerForKey:@"currentFontIndex"];

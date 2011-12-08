@@ -20,6 +20,13 @@
 
 -(IBAction)settingsButtonTapped:(id)sender;
 -(void)updateDisplayFont;
+- (void)createLeftSwipeRecognizer;
+- (void)createRightSwipeRecognizer;
+- (void)createUpSwipeRecognizer;
+- (void)createDownSwipeRecognizer;
+
+-(void)handleBrightnessSwipeRight:(UISwipeGestureRecognizer *)recognizer;
+-(void)handleBrightnessSwipeLeft:(UISwipeGestureRecognizer *)recognizer;
 
 @end
 
@@ -29,7 +36,9 @@
 @synthesize settingsNavController = _settingsNavController;
 
 @synthesize brightnessSwipeRight = _brightnessSwipeRight;
+@synthesize brightnessSwipeUp = _brightnessSwipeUp;
 @synthesize brightnessSwipeLeft = _brightnessSwipeLeft;
+@synthesize brightnessSwipeDown = _brightnessSwipeDown;
 @synthesize infoController = _infoController;
 
 @synthesize clockState = _clockState;
@@ -46,6 +55,7 @@
 @synthesize ampmLabelPortrait = _ampmLabelPortrait;
 @synthesize secondsLabelPortrait = _secondsLabelPortrait;
 @synthesize clockSettingsButtonPortrait = _clockSettingsButtonPortrait;
+@synthesize dottedLine = _dottedLine;
 
 @synthesize landscapeView = _landscapeView;
 @synthesize portraitView = _portraitView;
@@ -69,6 +79,7 @@
 
 #pragma mark - View lifecycle
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];    
@@ -89,44 +100,71 @@
                                                     userInfo:nil
                                                      repeats:YES];
     
-    self.brightnessSwipeRight = 
-        [[UISwipeGestureRecognizer alloc] 
-         initWithTarget:self 
-         action:@selector(handleBrightnessSwipeRight:)];
-    
-    self.brightnessSwipeRight.numberOfTouchesRequired = 1;
-    self.brightnessSwipeRight.direction = UISwipeGestureRecognizerDirectionRight 
-            | UISwipeGestureRecognizerDirectionUp;
-    
-    [self.view addGestureRecognizer:self.brightnessSwipeRight];
-    
-    self.brightnessSwipeLeft = 
-        [[UISwipeGestureRecognizer alloc] 
-         initWithTarget:self 
-         action:@selector(handleBrightnessSwipeLeft:)];
-    
-    self.brightnessSwipeLeft.numberOfTouchesRequired = 1;
-    self.brightnessSwipeLeft.direction = UISwipeGestureRecognizerDirectionLeft 
-            | UISwipeGestureRecognizerDirectionDown;
-    
-    [self.view addGestureRecognizer:self.brightnessSwipeLeft];
-
-    
+    [self createRightSwipeRecognizer];
+    [self createLeftSwipeRecognizer];
+    [self createUpSwipeRecognizer];
+    [self createDownSwipeRecognizer];
    
     [self.clockState addObserver:self 
                       forKeyPath:@"currentFont" 
                          options:NSKeyValueObservingOptionNew
                          context:NULL];
     
-//    NSLog(@"current font index %d", self.clockState.currentFontIndex);
-    
     CGRect screenRect = [[UIScreen mainScreen] applicationFrame];
     [self.clockState changeFontWithFontIndex:self.clockState.currentFontIndex 
                                    viewWidth:screenRect.size.height];
     
+}
 
-//    [self updateDisplayFont];
+- (void)viewDidUnload
+{
+    [self setTimeLabel:nil];
+    [self setAmpmLabel:nil];
+    [self setSecondsLabel:nil];
     
+    self.calendar = nil;
+    self.appTimer = nil;
+    self.settingsEditor = nil;
+    self.landscapeView = nil;
+    self.portraitView = nil;
+    self.ampmLabelPortrait = nil;
+    self.timeLabelHoursPortrait = nil;
+    self.timeLabelMinutesPortrait = nil;
+    self.infoController = nil;
+    self.clockSettingsButton = nil;
+    self.secondsLabelPortrait = nil;
+    self.clockSettingsButtonPortrait = nil;
+    
+    
+    [super viewDidUnload];
+}
+
+- (void)dismissModalViewControllerAnimated:(BOOL)animated
+{
+    
+    [self.settingsEditor dismissModalViewControllerAnimated:YES];
+    
+    [[NSURLCache sharedURLCache] removeAllCachedResponses];
+    
+    //    [self.settingsEditor.infoController.infoWebView loadHTMLString:@"" baseURL:nil];
+    self.settingsEditor = nil;
+    
+    [self switchToOrientationView:self.clockState.currentOrientation];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return YES;
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation 
+                                         duration:(NSTimeInterval)duration
+{
+    self.clockState.currentOrientation = interfaceOrientation;
+    
+    [self switchToOrientationView:self.clockState.currentOrientation];
+    
+    [self.view layoutIfNeeded];
     
 }
 
@@ -144,11 +182,67 @@
         }
     } 
     
-//    NSLog(@"about to call updateDisplayFont");
     [self updateDisplayFont];
     
 }
 
+#pragma mark - Create Recognizer methods
+
+- (void)createLeftSwipeRecognizer
+{
+    self.brightnessSwipeLeft = 
+    [[UISwipeGestureRecognizer alloc] 
+     initWithTarget:self 
+     action:@selector(handleBrightnessSwipeLeft:)];
+    
+    self.brightnessSwipeLeft.numberOfTouchesRequired = 1;
+    self.brightnessSwipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+    
+    [self.view addGestureRecognizer:self.brightnessSwipeLeft];
+}
+
+- (void)createRightSwipeRecognizer
+{
+    self.brightnessSwipeRight = 
+    [[UISwipeGestureRecognizer alloc] 
+     initWithTarget:self 
+     action:@selector(handleBrightnessSwipeRight:)];
+    
+    self.brightnessSwipeRight.numberOfTouchesRequired = 1;
+    self.brightnessSwipeRight.direction = UISwipeGestureRecognizerDirectionRight;
+    
+    [self.view addGestureRecognizer:self.brightnessSwipeRight];
+}
+
+- (void)createUpSwipeRecognizer
+{
+    self.brightnessSwipeUp = 
+    [[UISwipeGestureRecognizer alloc] 
+     initWithTarget:self 
+     action:@selector(handleBrightnessSwipeRight:)];
+    
+    self.brightnessSwipeUp.numberOfTouchesRequired = 1;
+    self.brightnessSwipeUp.direction = UISwipeGestureRecognizerDirectionUp;
+    
+    [self.view addGestureRecognizer:self.brightnessSwipeUp];
+}
+
+- (void)createDownSwipeRecognizer
+{
+    self.brightnessSwipeDown = 
+    [[UISwipeGestureRecognizer alloc] 
+     initWithTarget:self 
+     action:@selector(handleBrightnessSwipeLeft:)];
+    
+    self.brightnessSwipeDown.numberOfTouchesRequired = 1;
+    self.brightnessSwipeDown.direction = UISwipeGestureRecognizerDirectionDown;
+    
+    [self.view addGestureRecognizer:self.brightnessSwipeDown];
+}
+
+
+
+#pragma mark - UI methods
 
 -(void)handleBrightnessSwipeRight:(UISwipeGestureRecognizer *)recognizer
 {
@@ -156,7 +250,7 @@
     if (self.clockState.fontEditorDisplayed) {
         return;
     }
-    
+
     CGFloat currentBrightness;
     currentBrightness = self.clockState.clockBrightnessLevel;
     
@@ -172,7 +266,8 @@
     self.clockState.clockBrightnessLevel = brightness;
     [self updateClockDisplayColorWithBrightness:brightness];
     
-    [[NSUserDefaults standardUserDefaults] setFloat:brightness forKey:@"clockBrightnessLevel"];
+    [[NSUserDefaults standardUserDefaults] setFloat:brightness 
+                                             forKey:@"clockBrightnessLevel"];
 
 }
 
@@ -216,44 +311,14 @@
     self.settingsNavController.modalPresentationStyle = self.modalStyle;
 
     [self presentViewController:self.settingsNavController animated:YES 
-                     completion:
-     ^{
-         
-                     
-    }];
-
-
+                     completion:^{ }];
+    
 }
 
-//- (void)layoutSubviews
-//{
-//    NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
-//    
-//    if (UIInterfaceOrientationIsPortrait(self.clockState.currentOrientation)) {
-//        [self.view bringSubviewToFront:self.portraitView];
-//    } else {
-//        [self.view bringSubviewToFront:self.landscapeView];
-//    }
-//}
-
-- (void)dismissModalViewControllerAnimated:(BOOL)animated
-{
-    
-    NSLog(@"In super dismiss");
-    
-    [self.settingsEditor dismissModalViewControllerAnimated:YES];
-    
-    [[NSURLCache sharedURLCache] removeAllCachedResponses];
-    
-//    [self.settingsEditor.infoController.infoWebView loadHTMLString:@"" baseURL:nil];
-    self.settingsEditor = nil;
-    
-    [self switchToOrientationView:self.clockState.currentOrientation];
-}
 
 -(void)updateDisplayFontWithFontSize:(NSInteger)fontSize
 {
-//    NSLog(@"In updateDisplayFontWithFontSize");
+
     self.timeLabel.font = self.clockState.currentFont;
     self.timeLabelHoursPortrait.font = self.clockState.currentFont;
     self.timeLabelMinutesPortrait.font = self.clockState.currentFont;
@@ -284,59 +349,35 @@
 
     color = [UIColor colorWithRed:redFactor green:0.0 blue:0.0 alpha:1.0];
     self.timeLabel.textColor = color;
+    self.timeLabelHoursPortrait.textColor = color;
+    self.timeLabelMinutesPortrait.textColor = color;
     self.ampmLabel.textColor = color;
+    self.ampmLabelPortrait.textColor = color;
     self.secondsLabel.textColor = color;
-    self.clockSettingsButton.alpha = redFactor + 0.2;
+    self.secondsLabelPortrait.textColor = color;
+    self.clockSettingsButton.alpha = redFactor + 0.1;
+    self.clockSettingsButtonPortrait.alpha = redFactor + 0.1;
+    self.dottedLine.alpha = redFactor + 0.1;
 }
 
-- (void)viewDidUnload
-{
-    [self setTimeLabel:nil];
-    [self setAmpmLabel:nil];
-    [self setSecondsLabel:nil];
-    
-    self.calendar = nil;
-    self.appTimer = nil;
-    self.settingsEditor = nil;
-    self.landscapeView = nil;
-    self.portraitView = nil;
-    self.ampmLabelPortrait = nil;
-    self.timeLabelHoursPortrait = nil;
-    self.timeLabelMinutesPortrait = nil;
-    self.infoController = nil;
-    self.clockSettingsButton = nil;
-    self.secondsLabelPortrait = nil;
-    self.clockSettingsButtonPortrait = nil;
 
-    
-    [super viewDidUnload];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return YES;
-}
 
 - (void)switchToOrientationView:(UIInterfaceOrientation)interfaceOrientation
 {
-//    NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d\n\tOrientation\t=>\t%d", __func__, __LINE__, interfaceOrientation);
+
+    CGRect screenRect = [[UIScreen mainScreen] applicationFrame];
+    [self.clockState changeFontWithFontIndex:self.clockState.currentFontIndex 
+                                   viewWidth:screenRect.size.height];
+
     if (UIInterfaceOrientationIsPortrait(interfaceOrientation)) {
         [self.view bringSubviewToFront:self.portraitView];
     } else {
         [self.view bringSubviewToFront:self.landscapeView];
     }
+    
+    
 }
 
-- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation 
-                                         duration:(NSTimeInterval)duration
-{
-    self.clockState.currentOrientation = interfaceOrientation;
-        
-    [self switchToOrientationView:self.clockState.currentOrientation];
-
-    [self.view layoutIfNeeded];
-
-}
 
 #pragma mark - View Gesture methods
 
@@ -370,22 +411,14 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
     if (self.clockState.currentOrientation == UIInterfaceOrientationLandscapeLeft 
             || self.clockState.currentOrientation == UIInterfaceOrientationLandscapeRight) {
         self.timeLabel.text = [self.clockState currentTimeString];
-        
         self.secondsLabel.text = [self.clockState currentSecondsString];
-        
         self.ampmLabel.text = [self.clockState currentAmPmString];
     } else {
         self.timeLabelHoursPortrait.text = [self.clockState currentHourString];
-        
         self.timeLabelMinutesPortrait.text = [self.clockState currentMinutesString];
-        
         self.secondsLabelPortrait.text = [self.clockState currentSecondsString];
-        
         self.ampmLabelPortrait.text = [self.clockState currentAmPmString];
     }
-    
-    
-    
         
 }
 

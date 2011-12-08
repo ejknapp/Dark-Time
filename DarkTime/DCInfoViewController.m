@@ -90,7 +90,7 @@
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation 
                                 duration:(NSTimeInterval)duration
 {
-//    NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d\n\tOrientation\t=>\t%d", __func__, __LINE__, toInterfaceOrientation);
+
     self.clockState.currentOrientation = toInterfaceOrientation;
     
     [self.clockViewController switchToOrientationView:self.clockState.currentOrientation];
