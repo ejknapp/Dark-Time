@@ -39,6 +39,10 @@
 @property (nonatomic, strong) NSArray *fontNames;
 @property (assign, nonatomic) UIInterfaceOrientation currentOrientation;
 
+@property (nonatomic, assign) NSUInteger fontSizeLandscape;
+@property (nonatomic, assign) NSUInteger fontSizePortrait;
+
+
 -(void)loadClockState;
 -(void)saveClockState;
 

@@ -38,6 +38,8 @@ extern NSUInteger const iPadAmPmSecondsFontSize;
 extern NSUInteger const iPhoneAmPmSecondsFontSize;
 extern NSUInteger const DCiPhoneLandscapeTimeLabelFontSize;
 extern NSUInteger const DCiPhonePortraitTimeLabelsFontSize;
+extern NSUInteger const DCiPadLandscapeTimeLabelFontSize;
+extern NSUInteger const DCiPadPortraitTimeLabelsFontSize;
 
 extern CGFloat const DCMinimumScreenBrightness;
 

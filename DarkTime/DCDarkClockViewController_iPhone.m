@@ -21,10 +21,11 @@
     
     self.modalStyle = UIModalPresentationFormSheet;
     self.settingsViewNib = DCSettingsViewNibNameiPhone;
+    self.clockState.fontSizePortrait = DCiPhonePortraitTimeLabelsFontSize;
+    self.clockState.fontSizeLandscape = DCiPhoneLandscapeTimeLabelFontSize;
     
     [super viewDidLoad];
-    
-//    [self updateDisplayFont];
+
 }
 
 

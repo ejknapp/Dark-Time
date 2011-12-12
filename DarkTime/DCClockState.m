@@ -47,6 +47,10 @@
 @synthesize fontNames = _fontNames;
 @synthesize currentOrientation = _currentOrientation;
 
+@synthesize fontSizeLandscape = _fontSizeLandscape;
+@synthesize fontSizePortrait = _fontSizePortrait;
+
+
 -(id)init
 {
     
@@ -99,9 +103,9 @@
     self.currentFontName = [self.fontNames objectAtIndex:self.currentFontIndex];
     
     if (UIInterfaceOrientationIsPortrait(self.currentOrientation)) {
-        fontSize = DCiPhonePortraitTimeLabelsFontSize;
+        fontSize = self.fontSizePortrait;
     } else {
-        fontSize = DCiPhoneLandscapeTimeLabelFontSize;
+        fontSize = self.fontSizeLandscape;
     }
     self.currentFont = [UIFont fontWithName:self.currentFontName size:fontSize];
     

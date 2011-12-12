@@ -17,6 +17,8 @@
 @interface DCDarkClockViewController ()
 
 @property (strong, nonatomic) UINavigationController *settingsNavController;
+@property (assign, nonatomic) CGFloat buttonAlphaLandscape;
+@property (assign, nonatomic) CGFloat dottedLineAlpha;
 
 -(IBAction)settingsButtonTapped:(id)sender;
 -(void)updateDisplayFont;
@@ -68,6 +70,9 @@
 
 @synthesize modalStyle = _modalStyle;
 @synthesize settingsViewNib = _settingsViewNib;
+
+@synthesize buttonAlphaLandscape = _buttonAlphaLandscape;
+@synthesize dottedLineAlpha = _dottedLineAlpha;
 
 - (void)didReceiveMemoryWarning
 {
@@ -358,6 +363,9 @@
     self.clockSettingsButton.alpha = redFactor + 0.1;
     self.clockSettingsButtonPortrait.alpha = redFactor + 0.1;
     self.dottedLine.alpha = redFactor + 0.1;
+    
+    self.buttonAlphaLandscape = self.clockSettingsButton.alpha;
+    self.dottedLineAlpha = self.dottedLine.alpha;
 }
 
 
@@ -368,13 +376,44 @@
     CGRect screenRect = [[UIScreen mainScreen] applicationFrame];
     [self.clockState changeFontWithFontIndex:self.clockState.currentFontIndex 
                                    viewWidth:screenRect.size.height];
+    
 
     if (UIInterfaceOrientationIsPortrait(interfaceOrientation)) {
-        [self.view bringSubviewToFront:self.portraitView];
+        [UIView animateWithDuration:0.5 animations:^{
+            self.timeLabel.alpha = 0.0;
+            self.ampmLabel.alpha = 0.0;
+            self.secondsLabel.alpha = 0.0;
+            self.clockSettingsButton.alpha = 0.0;
+        } completion:^(BOOL finished) {
+            [self.view bringSubviewToFront:self.portraitView];
+            [UIView animateWithDuration:0.5 animations:^{
+                self.timeLabelHoursPortrait.alpha = 1.0;
+                self.timeLabelMinutesPortrait.alpha = 1.0;
+                self.ampmLabelPortrait.alpha = 1.0;
+                self.secondsLabelPortrait.alpha = 1.0;
+                self.clockSettingsButtonPortrait.alpha = self.buttonAlphaLandscape;
+                self.dottedLine.alpha = self.dottedLineAlpha;
+            }];
+        }];
     } else {
-        [self.view bringSubviewToFront:self.landscapeView];
+        [UIView animateWithDuration:0.5 animations:^{
+            self.timeLabelHoursPortrait.alpha = 0.0;
+            self.timeLabelMinutesPortrait.alpha = 0.0;
+            self.ampmLabelPortrait.alpha = 0.0;
+            self.secondsLabelPortrait.alpha = 0.0;
+            self.clockSettingsButtonPortrait.alpha = 0.0;
+            self.dottedLine.alpha = 0.0;
+        } completion:^(BOOL finished) {
+            [self.view bringSubviewToFront:self.landscapeView];
+            [UIView animateWithDuration:0.5 animations:^{
+                self.timeLabel.alpha = 1.0;
+                self.ampmLabel.alpha = 1.0;
+                self.secondsLabel.alpha = 1.0;
+                self.clockSettingsButton.alpha = self.dottedLineAlpha;
+            }];
+        }];
+        
     }
-    
     
 }
 

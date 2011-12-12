@@ -34,10 +34,10 @@
     
     self.modalStyle = UIModalPresentationFormSheet;
     self.settingsViewNib = DCSettingsViewNibNameiPad;
+    self.clockState.fontSizePortrait = DCiPadPortraitTimeLabelsFontSize;
+    self.clockState.fontSizeLandscape = DCiPadLandscapeTimeLabelFontSize;
     
     [super viewDidLoad];
-        
-//    [self updateDisplayFont];
     
 }
 

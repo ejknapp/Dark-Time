@@ -48,9 +48,9 @@
 @property (nonatomic, strong) UISwipeGestureRecognizer *brightnessSwipeUp;
 @property (nonatomic, strong) UISwipeGestureRecognizer *brightnessSwipeLeft;
 @property (nonatomic, strong) UISwipeGestureRecognizer *brightnessSwipeDown;
+
 @property (nonatomic, assign) UIModalPresentationStyle modalStyle;
 @property (nonatomic, strong) NSString *settingsViewNib;
-
 
 -(void)changeDisplayBrightnessWithBrightness:(CGFloat)brightness;
 -(void)updateClock;
