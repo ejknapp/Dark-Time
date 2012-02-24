@@ -33,14 +33,15 @@
 {
     self.clockState = [[DCClockState alloc] init];
     self.viewController.clockState = self.clockState;
-        
+
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];    
+    [[UIApplication sharedApplication] setIdleTimerDisabled:self.clockState.suspendSleep];
+
     UIScreen *screen = [UIScreen mainScreen];    
     screen.wantsSoftwareDimming = NO;
 
     self.window.rootViewController = self.viewController;
     
-    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];    
-    [[UIApplication sharedApplication] setIdleTimerDisabled:self.clockState.suspendSleep];
 
     [self.window addSubview:self.viewController.view];
     [self.window makeKeyAndVisible];

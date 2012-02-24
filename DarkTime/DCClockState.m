@@ -71,7 +71,7 @@
         
         [self createFontsArray];
         
-        _version = @"b7";
+        _version = @"1.0.1";
         
         [self addObserver:self 
                forKeyPath:@"suspendSleep" 

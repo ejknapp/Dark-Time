@@ -92,7 +92,6 @@
 {
 
     self.clockState.currentOrientation = toInterfaceOrientation;
-    
     [self.clockViewController switchToOrientationView:self.clockState.currentOrientation];
     
     [self.clockViewController.view layoutIfNeeded];
