@@ -1,0 +1,93 @@
+Cochin - just right - font x-height: 83.159996
+	Cochin a: 197.339996, d: -55.000000, l: 253.000000
+	Cochin-BoldItalic a: 201.300003, d: -51.480000, l: 254.000000
+	Cochin-Italic a: 194.919998, d: -51.480000, l: 247.000000
+   *Cochin-Bold a: 201.080002, d: -55.000000, l: 257.000000
+
+Baskerville - just right - font x-height: 89.804688
+	Baskerville-SemiBoldItalic a: 198.623047, d: -54.140625, l: 254.000000
+   *Baskerville-Bold a: 197.226562, d: -56.074219, l: 255.000000
+	Baskerville-Italic a: 193.789062, d: -54.140625, l: 249.000000
+	Baskerville-BoldItalic a: 193.574219, d: -54.892578, l: 249.000000
+	Baskerville-SemiBold a: 197.119141, d: -54.355469, l: 253.000000
+	Baskerville a: 197.548828, d: -54.140625, l: 253.000000
+
+Verdana - minutes too low - font x-height: 120.634766
+	Verdana a: 221.181641, d: -46.191406, l: 269.000000
+   *Verdana-Bold a: 221.181641, d: -46.191406, l: 269.000000
+	Verdana-BoldItalic a: 221.181641, d: -46.191406, l: 269.000000
+	Verdana-Italic a: 221.181641, d: -46.191406, l: 269.000000
+
+Marker Felt - minutes too low - font x-height: 134.639999
+   *MarkerFelt-Wide a: 231.000000, d: -55.000000, l: 286.000000
+	MarkerFelt-Thin a: 190.960007, d: -47.959999, l: 239.000000
+
+Courier - minutes too low - font x-height: 100.439453
+   *Courier-Bold a: 198.859375, d: -54.140625, l: 254.000000
+	Courier a: 198.859375, d: -54.140625, l: 254.000000
+	Courier-BoldOblique a: 198.859375, d: -54.140625, l: 254.000000
+	Courier-Oblique a: 198.859375, d: -54.140625, l: 254.000000
+
+American Typewriter - just right - font x-height: 112.199997
+	AmericanTypewriter-CondensedLight a: 181.279999, d: -55.000000, l: 237.000000
+	AmericanTypewriter-Light a: 195.580002, d: -55.000000, l: 251.000000
+   *AmericanTypewriter-Bold a: 208.559998, d: -61.160000, l: 271.000000
+	AmericanTypewriter a: 198.880005, d: -55.000000, l: 254.000000
+	AmericanTypewriter-CondensedBold a: 203.940002, d: -58.520000, l: 263.000000
+	AmericanTypewriter-Condensed a: 193.820007, d: -55.000000, l: 249.000000
+
+Helvetica - just right - font x-height: 117.089844
+	Helvetica-LightOblique a: 202.399994, d: -50.599998, l: 254.000000
+	Helvetica a: 202.404297, d: -50.595703, l: 254.000000
+	Helvetica-Oblique a: 202.404297, d: -50.595703, l: 254.000000
+	Helvetica-BoldOblique a: 202.404297, d: -50.595703, l: 254.000000
+   *Helvetica-Bold a: 202.404297, d: -50.595703, l: 254.000000
+	Helvetica-Light a: 202.399994, d: -50.599998, l: 254.000000
+
+Futura - minutes too high, but acceptable - font x-height: 117.412109
+	Futura-Medium a: 228.486328, d: -57.148438, l: 294.000000
+   *Futura-CondensedExtraBold a: 220.751953, d: -59.404297, l: 288.000000
+	Futura-CondensedMedium a: 216.347656, d: -48.125000, l: 273.000000
+	Futura-MediumItalic a: 228.378906, d: -57.900391, l: 294.000000
+
+Times New Roman - just right - font x-height: 100.439453
+	TimesNewRomanPS-ItalicMT a: 196.044922, d: -47.587891, l: 255.000000
+   *TimesNewRomanPS-BoldMT a: 196.044922, d: -47.587891, l: 255.000000
+	TimesNewRomanPSMT a: 196.044922, d: -47.587891, l: 255.000000
+	TimesNewRomanPS-BoldItalicMT a: 196.044922, d: -47.587891, l: 255.000000
+
+Trebuchet MS - just right - font x-height: 116.123047
+	TrebuchetMS a: 206.572266, d: -48.876953, l: 256.000000
+   *TrebuchetMS-Bold a: 206.572266, d: -48.876953, l: 256.000000
+	TrebuchetMS-Italic a: 206.572266, d: -48.876953, l: 256.000000
+	Trebuchet-BoldItalic a: 206.572266, d: -48.876953, l: 256.000000
+
+
+* Cochin-Bold                 a: 201, d: -55, l: 257, x:  83, x%: 32.2
+* Baskerville-Bold            a: 197, d: -56, l: 255, x:  89, x%: 34.0
+* AmericanTypewriter-Bold     a: 208, d: -61, l: 271, x: 112, x%: 41.3
+* Helvetica-Bold              a: 202, d: -50, l: 254, x: 117, x%: 46.0
+* TimesNewRomanPS-BoldMT      a: 196, d: -47, l: 255, x: 100, x%: 39.2
+* TrebuchetMS-Bold            a: 206, d: -48, l: 256, x: 116, x%: 45.3
++ Futura-CondensedExtraBold   a: 220, d: -59, l: 288, x: 117, x%: 40.6
+
+- Verdana-Bold                a: 221, d: -46, l: 269, x: 120, x%: 44.6
+- MarkerFelt-Wide             a: 231, d: -55, l: 286, x: 134, x%: 46.8
+- Courier-Bold                a: 198, d: -54, l: 254, x: 100, x%: 39.4
+
+
+
+- Fonts that are good
+            Cochin-Bold a: 201.080002, d: -55.000000, l: 257.000000
+       Baskerville-Bold a: 197.226562, d: -56.074219, l: 255.000000
+AmericanTypewriter-Bold a: 208.559998, d: -61.160000, l: 271.000000
+         Helvetica-Bold a: 202.404297, d: -50.595703, l: 254.000000
+ TimesNewRomanPS-BoldMT a: 196.044922, d: -47.587891, l: 255.000000
+       TrebuchetMS-Bold a: 206.572266, d: -48.876953, l: 256.000000
+       
+- Fonts that have minutes too low
+           Verdana-Bold a: 221.181641, d: -46.191406, l: 269.000000
+        MarkerFelt-Wide a: 231.000000, d: -55.000000, l: 286.000000
+           Courier-Bold a: 198.859375, d: -54.140625, l: 254.000000
+       
+       

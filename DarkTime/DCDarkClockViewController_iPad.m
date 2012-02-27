@@ -36,6 +36,11 @@
     self.settingsViewNib = DCSettingsViewNibNameiPad;
     self.clockState.fontSizePortrait = DCiPadPortraitTimeLabelsFontSize;
     self.clockState.fontSizeLandscape = DCiPadLandscapeTimeLabelFontSize;
+    self.clockState.device = DCIDarkTimeDeviceiPad;
+    self.clockState.timeLabelPortraitFrame = self.timeLabelMinutesPortrait.frame;
+    
+    NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
+    [self updateDisplayFontWithFontSize:iPadAmPmSecondsFontSize];
     
     [super viewDidLoad];
     

@@ -6,6 +6,7 @@
 //  Copyright 2011 Dovetail Computing, Inc. All rights reserved.
 //
 
+#import <CoreText/CoreText.h>
 #import "DCDarkClockViewController.h"
 #import "DCClockState.h"
 #import "DCSettingsViewController.h"
@@ -89,17 +90,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];   
-    
-    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
-    UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
-    if (UIDeviceOrientationIsLandscape(orientation)) {
-        [self.view bringSubviewToFront:self.landscapeView];
-    } else {
-        [self.view bringSubviewToFront:self.portraitView];
-    }
-
-    self.clockState.currentOrientation = (UIInterfaceOrientation)orientation;
-    
+        
     self.timeLabelHoursPortrait.text = @"";
     self.timeLabelMinutesPortrait.text = @"";
     self.ampmLabelPortrait.text = @"";
@@ -166,7 +157,7 @@
     //    [self.settingsEditor.infoController.infoWebView loadHTMLString:@"" baseURL:nil];
     self.settingsEditor = nil;
     
-    [self switchToOrientationView:self.clockState.currentOrientation];
+//    [self switchToOrientationView:self.clockState.currentOrientation];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -178,7 +169,7 @@
                                          duration:(NSTimeInterval)duration
 {
     self.clockState.currentOrientation = interfaceOrientation;
-    
+        
     [self switchToOrientationView:self.clockState.currentOrientation];
     
     [self.view layoutIfNeeded];
@@ -345,6 +336,51 @@
     
     self.secondsLabel.font = [self.clockState.currentFont fontWithSize:fontSize];
     self.secondsLabelPortrait.font = [self.clockState.currentFont fontWithSize:fontSize];
+    
+    
+    CGFloat newOriginY;
+    if (UIInterfaceOrientationIsPortrait(self.clockState.currentOrientation)) {
+        self.timeLabelMinutesPortrait.frame = self.clockState.timeLabelPortraitFrame;
+        if ([self.clockState.currentFont.fontName isEqualToString:@"Verdana-Bold"]) {
+            CGRect frame = self.timeLabelMinutesPortrait.frame;
+            if (self.clockState.device == DCIDarkTimeDeviceiPhone) {
+                newOriginY = frame.origin.y - 13;
+            } else {
+                newOriginY = frame.origin.y - 25;
+            }
+            CGRect newFrame = CGRectMake(frame.origin.x, newOriginY, frame.size.width, frame.size.height);
+            self.timeLabelMinutesPortrait.frame = newFrame;
+        } else if ([self.clockState.currentFont.fontName isEqualToString:@"MarkerFelt-Wide"]) {
+            CGRect frame = self.timeLabelMinutesPortrait.frame;
+            if (self.clockState.device == DCIDarkTimeDeviceiPhone) {
+                newOriginY = frame.origin.y - 13;
+            } else {
+                newOriginY = frame.origin.y - 30;
+            }
+            CGRect newFrame = CGRectMake(frame.origin.x, newOriginY, frame.size.width, frame.size.height);
+            self.timeLabelMinutesPortrait.frame = newFrame;
+        } else if ([self.clockState.currentFont.fontName isEqualToString:@"Courier-Bold"]) {
+            CGRect frame = self.timeLabelMinutesPortrait.frame;
+            if (self.clockState.device == DCIDarkTimeDeviceiPhone) {
+                newOriginY = frame.origin.y - 8;
+            } else {
+                newOriginY = frame.origin.y - 8;
+            }
+            CGRect newFrame = CGRectMake(frame.origin.x, newOriginY, frame.size.width, frame.size.height);
+            self.timeLabelMinutesPortrait.frame = newFrame;
+        } else if ([self.clockState.currentFont.fontName isEqualToString:@"Futura-CondensedExtraBold"]) {
+            CGRect frame = self.timeLabelMinutesPortrait.frame;
+            if (self.clockState.device == DCIDarkTimeDeviceiPhone) {
+                newOriginY = frame.origin.y + 10;
+            } else {
+                newOriginY = frame.origin.y + 20;
+            }
+            CGRect newFrame = CGRectMake(frame.origin.x, newOriginY, frame.size.width, frame.size.height);
+            self.timeLabelMinutesPortrait.frame = newFrame;
+        }
+    }
+    
+    
         
 }
 
@@ -378,6 +414,25 @@
     
     self.buttonAlphaLandscape = self.clockSettingsButton.alpha;
     self.dottedLineAlpha = self.dottedLine.alpha;
+    
+    UIFont *hourFont = self.timeLabelHoursPortrait.font;
+    UIFont *minsFont = self.timeLabelMinutesPortrait.font;
+    
+    CGFloat actualSizeHours;
+    CGFloat actualSizeMins;
+    
+    [self.timeLabelHoursPortrait.text sizeWithFont:hourFont 
+                                       minFontSize:10 
+                                    actualFontSize:&actualSizeHours 
+                                          forWidth:320 
+                                     lineBreakMode:UILineBreakModeTailTruncation];
+
+    [self.timeLabelMinutesPortrait.text sizeWithFont:minsFont 
+                                         minFontSize:10 
+                                      actualFontSize:&actualSizeMins 
+                                            forWidth:320 
+                                       lineBreakMode:UILineBreakModeTailTruncation];
+    
 }
 
 

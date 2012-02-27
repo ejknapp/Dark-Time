@@ -33,6 +33,10 @@ typedef enum {
     DCDarkTimeSettingsRowHelp,
 } DCDarkTimeSettingsRow;
 
+typedef enum {
+    DCIDarkTimeDeviceiPhone = 0,
+    DCIDarkTimeDeviceiPad
+} DCIDarkTimeDevice;
 
 extern NSUInteger const iPadAmPmSecondsFontSize;
 extern NSUInteger const iPhoneAmPmSecondsFontSize;

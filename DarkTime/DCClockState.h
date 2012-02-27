@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DCClockConstants.h"
 
 
 @interface DCClockState : NSObject
@@ -41,6 +42,9 @@
 
 @property (nonatomic, assign) NSUInteger fontSizeLandscape;
 @property (nonatomic, assign) NSUInteger fontSizePortrait;
+
+@property (assign, nonatomic) CGRect timeLabelPortraitFrame;
+@property (assign, nonatomic) DCIDarkTimeDevice device;
 
 
 -(void)loadClockState;

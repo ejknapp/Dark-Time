@@ -50,6 +50,9 @@
 @synthesize fontSizeLandscape = _fontSizeLandscape;
 @synthesize fontSizePortrait = _fontSizePortrait;
 
+@synthesize timeLabelPortraitFrame = _timeLabelPortraitFrame;
+@synthesize device = _device;
+
 
 -(id)init
 {
@@ -62,6 +65,7 @@
         
         _calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
         _clockBrightnessLevel = 0.6;
+        _currentOrientation = UIInterfaceOrientationPortrait;
         
         _displayAmPm = YES;
         _displaySeconds = YES;
