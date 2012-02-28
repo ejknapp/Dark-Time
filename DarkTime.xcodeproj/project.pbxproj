@@ -28,6 +28,9 @@
 		9F43F4311428DEE5003093A8 /* DCDarkClockViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F43F42F1428DEE5003093A8 /* DCDarkClockViewController_iPhone.xib */; };
 		9F43F4351428DF02003093A8 /* DCDarkClockViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F43F4331428DF02003093A8 /* DCDarkClockViewController_iPad.m */; };
 		9F43F4361428DF02003093A8 /* DCDarkClockViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F43F4341428DF02003093A8 /* DCDarkClockViewController_iPad.xib */; };
+		9F50656C14FC7C3B00EA2EA9 /* fontData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9F50656B14FC7C3B00EA2EA9 /* fontData.plist */; };
+		9F50657014FC805F00EA2EA9 /* DCIFontManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F50656F14FC805F00EA2EA9 /* DCIFontManager.m */; };
+		9F50657414FC827B00EA2EA9 /* DCIFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F50657314FC827B00EA2EA9 /* DCIFont.m */; };
 		9F59DA9B142D75100020A795 /* DCSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F59DA99142D750F0020A795 /* DCSettingsTableViewController.m */; };
 		9F59DA9C142D75100020A795 /* DCSettingsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F59DA9A142D750F0020A795 /* DCSettingsTableViewController.xib */; };
 		9F59DAE8142E5E6C0020A795 /* DCFontSelectTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F59DAE6142E5E6B0020A795 /* DCFontSelectTableViewController.m */; };
@@ -82,6 +85,11 @@
 		9F43F4321428DF02003093A8 /* DCDarkClockViewController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCDarkClockViewController_iPad.h; sourceTree = "<group>"; };
 		9F43F4331428DF02003093A8 /* DCDarkClockViewController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCDarkClockViewController_iPad.m; sourceTree = "<group>"; };
 		9F43F4341428DF02003093A8 /* DCDarkClockViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DCDarkClockViewController_iPad.xib; sourceTree = "<group>"; };
+		9F50656B14FC7C3B00EA2EA9 /* fontData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = fontData.plist; sourceTree = "<group>"; };
+		9F50656E14FC805F00EA2EA9 /* DCIFontManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCIFontManager.h; sourceTree = "<group>"; };
+		9F50656F14FC805F00EA2EA9 /* DCIFontManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCIFontManager.m; sourceTree = "<group>"; };
+		9F50657214FC827B00EA2EA9 /* DCIFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCIFont.h; sourceTree = "<group>"; };
+		9F50657314FC827B00EA2EA9 /* DCIFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCIFont.m; sourceTree = "<group>"; };
 		9F59DA98142D750F0020A795 /* DCSettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCSettingsTableViewController.h; sourceTree = "<group>"; };
 		9F59DA99142D750F0020A795 /* DCSettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCSettingsTableViewController.m; sourceTree = "<group>"; };
 		9F59DA9A142D750F0020A795 /* DCSettingsTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DCSettingsTableViewController.xib; sourceTree = "<group>"; };
@@ -180,6 +188,7 @@
 				9F43F3ED1428DC58003093A8 /* InfoPlist.strings */,
 				9F43F3F01428DC58003093A8 /* main.m */,
 				9F7D215E143F53550024617C /* fontNames.plist */,
+				9F50656B14FC7C3B00EA2EA9 /* fontData.plist */,
 				9F43F3F21428DC58003093A8 /* DarkTime-Prefix.pch */,
 			);
 			name = "Supporting Files";
@@ -218,6 +227,7 @@
 				9F43F40E1428DCB7003093A8 /* DCClockState.m */,
 				9F43F40F1428DCB7003093A8 /* DCClockConstants.h */,
 				9F43F4101428DCB7003093A8 /* DCClockConstants.m */,
+				9F50657114FC81B400EA2EA9 /* Fonts */,
 				9F59DA98142D750F0020A795 /* DCSettingsTableViewController.h */,
 				9F59DA99142D750F0020A795 /* DCSettingsTableViewController.m */,
 				9F59DA9A142D750F0020A795 /* DCSettingsTableViewController.xib */,
@@ -259,6 +269,17 @@
 				9F43F4341428DF02003093A8 /* DCDarkClockViewController_iPad.xib */,
 			);
 			name = iPad;
+			sourceTree = "<group>";
+		};
+		9F50657114FC81B400EA2EA9 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				9F50656E14FC805F00EA2EA9 /* DCIFontManager.h */,
+				9F50656F14FC805F00EA2EA9 /* DCIFontManager.m */,
+				9F50657214FC827B00EA2EA9 /* DCIFont.h */,
+				9F50657314FC827B00EA2EA9 /* DCIFont.m */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 		9FF89EAD1431230F002DA909 /* Info Controller */ = {
@@ -344,6 +365,7 @@
 				9FB4A5CA1448EDCD00E1E754 /* Icon@2x.png in Resources */,
 				9FCB263E146B0A1000853087 /* dottedLine.png in Resources */,
 				9FCB263F146B0A1000853087 /* dottedLine@2x.png in Resources */,
+				9F50656C14FC7C3B00EA2EA9 /* fontData.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,6 +388,8 @@
 				9F59DA9B142D75100020A795 /* DCSettingsTableViewController.m in Sources */,
 				9F59DAE8142E5E6C0020A795 /* DCFontSelectTableViewController.m in Sources */,
 				9FF89EB014312325002DA909 /* DCInfoViewController.m in Sources */,
+				9F50657014FC805F00EA2EA9 /* DCIFontManager.m in Sources */,
+				9F50657414FC827B00EA2EA9 /* DCIFont.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

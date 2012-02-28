@@ -8,6 +8,7 @@
 
 #import "DCClockState.h"
 #import "DCClockConstants.h"
+#import "DCIFontManager.h"
 
 @interface DCClockState ()
 
@@ -123,6 +124,8 @@
 
     self.currentFontIndex = DCInitialFontIndex;
     [self changeFontWithFontIndex:self.currentFontIndex viewWidth:480];
+    
+//    DCIFontManager *fontManager = [[DCIFontManager alloc] init];
 }
 
 - (NSString *)applicationDocumentsDirectory

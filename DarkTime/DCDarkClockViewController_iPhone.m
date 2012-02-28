@@ -26,7 +26,6 @@
     self.clockState.device = DCIDarkTimeDeviceiPhone;
     self.clockState.timeLabelPortraitFrame = self.timeLabelMinutesPortrait.frame;
     
-    NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
     [self updateDisplayFontWithFontSize:iPhoneAmPmSecondsFontSize];
     
     [super viewDidLoad];

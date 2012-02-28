@@ -63,17 +63,17 @@ Trebuchet MS - just right - font x-height: 116.123047
 	Trebuchet-BoldItalic a: 206.572266, d: -48.876953, l: 256.000000
 
 
-* Cochin-Bold                 a: 201, d: -55, l: 257, x:  83, x%: 32.2
-* Baskerville-Bold            a: 197, d: -56, l: 255, x:  89, x%: 34.0
-* AmericanTypewriter-Bold     a: 208, d: -61, l: 271, x: 112, x%: 41.3
-* Helvetica-Bold              a: 202, d: -50, l: 254, x: 117, x%: 46.0
-* TimesNewRomanPS-BoldMT      a: 196, d: -47, l: 255, x: 100, x%: 39.2
-* TrebuchetMS-Bold            a: 206, d: -48, l: 256, x: 116, x%: 45.3
-+ Futura-CondensedExtraBold   a: 220, d: -59, l: 288, x: 117, x%: 40.6
-
-- Verdana-Bold                a: 221, d: -46, l: 269, x: 120, x%: 44.6
-- MarkerFelt-Wide             a: 231, d: -55, l: 286, x: 134, x%: 46.8
-- Courier-Bold                a: 198, d: -54, l: 254, x: 100, x%: 39.4
+* Cochin-Bold                 a: 201, d: -55, l: 257, x:  83, cap: 144, box: {{-108,  -55}, {526, 275}}
+* Baskerville-Bold            a: 197, d: -56, l: 255, x:  89, cap: 146, box: {{-118,  -56}, {370, 256}}
+* AmericanTypewriter-Bold     a: 208, d: -61, l: 271, x: 112, cap: 149, box: {{-113,  -95}, {590, 359}}
+* Helvetica-Bold              a: 202, d: -50, l: 254, x: 117, cap: 158, box: {{-223, -105}, {539, 360}}
+* TimesNewRomanPS-BoldMT      a: 196, d: -47, l: 255, x: 100, cap: 145, box: {{-122,  -67}, {562, 293}}
+* TrebuchetMS-Bold            a: 206, d: -48, l: 256, x: 116, cap: 158, box: {{ -22,  -59}, {270, 275}}
++ Futura-CondensedExtraBold   a: 220, d: -59, l: 288, x: 117, cap: 167, box: {{-145,  -71}, {390, 302}}
+                                                                      
+- Verdana-Bold                a: 221, d: -46, l: 269, x: 120, cap: 159, box: {{-119,  -66}, {495, 289}}
+- MarkerFelt-Wide             a: 231, d: -55, l: 286, x: 134, cap: 185, box: {{-133,  -47}, {349, 269}}
+- Courier-Bold                a: 198, d: -54, l: 254, x: 100, cap: 129, box: {{-144,  -88}, {316, 334}}
 
 
 
