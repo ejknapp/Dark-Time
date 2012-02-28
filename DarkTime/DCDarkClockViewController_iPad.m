@@ -20,7 +20,7 @@
 
 -(void)updateDisplayFont
 {
-    
+    NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
     [self updateDisplayFontWithFontSize:iPadAmPmSecondsFontSize];
         
 }
@@ -38,7 +38,9 @@
     self.clockState.fontSizeLandscape = DCiPadLandscapeTimeLabelFontSize;
     self.clockState.device = DCIDarkTimeDeviceiPad;
     self.clockState.timeLabelPortraitFrame = self.timeLabelMinutesPortrait.frame;
-    
+    self.clockState.timeHourLabelPortraitFrame = self.timeLabelHoursPortrait.frame;
+
+    NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
     [self updateDisplayFontWithFontSize:iPadAmPmSecondsFontSize];
     
     [super viewDidLoad];

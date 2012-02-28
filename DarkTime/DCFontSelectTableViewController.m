@@ -9,6 +9,7 @@
 #import "DCFontSelectTableViewController.h"
 #import "DCClockState.h"
 #import "DCDarkClockViewController.h"
+#import "DCIFontManager.h"
 
 
 @implementation DCFontSelectTableViewController
@@ -69,7 +70,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {    
-    return [self.clockState.fontNames count];
+    return [self.clockState.fontManager fontCount];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -83,7 +84,7 @@
     }
     
     cell.selectionStyle = UITableViewCellSelectionStyleGray;
-    NSString *fontName = [self.clockState.fontNames objectAtIndex:indexPath.row];
+    NSString *fontName = [self.clockState.fontManager fontNameAtIndex:indexPath.row];
     cell.textLabel.text = [[NSString alloc] initWithFormat:@"%@ - 6:34", fontName];
 
     cell.textLabel.font = [UIFont fontWithName:fontName size:19];

@@ -7,11 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DCClockConstants.h"
 
 @interface DCIFont : NSObject
 
 @property (strong, nonatomic, readonly) NSString *fontName;
 
 - (id)initWithFontDictionary:(NSDictionary *)fontDictionary;
+-(CGSize)minuteOffsetWithDevice:(DCIDarkTimeDevice)device;
+-(CGSize)hourOffsetWithDevice:(DCIDarkTimeDevice)device;
 
 @end

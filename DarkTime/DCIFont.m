@@ -7,14 +7,15 @@
 //
 
 #import "DCIFont.h"
+#import "DCClockConstants.h"
 
 @interface DCIFont ()
 
 @property (strong, nonatomic, readwrite) NSString *fontName;
-@property (strong, nonatomic) NSNumber *iPhoneHourFrameOffsetY;
-@property (strong, nonatomic) NSNumber *iPhoneMinuteFrameOffsetY;
-@property (strong, nonatomic) NSNumber *iPadHourFrameOffsetY;
-@property (strong, nonatomic) NSNumber *iPadMinuteFrameOffsetY;
+@property (assign, nonatomic) CGSize iPhoneHourFrameOffset;
+@property (assign, nonatomic) CGSize iPhoneMinuteFrameOffset;
+@property (assign, nonatomic) CGSize iPadHourFrameOffset;
+@property (assign, nonatomic) CGSize iPadMinuteFrameOffset;
 
 @end
 
@@ -22,29 +23,51 @@
 @implementation DCIFont
 
 @synthesize fontName = _fontName;
-@synthesize iPhoneHourFrameOffsetY = _iPhoneHourFrameOffsetY;
-@synthesize iPhoneMinuteFrameOffsetY = _iPhoneMinuteFrameOffsetY;
-@synthesize iPadHourFrameOffsetY = _iPadHourFrameOffsetY;
-@synthesize iPadMinuteFrameOffsetY = _iPadMinuteFrameOffsetY;
+@synthesize iPhoneHourFrameOffset = _iPhoneHourFrameOffset;
+@synthesize iPhoneMinuteFrameOffset = _iPhoneMinuteFrameOffset;
+@synthesize iPadHourFrameOffset = _iPadHourFrameOffset;
+@synthesize iPadMinuteFrameOffset = _iPadMinuteFrameOffset;
 
 - (id)initWithFontDictionary:(NSDictionary *)fontDictionary
 {
     self = [super init];
     if (self) {
         _fontName = [fontDictionary objectForKey:@"fontName"];
-        _iPhoneHourFrameOffsetY = (NSNumber *)[fontDictionary objectForKey:@"iPhoneHourFrameOffsetY"];
-        _iPhoneMinuteFrameOffsetY = (NSNumber *)[fontDictionary objectForKey:@"iPhoneMinuteFrameOffsetY"];
-        _iPadHourFrameOffsetY = (NSNumber *)[fontDictionary objectForKey:@"iPadHourFrameOffsetY"];
-        _iPadMinuteFrameOffsetY = (NSNumber *)[fontDictionary objectForKey:@"iPadMinuteFrameOffsetY"];
+        _iPhoneHourFrameOffset = CGSizeFromString([fontDictionary objectForKey:@"iPhoneHourFrameOffset"]);
+        _iPhoneMinuteFrameOffset = CGSizeFromString([fontDictionary objectForKey:@"iPhoneMinuteFrameOffset"]);
+        _iPadHourFrameOffset = CGSizeFromString([fontDictionary objectForKey:@"iPadHourFrameOffset"]);
+        _iPadMinuteFrameOffset = CGSizeFromString([fontDictionary objectForKey:@"iPadMinuteFrameOffset"]);
     }
     return self;
 }
 
+-(CGSize)minuteOffsetWithDevice:(DCIDarkTimeDevice)device;
+{
+    
+    if (device == DCIDarkTimeDeviceiPad) {
+        return self.iPadMinuteFrameOffset;
+    } else {
+        return self.iPhoneMinuteFrameOffset;
+    }
+}
+
+-(CGSize)hourOffsetWithDevice:(DCIDarkTimeDevice)device;
+{
+    if (device == DCIDarkTimeDeviceiPad) {
+        return self.iPadHourFrameOffset;
+    } else {
+        return self.iPhoneHourFrameOffset;
+    }
+    
+}
+
+
+
 -(NSString *)description
 {
     return [[NSString alloc] initWithFormat:@"DCIFont: %@, %@, %@, %@, %@", 
-            self.fontName, self.iPhoneHourFrameOffsetY, self.iPhoneMinuteFrameOffsetY,
-            self.iPadHourFrameOffsetY, self.iPadMinuteFrameOffsetY];
+            self.fontName, NSStringFromCGSize(self.iPhoneHourFrameOffset), NSStringFromCGSize(self.iPhoneMinuteFrameOffset),
+            NSStringFromCGSize(self.iPadHourFrameOffset), NSStringFromCGSize(self.iPadMinuteFrameOffset)];
 }
 
 

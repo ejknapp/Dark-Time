@@ -16,7 +16,7 @@
 @property (assign, nonatomic) NSInteger currentFontIndex;
 @property (strong, nonatomic) NSMutableDictionary *fonts;
 
--(void)loadFontDictionaries;
+
 
 @end
 
@@ -27,12 +27,13 @@
 @synthesize currentFontIndex = _currentFontIndex;
 @synthesize currentFont = _currentFont;
 @synthesize fonts = _fonts;
+@synthesize clockState = _clockState;
 
 
 - (id)init {
     self = [super init];
     if (self) {
-        [self loadFontDictionaries];
+//        [self loadFontDictionaries];
     }
     return self;
 }
@@ -49,10 +50,55 @@
         [self.fonts setObject:newFont forKey:newFont.fontName];
     }
     
-    NSLog(@"fonts %@", self.fonts);
     self.currentFontIndex = DCInitialFontIndex;
 
 }
 
+-(NSString *)fontNameAtIndex:(NSUInteger)index
+{
+    return [[self.fontDictionaries objectAtIndex:index] objectForKey:@"fontName"];
+}
+
+
+-(NSInteger)fontCount
+{
+    return [self.fonts count];
+}
+
+-(CGRect)adjustHourFrame:(CGRect)frame withFont:(UIFont *)font
+{
+    DCIFont *dciFont = [self.fonts objectForKey:font.fontName];
+    
+    CGSize offset = [dciFont hourOffsetWithDevice:self.clockState.device];
+    
+    CGRect rect = CGRectMake(frame.origin.x + offset.width, 
+                             frame.origin.y + offset.height, 
+                             frame.size.width, 
+                             frame.size.height);
+    
+    return rect;
+}
+
+-(CGRect)adjustMinuteFrame:(CGRect)frame withFont:(UIFont *)font
+{
+    
+    DCIFont *dciFont = [self.fonts objectForKey:font.fontName];
+    
+    CGSize offset = [dciFont minuteOffsetWithDevice:self.clockState.device];
+    
+    CGRect rect = CGRectMake(frame.origin.x + offset.width, 
+                             frame.origin.y + offset.height, 
+                             frame.size.width, 
+                             frame.size.height);
+    
+    return rect;
+}
+
 
 @end
+
+
+
+
+
+

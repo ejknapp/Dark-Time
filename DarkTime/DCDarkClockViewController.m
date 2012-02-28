@@ -13,6 +13,7 @@
 #import "DCInfoViewController.h"
 #import "DCClockConstants.h"
 #import "DCSettingsTableViewController.h"
+#import "DCIFontManager.h"
 
 
 @interface DCDarkClockViewController ()
@@ -120,6 +121,9 @@
     [self.clockState changeFontWithFontIndex:self.clockState.currentFontIndex 
                                    viewWidth:screenRect.size.height];
     
+    self.clockState.timeLabelPortraitFrame = self.timeLabelMinutesPortrait.frame;
+    self.clockState.timeHourLabelPortraitFrame = self.timeLabelHoursPortrait.frame;
+    
     [self updateClockOnLaunch];
     
 }
@@ -183,14 +187,17 @@
 {
     
     if ([keyPath isEqualToString:@"currentFont"]) {
+        NSLog(@"calling updateDisplayFont");
+        NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
         [self updateDisplayFont];
         
         if (self.settingsEditor) {
             [self.settingsEditor updateFontCellDisplay];
         }
     } 
-    
-    [self updateDisplayFont];
+//    NSLog(@"calling updateDisplayFont");
+//    NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
+//    [self updateDisplayFont];
     
 }
 
@@ -337,47 +344,19 @@
     self.secondsLabel.font = [self.clockState.currentFont fontWithSize:fontSize];
     self.secondsLabelPortrait.font = [self.clockState.currentFont fontWithSize:fontSize];
     
-    
-    CGFloat newOriginY;
     if (UIInterfaceOrientationIsPortrait(self.clockState.currentOrientation)) {
+
         self.timeLabelMinutesPortrait.frame = self.clockState.timeLabelPortraitFrame;
-        if ([self.clockState.currentFont.fontName isEqualToString:@"Verdana-Bold"]) {
-            CGRect frame = self.timeLabelMinutesPortrait.frame;
-            if (self.clockState.device == DCIDarkTimeDeviceiPhone) {
-                newOriginY = frame.origin.y - 13;
-            } else {
-                newOriginY = frame.origin.y - 25;
-            }
-            CGRect newFrame = CGRectMake(frame.origin.x, newOriginY, frame.size.width, frame.size.height);
-            self.timeLabelMinutesPortrait.frame = newFrame;
-        } else if ([self.clockState.currentFont.fontName isEqualToString:@"MarkerFelt-Wide"]) {
-            CGRect frame = self.timeLabelMinutesPortrait.frame;
-            if (self.clockState.device == DCIDarkTimeDeviceiPhone) {
-                newOriginY = frame.origin.y - 13;
-            } else {
-                newOriginY = frame.origin.y - 30;
-            }
-            CGRect newFrame = CGRectMake(frame.origin.x, newOriginY, frame.size.width, frame.size.height);
-            self.timeLabelMinutesPortrait.frame = newFrame;
-        } else if ([self.clockState.currentFont.fontName isEqualToString:@"Courier-Bold"]) {
-            CGRect frame = self.timeLabelMinutesPortrait.frame;
-            if (self.clockState.device == DCIDarkTimeDeviceiPhone) {
-                newOriginY = frame.origin.y - 8;
-            } else {
-                newOriginY = frame.origin.y - 8;
-            }
-            CGRect newFrame = CGRectMake(frame.origin.x, newOriginY, frame.size.width, frame.size.height);
-            self.timeLabelMinutesPortrait.frame = newFrame;
-        } else if ([self.clockState.currentFont.fontName isEqualToString:@"Futura-CondensedExtraBold"]) {
-            CGRect frame = self.timeLabelMinutesPortrait.frame;
-            if (self.clockState.device == DCIDarkTimeDeviceiPhone) {
-                newOriginY = frame.origin.y + 10;
-            } else {
-                newOriginY = frame.origin.y + 20;
-            }
-            CGRect newFrame = CGRectMake(frame.origin.x, newOriginY, frame.size.width, frame.size.height);
-            self.timeLabelMinutesPortrait.frame = newFrame;
-        }
+        CGRect adjustedFrame = [self.clockState.fontManager adjustMinuteFrame:self.timeLabelMinutesPortrait.frame 
+                                                                     withFont:self.clockState.currentFont];
+        self.timeLabelMinutesPortrait.frame = adjustedFrame;
+        
+        self.timeLabelHoursPortrait.frame = self.clockState.timeHourLabelPortraitFrame;
+        
+        CGRect adjustedHourFrame = [self.clockState.fontManager adjustHourFrame:self.timeLabelHoursPortrait.frame 
+                                                                         withFont:self.clockState.currentFont];
+        self.timeLabelHoursPortrait.frame = adjustedHourFrame;
+        
     }
     
     

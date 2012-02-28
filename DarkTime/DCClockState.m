@@ -52,7 +52,10 @@
 @synthesize fontSizePortrait = _fontSizePortrait;
 
 @synthesize timeLabelPortraitFrame = _timeLabelPortraitFrame;
+@synthesize timeHourLabelPortraitFrame = _timeHourLabelPortraitFrame;
 @synthesize device = _device;
+
+@synthesize fontManager = _fontManager;
 
 
 -(id)init
@@ -105,7 +108,8 @@
     self.currentFontIndex = index;
     CGFloat fontSize;
     
-    self.currentFontName = [self.fontNames objectAtIndex:self.currentFontIndex];
+//    self.currentFontName = [self.fontNames objectAtIndex:self.currentFontIndex];
+    self.currentFontName = [self.fontManager fontNameAtIndex:self.currentFontIndex];
     
     if (UIInterfaceOrientationIsPortrait(self.currentOrientation)) {
         fontSize = self.fontSizePortrait;
@@ -119,13 +123,15 @@
 -(void)createFontsArray 
 {
 
-    NSString *fontFilePath = [[NSBundle mainBundle] pathForResource:@"fontNames" ofType:@"plist"];
-    self.fontNames = [[NSArray alloc] initWithContentsOfFile:fontFilePath];
+//    NSString *fontFilePath = [[NSBundle mainBundle] pathForResource:@"fontNames" ofType:@"plist"];
+//    self.fontNames = [[NSArray alloc] initWithContentsOfFile:fontFilePath];
 
     self.currentFontIndex = DCInitialFontIndex;
     [self changeFontWithFontIndex:self.currentFontIndex viewWidth:480];
     
-//    DCIFontManager *fontManager = [[DCIFontManager alloc] init];
+    self.fontManager = [[DCIFontManager alloc] init];
+    [self.fontManager loadFontDictionaries];
+    self.fontManager.clockState = self;
 }
 
 - (NSString *)applicationDocumentsDirectory
