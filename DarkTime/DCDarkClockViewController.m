@@ -187,8 +187,7 @@
 {
     
     if ([keyPath isEqualToString:@"currentFont"]) {
-        NSLog(@"calling updateDisplayFont");
-        NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
+
         [self updateDisplayFont];
         
         if (self.settingsEditor) {

@@ -8,11 +8,11 @@
 		<key>iPhoneHourFrameOffset</key>
 		<string>{0, 0}</string>
 		<key>iPhoneMinuteFrameOffset</key>
-		<string>{0, 0}</string>
+		<string>{0, -5}</string>
 		<key>iPadHourFrameOffset</key>
 		<string>{0, 0}</string>
 		<key>iPadMinuteFrameOffset</key>
-		<string>{0, 0}</string>
+		<string>{0, -10}</string>
 	</dict>
 	<dict>
 		<key>fontName</key>
@@ -22,9 +22,9 @@
 		<key>iPhoneMinuteFrameOffset</key>
 		<string>{0, 0}</string>
 		<key>iPadHourFrameOffset</key>
-		<string>{0, 0}</string>
+		<string>{0, 10}</string>
 		<key>iPadMinuteFrameOffset</key>
-		<string>{0, 0}</string>
+		<string>{0, -10}</string>
 	</dict>
 	<dict>
 		<key>fontName</key>
@@ -42,13 +42,13 @@
 		<key>fontName</key>
 		<string>MarkerFelt-Wide</string>
 		<key>iPhoneHourFrameOffset</key>
-		<string>{0, 0}</string>
+		<string>{0, -10}</string>
 		<key>iPhoneMinuteFrameOffset</key>
 		<string>{0, -13}</string>
 		<key>iPadHourFrameOffset</key>
-		<string>{0, -50}</string>
+		<string>{0, -30}</string>
 		<key>iPadMinuteFrameOffset</key>
-		<string>{0, -20}</string>
+		<string>{0, -40}</string>
 	</dict>
 	<dict>
 		<key>fontName</key>
@@ -58,7 +58,7 @@
 		<key>iPhoneMinuteFrameOffset</key>
 		<string>{0,-8}</string>
 		<key>iPadHourFrameOffset</key>
-		<string>{0, 0}</string>
+		<string>{0, -10}</string>
 		<key>iPadMinuteFrameOffset</key>
 		<string>{0, -40}</string>
 	</dict>
@@ -68,11 +68,11 @@
 		<key>iPhoneHourFrameOffset</key>
 		<string>{0, 0}</string>
 		<key>iPhoneMinuteFrameOffset</key>
-		<string>{0, 0}</string>
+		<string>{0, -5}</string>
 		<key>iPadHourFrameOffset</key>
 		<string>{0, 0}</string>
 		<key>iPadMinuteFrameOffset</key>
-		<string>{0, -10}</string>
+		<string>{0, -20}</string>
 	</dict>
 	<dict>
 		<key>fontName</key>
@@ -84,19 +84,19 @@
 		<key>iPadHourFrameOffset</key>
 		<string>{0, 0}</string>
 		<key>iPadMinuteFrameOffset</key>
-		<string>{0, 0}</string>
+		<string>{0, -10}</string>
 	</dict>
 	<dict>
 		<key>fontName</key>
 		<string>Futura-CondensedExtraBold</string>
 		<key>iPhoneHourFrameOffset</key>
-		<string>{0, 0}</string>
+		<string>{0, 5}</string>
 		<key>iPhoneMinuteFrameOffset</key>
-		<string>{0, 10}</string>
+		<string>{0, 0}</string>
 		<key>iPadHourFrameOffset</key>
-		<string>{0, -10}</string>
+		<string>{0, 0}</string>
 		<key>iPadMinuteFrameOffset</key>
-		<string>{0, 20}</string>
+		<string>{0, 10}</string>
 	</dict>
 	<dict>
 		<key>fontName</key>
@@ -119,6 +119,66 @@
 		<string>{0, 0}</string>
 		<key>iPadHourFrameOffset</key>
 		<string>{0, 0}</string>
+		<key>iPadMinuteFrameOffset</key>
+		<string>{0, -10}</string>
+	</dict>
+    <dict>
+		<key>fontName</key>
+		<string>Optima-Bold</string>
+		<key>iPhoneHourFrameOffset</key>
+		<string>{0, 10}</string>
+		<key>iPhoneMinuteFrameOffset</key>
+		<string>{0, -5}</string>
+		<key>iPadHourFrameOffset</key>
+		<string>{0, 0}</string>
+		<key>iPadMinuteFrameOffset</key>
+		<string>{0, 0}</string>
+	</dict>
+    <dict>
+		<key>fontName</key>
+		<string>BodoniSvtyTwoITCTT-Bold</string>
+		<key>iPhoneHourFrameOffset</key>
+		<string>{0, 10}</string>
+		<key>iPhoneMinuteFrameOffset</key>
+		<string>{0, -10}</string>
+		<key>iPadHourFrameOffset</key>
+		<string>{0, 0}</string>
+		<key>iPadMinuteFrameOffset</key>
+		<string>{0, -10}</string>
+	</dict>
+    <dict>
+		<key>fontName</key>
+		<string>Copperplate-Bold</string>
+		<key>iPhoneHourFrameOffset</key>
+		<string>{0, 0}</string>
+		<key>iPhoneMinuteFrameOffset</key>
+		<string>{0, 0}</string>
+		<key>iPadHourFrameOffset</key>
+		<string>{0, 0}</string>
+		<key>iPadMinuteFrameOffset</key>
+		<string>{0, -10}</string>
+	</dict>
+    <dict>
+		<key>fontName</key>
+		<string>GillSans-Bold</string>
+		<key>iPhoneHourFrameOffset</key>
+		<string>{0, -10}</string>
+		<key>iPhoneMinuteFrameOffset</key>
+		<string>{0, 0}</string>
+		<key>iPadHourFrameOffset</key>
+		<string>{0, 0}</string>
+		<key>iPadMinuteFrameOffset</key>
+		<string>{0, -20}</string>
+	</dict>
+    <dict>
+		<key>fontName</key>
+		<string>Didot-Bold</string>
+		<key>iPhoneHourFrameOffset</key>
+		<string>{0, 5}</string>
+		<key>iPhoneMinuteFrameOffset</key>
+		<string>{0, 5}</string>
+		<key>iPadHourFrameOffset</key>
+		<string>{0, 10}</string>
 		<key>iPadMinuteFrameOffset</key>
 		<string>{0, 0}</string>
 	</dict>
