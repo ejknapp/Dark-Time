@@ -13,6 +13,7 @@
 @class DCSettingsViewController;
 @class DCInfoViewController;
 @class DCSettingsTableViewController;
+@class DCIDashedDividerView;
 
 
 @interface DCDarkClockViewController : UIViewController <UIGestureRecognizerDelegate> 
@@ -34,7 +35,7 @@
 @property (nonatomic, strong) IBOutlet UILabel *ampmLabelPortrait;
 @property (nonatomic, strong) IBOutlet UILabel *secondsLabelPortrait;
 @property (nonatomic, strong) IBOutlet UIButton *clockSettingsButtonPortrait;
-@property (nonatomic, strong) IBOutlet UIImageView *dottedLine;
+@property (nonatomic, strong) IBOutlet DCIDashedDividerView *dottedLine;
 
 @property (nonatomic, strong) IBOutlet UIView *landscapeView;
 @property (nonatomic, strong) IBOutlet UIView *portraitView;

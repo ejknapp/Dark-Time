@@ -14,6 +14,7 @@
 #import "DCClockConstants.h"
 #import "DCSettingsTableViewController.h"
 #import "DCIFontManager.h"
+#import "DCIDashedDividerView.h"
 
 
 @interface DCDarkClockViewController ()
@@ -96,6 +97,7 @@
     self.timeLabelMinutesPortrait.text = @"";
     self.ampmLabelPortrait.text = @"";
     self.secondsLabelPortrait.text = @"";
+
     
     self.calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
 
@@ -194,9 +196,6 @@
             [self.settingsEditor updateFontCellDisplay];
         }
     } 
-//    NSLog(@"calling updateDisplayFont");
-//    NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
-//    [self updateDisplayFont];
     
 }
 
@@ -265,8 +264,7 @@
         return;
     }
 
-    CGFloat currentBrightness;
-    currentBrightness = self.clockState.clockBrightnessLevel;
+    CGFloat currentBrightness = self.clockState.clockBrightnessLevel;
     
     CGFloat brightness = currentBrightness + 0.05;
     if (brightness > 1.0) {
@@ -388,28 +386,28 @@
     self.secondsLabelPortrait.textColor = color;
     self.clockSettingsButton.alpha = redFactor + 0.1;
     self.clockSettingsButtonPortrait.alpha = redFactor + 0.1;
-    self.dottedLine.alpha = redFactor + 0.1;
+    self.dottedLine.dashedLineColor = color;
+    [self.dottedLine setNeedsDisplay];
     
     self.buttonAlphaLandscape = self.clockSettingsButton.alpha;
-    self.dottedLineAlpha = self.dottedLine.alpha;
     
-    UIFont *hourFont = self.timeLabelHoursPortrait.font;
-    UIFont *minsFont = self.timeLabelMinutesPortrait.font;
-    
-    CGFloat actualSizeHours;
-    CGFloat actualSizeMins;
-    
-    [self.timeLabelHoursPortrait.text sizeWithFont:hourFont 
-                                       minFontSize:10 
-                                    actualFontSize:&actualSizeHours 
-                                          forWidth:320 
-                                     lineBreakMode:UILineBreakModeTailTruncation];
-
-    [self.timeLabelMinutesPortrait.text sizeWithFont:minsFont 
-                                         minFontSize:10 
-                                      actualFontSize:&actualSizeMins 
-                                            forWidth:320 
-                                       lineBreakMode:UILineBreakModeTailTruncation];
+//    UIFont *hourFont = self.timeLabelHoursPortrait.font;
+//    UIFont *minsFont = self.timeLabelMinutesPortrait.font;
+//    
+//    CGFloat actualSizeHours;
+//    CGFloat actualSizeMins;
+//    
+//    [self.timeLabelHoursPortrait.text sizeWithFont:hourFont 
+//                                       minFontSize:10 
+//                                    actualFontSize:&actualSizeHours 
+//                                          forWidth:320 
+//                                     lineBreakMode:UILineBreakModeTailTruncation];
+//
+//    [self.timeLabelMinutesPortrait.text sizeWithFont:minsFont 
+//                                         minFontSize:10 
+//                                      actualFontSize:&actualSizeMins 
+//                                            forWidth:320 
+//                                       lineBreakMode:UILineBreakModeTailTruncation];
     
 }
 
@@ -423,22 +421,25 @@
                                    viewWidth:screenRect.size.height];
     
     if (UIInterfaceOrientationIsPortrait(interfaceOrientation)) {
-        [UIView animateWithDuration:0.6 animations:^{
-            self.timeLabel.alpha = 0.0;
-            self.ampmLabel.alpha = 0.0;
-            self.secondsLabel.alpha = 0.0;
-            self.clockSettingsButton.alpha = 0.0;
-        } completion:^(BOOL finished) {
-            [self.view bringSubviewToFront:self.portraitView];
-            [UIView animateWithDuration:0.6 animations:^{
-                self.timeLabelHoursPortrait.alpha = 1.0;
-                self.timeLabelMinutesPortrait.alpha = 1.0;
-                self.ampmLabelPortrait.alpha = 1.0;
-                self.secondsLabelPortrait.alpha = 1.0;
-                self.clockSettingsButtonPortrait.alpha = self.buttonAlphaLandscape;
-                self.dottedLine.alpha = self.dottedLineAlpha;
-            }];
-        }];
+        [UIView animateWithDuration:0.6 
+                         animations:^{
+                             self.timeLabel.alpha = 0.0;
+                             self.ampmLabel.alpha = 0.0;
+                             self.secondsLabel.alpha = 0.0;
+                             self.clockSettingsButton.alpha = 0.0;
+                         } 
+                         completion:^(BOOL finished) {
+                             [self.view bringSubviewToFront:self.portraitView];
+                             [UIView animateWithDuration:0.6 animations:^{
+                                 self.timeLabelHoursPortrait.alpha = 1.0;
+                                 self.timeLabelMinutesPortrait.alpha = 1.0;
+                                 self.ampmLabelPortrait.alpha = 1.0;
+                                 self.secondsLabelPortrait.alpha = 1.0;
+                                 self.clockSettingsButtonPortrait.alpha = self.buttonAlphaLandscape;
+                                 self.dottedLine.alpha = 1.0;
+                                 [self.dottedLine setNeedsDisplay];
+                             }];
+                         }];
     } else {
         [UIView animateWithDuration:0.6 animations:^{
             self.timeLabelHoursPortrait.alpha = 0.0;
@@ -453,7 +454,7 @@
                 self.timeLabel.alpha = 1.0;
                 self.ampmLabel.alpha = 1.0;
                 self.secondsLabel.alpha = 1.0;
-                self.clockSettingsButton.alpha = self.dottedLineAlpha;
+                self.clockSettingsButton.alpha = self.buttonAlphaLandscape;
             }];
         }];
         

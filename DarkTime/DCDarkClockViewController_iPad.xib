@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="7.10">
 	<data>
-		<int key="IBDocument.SystemTarget">1280</int>
+		<int key="IBDocument.SystemTarget">1296</int>
 		<string key="IBDocument.SystemVersion">11D50</string>
-		<string key="IBDocument.InterfaceBuilderVersion">1938</string>
+		<string key="IBDocument.InterfaceBuilderVersion">2182</string>
 		<string key="IBDocument.AppKitVersion">1138.32</string>
 		<string key="IBDocument.HIToolboxVersion">568.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">933</string>
+			<string key="NS.object.0">1179</string>
 		</object>
 		<object class="NSArray" key="IBDocument.IntegratedClassDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<string>IBUIButton</string>
-			<string>IBUIImageView</string>
 			<string>IBUIView</string>
 			<string>IBUILabel</string>
 			<string>IBProxyObject</string>
@@ -201,7 +200,10 @@
 								<reference key="NSSuperview" ref="734703674"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="318789410"/>
-								<reference key="IBUIBackgroundColor" ref="775204186"/>
+								<object class="NSColor" key="IBUIBackgroundColor" id="632873702">
+									<int key="NSColorSpace">3</int>
+									<bytes key="NSWhite">MCAwAA</bytes>
+								</object>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -220,11 +222,8 @@
 								<string key="NSFrame">{{0, 478}, {768, 500}}</string>
 								<reference key="NSSuperview" ref="734703674"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="989077805"/>
-								<object class="NSColor" key="IBUIBackgroundColor" id="632873702">
-									<int key="NSColorSpace">3</int>
-									<bytes key="NSWhite">MCAwAA</bytes>
-								</object>
+								<reference key="NSNextKeyView" ref="211415706"/>
+								<reference key="IBUIBackgroundColor" ref="632873702"/>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">4</int>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -283,7 +282,7 @@
 								<reference key="NSSuperview" ref="734703674"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="807893419"/>
-								<reference key="IBUIBackgroundColor" ref="90748803"/>
+								<reference key="IBUIBackgroundColor" ref="632873702"/>
 								<int key="IBUIContentMode">4</int>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<int key="IBUIContentHorizontalAlignment">0</int>
@@ -303,20 +302,16 @@
 								<reference key="IBUIFontDescription" ref="361828616"/>
 								<reference key="IBUIFont" ref="395682726"/>
 							</object>
-							<object class="IBUIImageView" id="989077805">
+							<object class="IBUIView" id="211415706">
 								<reference key="NSNextResponder" ref="734703674"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{152, 468}, {464, 40}}</string>
+								<string key="NSFrame">{{0, 468}, {768, 40}}</string>
 								<reference key="NSSuperview" ref="734703674"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="931783513"/>
-								<string key="NSReuseIdentifierKey">_NS:569</string>
-								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="NSReuseIdentifierKey">_NS:9</string>
+								<reference key="IBUIBackgroundColor" ref="632873702"/>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-								<object class="NSCustomResource" key="IBUIImage">
-									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">dottedLine@2x.png</string>
-								</object>
 							</object>
 						</object>
 						<string key="NSFrameSize">{768, 1024}</string>
@@ -324,7 +319,7 @@
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="1017325477"/>
 						<string key="NSReuseIdentifierKey">_NS:212</string>
-						<reference key="IBUIBackgroundColor" ref="90748803"/>
+						<reference key="IBUIBackgroundColor" ref="775204186"/>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 					</object>
@@ -345,7 +340,7 @@
 							<integer value="1"/>
 							<integer value="3"/>
 						</object>
-						<object class="NSMutableArray" key="dict.values">
+						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>{768, 1024}</string>
 							<string>{1024, 768}</string>
@@ -375,14 +370,6 @@
 						<reference key="destination" ref="318789410"/>
 					</object>
 					<int key="connectionID">25</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">dottedLine</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="989077805"/>
-					</object>
-					<int key="connectionID">26</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
@@ -463,6 +450,14 @@
 						<reference key="destination" ref="646300326"/>
 					</object>
 					<int key="connectionID">36</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">dottedLine</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="211415706"/>
+					</object>
+					<int key="connectionID">38</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -551,9 +546,9 @@
 							<reference ref="931783513"/>
 							<reference ref="697210468"/>
 							<reference ref="318789410"/>
-							<reference ref="989077805"/>
 							<reference ref="807893419"/>
 							<reference ref="1017325477"/>
+							<reference ref="211415706"/>
 						</object>
 						<reference key="parent" ref="491074113"/>
 						<string key="objectName">portrait view</string>
@@ -581,11 +576,6 @@
 						<string key="objectName">Label - 58</string>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">23</int>
-						<reference key="object" ref="989077805"/>
-						<reference key="parent" ref="734703674"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">7</int>
 						<reference key="object" ref="318789410"/>
 						<reference key="parent" ref="734703674"/>
@@ -594,6 +584,11 @@
 						<int key="objectID">19</int>
 						<reference key="object" ref="471353760"/>
 						<reference key="parent" ref="346347612"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">37</int>
+						<reference key="object" ref="211415706"/>
+						<reference key="parent" ref="734703674"/>
 					</object>
 				</object>
 			</object>
@@ -613,13 +608,14 @@
 					<string>19.IBPluginDependency</string>
 					<string>21.IBPluginDependency</string>
 					<string>22.IBPluginDependency</string>
-					<string>23.IBPluginDependency</string>
+					<string>37.CustomClassName</string>
+					<string>37.IBPluginDependency</string>
 					<string>4.IBPluginDependency</string>
 					<string>5.IBPluginDependency</string>
 					<string>6.IBPluginDependency</string>
 					<string>7.IBPluginDependency</string>
 				</object>
-				<object class="NSMutableArray" key="dict.values">
+				<object class="NSArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>DCDarkClockViewController_iPad</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -633,6 +629,7 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>DCIDashedDividerView</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -652,7 +649,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">36</int>
+			<int key="maxID">38</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -688,13 +685,13 @@
 							<string>timeLabelHoursPortrait</string>
 							<string>timeLabelMinutesPortrait</string>
 						</object>
-						<object class="NSMutableArray" key="dict.values">
+						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UILabel</string>
 							<string>UILabel</string>
 							<string>UIButton</string>
 							<string>UIButton</string>
-							<string>UIImageView</string>
+							<string>DCIDashedDividerView</string>
 							<string>UIView</string>
 							<string>UIView</string>
 							<string>UILabel</string>
@@ -721,7 +718,7 @@
 							<string>timeLabelHoursPortrait</string>
 							<string>timeLabelMinutesPortrait</string>
 						</object>
-						<object class="NSMutableArray" key="dict.values">
+						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBToOneOutletInfo">
 								<string key="name">ampmLabel</string>
@@ -741,7 +738,7 @@
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">dottedLine</string>
-								<string key="candidateClassName">UIImageView</string>
+								<string key="candidateClassName">DCIDashedDividerView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">landscapeView</string>
@@ -786,10 +783,22 @@
 						<string key="minorKey">./Classes/DCDarkClockViewController_iPad.h</string>
 					</object>
 				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">DCIDashedDividerView</string>
+					<string key="superclassName">UIView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/DCIDashedDividerView.h</string>
+					</object>
+				</object>
 			</object>
 		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBIPadFramework</string>
+		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
+			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.iPhoneOS</string>
+			<real value="1296" key="NS.object.0"/>
+		</object>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDevelopmentDependencies">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.InterfaceBuilder3</string>
 			<integer value="3100" key="NS.object.0"/>
@@ -797,18 +806,9 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<bool key="EncodedWithXMLCoder">YES</bool>
-			<object class="NSArray" key="dict.sortedKeys">
-				<bool key="EncodedWithXMLCoder">YES</bool>
-				<string>dottedLine@2x.png</string>
-				<string>red-info2.png</string>
-			</object>
-			<object class="NSMutableArray" key="dict.values">
-				<bool key="EncodedWithXMLCoder">YES</bool>
-				<string>{464, 40}</string>
-				<string>{26, 26}</string>
-			</object>
+			<string key="NS.key.0">red-info2.png</string>
+			<string key="NS.object.0">{26, 26}</string>
 		</object>
-		<string key="IBCocoaTouchPluginVersion">933</string>
+		<string key="IBCocoaTouchPluginVersion">1179</string>
 	</data>
 </archive>

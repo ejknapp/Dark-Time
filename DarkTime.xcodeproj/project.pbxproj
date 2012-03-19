@@ -46,6 +46,7 @@
 		9FB4A5C81448EDCD00E1E754 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FB4A5C21448EDCC00E1E754 /* Icon-Small@2x.png */; };
 		9FB4A5C91448EDCD00E1E754 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FB4A5C31448EDCC00E1E754 /* Icon.png */; };
 		9FB4A5CA1448EDCD00E1E754 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FB4A5C41448EDCC00E1E754 /* Icon@2x.png */; };
+		9FC9655B1516858300D15754 /* DCIDashedDividerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC9655A1516858300D15754 /* DCIDashedDividerView.m */; };
 		9FCB263E146B0A1000853087 /* dottedLine.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FCB263C146B0A1000853087 /* dottedLine.png */; };
 		9FCB263F146B0A1000853087 /* dottedLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FCB263D146B0A1000853087 /* dottedLine@2x.png */; };
 		9FF88B6914F85E7B00361E25 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FF88B6814F85E7B00361E25 /* CoreText.framework */; };
@@ -107,6 +108,8 @@
 		9FB4A5C21448EDCC00E1E754 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
 		9FB4A5C31448EDCC00E1E754 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		9FB4A5C41448EDCC00E1E754 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		9FC965591516858300D15754 /* DCIDashedDividerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCIDashedDividerView.h; sourceTree = "<group>"; };
+		9FC9655A1516858300D15754 /* DCIDashedDividerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCIDashedDividerView.m; sourceTree = "<group>"; };
 		9FCB263C146B0A1000853087 /* dottedLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dottedLine.png; sourceTree = "<group>"; };
 		9FCB263D146B0A1000853087 /* dottedLine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dottedLine@2x.png"; sourceTree = "<group>"; };
 		9FF88B6814F85E7B00361E25 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
@@ -234,6 +237,8 @@
 				9F59DAE5142E5E6B0020A795 /* DCFontSelectTableViewController.h */,
 				9F59DAE6142E5E6B0020A795 /* DCFontSelectTableViewController.m */,
 				9F59DAE7142E5E6B0020A795 /* DCFontSelectTableViewController.xib */,
+				9FC965591516858300D15754 /* DCIDashedDividerView.h */,
+				9FC9655A1516858300D15754 /* DCIDashedDividerView.m */,
 			);
 			name = "Clock Classes";
 			sourceTree = "<group>";
@@ -390,6 +395,7 @@
 				9FF89EB014312325002DA909 /* DCInfoViewController.m in Sources */,
 				9F50657014FC805F00EA2EA9 /* DCIFontManager.m in Sources */,
 				9F50657414FC827B00EA2EA9 /* DCIFont.m in Sources */,
+				9FC9655B1516858300D15754 /* DCIDashedDividerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
