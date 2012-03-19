@@ -47,8 +47,8 @@
 		9FB4A5C91448EDCD00E1E754 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FB4A5C31448EDCC00E1E754 /* Icon.png */; };
 		9FB4A5CA1448EDCD00E1E754 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FB4A5C41448EDCC00E1E754 /* Icon@2x.png */; };
 		9FC9655B1516858300D15754 /* DCIDashedDividerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC9655A1516858300D15754 /* DCIDashedDividerView.m */; };
-		9FCB263E146B0A1000853087 /* dottedLine.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FCB263C146B0A1000853087 /* dottedLine.png */; };
-		9FCB263F146B0A1000853087 /* dottedLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FCB263D146B0A1000853087 /* dottedLine@2x.png */; };
+		9FDBC2C01516BAB300207EAA /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FDBC2BF1516BAB300207EAA /* settings.png */; };
+		9FDBC2C21516BAD100207EAA /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FDBC2C11516BAD100207EAA /* settings@2x.png */; };
 		9FF88B6914F85E7B00361E25 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FF88B6814F85E7B00361E25 /* CoreText.framework */; };
 		9FF89EB014312325002DA909 /* DCInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FF89EAF14312325002DA909 /* DCInfoViewController.m */; };
 /* End PBXBuildFile section */
@@ -110,8 +110,8 @@
 		9FB4A5C41448EDCC00E1E754 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		9FC965591516858300D15754 /* DCIDashedDividerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCIDashedDividerView.h; sourceTree = "<group>"; };
 		9FC9655A1516858300D15754 /* DCIDashedDividerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCIDashedDividerView.m; sourceTree = "<group>"; };
-		9FCB263C146B0A1000853087 /* dottedLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dottedLine.png; sourceTree = "<group>"; };
-		9FCB263D146B0A1000853087 /* dottedLine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dottedLine@2x.png"; sourceTree = "<group>"; };
+		9FDBC2BF1516BAB300207EAA /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		9FDBC2C11516BAD100207EAA /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
 		9FF88B6814F85E7B00361E25 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		9FF89EAE14312325002DA909 /* DCInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCInfoViewController.h; sourceTree = "<group>"; };
 		9FF89EAF14312325002DA909 /* DCInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCInfoViewController.m; sourceTree = "<group>"; };
@@ -246,8 +246,8 @@
 		9F43F4261428DD08003093A8 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				9FCB263C146B0A1000853087 /* dottedLine.png */,
-				9FCB263D146B0A1000853087 /* dottedLine@2x.png */,
+				9FDBC2BF1516BAB300207EAA /* settings.png */,
+				9FDBC2C11516BAD100207EAA /* settings@2x.png */,
 				9F89BB10143409AE007655C9 /* brightness-bright.png */,
 				9F89BB11143409AE007655C9 /* brightness-dim.png */,
 				9F43F4271428DD21003093A8 /* red-info2.png */,
@@ -368,9 +368,9 @@
 				9FB4A5C81448EDCD00E1E754 /* Icon-Small@2x.png in Resources */,
 				9FB4A5C91448EDCD00E1E754 /* Icon.png in Resources */,
 				9FB4A5CA1448EDCD00E1E754 /* Icon@2x.png in Resources */,
-				9FCB263E146B0A1000853087 /* dottedLine.png in Resources */,
-				9FCB263F146B0A1000853087 /* dottedLine@2x.png in Resources */,
 				9F50656C14FC7C3B00EA2EA9 /* fontData.plist in Resources */,
+				9FDBC2C01516BAB300207EAA /* settings.png in Resources */,
+				9FDBC2C21516BAD100207EAA /* settings@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

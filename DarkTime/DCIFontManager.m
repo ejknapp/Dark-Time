@@ -13,7 +13,6 @@
 @interface DCIFontManager ()
 
 @property (strong, nonatomic) NSArray *fontDictionaries;
-@property (assign, nonatomic) NSInteger currentFontIndex;
 @property (strong, nonatomic) NSMutableDictionary *fonts;
 
 
@@ -50,8 +49,22 @@
         [self.fonts setObject:newFont forKey:newFont.fontName];
     }
     
-    self.currentFontIndex = DCInitialFontIndex;
+}
 
+-(NSString *)currentFontDisplayName
+{
+    NSLog(@"%@", self.fonts);
+    
+    DCIFont *font = [self.fonts objectForKey:self.currentFont.fontName];
+    
+    NSLog(@"display %@, %@", font.displayName, self.currentFont);
+    return font.displayName;
+}
+
+
+-(DCIFont *)fontAtIndex:(NSUInteger)index
+{
+    return [self.fonts objectForKey:[self fontNameAtIndex:index]];
 }
 
 -(NSString *)fontNameAtIndex:(NSUInteger)index

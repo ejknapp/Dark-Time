@@ -9,14 +9,18 @@
 #import <Foundation/Foundation.h>
 
 @class DCClockState;
+@class DCIFont;
 
 @interface DCIFontManager : NSObject
 
 @property (strong, nonatomic) UIFont *currentFont;
+@property (assign, nonatomic) NSInteger currentFontIndex;
 @property (weak, nonatomic) DCClockState *clockState;
 
 -(void)loadFontDictionaries;
+-(NSString *)currentFontDisplayName;
 -(NSString *)fontNameAtIndex:(NSUInteger)index;
+-(DCIFont *)fontAtIndex:(NSUInteger)index;
 -(NSInteger)fontCount;
 
 -(CGRect)adjustHourFrame:(CGRect)frame withFont:(UIFont *)font;

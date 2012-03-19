@@ -113,16 +113,13 @@
     [self createUpSwipeRecognizer];
     [self createDownSwipeRecognizer];
    
-    [self.clockState addObserver:self 
+    [self.clockState.fontManager addObserver:self 
                       forKeyPath:@"currentFont" 
                          options:NSKeyValueObservingOptionNew
                          context:NULL];
         
-    CGRect screenRect = [[UIScreen mainScreen] applicationFrame];
-
-    [self.clockState changeFontWithFontIndex:self.clockState.currentFontIndex 
-                                   viewWidth:screenRect.size.height];
-    
+    [self.clockState changeFontWithFontIndex:self.clockState.fontManager.currentFontIndex];
+    [self updateDisplayFont];
     self.clockState.timeLabelPortraitFrame = self.timeLabelMinutesPortrait.frame;
     self.clockState.timeHourLabelPortraitFrame = self.timeLabelHoursPortrait.frame;
     
@@ -331,27 +328,27 @@
 -(void)updateDisplayFontWithFontSize:(NSInteger)fontSize
 {
 
-    self.timeLabel.font = self.clockState.currentFont;
-    self.timeLabelHoursPortrait.font = self.clockState.currentFont;
-    self.timeLabelMinutesPortrait.font = self.clockState.currentFont;
+    self.timeLabel.font = self.clockState.fontManager.currentFont;
+    self.timeLabelHoursPortrait.font = self.clockState.fontManager.currentFont;
+    self.timeLabelMinutesPortrait.font = self.clockState.fontManager.currentFont;
     
-    self.ampmLabel.font = [self.clockState.currentFont fontWithSize:fontSize];
-    self.ampmLabelPortrait.font = [self.clockState.currentFont fontWithSize:fontSize];
+    self.ampmLabel.font = [self.clockState.fontManager.currentFont fontWithSize:fontSize];
+    self.ampmLabelPortrait.font = [self.clockState.fontManager.currentFont fontWithSize:fontSize];
     
-    self.secondsLabel.font = [self.clockState.currentFont fontWithSize:fontSize];
-    self.secondsLabelPortrait.font = [self.clockState.currentFont fontWithSize:fontSize];
+    self.secondsLabel.font = [self.clockState.fontManager.currentFont fontWithSize:fontSize];
+    self.secondsLabelPortrait.font = [self.clockState.fontManager.currentFont fontWithSize:fontSize];
     
     if (UIInterfaceOrientationIsPortrait(self.clockState.currentOrientation)) {
 
         self.timeLabelMinutesPortrait.frame = self.clockState.timeLabelPortraitFrame;
         CGRect adjustedFrame = [self.clockState.fontManager adjustMinuteFrame:self.timeLabelMinutesPortrait.frame 
-                                                                     withFont:self.clockState.currentFont];
+                                                                     withFont:self.clockState.fontManager.currentFont];
         self.timeLabelMinutesPortrait.frame = adjustedFrame;
         
         self.timeLabelHoursPortrait.frame = self.clockState.timeHourLabelPortraitFrame;
         
         CGRect adjustedHourFrame = [self.clockState.fontManager adjustHourFrame:self.timeLabelHoursPortrait.frame 
-                                                                         withFont:self.clockState.currentFont];
+                                                                         withFont:self.clockState.fontManager.currentFont];
         self.timeLabelHoursPortrait.frame = adjustedHourFrame;
         
     }
@@ -416,9 +413,7 @@
 - (void)switchToOrientationView:(UIInterfaceOrientation)interfaceOrientation
 {
 
-    CGRect screenRect = [[UIScreen mainScreen] applicationFrame];
-    [self.clockState changeFontWithFontIndex:self.clockState.currentFontIndex 
-                                   viewWidth:screenRect.size.height];
+    [self.clockState changeFontWithFontIndex:self.clockState.fontManager.currentFontIndex];
     
     if (UIInterfaceOrientationIsPortrait(interfaceOrientation)) {
         [UIView animateWithDuration:0.6 

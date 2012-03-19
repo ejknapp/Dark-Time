@@ -18,7 +18,6 @@
 
 -(void)viewDidLoad
 {
-    
     self.modalStyle = UIModalPresentationFormSheet;
     self.settingsViewNib = DCSettingsViewNibNameiPhone;
     self.clockState.fontSizePortrait = DCiPhonePortraitTimeLabelsFontSize;

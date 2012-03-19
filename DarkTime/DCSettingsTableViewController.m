@@ -13,6 +13,7 @@
 #import "DCFontSelectTableViewController.h"
 #import "DCInfoViewController.h"
 #import "DCDarkClockViewController.h"
+#import "DCIFontManager.h"
 
 @interface DCSettingsTableViewController()
 
@@ -145,8 +146,8 @@
 {
 
     if (self.fontCell) {
-        self.fontCell.textLabel.text = self.clockState.currentFontName;
-        self.fontCell.textLabel.font = [self.clockState.currentFont fontWithSize:18];
+        self.fontCell.textLabel.text = [self.clockState.fontManager currentFontDisplayName];
+        self.fontCell.textLabel.font = [self.clockState.fontManager.currentFont fontWithSize:18];
     }
 
 }
@@ -296,10 +297,10 @@
 
 - (void)createFontSelectionCell:(UITableViewCell *)cell
 {
-    cell.textLabel.text = self.clockState.currentFontName;
+    cell.textLabel.text = [self.clockState.fontManager currentFontDisplayName];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.selectionStyle = UITableViewCellSelectionStyleGray;
-    cell.textLabel.font = [self.clockState.currentFont fontWithSize:18];
+    cell.textLabel.font = [self.clockState.fontManager.currentFont fontWithSize:18];
     self.fontCell = cell;
 
 }

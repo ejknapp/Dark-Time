@@ -30,7 +30,6 @@
 
 - (void)viewDidLoad
 {
-    
     self.modalStyle = UIModalPresentationFormSheet;
     self.settingsViewNib = DCSettingsViewNibNameiPad;
     self.clockState.fontSizePortrait = DCiPadPortraitTimeLabelsFontSize;

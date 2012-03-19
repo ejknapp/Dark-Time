@@ -118,7 +118,7 @@
 							<object class="IBUIButton" id="956256804">
 								<reference key="NSNextResponder" ref="191373211"/>
 								<int key="NSvFlags">289</int>
-								<string key="NSFrame">{{414, 11}, {65, 65}}</string>
+								<string key="NSFrame">{{416, 1}, {65, 65}}</string>
 								<reference key="NSSuperview" ref="191373211"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="829008629"/>
@@ -145,9 +145,9 @@
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MC41AA</bytes>
 								</object>
-								<object class="NSCustomResource" key="IBUINormalImage" id="1008451763">
+								<object class="NSCustomResource" key="IBUINormalImage" id="251590578">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">red-info2.png</string>
+									<string key="NSResourceName">settings.png</string>
 								</object>
 								<object class="IBUIFontDescription" key="IBUIFontDescription" id="963186209">
 									<string key="name">Helvetica-Bold</string>
@@ -256,7 +256,6 @@
 								<string key="NSFrame">{{257, 440}, {50, 42}}</string>
 								<reference key="NSSuperview" ref="444808117"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<reference key="IBUIBackgroundColor" ref="89715914"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -317,7 +316,7 @@
 									<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 								</object>
 								<reference key="IBUINormalTitleShadowColor" ref="902838238"/>
-								<reference key="IBUINormalImage" ref="1008451763"/>
+								<reference key="IBUINormalImage" ref="251590578"/>
 								<reference key="IBUIFontDescription" ref="963186209"/>
 								<reference key="IBUIFont" ref="705354796"/>
 							</object>
@@ -342,12 +341,16 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
 				</object>
-				<string key="NSFrameSize">{320, 480}</string>
+				<string key="NSFrameSize">{480, 320}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="191373211"/>
 				<string key="NSReuseIdentifierKey">_NS:196</string>
 				<reference key="IBUIBackgroundColor" ref="386437450"/>
+				<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
+					<int key="IBUIInterfaceOrientation">3</int>
+					<int key="interfaceOrientation">3</int>
+				</object>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
 		</object>
@@ -803,8 +806,8 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">red-info2.png</string>
-			<string key="NS.object.0">{26, 26}</string>
+			<string key="NS.key.0">settings.png</string>
+			<string key="NS.object.0">{30, 30}</string>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">1179</string>
 	</data>

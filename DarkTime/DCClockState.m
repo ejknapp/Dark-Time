@@ -34,9 +34,9 @@
 @synthesize savedDisplayAmPm = _savedDisplayAmPm;
 @synthesize suspendSleep = _suspendSleep;
 @synthesize screenWantsSoftwareDimming = _screenWantsSoftwareDimming;
-@synthesize currentFont =_currentFont;
-@synthesize currentFontName = _currentFontName;
-@synthesize currentFontIndex = _currentFontIndex;
+//@synthesize currentFont =_currentFont;
+//@synthesize currentFontName = _currentFontName;
+//@synthesize currentFontIndex = _currentFontIndex;
 @synthesize fontChoices = _fontChoices;
 @synthesize fontEditorDisplayed = _fontEditorDisplayed;
 @synthesize startingDragLocation = _startingDragLocation;
@@ -102,21 +102,20 @@
     }
 }
 
--(void)changeFontWithFontIndex:(NSInteger)index viewWidth:(CGFloat)width
+-(void)changeFontWithFontIndex:(NSInteger)index
 {
 
-    self.currentFontIndex = index;
+    self.fontManager.currentFontIndex = index;
     CGFloat fontSize;
-    
-//    self.currentFontName = [self.fontNames objectAtIndex:self.currentFontIndex];
-    self.currentFontName = [self.fontManager fontNameAtIndex:self.currentFontIndex];
-    
+
     if (UIInterfaceOrientationIsPortrait(self.currentOrientation)) {
         fontSize = self.fontSizePortrait;
     } else {
         fontSize = self.fontSizeLandscape;
     }
-    self.currentFont = [UIFont fontWithName:self.currentFontName size:fontSize];
+        
+    self.fontManager.currentFont = [UIFont fontWithName:[self.fontManager fontNameAtIndex:self.fontManager.currentFontIndex] 
+                                                   size:fontSize];
     
 }
 
@@ -126,12 +125,14 @@
 //    NSString *fontFilePath = [[NSBundle mainBundle] pathForResource:@"fontNames" ofType:@"plist"];
 //    self.fontNames = [[NSArray alloc] initWithContentsOfFile:fontFilePath];
 
-    self.currentFontIndex = DCInitialFontIndex;
-    [self changeFontWithFontIndex:self.currentFontIndex viewWidth:480];
     
     self.fontManager = [[DCIFontManager alloc] init];
-    [self.fontManager loadFontDictionaries];
     self.fontManager.clockState = self;
+    [self.fontManager loadFontDictionaries];
+
+    self.fontManager.currentFontIndex = DCInitialFontIndex;
+    [self changeFontWithFontIndex:DCInitialFontIndex];
+    
 }
 
 - (NSString *)applicationDocumentsDirectory
@@ -249,13 +250,11 @@
     [UIScreen mainScreen].wantsSoftwareDimming = self.screenWantsSoftwareDimming;
     
     NSInteger fontIndex = [userDefaults integerForKey:@"currentFontIndex"];
-    
-    CGRect screenRect = [[UIScreen mainScreen] applicationFrame];
-        
+            
     if (fontIndex >= 0) {
-        [self changeFontWithFontIndex:fontIndex viewWidth:screenRect.size.height];
+        [self changeFontWithFontIndex:fontIndex];
     } else {
-        [self changeFontWithFontIndex:8 viewWidth:screenRect.size.height];
+        [self changeFontWithFontIndex:8];
     }
     
     BOOL ampm = [userDefaults boolForKey:@"displayAmPm"];
@@ -288,7 +287,7 @@
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
-    [userDefaults setInteger:self.currentFontIndex forKey:@"currentFontIndex"];
+    [userDefaults setInteger:self.fontManager.currentFontIndex forKey:@"currentFontIndex"];
     
     [userDefaults setBool:self.displayAmPm forKey:@"displayAmPm"];
     

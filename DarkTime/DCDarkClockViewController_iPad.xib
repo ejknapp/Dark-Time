@@ -162,9 +162,9 @@
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MC41AA</bytes>
 								</object>
-								<object class="NSCustomResource" key="IBUINormalImage" id="664066649">
+								<object class="NSCustomResource" key="IBUINormalImage" id="912856794">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">red-info2.png</string>
+									<string key="NSResourceName">settings.png</string>
 								</object>
 								<object class="IBUIFontDescription" key="IBUIFontDescription" id="361828616">
 									<string key="name">Helvetica-Bold</string>
@@ -222,7 +222,7 @@
 								<string key="NSFrame">{{0, 478}, {768, 500}}</string>
 								<reference key="NSSuperview" ref="734703674"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="211415706"/>
+								<reference key="NSNextKeyView" ref="931783513"/>
 								<reference key="IBUIBackgroundColor" ref="632873702"/>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">4</int>
@@ -241,6 +241,7 @@
 								<string key="NSFrame">{{599, 920}, {149, 92}}</string>
 								<reference key="NSSuperview" ref="734703674"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<reference key="IBUIBackgroundColor" ref="632873702"/>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
@@ -281,7 +282,7 @@
 								<string key="NSFrame">{{683, 20}, {65, 65}}</string>
 								<reference key="NSSuperview" ref="734703674"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="807893419"/>
+								<reference key="NSNextKeyView" ref="211415706"/>
 								<reference key="IBUIBackgroundColor" ref="632873702"/>
 								<int key="IBUIContentMode">4</int>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -298,7 +299,7 @@
 									<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 								</object>
 								<reference key="IBUINormalTitleShadowColor" ref="551336004"/>
-								<reference key="IBUINormalImage" ref="664066649"/>
+								<reference key="IBUINormalImage" ref="912856794"/>
 								<reference key="IBUIFontDescription" ref="361828616"/>
 								<reference key="IBUIFont" ref="395682726"/>
 							</object>
@@ -308,7 +309,7 @@
 								<string key="NSFrame">{{0, 468}, {768, 40}}</string>
 								<reference key="NSSuperview" ref="734703674"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="931783513"/>
+								<reference key="NSNextKeyView" ref="807893419"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<reference key="IBUIBackgroundColor" ref="632873702"/>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -324,13 +325,17 @@
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 					</object>
 				</object>
-				<string key="NSFrameSize">{768, 1024}</string>
+				<string key="NSFrameSize">{1024, 768}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="346347612"/>
 				<string key="NSReuseIdentifierKey">_NS:212</string>
 				<reference key="IBUIBackgroundColor" ref="90748803"/>
 				<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
+				<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
+					<int key="IBUIInterfaceOrientation">3</int>
+					<int key="interfaceOrientation">3</int>
+				</object>
 				<object class="IBUIScreenMetrics" key="IBUISimulatedDestinationMetrics">
 					<string key="IBUISimulatedSizeMetricsClass">IBUIScreenMetrics</string>
 					<object class="NSMutableDictionary" key="IBUINormalizedOrientationToSizeMap">
@@ -362,14 +367,6 @@
 						<reference key="destination" ref="931783513"/>
 					</object>
 					<int key="connectionID">24</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">clockSettingsButtonPortrait</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="318789410"/>
-					</object>
-					<int key="connectionID">25</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
@@ -458,6 +455,14 @@
 						<reference key="destination" ref="211415706"/>
 					</object>
 					<int key="connectionID">38</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">clockSettingsButtonPortrait</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="318789410"/>
+					</object>
+					<int key="connectionID">25</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -576,11 +581,6 @@
 						<string key="objectName">Label - 58</string>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">7</int>
-						<reference key="object" ref="318789410"/>
-						<reference key="parent" ref="734703674"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">19</int>
 						<reference key="object" ref="471353760"/>
 						<reference key="parent" ref="346347612"/>
@@ -588,6 +588,11 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">37</int>
 						<reference key="object" ref="211415706"/>
+						<reference key="parent" ref="734703674"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">7</int>
+						<reference key="object" ref="318789410"/>
 						<reference key="parent" ref="734703674"/>
 					</object>
 				</object>
@@ -806,8 +811,8 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">red-info2.png</string>
-			<string key="NS.object.0">{26, 26}</string>
+			<string key="NS.key.0">settings.png</string>
+			<string key="NS.object.0">{30, 30}</string>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">1179</string>
 	</data>

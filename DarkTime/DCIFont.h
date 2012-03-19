@@ -12,6 +12,7 @@
 @interface DCIFont : NSObject
 
 @property (strong, nonatomic, readonly) NSString *fontName;
+@property (strong, nonatomic, readonly) NSString *displayName;
 
 - (id)initWithFontDictionary:(NSDictionary *)fontDictionary;
 -(CGSize)minuteOffsetWithDevice:(DCIDarkTimeDevice)device;

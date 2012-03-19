@@ -10,6 +10,7 @@
 #import "DCClockState.h"
 #import "DCDarkClockViewController.h"
 #import "DCIFontManager.h"
+#import "DCIFont.h"
 
 
 @implementation DCFontSelectTableViewController
@@ -84,13 +85,15 @@
     }
     
     cell.selectionStyle = UITableViewCellSelectionStyleGray;
-    NSString *fontName = [self.clockState.fontManager fontNameAtIndex:indexPath.row];
-    cell.textLabel.text = [[NSString alloc] initWithFormat:@"%@ - 6:34", fontName];
+    
+    DCIFont *font = [self.clockState.fontManager fontAtIndex:indexPath.row];
+    
+    cell.textLabel.text = [[NSString alloc] initWithFormat:@"%@ - 6:34", font.displayName];
 
-    cell.textLabel.font = [UIFont fontWithName:fontName size:19];
+    cell.textLabel.font = [UIFont fontWithName:font.fontName size:19];
     cell.accessoryType = UITableViewCellAccessoryNone;
     
-    if (self.clockState.currentFontIndex == indexPath.row) {
+    if (self.clockState.fontManager.currentFontIndex == indexPath.row) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
         self.currentCheckedCell = cell;
     }
@@ -109,8 +112,8 @@
     
     self.currentCheckedCell.accessoryType = UITableViewCellAccessoryNone;
     
-    CGRect screenRect = [[UIScreen mainScreen] applicationFrame];
-    [self.clockState changeFontWithFontIndex:selectedRow viewWidth:screenRect.size.height];
+    NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
+    [self.clockState changeFontWithFontIndex:selectedRow];
     
     tappedCell.accessoryType = UITableViewCellAccessoryCheckmark;
     self.currentCheckedCell = tappedCell;

@@ -12,6 +12,7 @@
 @interface DCIFont ()
 
 @property (strong, nonatomic, readwrite) NSString *fontName;
+@property (strong, nonatomic, readwrite) NSString *displayName;
 @property (assign, nonatomic) CGSize iPhoneHourFrameOffset;
 @property (assign, nonatomic) CGSize iPhoneMinuteFrameOffset;
 @property (assign, nonatomic) CGSize iPadHourFrameOffset;
@@ -23,6 +24,7 @@
 @implementation DCIFont
 
 @synthesize fontName = _fontName;
+@synthesize displayName = _displayName;
 @synthesize iPhoneHourFrameOffset = _iPhoneHourFrameOffset;
 @synthesize iPhoneMinuteFrameOffset = _iPhoneMinuteFrameOffset;
 @synthesize iPadHourFrameOffset = _iPadHourFrameOffset;
@@ -33,6 +35,7 @@
     self = [super init];
     if (self) {
         _fontName = [fontDictionary objectForKey:@"fontName"];
+        _displayName = [fontDictionary objectForKey:@"displayName"];
         _iPhoneHourFrameOffset = CGSizeFromString([fontDictionary objectForKey:@"iPhoneHourFrameOffset"]);
         _iPhoneMinuteFrameOffset = CGSizeFromString([fontDictionary objectForKey:@"iPhoneMinuteFrameOffset"]);
         _iPadHourFrameOffset = CGSizeFromString([fontDictionary objectForKey:@"iPadHourFrameOffset"]);
@@ -65,9 +68,13 @@
 
 -(NSString *)description
 {
-    return [[NSString alloc] initWithFormat:@"DCIFont: %@, %@, %@, %@, %@", 
-            self.fontName, NSStringFromCGSize(self.iPhoneHourFrameOffset), NSStringFromCGSize(self.iPhoneMinuteFrameOffset),
-            NSStringFromCGSize(self.iPadHourFrameOffset), NSStringFromCGSize(self.iPadMinuteFrameOffset)];
+    return [[NSString alloc] initWithFormat:@"DCIFont: %@, %@, %@, %@, %@, %@", 
+            self.fontName,
+            self.displayName,
+            NSStringFromCGSize(self.iPhoneHourFrameOffset), 
+            NSStringFromCGSize(self.iPhoneMinuteFrameOffset),
+            NSStringFromCGSize(self.iPadHourFrameOffset), 
+            NSStringFromCGSize(self.iPadMinuteFrameOffset)];
 }
 
 
