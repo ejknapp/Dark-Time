@@ -112,7 +112,6 @@
     
     self.currentCheckedCell.accessoryType = UITableViewCellAccessoryNone;
     
-    NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
     [self.clockState changeFontWithFontIndex:selectedRow];
     
     tappedCell.accessoryType = UITableViewCellAccessoryCheckmark;

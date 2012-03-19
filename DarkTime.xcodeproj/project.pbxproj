@@ -36,8 +36,6 @@
 		9F59DAE8142E5E6C0020A795 /* DCFontSelectTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F59DAE6142E5E6B0020A795 /* DCFontSelectTableViewController.m */; };
 		9F59DAE9142E5E6C0020A795 /* DCFontSelectTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F59DAE7142E5E6B0020A795 /* DCFontSelectTableViewController.xib */; };
 		9F7D215F143F53550024617C /* fontNames.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9F7D215E143F53550024617C /* fontNames.plist */; };
-		9F89BB12143409AE007655C9 /* brightness-bright.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F89BB10143409AE007655C9 /* brightness-bright.png */; };
-		9F89BB13143409AE007655C9 /* brightness-dim.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F89BB11143409AE007655C9 /* brightness-dim.png */; };
 		9F89BB261434B523007655C9 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9F89BB251434B523007655C9 /* Entitlements.plist */; };
 		9F89BB941436B0B7007655C9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F89BB931436B0B7007655C9 /* QuartzCore.framework */; };
 		9FB4A5C51448EDCD00E1E754 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FB4A5BF1448EDCC00E1E754 /* Icon-72.png */; };
@@ -49,6 +47,10 @@
 		9FC9655B1516858300D15754 /* DCIDashedDividerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC9655A1516858300D15754 /* DCIDashedDividerView.m */; };
 		9FDBC2C01516BAB300207EAA /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FDBC2BF1516BAB300207EAA /* settings.png */; };
 		9FDBC2C21516BAD100207EAA /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FDBC2C11516BAD100207EAA /* settings@2x.png */; };
+		9FDBC2D41516E77200207EAA /* brightness-bright.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FDBC2D01516E77200207EAA /* brightness-bright.png */; };
+		9FDBC2D51516E77200207EAA /* brightness-bright@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FDBC2D11516E77200207EAA /* brightness-bright@2x.png */; };
+		9FDBC2D61516E77200207EAA /* brightness-dim.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FDBC2D21516E77200207EAA /* brightness-dim.png */; };
+		9FDBC2D71516E77200207EAA /* brightness-dim@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FDBC2D31516E77200207EAA /* brightness-dim@2x.png */; };
 		9FF88B6914F85E7B00361E25 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FF88B6814F85E7B00361E25 /* CoreText.framework */; };
 		9FF89EB014312325002DA909 /* DCInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FF89EAF14312325002DA909 /* DCInfoViewController.m */; };
 /* End PBXBuildFile section */
@@ -98,8 +100,6 @@
 		9F59DAE6142E5E6B0020A795 /* DCFontSelectTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCFontSelectTableViewController.m; sourceTree = "<group>"; };
 		9F59DAE7142E5E6B0020A795 /* DCFontSelectTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DCFontSelectTableViewController.xib; sourceTree = "<group>"; };
 		9F7D215E143F53550024617C /* fontNames.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = fontNames.plist; sourceTree = "<group>"; };
-		9F89BB10143409AE007655C9 /* brightness-bright.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brightness-bright.png"; sourceTree = "<group>"; };
-		9F89BB11143409AE007655C9 /* brightness-dim.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brightness-dim.png"; sourceTree = "<group>"; };
 		9F89BB251434B523007655C9 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		9F89BB931436B0B7007655C9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9FB4A5BF1448EDCC00E1E754 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
@@ -112,6 +112,10 @@
 		9FC9655A1516858300D15754 /* DCIDashedDividerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCIDashedDividerView.m; sourceTree = "<group>"; };
 		9FDBC2BF1516BAB300207EAA /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		9FDBC2C11516BAD100207EAA /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
+		9FDBC2D01516E77200207EAA /* brightness-bright.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brightness-bright.png"; sourceTree = "<group>"; };
+		9FDBC2D11516E77200207EAA /* brightness-bright@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brightness-bright@2x.png"; sourceTree = "<group>"; };
+		9FDBC2D21516E77200207EAA /* brightness-dim.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brightness-dim.png"; sourceTree = "<group>"; };
+		9FDBC2D31516E77200207EAA /* brightness-dim@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brightness-dim@2x.png"; sourceTree = "<group>"; };
 		9FF88B6814F85E7B00361E25 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		9FF89EAE14312325002DA909 /* DCInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCInfoViewController.h; sourceTree = "<group>"; };
 		9FF89EAF14312325002DA909 /* DCInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCInfoViewController.m; sourceTree = "<group>"; };
@@ -246,10 +250,12 @@
 		9F43F4261428DD08003093A8 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				9FDBC2D01516E77200207EAA /* brightness-bright.png */,
+				9FDBC2D11516E77200207EAA /* brightness-bright@2x.png */,
+				9FDBC2D21516E77200207EAA /* brightness-dim.png */,
+				9FDBC2D31516E77200207EAA /* brightness-dim@2x.png */,
 				9FDBC2BF1516BAB300207EAA /* settings.png */,
 				9FDBC2C11516BAD100207EAA /* settings@2x.png */,
-				9F89BB10143409AE007655C9 /* brightness-bright.png */,
-				9F89BB11143409AE007655C9 /* brightness-dim.png */,
 				9F43F4271428DD21003093A8 /* red-info2.png */,
 				9F43F4281428DD21003093A8 /* red-info2@2x.png */,
 			);
@@ -358,8 +364,6 @@
 				9F59DA9C142D75100020A795 /* DCSettingsTableViewController.xib in Resources */,
 				9F59DAE9142E5E6C0020A795 /* DCFontSelectTableViewController.xib in Resources */,
 				9F0F8C731433791E003B2BAB /* Info in Resources */,
-				9F89BB12143409AE007655C9 /* brightness-bright.png in Resources */,
-				9F89BB13143409AE007655C9 /* brightness-dim.png in Resources */,
 				9F89BB261434B523007655C9 /* Entitlements.plist in Resources */,
 				9F7D215F143F53550024617C /* fontNames.plist in Resources */,
 				9FB4A5C51448EDCD00E1E754 /* Icon-72.png in Resources */,
@@ -371,6 +375,10 @@
 				9F50656C14FC7C3B00EA2EA9 /* fontData.plist in Resources */,
 				9FDBC2C01516BAB300207EAA /* settings.png in Resources */,
 				9FDBC2C21516BAD100207EAA /* settings@2x.png in Resources */,
+				9FDBC2D41516E77200207EAA /* brightness-bright.png in Resources */,
+				9FDBC2D51516E77200207EAA /* brightness-bright@2x.png in Resources */,
+				9FDBC2D61516E77200207EAA /* brightness-dim.png in Resources */,
+				9FDBC2D71516E77200207EAA /* brightness-dim@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

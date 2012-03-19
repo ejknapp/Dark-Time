@@ -53,11 +53,8 @@
 
 -(NSString *)currentFontDisplayName
 {
-    NSLog(@"%@", self.fonts);
-    
     DCIFont *font = [self.fonts objectForKey:self.currentFont.fontName];
     
-    NSLog(@"display %@, %@", font.displayName, self.currentFont);
     return font.displayName;
 }
 
