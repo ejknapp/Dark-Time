@@ -88,7 +88,9 @@
     
     DCIFont *font = [self.clockState.fontManager fontAtIndex:indexPath.row];
     
-    cell.textLabel.text = [[NSString alloc] initWithFormat:@"%@ - 6:34", font.displayName];
+    NSString *timeDisplay = [self.clockState currentTimeString];
+    
+    cell.textLabel.text = [[NSString alloc] initWithFormat:@"%@ - %@", font.displayName, timeDisplay];
 
     cell.textLabel.font = [UIFont fontWithName:font.fontName size:19];
     cell.accessoryType = UITableViewCellAccessoryNone;

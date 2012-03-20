@@ -121,10 +121,6 @@
 
 -(void)createFontsArray 
 {
-
-//    NSString *fontFilePath = [[NSBundle mainBundle] pathForResource:@"fontNames" ofType:@"plist"];
-//    self.fontNames = [[NSArray alloc] initWithContentsOfFile:fontFilePath];
-
     
     self.fontManager = [[DCIFontManager alloc] init];
     self.fontManager.clockState = self;

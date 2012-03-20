@@ -93,10 +93,10 @@
 {
     [super viewDidLoad];   
         
-    self.timeLabelHoursPortrait.text = @"";
-    self.timeLabelMinutesPortrait.text = @"";
-    self.ampmLabelPortrait.text = @"";
-    self.secondsLabelPortrait.text = @"";
+//    self.timeLabelHoursPortrait.text = @"";
+//    self.timeLabelMinutesPortrait.text = @"";
+//    self.ampmLabelPortrait.text = @"";
+//    self.secondsLabelPortrait.text = @"";
     
     self.timeLabel.alpha = 0.0;
     self.ampmLabel.alpha = 0.0;
@@ -135,6 +135,11 @@
     self.clockState.timeHourLabelPortraitFrame = self.timeLabelHoursPortrait.frame;
     
     [self updateClockOnLaunch];
+    
+    [self switchToOrientationView:self.interfaceOrientation];
+    
+    [self.view layoutIfNeeded];
+
     
 }
 

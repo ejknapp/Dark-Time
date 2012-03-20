@@ -50,5 +50,7 @@
 	<string>Default-iphone.png</string>
 	<key>UILaunchImageFile~ipad</key>
 	<string>Default-ipad.png</string>
+	<key>UIPrerenderedIcon</key>
+	<true/>
 </dict>
 </plist>
