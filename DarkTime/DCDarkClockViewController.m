@@ -97,6 +97,17 @@
     self.timeLabelMinutesPortrait.text = @"";
     self.ampmLabelPortrait.text = @"";
     self.secondsLabelPortrait.text = @"";
+    
+    self.timeLabel.alpha = 0.0;
+    self.ampmLabel.alpha = 0.0;
+    self.secondsLabel.alpha = 0.0;
+    self.clockSettingsButton.alpha = 0.0;
+    self.timeLabelHoursPortrait.alpha = 0.0;
+    self.timeLabelMinutesPortrait.alpha = 0.0;
+    self.ampmLabelPortrait.alpha = 0.0;
+    self.secondsLabelPortrait.alpha = 0.0;
+    self.clockSettingsButtonPortrait.alpha = 0.0;
+    self.dottedLine.alpha = 0.0;
 
     
     self.calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
@@ -387,25 +398,7 @@
     [self.dottedLine setNeedsDisplay];
     
     self.buttonAlphaLandscape = self.clockSettingsButton.alpha;
-    
-//    UIFont *hourFont = self.timeLabelHoursPortrait.font;
-//    UIFont *minsFont = self.timeLabelMinutesPortrait.font;
-//    
-//    CGFloat actualSizeHours;
-//    CGFloat actualSizeMins;
-//    
-//    [self.timeLabelHoursPortrait.text sizeWithFont:hourFont 
-//                                       minFontSize:10 
-//                                    actualFontSize:&actualSizeHours 
-//                                          forWidth:320 
-//                                     lineBreakMode:UILineBreakModeTailTruncation];
-//
-//    [self.timeLabelMinutesPortrait.text sizeWithFont:minsFont 
-//                                         minFontSize:10 
-//                                      actualFontSize:&actualSizeMins 
-//                                            forWidth:320 
-//                                       lineBreakMode:UILineBreakModeTailTruncation];
-    
+        
 }
 
 
