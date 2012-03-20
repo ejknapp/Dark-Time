@@ -44,7 +44,6 @@
 {
     
     self.view = [[UIView alloc] initWithFrame:CGRectZero];
-//    self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     self.view.backgroundColor = [UIColor blackColor];
     
@@ -57,13 +56,28 @@
                                                          pathForResource:@"info" ofType:@"html"                                                                                                                       
                                                          inDirectory:@"Info"] 
                                                encoding:NSUTF8StringEncoding error:nil];
+    NSMutableString *mutableHTML = [[NSMutableString alloc] initWithString:html];
+    
+    NSString *logoName;
+    
+    if([[UIScreen mainScreen] scale] >= 2.0) {
+        /* We have a retina display. */
+        logoName = @"logo@2x.png";
+    } else {
+        /* We do not. */
+        logoName = @"logo.png";
+    }
+
+    NSRange logoImageRange = [mutableHTML rangeOfString:@"LOGO_IMAGE"];
+
+    [mutableHTML replaceCharactersInRange:logoImageRange withString:logoName];
     
     self.infoWebView = [[UIWebView alloc] initWithFrame:CGRectZero];
     self.infoWebView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.infoWebView.delegate = self;
     self.infoWebView.backgroundColor = [UIColor blackColor];
     
-    [self.infoWebView loadHTMLString:html baseURL:baseURL];
+    [self.infoWebView loadHTMLString:mutableHTML baseURL:baseURL];
     [self.view addSubview:self.infoWebView];
     
 
