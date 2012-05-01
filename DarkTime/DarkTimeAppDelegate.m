@@ -10,6 +10,7 @@
 #import "DCDarkClockViewController.h"
 #import "DCClockState.h"
 #import "DCDarkClockViewController.h"
+#import "DCIWelcomeViewController.h"
 
 @interface DarkTimeAppDelegate()
 
@@ -153,18 +154,32 @@
                                                  forKey:@"clockBrightnessLevel"];
 
         [self.clockState saveClockState];
-
-        UIAlertView *alert = [[UIAlertView alloc] 
-                              initWithTitle:@"Be Careful!" 
-                              message:@"Dark Time prevents your device from going to sleep. It should not be used for long periods of time without being plugged in to a power source." 
-                              delegate:self 
-                              cancelButtonTitle:@"OK, I'll be Careful" 
-                              otherButtonTitles:nil, nil];
         
-        [alert show];
+        DCIWelcomeViewController *welcomeController = [[DCIWelcomeViewController alloc] 
+                                                       initWithNibName:@"DCIWelcomeViewController"
+                                                       bundle:nil];
+        welcomeController.mainController = self.viewController;
+        
+        UINavigationController *navigationController = [[UINavigationController alloc] 
+                                                        initWithRootViewController:welcomeController];
+        
+        navigationController.navigationBar.barStyle = UIBarStyleBlack;
+        
+        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]
+                                       initWithBarButtonSystemItem:UIBarButtonSystemItemStop
+                                       target:welcomeController 
+                                       action:@selector(doneButtonTapped)];
+        
+        
+        welcomeController.navigationItem.leftBarButtonItem = doneButton;
+        
+        navigationController.modalPresentationStyle = UIModalPresentationFormSheet;
+        
+        [self.viewController presentViewController:navigationController animated:YES completion:^{}];
         
         [defaults setBool:YES forKey:@"firstTimeFlag"];
         [defaults setObject:appVersion forKey:@"DarkTime_version"];
+        
     }
 }
 

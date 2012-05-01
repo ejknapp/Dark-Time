@@ -35,6 +35,9 @@
 		9F59DAE9142E5E6C0020A795 /* DCFontSelectTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F59DAE7142E5E6B0020A795 /* DCFontSelectTableViewController.xib */; };
 		9F67124815503BFA0022DB09 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F67124615503BFA0022DB09 /* settings.png */; };
 		9F67124915503BFA0022DB09 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F67124715503BFA0022DB09 /* settings@2x.png */; };
+		9F67125215503EEE0022DB09 /* DCIWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F67125015503EEE0022DB09 /* DCIWelcomeViewController.m */; };
+		9F67125315503EEE0022DB09 /* DCIWelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F67125115503EEE0022DB09 /* DCIWelcomeViewController.xib */; };
+		9F6712551550423B0022DB09 /* ChangeLog.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9F6712541550423B0022DB09 /* ChangeLog.txt */; };
 		9F7D215F143F53550024617C /* fontNames.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9F7D215E143F53550024617C /* fontNames.plist */; };
 		9F89BB261434B523007655C9 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9F89BB251434B523007655C9 /* Entitlements.plist */; };
 		9F89BB941436B0B7007655C9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F89BB931436B0B7007655C9 /* QuartzCore.framework */; };
@@ -103,6 +106,10 @@
 		9F59DAE7142E5E6B0020A795 /* DCFontSelectTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DCFontSelectTableViewController.xib; sourceTree = "<group>"; };
 		9F67124615503BFA0022DB09 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		9F67124715503BFA0022DB09 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
+		9F67124F15503EEE0022DB09 /* DCIWelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCIWelcomeViewController.h; sourceTree = "<group>"; };
+		9F67125015503EEE0022DB09 /* DCIWelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCIWelcomeViewController.m; sourceTree = "<group>"; };
+		9F67125115503EEE0022DB09 /* DCIWelcomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DCIWelcomeViewController.xib; sourceTree = "<group>"; };
+		9F6712541550423B0022DB09 /* ChangeLog.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ChangeLog.txt; sourceTree = "<group>"; };
 		9F7D215E143F53550024617C /* fontNames.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = fontNames.plist; sourceTree = "<group>"; };
 		9F89BB251434B523007655C9 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		9F89BB931436B0B7007655C9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -210,6 +217,7 @@
 				9F43F3F01428DC58003093A8 /* main.m */,
 				9F7D215E143F53550024617C /* fontNames.plist */,
 				9F50656B14FC7C3B00EA2EA9 /* fontData.plist */,
+				9F6712541550423B0022DB09 /* ChangeLog.txt */,
 				9F43F3F21428DC58003093A8 /* DarkTime-Prefix.pch */,
 			);
 			name = "Supporting Files";
@@ -257,6 +265,9 @@
 				9F59DAE7142E5E6B0020A795 /* DCFontSelectTableViewController.xib */,
 				9FC965591516858300D15754 /* DCIDashedDividerView.h */,
 				9FC9655A1516858300D15754 /* DCIDashedDividerView.m */,
+				9F67124F15503EEE0022DB09 /* DCIWelcomeViewController.h */,
+				9F67125015503EEE0022DB09 /* DCIWelcomeViewController.m */,
+				9F67125115503EEE0022DB09 /* DCIWelcomeViewController.xib */,
 			);
 			name = "Clock Classes";
 			sourceTree = "<group>";
@@ -395,6 +406,8 @@
 				9F8E45181517AF1500543A3A /* Default-ipad-Portrait@2x.png in Resources */,
 				9F67124815503BFA0022DB09 /* settings.png in Resources */,
 				9F67124915503BFA0022DB09 /* settings@2x.png in Resources */,
+				9F67125315503EEE0022DB09 /* DCIWelcomeViewController.xib in Resources */,
+				9F6712551550423B0022DB09 /* ChangeLog.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,6 +433,7 @@
 				9F50657014FC805F00EA2EA9 /* DCIFontManager.m in Sources */,
 				9F50657414FC827B00EA2EA9 /* DCIFont.m in Sources */,
 				9FC9655B1516858300D15754 /* DCIDashedDividerView.m in Sources */,
+				9F67125215503EEE0022DB09 /* DCIWelcomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

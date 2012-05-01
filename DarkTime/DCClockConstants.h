@@ -31,6 +31,7 @@ typedef enum {
     DCDarkTimeSettingsRowFontSelector,
     DCDarkTimeSettingsRowSuspendSleep,
     DCDarkTimeSettingsRowHelp,
+    DCDarkTimeSettingsRowChangeLog,
 } DCDarkTimeSettingsRow;
 
 typedef enum {

@@ -14,6 +14,7 @@
 #import "DCInfoViewController.h"
 #import "DCDarkClockViewController.h"
 #import "DCIFontManager.h"
+#import "DCIWelcomeViewController.h"
 
 @interface DCSettingsTableViewController()
 
@@ -38,6 +39,9 @@
 
 - (void)createHelpSelectionCell:(UITableViewCell *)cell 
                       indexPath:(NSIndexPath *)indexPath;
+
+- (void)createChangeLogCell:(UITableViewCell *)cell 
+                  indexPath:(NSIndexPath *)indexPath;
 @end
 
 @implementation DCSettingsTableViewController
@@ -126,6 +130,14 @@
                                   @"disclosure", DCSettingsTableViewCellIdentifier,
                                   nil];
 
+    NSDictionary *changeLogSection = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                 @"Change Log", DCSettingsTableViewHeader,
+                                 @"Current Version: ", DCSettingsTableViewCellText,
+                                 @"", DCSettingsTableViewFooter,
+                                 @"disclosure", DCSettingsTableViewCellIdentifier,
+                                 nil];
+
+    
     self.settingsArray = [[NSArray alloc] initWithObjects:
                          ampmSection, 
                          secondsSection, 
@@ -133,6 +145,7 @@
                          fontSection,
                          sleepSection,
                          helpSection,
+                         changeLogSection,
                          nil];
 }
 
@@ -334,6 +347,22 @@
     
 }
 
+- (void)createChangeLogCell:(UITableViewCell *)cell indexPath:(NSIndexPath *)indexPath
+{
+    NSString *appVersion = self.clockState.version;
+    
+    NSString *cellPrefix = [[self.settingsArray objectAtIndex:indexPath.section] 
+                            objectForKey:DCSettingsTableViewCellText];
+    NSString *cellText = [NSString stringWithFormat:@"%@ %@", cellPrefix, appVersion];
+    
+    cell.textLabel.text = cellText;
+    
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.selectionStyle = UITableViewCellSelectionStyleGray;
+    
+}
+
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView 
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -359,6 +388,8 @@
         [self createSuspendSleepCell:indexPath cell:cell];
     } else if (indexPath.section == DCDarkTimeSettingsRowHelp) {
         [self createHelpSelectionCell:cell indexPath:indexPath];
+    } else if (indexPath.section == DCDarkTimeSettingsRowChangeLog) {
+        [self createChangeLogCell:cell indexPath:indexPath];
     }
         
     return cell;
@@ -386,8 +417,6 @@
     } else {
         [UIScreen mainScreen].brightness = brightness;
     }
-    
-    
     
     self.clockState.clockBrightnessLevel = brightness;
     [self.clockViewController updateClockDisplayColorWithBrightness:brightness];
@@ -422,6 +451,11 @@
         
         [self.navigationController pushViewController:controller animated:YES];
         
+    } else if (indexPath.section == DCDarkTimeSettingsRowChangeLog) {
+        DCIWelcomeViewController *welcomeController = [[DCIWelcomeViewController alloc] 
+                                                       initWithNibName:@"DCIWelcomeViewController" 
+                                                       bundle:nil];
+        [self.navigationController pushViewController:welcomeController animated:YES];
     }
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];

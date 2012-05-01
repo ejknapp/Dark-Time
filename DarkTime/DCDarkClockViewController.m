@@ -140,6 +140,7 @@
     
     [self.view layoutIfNeeded];
 
+    [UIViewController attemptRotationToDeviceOrientation];
     
 }
 
@@ -173,10 +174,8 @@
     
     [[NSURLCache sharedURLCache] removeAllCachedResponses];
     
-    //    [self.settingsEditor.infoController.infoWebView loadHTMLString:@"" baseURL:nil];
     self.settingsEditor = nil;
     
-//    [self switchToOrientationView:self.clockState.currentOrientation];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

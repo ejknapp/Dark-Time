@@ -1,0 +1,20 @@
+Dark Time Change Log
+
+Version 1.1
+
+  - Portrait orientation.
+  - New Fonts. The app added the following font choices.
+    - Optima
+    - Bodoni
+    - Copperplate
+    - Gill Sans
+    - Didot
+  - The settings button icon was changed to be smaller and more common.
+  
+Version 1.0.1
+
+  - When the app launched for the first time the default brightness setting was too dark.
+  
+Version 1.0
+
+  - Initial release.
