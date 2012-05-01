@@ -151,9 +151,9 @@
         [UIScreen mainScreen].brightness = 0.6;
         [[NSUserDefaults standardUserDefaults] setFloat:[[UIScreen mainScreen] brightness]
                                                  forKey:@"clockBrightnessLevel"];
-                
+
         [self.clockState saveClockState];
-        
+
         UIAlertView *alert = [[UIAlertView alloc] 
                               initWithTitle:@"Be Careful!" 
                               message:@"Dark Time prevents your device from going to sleep. It should not be used for long periods of time without being plugged in to a power source." 

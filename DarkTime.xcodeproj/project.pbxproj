@@ -33,6 +33,8 @@
 		9F59DA9C142D75100020A795 /* DCSettingsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F59DA9A142D750F0020A795 /* DCSettingsTableViewController.xib */; };
 		9F59DAE8142E5E6C0020A795 /* DCFontSelectTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F59DAE6142E5E6B0020A795 /* DCFontSelectTableViewController.m */; };
 		9F59DAE9142E5E6C0020A795 /* DCFontSelectTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F59DAE7142E5E6B0020A795 /* DCFontSelectTableViewController.xib */; };
+		9F67124815503BFA0022DB09 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F67124615503BFA0022DB09 /* settings.png */; };
+		9F67124915503BFA0022DB09 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F67124715503BFA0022DB09 /* settings@2x.png */; };
 		9F7D215F143F53550024617C /* fontNames.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9F7D215E143F53550024617C /* fontNames.plist */; };
 		9F89BB261434B523007655C9 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9F89BB251434B523007655C9 /* Entitlements.plist */; };
 		9F89BB941436B0B7007655C9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F89BB931436B0B7007655C9 /* QuartzCore.framework */; };
@@ -49,8 +51,6 @@
 		9FB4A5C91448EDCD00E1E754 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FB4A5C31448EDCC00E1E754 /* Icon.png */; };
 		9FB4A5CA1448EDCD00E1E754 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FB4A5C41448EDCC00E1E754 /* Icon@2x.png */; };
 		9FC9655B1516858300D15754 /* DCIDashedDividerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC9655A1516858300D15754 /* DCIDashedDividerView.m */; };
-		9FDBC2C01516BAB300207EAA /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FDBC2BF1516BAB300207EAA /* settings.png */; };
-		9FDBC2C21516BAD100207EAA /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FDBC2C11516BAD100207EAA /* settings@2x.png */; };
 		9FDBC2D41516E77200207EAA /* brightness-bright.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FDBC2D01516E77200207EAA /* brightness-bright.png */; };
 		9FDBC2D51516E77200207EAA /* brightness-bright@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FDBC2D11516E77200207EAA /* brightness-bright@2x.png */; };
 		9FDBC2D61516E77200207EAA /* brightness-dim.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FDBC2D21516E77200207EAA /* brightness-dim.png */; };
@@ -101,6 +101,8 @@
 		9F59DAE5142E5E6B0020A795 /* DCFontSelectTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCFontSelectTableViewController.h; sourceTree = "<group>"; };
 		9F59DAE6142E5E6B0020A795 /* DCFontSelectTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCFontSelectTableViewController.m; sourceTree = "<group>"; };
 		9F59DAE7142E5E6B0020A795 /* DCFontSelectTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DCFontSelectTableViewController.xib; sourceTree = "<group>"; };
+		9F67124615503BFA0022DB09 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		9F67124715503BFA0022DB09 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
 		9F7D215E143F53550024617C /* fontNames.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = fontNames.plist; sourceTree = "<group>"; };
 		9F89BB251434B523007655C9 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		9F89BB931436B0B7007655C9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -118,8 +120,6 @@
 		9FB4A5C41448EDCC00E1E754 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		9FC965591516858300D15754 /* DCIDashedDividerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCIDashedDividerView.h; sourceTree = "<group>"; };
 		9FC9655A1516858300D15754 /* DCIDashedDividerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCIDashedDividerView.m; sourceTree = "<group>"; };
-		9FDBC2BF1516BAB300207EAA /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
-		9FDBC2C11516BAD100207EAA /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
 		9FDBC2D01516E77200207EAA /* brightness-bright.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brightness-bright.png"; sourceTree = "<group>"; };
 		9FDBC2D11516E77200207EAA /* brightness-bright@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brightness-bright@2x.png"; sourceTree = "<group>"; };
 		9FDBC2D21516E77200207EAA /* brightness-dim.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brightness-dim.png"; sourceTree = "<group>"; };
@@ -268,8 +268,8 @@
 				9FDBC2D11516E77200207EAA /* brightness-bright@2x.png */,
 				9FDBC2D21516E77200207EAA /* brightness-dim.png */,
 				9FDBC2D31516E77200207EAA /* brightness-dim@2x.png */,
-				9FDBC2BF1516BAB300207EAA /* settings.png */,
-				9FDBC2C11516BAD100207EAA /* settings@2x.png */,
+				9F67124615503BFA0022DB09 /* settings.png */,
+				9F67124715503BFA0022DB09 /* settings@2x.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -340,7 +340,7 @@
 		9F43F3D71428DC58003093A8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0440;
 				ORGANIZATIONNAME = "Madison Area Technical College";
 			};
 			buildConfigurationList = 9F43F3DA1428DC58003093A8 /* Build configuration list for PBXProject "DarkTime" */;
@@ -383,8 +383,6 @@
 				9FB4A5C91448EDCD00E1E754 /* Icon.png in Resources */,
 				9FB4A5CA1448EDCD00E1E754 /* Icon@2x.png in Resources */,
 				9F50656C14FC7C3B00EA2EA9 /* fontData.plist in Resources */,
-				9FDBC2C01516BAB300207EAA /* settings.png in Resources */,
-				9FDBC2C21516BAD100207EAA /* settings@2x.png in Resources */,
 				9FDBC2D41516E77200207EAA /* brightness-bright.png in Resources */,
 				9FDBC2D51516E77200207EAA /* brightness-bright@2x.png in Resources */,
 				9FDBC2D61516E77200207EAA /* brightness-dim.png in Resources */,
@@ -395,6 +393,8 @@
 				9F8E45141517AD6C00543A3A /* Default-iphone@2x.png in Resources */,
 				9F8E45171517AF1500543A3A /* Default-ipad-Landscape@2x.png in Resources */,
 				9F8E45181517AF1500543A3A /* Default-ipad-Portrait@2x.png in Resources */,
+				9F67124815503BFA0022DB09 /* settings.png in Resources */,
+				9F67124915503BFA0022DB09 /* settings@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,7 +457,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
@@ -478,7 +477,7 @@
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
+				VALIDATE_PRODUCT = NO;
 			};
 			name = Debug;
 		};
@@ -486,7 +485,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
@@ -501,7 +499,7 @@
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
+				VALIDATE_PRODUCT = NO;
 			};
 			name = Release;
 		};
@@ -545,7 +543,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
@@ -560,7 +557,7 @@
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
+				VALIDATE_PRODUCT = NO;
 			};
 			name = "Ad Hoc";
 		};
