@@ -184,6 +184,7 @@
     hourString = [[NSString alloc] initWithFormat:@"%d", displayHour];
     
     return hourString;
+    
 }
 
 -(NSString *)currentMinutesString
@@ -196,6 +197,7 @@
     minutesString = [[NSString alloc] initWithFormat:@"%02d", minute];
     
     return minutesString;
+
 }
 
 -(NSString *)currentSecondsString
