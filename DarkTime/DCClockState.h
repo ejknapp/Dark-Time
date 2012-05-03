@@ -13,6 +13,8 @@
 
 @interface DCClockState : NSObject
 
+@property (assign, nonatomic) DCIClockDisplayType clockDisplayType;
+
 @property (nonatomic, strong) UIColor *displayBackgroundColor;
 @property (nonatomic, strong) UIColor *timeTextColor;
 @property (nonatomic, strong) UIColor *savedColorForClock;
@@ -27,9 +29,6 @@
 @property (nonatomic, assign) BOOL savedDisplayAmPm;
 @property (nonatomic, assign) BOOL suspendSleep;
 @property (nonatomic, assign) BOOL screenWantsSoftwareDimming;
-//@property (nonatomic, strong) UIFont *currentFont;
-//@property (nonatomic, strong) NSString *currentFontName;
-//@property (nonatomic, assign) NSUInteger currentFontIndex;
 @property (nonatomic, strong) NSArray *fontChoices;
 @property (nonatomic, assign, getter = isFontEditorDisplayed) BOOL fontEditorDisplayed;
 @property (nonatomic, assign) CGPoint startingDragLocation;

@@ -22,6 +22,9 @@
 @property (nonatomic, strong) UITableViewCell *fontCell;
 @property (nonatomic, strong) UITableViewCell *helpCell;
 @property (nonatomic, strong) UISlider *brightnessSlider;
+@property (nonatomic, strong) UISwitch *ampmSwitch;
+@property (strong, nonatomic) IBOutlet UITableViewCell *displayTypeCell;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *displayTypeSegmentedControl;
 
 - (void)createAmPmCell:(NSIndexPath *)indexPath 
                   cell:(UITableViewCell *)cell;
@@ -42,6 +45,9 @@
 
 - (void)createChangeLogCell:(UITableViewCell *)cell 
                   indexPath:(NSIndexPath *)indexPath;
+
+- (IBAction)timeDisplaySegmentTapped:(UISegmentedControl *)sender;
+
 @end
 
 @implementation DCSettingsTableViewController
@@ -51,6 +57,9 @@
 @synthesize fontCell = _fontCell;
 @synthesize helpCell = _helpCell;
 @synthesize brightnessSlider = _brightnessSlider;
+@synthesize ampmSwitch = _ampmSwitch;
+@synthesize displayTypeCell = _displayTypeCell;
+@synthesize displayTypeSegmentedControl = _displayTypeSegmentedControl;
 
 @synthesize clockViewController = _clockViewController;
 
@@ -86,6 +95,12 @@
                                                                              target:self 
                                                                              action:@selector(doneButtonTapped)];
 
+    NSDictionary *timeDisplaySection = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                 @"Clock Display Type", DCSettingsTableViewHeader,
+                                 @"", DCSettingsTableViewCellText,
+                                 @"", DCSettingsTableViewFooter,
+                                 @"segment", DCSettingsTableViewCellIdentifier,
+                                 nil];
     
     
     NSDictionary *ampmSection = [[NSDictionary alloc] initWithObjectsAndKeys:
@@ -139,6 +154,7 @@
 
     
     self.settingsArray = [[NSArray alloc] initWithObjects:
+                         timeDisplaySection,
                          ampmSection, 
                          secondsSection, 
                          brightnessSection,
@@ -167,6 +183,8 @@
 
 - (void)viewDidUnload
 {
+    [self setDisplayTypeCell:nil];
+    [self setDisplayTypeSegmentedControl:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -230,16 +248,23 @@
 
 - (void)createAmPmCell:(NSIndexPath *)indexPath cell:(UITableViewCell *)cell
 {
-    UISwitch *cellSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
+    self.ampmSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
     cell.textLabel.text = [[self.settingsArray objectAtIndex:indexPath.section] 
                            objectForKey:DCSettingsTableViewCellText];
     
-    [cellSwitch addTarget:self 
+    [self.ampmSwitch addTarget:self 
                    action:@selector(toggleAmPm:) 
          forControlEvents:UIControlEventValueChanged];
     
-    cellSwitch.on = self.clockState.displayAmPm;
-    cell.accessoryView = cellSwitch;
+    if (self.clockState.clockDisplayType == DCIClockDisplayType24Hour) {
+        self.ampmSwitch.on = NO;
+        self.ampmSwitch.enabled = NO;
+    } else {
+        self.ampmSwitch.enabled = YES;
+        self.ampmSwitch.on = self.clockState.displayAmPm;
+    }
+
+    cell.accessoryView = self.ampmSwitch;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
 }
@@ -376,7 +401,12 @@
                                        reuseIdentifier:CellIdentifier];
     }
     
-    if (indexPath.section == DCDarkTimeSettingsRowDisplayAmPm) {
+    if (indexPath.section == DCDarkTimeSettingsRowDisplayType) {
+        cell = self.displayTypeCell;
+        if (self.clockState.clockDisplayType == DCIClockDisplayType24Hour) {
+            self.displayTypeSegmentedControl.selectedSegmentIndex = DCIClockDisplayType24Hour;
+        }
+    } else if (indexPath.section == DCDarkTimeSettingsRowDisplayAmPm) {
         [self createAmPmCell:indexPath cell:cell];
     } else if (indexPath.section == DCDarkTimeSettingsRowDisplaySeconds) {
         [self createSecondsCell:indexPath cell:cell];
@@ -396,6 +426,20 @@
 }
 
 #pragma mark - Interface Action Methods
+
+- (IBAction)timeDisplaySegmentTapped:(UISegmentedControl *)sender
+{
+    
+    self.clockState.clockDisplayType = sender.selectedSegmentIndex;
+    
+    if (self.clockState.clockDisplayType == DCIClockDisplayType24Hour) {
+        self.clockState.displayAmPm = NO;
+        self.ampmSwitch.on = NO;
+        self.ampmSwitch.enabled = NO;
+    } else {
+        self.ampmSwitch.enabled = YES;
+    }
+}
 
 -(void)toggleAmPm:(id)sender
 {

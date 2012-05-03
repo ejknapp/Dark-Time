@@ -20,6 +20,8 @@
 
 @implementation DCClockState
 
+@synthesize clockDisplayType = _clockDisplayType;
+
 @synthesize displayBackgroundColor = _displayBackgroundColor;
 @synthesize timeTextColor = _timeTextColor;
 @synthesize savedColorForClock = _savedColorForClock;
@@ -34,9 +36,6 @@
 @synthesize savedDisplayAmPm = _savedDisplayAmPm;
 @synthesize suspendSleep = _suspendSleep;
 @synthesize screenWantsSoftwareDimming = _screenWantsSoftwareDimming;
-//@synthesize currentFont =_currentFont;
-//@synthesize currentFontName = _currentFontName;
-//@synthesize currentFontIndex = _currentFontIndex;
 @synthesize fontChoices = _fontChoices;
 @synthesize fontEditorDisplayed = _fontEditorDisplayed;
 @synthesize startingDragLocation = _startingDragLocation;
@@ -159,7 +158,12 @@
         displayHour = 12;
     }
     
-    timeString = [[NSString alloc] initWithFormat:@"%d:%02d", displayHour, minute];
+    if (self.clockDisplayType == DCIClockDisplayType24Hour) {
+        timeString = [NSString stringWithFormat:@"%02d:%02d", hour, minute];
+    } else {
+        timeString = [[NSString alloc] initWithFormat:@"%d:%02d", displayHour, minute];
+    }
+    
     
     return timeString;
 }
@@ -181,7 +185,11 @@
         displayHour = 12;
     }
     
-    hourString = [[NSString alloc] initWithFormat:@"%d", displayHour];
+    if (self.clockDisplayType == DCIClockDisplayType24Hour) {
+        hourString = [NSString stringWithFormat:@"%02d", hour];
+    } else {
+        hourString = [[NSString alloc] initWithFormat:@"%d", displayHour];
+    }
     
     return hourString;
     
@@ -247,6 +255,14 @@
             
     [UIScreen mainScreen].wantsSoftwareDimming = self.screenWantsSoftwareDimming;
     
+    NSInteger displayType = [userDefaults integerForKey:@"clockDisplayType"];
+    
+    if (displayType) {
+        self.clockDisplayType = DCIClockDisplayType24Hour;
+    } else {
+        self.clockDisplayType = DCIClockDisplayType12Hour;
+    }
+    
     NSInteger fontIndex = [userDefaults integerForKey:@"currentFontIndex"];
             
     if (fontIndex >= 0) {
@@ -285,6 +301,8 @@
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
+    [userDefaults setInteger:self.clockDisplayType forKey:@"clockDisplayType"];
+
     [userDefaults setInteger:self.fontManager.currentFontIndex forKey:@"currentFontIndex"];
     
     [userDefaults setBool:self.displayAmPm forKey:@"displayAmPm"];

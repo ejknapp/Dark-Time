@@ -26,6 +26,8 @@ build/
 .svn
 CVS
 
+# Archive Files
+DarkTime*.xcarchive/
 
 # automatic backup files
 *~.nib

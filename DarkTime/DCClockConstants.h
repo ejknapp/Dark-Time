@@ -25,7 +25,8 @@ extern NSString * const DCSettingsViewNibNameiPad;
 extern NSString * const DCSettingsViewNibNameiPhone;
 
 typedef enum {
-    DCDarkTimeSettingsRowDisplayAmPm = 0,
+    DCDarkTimeSettingsRowDisplayType = 0,
+    DCDarkTimeSettingsRowDisplayAmPm,
     DCDarkTimeSettingsRowDisplaySeconds,
     DCDarkTimeSettingsRowAdjustBrightness,
     DCDarkTimeSettingsRowFontSelector,
@@ -38,6 +39,11 @@ typedef enum {
     DCIDarkTimeDeviceiPhone = 0,
     DCIDarkTimeDeviceiPad
 } DCIDarkTimeDevice;
+
+typedef enum {
+    DCIClockDisplayType12Hour = 0,
+    DCIClockDisplayType24Hour,
+} DCIClockDisplayType;
 
 extern NSUInteger const iPadAmPmSecondsFontSize;
 extern NSUInteger const iPhoneAmPmSecondsFontSize;
