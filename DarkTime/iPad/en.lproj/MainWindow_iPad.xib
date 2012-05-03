@@ -196,7 +196,7 @@
 					<string>DCDarkClockViewController_iPad</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>DarkTimeAppDelegate_iPad</string>
+					<string>DarkTimeAppDelegate</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				</object>
 			</object>

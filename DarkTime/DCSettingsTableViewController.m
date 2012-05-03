@@ -21,7 +21,6 @@
 @property (nonatomic, strong) NSArray *settingsArray;
 @property (nonatomic, strong) UITableViewCell *fontCell;
 @property (nonatomic, strong) UITableViewCell *helpCell;
-@property (nonatomic, strong) UISlider *brightnessSlider;
 
 - (void)createAmPmCell:(NSIndexPath *)indexPath 
                   cell:(UITableViewCell *)cell;
@@ -50,7 +49,6 @@
 @synthesize settingsArray = _settingsArray;
 @synthesize fontCell = _fontCell;
 @synthesize helpCell = _helpCell;
-@synthesize brightnessSlider = _brightnessSlider;
 
 @synthesize clockViewController = _clockViewController;
 
@@ -174,7 +172,6 @@
     self.settingsArray = nil;
     self.fontCell = nil;
     self.helpCell = nil;
-    self.brightnessSlider = nil;
     
     
 }
@@ -263,26 +260,20 @@
 - (void)createBrightnessCell:(NSIndexPath *)indexPath cell:(UITableViewCell *)cell
 {
 
-    //UIInterfaceOrientation orientation = 
-    
-    CGRect sliderRect;
-    if (!self.brightnessSlider) {
-        sliderRect = CGRectMake(10, 0, 295, 45);
+    CGRect sliderRect = CGRectMake(10, 0, 295, 45);
         
-        self.brightnessSlider               = [[UISlider alloc] initWithFrame:sliderRect];
-        self.brightnessSlider.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-        self.brightnessSlider.minimumValue  = 0.0;
-        self.brightnessSlider.maximumValue  = 1.0;
-    }
+    UISlider *brightnessSlider        = [[UISlider alloc] initWithFrame:sliderRect];
+    brightnessSlider.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    brightnessSlider.minimumValue     = 0.0;
+    brightnessSlider.maximumValue     = 1.0;
 
-    
     NSString *path = [[NSBundle mainBundle] 
                       pathForResource:@"brightness-dim" 
                       ofType:@"png"];
 
     UIImage *dim = [[UIImage alloc] initWithContentsOfFile:path];
     
-    self.brightnessSlider.minimumValueImage = dim;
+    brightnessSlider.minimumValueImage = dim;
     
     path = [[NSBundle mainBundle] 
             pathForResource:@"brightness-bright" 
@@ -290,19 +281,19 @@
     
     UIImage *bright = [[UIImage alloc] initWithContentsOfFile:path];
     
-    self.brightnessSlider.maximumValueImage = bright;
+    brightnessSlider.maximumValueImage = bright;
     
 
     cell.textLabel.text = [[self.settingsArray objectAtIndex:indexPath.section] 
                            objectForKey:DCSettingsTableViewCellText];
     
-    [self.brightnessSlider addTarget:self 
-                   action:@selector(adjustBrightness:) 
-         forControlEvents:UIControlEventValueChanged];
+    [brightnessSlider addTarget:self 
+                         action:@selector(adjustBrightness:) 
+               forControlEvents:UIControlEventValueChanged];
     
-    self.brightnessSlider.value = self.clockState.clockBrightnessLevel;
+    brightnessSlider.value = self.clockState.clockBrightnessLevel;
     
-    [cell.contentView addSubview:self.brightnessSlider];
+    [cell.contentView addSubview:brightnessSlider];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
