@@ -11,14 +11,16 @@
 #import "DCClockState.h"
 #import "DCDarkClockViewController.h"
 #import "DCIWelcomeViewController.h"
+#import "DCDarkClockViewController_iPad.h"
+#import "DCDarkClockViewController_iPhone.h"
 
 @interface DarkTimeAppDelegate()
 
+@property (nonatomic, strong) DCClockState *clockState;
 @property (nonatomic, assign) CGFloat savedScreenBrightness;
 @property (nonatomic, assign) BOOL savedScreenWantsSoftwareDimming;
 
 -(void)firstTime;
-
 
 @end
 
@@ -32,9 +34,21 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        self.viewController = [[DCDarkClockViewController_iPhone alloc] 
+                               initWithNibName:@"DCDarkClockViewController_iPhone" 
+                               bundle:nil];
+    } else {
+        self.viewController = [[DCDarkClockViewController_iPad alloc] 
+                               initWithNibName:@"DCDarkClockViewController_iPad" 
+                               bundle:nil];
+    }
+    
     self.clockState = [[DCClockState alloc] init];
     self.viewController.clockState = self.clockState;
-
+    
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];    
     [[UIApplication sharedApplication] setIdleTimerDisabled:self.clockState.suspendSleep];
 
@@ -43,8 +57,6 @@
 
     self.window.rootViewController = self.viewController;
     
-
-    [self.window addSubview:self.viewController.view];
     [self.window makeKeyAndVisible];
     
     [self firstTime];

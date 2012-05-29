@@ -15,9 +15,7 @@
 		9F43F3F11428DC58003093A8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F43F3F01428DC58003093A8 /* main.m */; };
 		9F43F3F51428DC58003093A8 /* DarkTimeAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F43F3F41428DC58003093A8 /* DarkTimeAppDelegate.m */; };
 		9F43F3F91428DC58003093A8 /* DarkTimeAppDelegate_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F43F3F81428DC58003093A8 /* DarkTimeAppDelegate_iPhone.m */; };
-		9F43F3FC1428DC58003093A8 /* MainWindow_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F43F3FA1428DC58003093A8 /* MainWindow_iPhone.xib */; };
 		9F43F4001428DC58003093A8 /* DarkTimeAppDelegate_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F43F3FF1428DC58003093A8 /* DarkTimeAppDelegate_iPad.m */; };
-		9F43F4031428DC58003093A8 /* MainWindow_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F43F4011428DC58003093A8 /* MainWindow_iPad.xib */; };
 		9F43F4131428DCB7003093A8 /* DCDarkClockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F43F40B1428DCB7003093A8 /* DCDarkClockViewController.m */; };
 		9F43F4141428DCB7003093A8 /* DCDarkClockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F43F40C1428DCB7003093A8 /* DCDarkClockViewController.xib */; };
 		9F43F4151428DCB7003093A8 /* DCClockState.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F43F40E1428DCB7003093A8 /* DCClockState.m */; };
@@ -76,10 +74,8 @@
 		9F43F3F41428DC58003093A8 /* DarkTimeAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DarkTimeAppDelegate.m; sourceTree = "<group>"; };
 		9F43F3F71428DC58003093A8 /* DarkTimeAppDelegate_iPhone.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DarkTimeAppDelegate_iPhone.h; path = iPhone/DarkTimeAppDelegate_iPhone.h; sourceTree = "<group>"; };
 		9F43F3F81428DC58003093A8 /* DarkTimeAppDelegate_iPhone.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DarkTimeAppDelegate_iPhone.m; path = iPhone/DarkTimeAppDelegate_iPhone.m; sourceTree = "<group>"; };
-		9F43F3FB1428DC58003093A8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPhone/en.lproj/MainWindow_iPhone.xib; sourceTree = "<group>"; };
 		9F43F3FE1428DC58003093A8 /* DarkTimeAppDelegate_iPad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DarkTimeAppDelegate_iPad.h; path = iPad/DarkTimeAppDelegate_iPad.h; sourceTree = "<group>"; };
 		9F43F3FF1428DC58003093A8 /* DarkTimeAppDelegate_iPad.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DarkTimeAppDelegate_iPad.m; path = iPad/DarkTimeAppDelegate_iPad.m; sourceTree = "<group>"; };
-		9F43F4021428DC58003093A8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPad/en.lproj/MainWindow_iPad.xib; sourceTree = "<group>"; };
 		9F43F40A1428DCB7003093A8 /* DCDarkClockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCDarkClockViewController.h; sourceTree = "<group>"; };
 		9F43F40B1428DCB7003093A8 /* DCDarkClockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCDarkClockViewController.m; sourceTree = "<group>"; };
 		9F43F40C1428DCB7003093A8 /* DCDarkClockViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DCDarkClockViewController.xib; sourceTree = "<group>"; };
@@ -228,7 +224,6 @@
 			children = (
 				9F43F3F71428DC58003093A8 /* DarkTimeAppDelegate_iPhone.h */,
 				9F43F3F81428DC58003093A8 /* DarkTimeAppDelegate_iPhone.m */,
-				9F43F3FA1428DC58003093A8 /* MainWindow_iPhone.xib */,
 			);
 			name = iPhone;
 			sourceTree = "<group>";
@@ -238,7 +233,6 @@
 			children = (
 				9F43F3FE1428DC58003093A8 /* DarkTimeAppDelegate_iPad.h */,
 				9F43F3FF1428DC58003093A8 /* DarkTimeAppDelegate_iPad.m */,
-				9F43F4011428DC58003093A8 /* MainWindow_iPad.xib */,
 			);
 			name = iPad;
 			sourceTree = "<group>";
@@ -377,8 +371,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F43F3EF1428DC58003093A8 /* InfoPlist.strings in Resources */,
-				9F43F3FC1428DC58003093A8 /* MainWindow_iPhone.xib in Resources */,
-				9F43F4031428DC58003093A8 /* MainWindow_iPad.xib in Resources */,
 				9F43F4141428DCB7003093A8 /* DCDarkClockViewController.xib in Resources */,
 				9F43F4311428DEE5003093A8 /* DCDarkClockViewController_iPhone.xib in Resources */,
 				9F43F4361428DF02003093A8 /* DCDarkClockViewController_iPad.xib in Resources */,
@@ -446,22 +438,6 @@
 				9F43F3EE1428DC58003093A8 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		9F43F3FA1428DC58003093A8 /* MainWindow_iPhone.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9F43F3FB1428DC58003093A8 /* en */,
-			);
-			name = MainWindow_iPhone.xib;
-			sourceTree = "<group>";
-		};
-		9F43F4011428DC58003093A8 /* MainWindow_iPad.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9F43F4021428DC58003093A8 /* en */,
-			);
-			name = MainWindow_iPad.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

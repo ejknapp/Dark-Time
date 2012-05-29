@@ -93,11 +93,6 @@
 {
     [super viewDidLoad];   
         
-//    self.timeLabelHoursPortrait.text = @"";
-//    self.timeLabelMinutesPortrait.text = @"";
-//    self.ampmLabelPortrait.text = @"";
-//    self.secondsLabelPortrait.text = @"";
-    
     self.timeLabel.alpha = 0.0;
     self.ampmLabel.alpha = 0.0;
     self.secondsLabel.alpha = 0.0;
@@ -409,7 +404,6 @@
 
 - (void)switchToOrientationView:(UIInterfaceOrientation)interfaceOrientation
 {
-
     [self.clockState changeFontWithFontIndex:self.clockState.fontManager.currentFontIndex];
     
     if (UIInterfaceOrientationIsPortrait(interfaceOrientation)) {
@@ -489,7 +483,7 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
 
 - (void)updateClock
 {
-    
+
     NSDate* now = [NSDate date];
     int second = [[self.calendar components:NSSecondCalendarUnit fromDate:now] second];
     

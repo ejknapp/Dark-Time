@@ -120,7 +120,6 @@
 
 -(void)createFontsArray 
 {
-    
     self.fontManager = [[DCIFontManager alloc] init];
     self.fontManager.clockState = self;
     [self.fontManager loadFontDictionaries];
@@ -163,7 +162,6 @@
     } else {
         timeString = [[NSString alloc] initWithFormat:@"%d:%02d", displayHour, minute];
     }
-    
     
     return timeString;
 }

@@ -48,7 +48,6 @@
         DCIFont *newFont = [[DCIFont alloc] initWithFontDictionary:fontDictionary];
         [self.fonts setObject:newFont forKey:newFont.fontName];
     }
-    
 }
 
 -(NSString *)currentFontDisplayName
