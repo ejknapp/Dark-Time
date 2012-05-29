@@ -114,10 +114,10 @@
 
     
     self.appTimer = [NSTimer scheduledTimerWithTimeInterval:0.1
-                                                      target:self
-                                                    selector:@selector(updateClock)
-                                                    userInfo:nil
-                                                     repeats:YES];
+                                                     target:self
+                                                   selector:@selector(updateClock)
+                                                   userInfo:nil
+                                                    repeats:YES];
     
     [self createRightSwipeRecognizer];
     [self createLeftSwipeRecognizer];
@@ -125,9 +125,9 @@
     [self createDownSwipeRecognizer];
    
     [self.clockState.fontManager addObserver:self 
-                      forKeyPath:@"currentFont" 
-                         options:NSKeyValueObservingOptionNew
-                         context:NULL];
+                                  forKeyPath:@"currentFont" 
+                                     options:NSKeyValueObservingOptionNew
+                                     context:NULL];
         
     [self.clockState changeFontWithFontIndex:self.clockState.fontManager.currentFontIndex];
     [self updateDisplayFont];

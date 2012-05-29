@@ -24,6 +24,8 @@
     CGFloat linePainted = self.frame.size.width / 44.4;
     CGFloat lineUnpainted = self.frame.size.width / 16.5;
     
+    //[[[self frame] size] width];
+    
     CGContextSetLineCap(context, kCGLineCapRound);
     CGContextSetStrokeColorWithColor(context, self.dashedLineColor.CGColor);
     const CGFloat lineDashLengths[2] = { linePainted, lineUnpainted };
