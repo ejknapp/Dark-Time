@@ -88,13 +88,6 @@
     self.clockState.infoPageViewDisplayed = NO;
 }
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-
-    self.infoWebView = nil;
-}
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations

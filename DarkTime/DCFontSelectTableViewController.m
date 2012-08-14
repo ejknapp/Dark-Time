@@ -29,12 +29,6 @@
 
 #pragma mark - View lifecycle
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-
-    self.currentCheckedCell = nil;
-}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

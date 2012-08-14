@@ -181,22 +181,6 @@
 
 }
 
-- (void)viewDidUnload
-{
-    [self setDisplayTypeCell:nil];
-    [self setDisplayTypeSegmentedControl:nil];
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-    
-    self.settingsArray = nil;
-    self.fontCell = nil;
-    self.helpCell = nil;
-    self.brightnessSlider = nil;
-    
-    
-}
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
 	return YES;

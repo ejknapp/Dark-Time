@@ -19,6 +19,7 @@
 
 @interface DCDarkClockViewController ()
 
+
 @property (strong, nonatomic) UINavigationController *settingsNavController;
 @property (assign, nonatomic) CGFloat buttonAlphaLandscape;
 @property (assign, nonatomic) CGFloat dottedLineAlpha;
@@ -137,29 +138,6 @@
 
     [UIViewController attemptRotationToDeviceOrientation];
     
-}
-
-- (void)viewDidUnload
-{
-    [self setTimeLabel:nil];
-    [self setAmpmLabel:nil];
-    [self setSecondsLabel:nil];
-    
-    self.calendar = nil;
-    self.appTimer = nil;
-    self.settingsEditor = nil;
-    self.landscapeView = nil;
-    self.portraitView = nil;
-    self.ampmLabelPortrait = nil;
-    self.timeLabelHoursPortrait = nil;
-    self.timeLabelMinutesPortrait = nil;
-    self.infoController = nil;
-    self.clockSettingsButton = nil;
-    self.secondsLabelPortrait = nil;
-    self.clockSettingsButtonPortrait = nil;
-    
-    
-    [super viewDidUnload];
 }
 
 - (void)dismissModalViewControllerAnimated:(BOOL)animated
