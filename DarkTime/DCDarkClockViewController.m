@@ -114,7 +114,10 @@
     
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> b0b1aa2fd5c6f8532633c6353accbb7ad27b1a02
 - (void)dismissModalViewControllerAnimated:(BOOL)animated
 {
     
