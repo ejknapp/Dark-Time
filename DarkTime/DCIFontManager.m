@@ -15,24 +15,15 @@
 @property (strong, nonatomic) NSArray *fontDictionaries;
 @property (strong, nonatomic) NSMutableDictionary *fonts;
 
-
-
 @end
 
 
 @implementation DCIFontManager
 
-@synthesize fontDictionaries = _fontDictionaries;
-@synthesize currentFontIndex = _currentFontIndex;
-@synthesize currentFont = _currentFont;
-@synthesize fonts = _fonts;
-@synthesize clockState = _clockState;
-
 
 - (id)init {
     self = [super init];
     if (self) {
-//        [self loadFontDictionaries];
     }
     return self;
 }

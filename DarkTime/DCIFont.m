@@ -23,12 +23,6 @@
 
 @implementation DCIFont
 
-@synthesize fontName = _fontName;
-@synthesize displayName = _displayName;
-@synthesize iPhoneHourFrameOffset = _iPhoneHourFrameOffset;
-@synthesize iPhoneMinuteFrameOffset = _iPhoneMinuteFrameOffset;
-@synthesize iPadHourFrameOffset = _iPadHourFrameOffset;
-@synthesize iPadMinuteFrameOffset = _iPadMinuteFrameOffset;
 
 - (id)initWithFontDictionary:(NSDictionary *)fontDictionary
 {

@@ -16,6 +16,8 @@
 
 @interface DarkTimeAppDelegate()
 
+@property (nonatomic, strong) DCDarkClockViewController *viewController;
+
 @property (nonatomic, strong) DCClockState *clockState;
 @property (nonatomic, assign) CGFloat savedScreenBrightness;
 @property (nonatomic, assign) BOOL savedScreenWantsSoftwareDimming;
@@ -25,12 +27,6 @@
 @end
 
 @implementation DarkTimeAppDelegate
-
-@synthesize window = _window;
-@synthesize viewController = _viewController;
-@synthesize clockState = _clockState;
-@synthesize savedScreenBrightness = _savedScreenBrightness;
-@synthesize savedScreenWantsSoftwareDimming = _savedScreenWantsSoftwareDimming;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

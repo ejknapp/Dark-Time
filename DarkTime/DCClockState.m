@@ -12,6 +12,23 @@
 
 @interface DCClockState ()
 
+@property (nonatomic, strong) UIColor *displayBackgroundColor;
+@property (nonatomic, strong) UIColor *timeTextColor;
+@property (nonatomic, strong) UIColor *savedColorForClock;
+@property (nonatomic, strong) NSCalendar *calendar;
+@property (nonatomic, strong) NSDateFormatter *formatter;
+@property (nonatomic, strong) NSDate *previousNow;
+@property (nonatomic, assign) BOOL savedDisplaySeconds;
+@property (nonatomic, assign) BOOL savedDisplayAmPm;
+@property (nonatomic, assign) BOOL screenWantsSoftwareDimming;
+@property (nonatomic, strong) NSArray *fontChoices;
+@property (nonatomic, assign) CGPoint startingDragLocation;
+@property (nonatomic, assign) NSInteger displayLabelY;
+@property (nonatomic, assign) CGPoint displayCenter;
+@property (nonatomic, strong) NSArray *fontNames;
+
+
+
 -(void)createFontsArray;
 - (NSString *)applicationDocumentsDirectory;
 
@@ -19,42 +36,6 @@
 
 
 @implementation DCClockState
-
-@synthesize clockDisplayType = _clockDisplayType;
-
-@synthesize displayBackgroundColor = _displayBackgroundColor;
-@synthesize timeTextColor = _timeTextColor;
-@synthesize savedColorForClock = _savedColorForClock;
-@synthesize calendar = _calendar;
-@synthesize clockBrightnessLevel = _clockBrightnessLevel;
-
-@synthesize formatter = _formatter;
-@synthesize previousNow = _previousNow;
-@synthesize displaySeconds = _displaySeconds;
-@synthesize savedDisplaySeconds = _savedDisplaySeconds;
-@synthesize displayAmPm = _displayAmPm;
-@synthesize savedDisplayAmPm = _savedDisplayAmPm;
-@synthesize suspendSleep = _suspendSleep;
-@synthesize screenWantsSoftwareDimming = _screenWantsSoftwareDimming;
-@synthesize fontChoices = _fontChoices;
-@synthesize fontEditorDisplayed = _fontEditorDisplayed;
-@synthesize startingDragLocation = _startingDragLocation;
-@synthesize infoPageViewDisplayed = _infoPageViewDisplayed;
-@synthesize version = _version;
-@synthesize displayLabelY = _displayLabelY;
-@synthesize displayCenter = _displayCenter;
-
-@synthesize fontNames = _fontNames;
-@synthesize currentOrientation = _currentOrientation;
-
-@synthesize fontSizeLandscape = _fontSizeLandscape;
-@synthesize fontSizePortrait = _fontSizePortrait;
-
-@synthesize timeLabelPortraitFrame = _timeLabelPortraitFrame;
-@synthesize timeHourLabelPortraitFrame = _timeHourLabelPortraitFrame;
-@synthesize device = _device;
-
-@synthesize fontManager = _fontManager;
 
 
 -(id)init

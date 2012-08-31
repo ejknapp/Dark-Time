@@ -19,6 +19,19 @@
 
 @interface DCDarkClockViewController ()
 
+@property (nonatomic, weak) IBOutlet UILabel *timeLabel;
+@property (nonatomic, weak) IBOutlet UILabel *ampmLabel;
+@property (nonatomic, weak) IBOutlet UILabel *secondsLabel;
+@property (nonatomic, weak) IBOutlet UIButton *clockSettingsButton;
+
+@property (nonatomic, weak) IBOutlet UILabel *ampmLabelPortrait;
+@property (nonatomic, weak) IBOutlet UILabel *secondsLabelPortrait;
+@property (nonatomic, weak) IBOutlet UIButton *clockSettingsButtonPortrait;
+@property (nonatomic, weak) IBOutlet DCIDashedDividerView *dottedLine;
+
+@property (nonatomic, strong) IBOutlet UIView *landscapeView;
+@property (nonatomic, strong) IBOutlet UIView *portraitView;
+
 @property (strong, nonatomic) UINavigationController *settingsNavController;
 @property (assign, nonatomic) CGFloat buttonAlphaLandscape;
 @property (assign, nonatomic) CGFloat dottedLineAlpha;
@@ -39,44 +52,6 @@
 
 @implementation DCDarkClockViewController
 
-@synthesize settingsNavController = _settingsNavController;
-
-@synthesize brightnessSwipeRight = _brightnessSwipeRight;
-@synthesize brightnessSwipeUp = _brightnessSwipeUp;
-@synthesize brightnessSwipeLeft = _brightnessSwipeLeft;
-@synthesize brightnessSwipeDown = _brightnessSwipeDown;
-@synthesize infoController = _infoController;
-
-@synthesize clockState = _clockState;
-@synthesize calendar = _calendar;
-@synthesize appTimer = _appTimer;
-
-@synthesize timeLabel = _timeLabel;
-@synthesize ampmLabel = _ampmLabel;
-@synthesize secondsLabel = _secondsLabel;
-@synthesize clockSettingsButton = _clockSettingsButton;
-
-@synthesize timeLabelHoursPortrait = _timeLabelHoursPortrait;
-@synthesize timeLabelMinutesPortrait = _timeLabelMinutesPortrait;
-@synthesize ampmLabelPortrait = _ampmLabelPortrait;
-@synthesize secondsLabelPortrait = _secondsLabelPortrait;
-@synthesize clockSettingsButtonPortrait = _clockSettingsButtonPortrait;
-@synthesize dottedLine = _dottedLine;
-
-@synthesize landscapeView = _landscapeView;
-@synthesize portraitView = _portraitView;
-
-@synthesize savedSeconds = _savedSeconds;
-@synthesize brightnessLevel = _brightnessLevel;
-
-
-@synthesize settingsEditor = _settingsEditor;
-
-@synthesize modalStyle = _modalStyle;
-@synthesize settingsViewNib = _settingsViewNib;
-
-@synthesize buttonAlphaLandscape = _buttonAlphaLandscape;
-@synthesize dottedLineAlpha = _dottedLineAlpha;
 
 - (void)didReceiveMemoryWarning
 {
@@ -139,28 +114,6 @@
     
 }
 
-- (void)viewDidUnload
-{
-    [self setTimeLabel:nil];
-    [self setAmpmLabel:nil];
-    [self setSecondsLabel:nil];
-    
-    self.calendar = nil;
-    self.appTimer = nil;
-    self.settingsEditor = nil;
-    self.landscapeView = nil;
-    self.portraitView = nil;
-    self.ampmLabelPortrait = nil;
-    self.timeLabelHoursPortrait = nil;
-    self.timeLabelMinutesPortrait = nil;
-    self.infoController = nil;
-    self.clockSettingsButton = nil;
-    self.secondsLabelPortrait = nil;
-    self.clockSettingsButtonPortrait = nil;
-    
-    
-    [super viewDidUnload];
-}
 
 - (void)dismissModalViewControllerAnimated:(BOOL)animated
 {

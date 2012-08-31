@@ -19,10 +19,6 @@
 
 @implementation DCInfoViewController
 
-@synthesize clockState = _clockState;
-@synthesize infoWebView = _infoWebView;
-@synthesize clockViewController = _clockViewController;
-
 -(id)initWithViewFrame:(CGRect)viewFrame
 {
     
@@ -86,13 +82,6 @@
 -(void)doneButtonTapped:(id)sender
 {
     self.clockState.infoPageViewDisplayed = NO;
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-
-    self.infoWebView = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

@@ -10,9 +10,6 @@
 
 @implementation DCIDashedDividerView
 
-@synthesize lineAlpha = _lineAlpha;
-@synthesize dashedLineColor = _dashedLineColor;
-
 
 - (void)drawRect:(CGRect)rect
 {

@@ -15,10 +15,6 @@
 
 @implementation DCFontSelectTableViewController
 
-@synthesize clockState = _clockState;
-@synthesize currentCheckedCell = _currentCheckedCell;
-@synthesize clockViewController = _clockViewController;
-
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
@@ -28,13 +24,6 @@
 }
 
 #pragma mark - View lifecycle
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-
-    self.currentCheckedCell = nil;
-}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

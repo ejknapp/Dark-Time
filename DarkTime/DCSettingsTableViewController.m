@@ -23,8 +23,8 @@
 @property (nonatomic, strong) UITableViewCell *helpCell;
 @property (nonatomic, strong) UISlider *brightnessSlider;
 @property (nonatomic, strong) UISwitch *ampmSwitch;
-@property (strong, nonatomic) IBOutlet UITableViewCell *displayTypeCell;
-@property (strong, nonatomic) IBOutlet UISegmentedControl *displayTypeSegmentedControl;
+@property (weak, nonatomic) IBOutlet UITableViewCell *displayTypeCell;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *displayTypeSegmentedControl;
 
 - (void)createAmPmCell:(NSIndexPath *)indexPath 
                   cell:(UITableViewCell *)cell;
@@ -51,17 +51,6 @@
 @end
 
 @implementation DCSettingsTableViewController
-
-@synthesize clockState = _clockState;
-@synthesize settingsArray = _settingsArray;
-@synthesize fontCell = _fontCell;
-@synthesize helpCell = _helpCell;
-@synthesize brightnessSlider = _brightnessSlider;
-@synthesize ampmSwitch = _ampmSwitch;
-@synthesize displayTypeCell = _displayTypeCell;
-@synthesize displayTypeSegmentedControl = _displayTypeSegmentedControl;
-
-@synthesize clockViewController = _clockViewController;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -179,22 +168,6 @@
         self.fontCell.textLabel.font = [self.clockState.fontManager.currentFont fontWithSize:18];
     }
 
-}
-
-- (void)viewDidUnload
-{
-    [self setDisplayTypeCell:nil];
-    [self setDisplayTypeSegmentedControl:nil];
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-    
-    self.settingsArray = nil;
-    self.fontCell = nil;
-    self.helpCell = nil;
-    self.brightnessSlider = nil;
-    
-    
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
