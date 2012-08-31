@@ -24,8 +24,8 @@
 @property (nonatomic, strong) DCInfoViewController *infoController;
 @property (nonatomic, strong) NSCalendar *calendar;
 
-@property (nonatomic, strong) IBOutlet UILabel *timeLabelHoursPortrait;
-@property (nonatomic, strong) IBOutlet UILabel *timeLabelMinutesPortrait;
+@property (nonatomic, weak) IBOutlet UILabel *timeLabelHoursPortrait;
+@property (nonatomic, weak) IBOutlet UILabel *timeLabelMinutesPortrait;
 
 @property (nonatomic, assign) NSUInteger savedSeconds;
 @property (nonatomic, assign) CGFloat brightnessLevel;

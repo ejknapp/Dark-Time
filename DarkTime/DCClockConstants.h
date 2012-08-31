@@ -18,6 +18,7 @@ extern NSString * const DCSettingsTableViewHeader;
 extern NSString * const DCSettingsTableViewCellText;
 extern NSString * const DCSettingsTableViewFooter;
 extern NSString * const DCSettingsTableViewCellIdentifier;
+extern NSString * const DCSettingsTableViewCell;
 
 extern NSString * const DCFontSizeCalculationString;
 

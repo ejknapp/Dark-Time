@@ -29,8 +29,8 @@
 @property (nonatomic, weak) IBOutlet UIButton *clockSettingsButtonPortrait;
 @property (nonatomic, weak) IBOutlet DCIDashedDividerView *dottedLine;
 
-@property (nonatomic, strong) IBOutlet UIView *landscapeView;
-@property (nonatomic, strong) IBOutlet UIView *portraitView;
+@property (nonatomic, weak) IBOutlet UIView *landscapeView;
+@property (nonatomic, weak) IBOutlet UIView *portraitView;
 
 @property (strong, nonatomic) UINavigationController *settingsNavController;
 @property (assign, nonatomic) CGFloat buttonAlphaLandscape;
@@ -268,12 +268,12 @@
 
 - (IBAction)settingsButtonTapped:(id)sender 
 {
-    
+    NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
     self.settingsEditor = [[DCSettingsTableViewController alloc] 
-                                        initWithNibName:self.settingsViewNib
+                                        initWithNibName:@"DCSettingsTableViewController"
                                         bundle:nil];
     self.settingsEditor.clockViewController = self;
-    self.settingsEditor.modalPresentationStyle = self.modalStyle;
+//    self.settingsEditor.modalPresentationStyle = self.modalStyle;
     self.settingsEditor.clockState = self.clockState;
     
     self.settingsNavController = [[UINavigationController alloc] 
@@ -283,6 +283,7 @@
 
     [self presentViewController:self.settingsNavController animated:YES 
                      completion:^{ }];
+    NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
     
 }
 

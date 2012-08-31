@@ -16,15 +16,34 @@
 #import "DCIFontManager.h"
 #import "DCIWelcomeViewController.h"
 
+
 @interface DCSettingsTableViewController()
 
 @property (nonatomic, strong) NSArray *settingsArray;
-@property (nonatomic, strong) UITableViewCell *fontCell;
-@property (nonatomic, strong) UITableViewCell *helpCell;
-@property (nonatomic, strong) UISlider *brightnessSlider;
-@property (nonatomic, strong) UISwitch *ampmSwitch;
-@property (weak, nonatomic) IBOutlet UITableViewCell *displayTypeCell;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *displayTypeSegmentedControl;
+
+@property (weak, nonatomic) IBOutlet  UITableViewCell *displayTypeCell;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *displayTypeSegmentedControl;
+
+@property (nonatomic, strong) IBOutlet UISwitch *ampmSwitch;
+@property (strong, nonatomic) IBOutlet UITableViewCell *ampmCell;
+
+@property (weak, nonatomic) IBOutlet UITableViewCell *secondsDisplayCell;
+@property (strong, nonatomic) IBOutlet UISwitch *secondsDisplaySwitch;
+
+@property (weak, nonatomic) IBOutlet UITableViewCell *brightnessCell;
+@property (nonatomic, strong) IBOutlet UISlider *brightnessSlider;
+
+@property (nonatomic, weak) IBOutlet UITableViewCell *fontCell;
+@property (strong, nonatomic) IBOutlet UILabel *fontCellLabel;
+
+@property (nonatomic, weak) IBOutlet UITableViewCell *suspendSleepCell;
+@property (strong, nonatomic) IBOutlet UISwitch *suspendSleepSwitch;
+
+@property (nonatomic, weak) IBOutlet UITableViewCell *helpCell;
+
+@property (nonatomic, weak) IBOutlet UITableViewCell *changeLogCell;
+
+
 
 - (void)createAmPmCell:(NSIndexPath *)indexPath 
                   cell:(UITableViewCell *)cell;
@@ -46,7 +65,7 @@
 - (void)createChangeLogCell:(UITableViewCell *)cell 
                   indexPath:(NSIndexPath *)indexPath;
 
-- (IBAction)timeDisplaySegmentTapped:(UISegmentedControl *)sender;
+//- (IBAction)timeDisplaySegmentTapped:(UISegmentedControl *)sender;
 
 @end
 
@@ -76,6 +95,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
 
     self.title = @"Clock Settings";
     
@@ -84,74 +104,150 @@
                                                                              target:self 
                                                                              action:@selector(doneButtonTapped)];
 
-    NSDictionary *timeDisplaySection = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                 @"Clock Display Type", DCSettingsTableViewHeader,
-                                 @"", DCSettingsTableViewCellText,
-                                 @"", DCSettingsTableViewFooter,
-                                 @"segment", DCSettingsTableViewCellIdentifier,
-                                 nil];
+    NSDictionary *timeDisplaySection = @{
+        DCSettingsTableViewHeader : @"Clock Display Type",
+        DCSettingsTableViewCellText : @"",
+        DCSettingsTableViewFooter : @"",
+        DCSettingsTableViewCellIdentifier : @"segment",
+        DCSettingsTableViewCell : self.displayTypeCell
+    };
+
+    NSDictionary *ampmSection = @{
+        DCSettingsTableViewHeader : @"AM/PM",
+        DCSettingsTableViewCellText : @"Display AM/PM",
+        DCSettingsTableViewFooter : @"",
+        DCSettingsTableViewCellIdentifier : @"switch",
+        DCSettingsTableViewCell : self.ampmCell
+    };
+
+    NSDictionary *secondsSection = @{
+        DCSettingsTableViewHeader : @"Seconds",
+        DCSettingsTableViewCellText : @"Display Seconds",
+        DCSettingsTableViewFooter : @"",
+        DCSettingsTableViewCellIdentifier : @"switch",
+        DCSettingsTableViewCell : self.secondsDisplayCell
+    };
+
+    NSDictionary *brightnessSection = @{
+        DCSettingsTableViewHeader : @"Brightness",
+        DCSettingsTableViewCellText : @"Display Seconds",
+        DCSettingsTableViewFooter : @"You can also swipe left and right on the clock screen to adjust brightness.",
+        DCSettingsTableViewCellIdentifier : @"slider",
+        DCSettingsTableViewCell : self.brightnessCell
+    };
+    
+    NSDictionary *fontSection = @{
+        DCSettingsTableViewHeader : @"Select Font",
+        DCSettingsTableViewCellText : @"",
+        DCSettingsTableViewFooter : @"",
+        DCSettingsTableViewCellIdentifier : @"disclosure",
+        DCSettingsTableViewCell : self.fontCell
+    };
+
+    NSDictionary *sleepSection = @{
+        DCSettingsTableViewHeader : @"Sleep",
+        DCSettingsTableViewCellText : @"Suspend Sleep",
+        DCSettingsTableViewFooter : @"Caution: this may affect battery life if not using power source.",
+        DCSettingsTableViewCellIdentifier : @"switch",
+        DCSettingsTableViewCell : self.suspendSleepCell
+    };
+    
+    NSDictionary *helpSection = @{
+        DCSettingsTableViewHeader : @"Help",
+        DCSettingsTableViewCellText : @"Dark Time Help",
+        DCSettingsTableViewFooter : @"",
+        DCSettingsTableViewCellIdentifier : @"disclosure",
+        DCSettingsTableViewCell : self.helpCell
+    };
+
+    NSDictionary *changeLogSection = @{
+        DCSettingsTableViewHeader : @"Change Log",
+        DCSettingsTableViewCellText : @"Current Version",
+        DCSettingsTableViewFooter : @"",
+        DCSettingsTableViewCellIdentifier : @"disclosure",
+        DCSettingsTableViewCell : self.changeLogCell
+    };
+
+//    NSDictionary *timeDisplaySection = [[NSDictionary alloc] initWithObjectsAndKeys:
+//                                 @"Clock Display Type", DCSettingsTableViewHeader,
+//                                 @"", DCSettingsTableViewCellText,
+//                                 @"", DCSettingsTableViewFooter,
+//                                 @"segment", DCSettingsTableViewCellIdentifier,
+//                                 nil];
     
     
-    NSDictionary *ampmSection = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                 @"AM/PM", DCSettingsTableViewHeader,
-                                 @"Display AM/PM", DCSettingsTableViewCellText,
-                                 @"", DCSettingsTableViewFooter,
-                                 @"switch", DCSettingsTableViewCellIdentifier,
-                                 nil];
+//    NSDictionary *ampmSection = [[NSDictionary alloc] initWithObjectsAndKeys:
+//                                 @"AM/PM", DCSettingsTableViewHeader,
+//                                 @"Display AM/PM", DCSettingsTableViewCellText,
+//                                 @"", DCSettingsTableViewFooter,
+//                                 @"switch", DCSettingsTableViewCellIdentifier,
+//                                 nil];
 
-    NSDictionary *secondsSection = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                 @"Seconds", DCSettingsTableViewHeader,
-                                 @"Display Seconds", DCSettingsTableViewCellText,
-                                 @"", DCSettingsTableViewFooter,
-                                 @"switch", DCSettingsTableViewCellIdentifier,
-                                 nil];
+//    NSDictionary *secondsSection = [[NSDictionary alloc] initWithObjectsAndKeys:
+//                                 @"Seconds", DCSettingsTableViewHeader,
+//                                 @"Display Seconds", DCSettingsTableViewCellText,
+//                                 @"", DCSettingsTableViewFooter,
+//                                 @"switch", DCSettingsTableViewCellIdentifier,
+//                                 nil];
 
-    NSDictionary *brightnessSection = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                    @"Brightness", DCSettingsTableViewHeader,
-                                    @"", DCSettingsTableViewCellText,
-                                    @"You can also swipe left and right on the clock screen to adjust brightness.", DCSettingsTableViewFooter,
-                                    @"slider", DCSettingsTableViewCellIdentifier,
-                                    nil];
+//    NSDictionary *brightnessSection = [[NSDictionary alloc] initWithObjectsAndKeys:
+//                                    @"Brightness", DCSettingsTableViewHeader,
+//                                    @"", DCSettingsTableViewCellText,
+//                                    @"You can also swipe left and right on the clock screen to adjust brightness.", DCSettingsTableViewFooter,
+//                                    @"slider", DCSettingsTableViewCellIdentifier,
+//                                    nil];
 
-    NSDictionary *fontSection = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                    @"Select Font", DCSettingsTableViewHeader,
-                                    @"", DCSettingsTableViewCellText,
-                                    @"", DCSettingsTableViewFooter,
-                                    @"disclosure", DCSettingsTableViewCellIdentifier,
-                                    nil];
+//    NSDictionary *fontSection = [[NSDictionary alloc] initWithObjectsAndKeys:
+//                                    @"Select Font", DCSettingsTableViewHeader,
+//                                    @"", DCSettingsTableViewCellText,
+//                                    @"", DCSettingsTableViewFooter,
+//                                    @"disclosure", DCSettingsTableViewCellIdentifier,
+//                                    nil];
 
-    NSDictionary *sleepSection = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                 @"Sleep", DCSettingsTableViewHeader,
-                                 @"Suspend Sleep", DCSettingsTableViewCellText,
-                                 @"Caution: this may affect battery life if not using power source.", DCSettingsTableViewFooter,
-                                 @"switch", DCSettingsTableViewCellIdentifier,
-                                 nil];
+//    NSDictionary *sleepSection = [[NSDictionary alloc] initWithObjectsAndKeys:
+//                                 @"Sleep", DCSettingsTableViewHeader,
+//                                 @"Suspend Sleep", DCSettingsTableViewCellText,
+//                                 @"Caution: this may affect battery life if not using power source.", DCSettingsTableViewFooter,
+//                                 @"switch", DCSettingsTableViewCellIdentifier,
+//                                 nil];
 
-    NSDictionary *helpSection = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                  @"Help", DCSettingsTableViewHeader,
-                                  @"Dark Time Help", DCSettingsTableViewCellText,
-                                  @"", DCSettingsTableViewFooter,
-                                  @"disclosure", DCSettingsTableViewCellIdentifier,
-                                  nil];
+//    NSDictionary *helpSection = [[NSDictionary alloc] initWithObjectsAndKeys:
+//                                  @"Help", DCSettingsTableViewHeader,
+//                                  @"Dark Time Help", DCSettingsTableViewCellText,
+//                                  @"", DCSettingsTableViewFooter,
+//                                  @"disclosure", DCSettingsTableViewCellIdentifier,
+//                                  nil];
 
-    NSDictionary *changeLogSection = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                 @"Change Log", DCSettingsTableViewHeader,
-                                 @"Current Version: ", DCSettingsTableViewCellText,
-                                 @"", DCSettingsTableViewFooter,
-                                 @"disclosure", DCSettingsTableViewCellIdentifier,
-                                 nil];
+//    NSDictionary *changeLogSection = [[NSDictionary alloc] initWithObjectsAndKeys:
+//                                 @"Change Log", DCSettingsTableViewHeader,
+//                                 @"Current Version: ", DCSettingsTableViewCellText,
+//                                 @"", DCSettingsTableViewFooter,
+//                                 @"disclosure", DCSettingsTableViewCellIdentifier,
+//                                 nil];
 
     
-    self.settingsArray = [[NSArray alloc] initWithObjects:
-                         timeDisplaySection,
-                         ampmSection, 
-                         secondsSection, 
-                         brightnessSection,
-                         fontSection,
-                         sleepSection,
-                         helpSection,
-                         changeLogSection,
-                         nil];
+    self.settingsArray = @[
+        timeDisplaySection,
+        ampmSection,
+        secondsSection,
+        brightnessSection,
+        fontSection,
+        sleepSection,
+        helpSection,
+        changeLogSection
+    ];
+    
+//    self.settingsArray = [[NSArray alloc] initWithObjects:
+//                         timeDisplaySection,
+//                         ampmSection, 
+//                         secondsSection, 
+//                         brightnessSection,
+//                         fontSection,
+//                         sleepSection,
+//                         helpSection,
+//                         changeLogSection,
+//                         nil];
+//    
 }
 
 -(void)doneButtonTapped
@@ -184,7 +280,6 @@
     
     [self.clockViewController.view layoutIfNeeded];
 
-        
 }
 
 #pragma mark - Table view data source
@@ -267,7 +362,7 @@
     if (!self.brightnessSlider) {
         sliderRect = CGRectMake(10, 0, 295, 45);
         
-        self.brightnessSlider               = [[UISlider alloc] initWithFrame:sliderRect];
+        self.brightnessSlider = [[UISlider alloc] initWithFrame:sliderRect];
         self.brightnessSlider.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         self.brightnessSlider.minimumValue  = 0.0;
         self.brightnessSlider.maximumValue  = 1.0;
@@ -330,13 +425,11 @@
     cell.accessoryView = cellSwitch;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    
-
 }
 
 - (void)createHelpSelectionCell:(UITableViewCell *)cell indexPath:(NSIndexPath *)indexPath
 {
-    cell.textLabel.text = [[self.settingsArray objectAtIndex:indexPath.section] 
+    cell.textLabel.text = [[self.settingsArray objectAtIndex:indexPath.section]
                            objectForKey:DCSettingsTableViewCellText];
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -360,42 +453,59 @@
     
 }
 
+- (UITableViewCell *)createDisplayTypeCell
+{
+    
+    NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
+//    CGRect frame = CGRectMake(0, 46, 320, 46);
+    
+    self.displayTypeCell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault
+                                                 reuseIdentifier:@"Clock Display Type"];
+    
+    self.displayTypeSegmentedControl = [[UISegmentedControl alloc]initWithItems:@[@"12 Hour AM/PM", @"24 Hour"]];
+
+    self.displayTypeSegmentedControl.frame = self.displayTypeCell.contentView.bounds;
+    self.displayTypeSegmentedControl.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
+    self.displayTypeSegmentedControl.enabled = YES;
+    self.displayTypeSegmentedControl.segmentedControlStyle = UISegmentedControlStyleBordered;
+    
+    self.displayTypeCell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [self.displayTypeCell.contentView addSubview:self.displayTypeSegmentedControl];
+    
+    [self.displayTypeSegmentedControl addTarget:self
+                                         action:@selector(timeDisplaySegmentTapped:)
+                               forControlEvents:UIControlEventValueChanged];
+    
+    NSLog(@"seg frame: %@", NSStringFromCGRect(self.displayTypeSegmentedControl.frame));
+    
+    return self.displayTypeCell;
+}
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView 
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *CellIdentifier = [[self.settingsArray objectAtIndex:indexPath.section] 
-                                objectForKey:DCSettingsTableViewCellIdentifier];
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
-                                       reuseIdentifier:CellIdentifier];
-    }
+    if (self.clockState.clockDisplayType == DCIClockDisplayType24Hour) {
+        self.displayTypeSegmentedControl.selectedSegmentIndex = 1;
+        self.ampmSwitch.on = NO;
+        self.ampmSwitch.enabled = NO;
+    } else {
+        self.displayTypeSegmentedControl.selectedSegmentIndex = 0;
+        self.ampmSwitch.enabled = YES;
+        self.ampmSwitch.on = self.clockState.displayAmPm;
+    } 
     
-    if (indexPath.section == DCDarkTimeSettingsRowDisplayType) {
-        cell = self.displayTypeCell;
-        if (self.clockState.clockDisplayType == DCIClockDisplayType24Hour) {
-            self.displayTypeSegmentedControl.selectedSegmentIndex = DCIClockDisplayType24Hour;
-        }
-    } else if (indexPath.section == DCDarkTimeSettingsRowDisplayAmPm) {
-        [self createAmPmCell:indexPath cell:cell];
-    } else if (indexPath.section == DCDarkTimeSettingsRowDisplaySeconds) {
-        [self createSecondsCell:indexPath cell:cell];
-    } else if (indexPath.section == DCDarkTimeSettingsRowAdjustBrightness) {
-        [self createBrightnessCell:indexPath cell:cell];
-    } else if (indexPath.section == DCDarkTimeSettingsRowFontSelector) {
-        [self createFontSelectionCell:cell];
-    } else if (indexPath.section == DCDarkTimeSettingsRowSuspendSleep) {
-        [self createSuspendSleepCell:indexPath cell:cell];
-    } else if (indexPath.section == DCDarkTimeSettingsRowHelp) {
-        [self createHelpSelectionCell:cell indexPath:indexPath];
-    } else if (indexPath.section == DCDarkTimeSettingsRowChangeLog) {
-        [self createChangeLogCell:cell indexPath:indexPath];
-    }
-        
-    return cell;
+    self.secondsDisplaySwitch.on = self.clockState.displaySeconds;
+    
+    self.brightnessSlider.value = self.clockState.clockBrightnessLevel;
+
+    self.fontCellLabel.text = [self.clockState.fontManager currentFontDisplayName];
+    self.fontCellLabel.font = [self.clockState.fontManager.currentFont fontWithSize:18];
+    
+    NSDictionary *section = [self.settingsArray objectAtIndex:indexPath.section];
+    return [section objectForKey:DCSettingsTableViewCell];       
+
 }
 
 #pragma mark - Interface Action Methods
@@ -414,20 +524,19 @@
     }
 }
 
--(void)toggleAmPm:(id)sender
+-(IBAction)toggleAmPm:(UISwitch *)sender
 {
-    self.clockState.displayAmPm = ((UISwitch *)sender).on;
+    self.clockState.displayAmPm = sender.on;
 }
 
--(void)toggleSeconds:(id)sender
+-(IBAction)toggleSeconds:(UISwitch *)sender
 {
-    self.clockState.displaySeconds = ((UISwitch *)sender).on;
+    self.clockState.displaySeconds = sender.on;
 }
 
--(void)adjustBrightness:(id)sender
+-(IBAction)adjustBrightness:(UISlider *)sender
 {
-    CGFloat brightness = ((UISlider *)sender).value;
-    
+    CGFloat brightness = sender.value;
     
     if (brightness <= DCMinimumScreenBrightness) {
         [UIScreen mainScreen].brightness = DCMinimumScreenBrightness;
@@ -440,9 +549,9 @@
     [[NSUserDefaults standardUserDefaults] setFloat:brightness forKey:@"clockBrightnessLevel"];
 }
 
--(void)toggleSuspendSleep:(id)sender
+-(IBAction)toggleSuspendSleep:(UISwitch *)sender
 {
-    self.clockState.suspendSleep = ((UISwitch *)sender).on;
+    self.clockState.suspendSleep = sender.on;
 }
 
 #pragma mark - Table view delegate
@@ -478,6 +587,5 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
          
 }
-
 
 @end
