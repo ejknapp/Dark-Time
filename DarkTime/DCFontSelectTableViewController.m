@@ -15,6 +15,19 @@
 
 @implementation DCFontSelectTableViewController
 
+-(void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    self.tableView.backgroundView = nil;
+    self.tableView.backgroundView = [[UIView alloc]init];
+    
+    self.tableView.backgroundColor = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
+    
+    self.tableView.separatorColor = [UIColor blackColor];
+
+}
+
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
@@ -71,9 +84,10 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
                                        reuseIdentifier:CellIdentifier];
+        cell.backgroundColor = [UIColor darkGrayColor];
     }
     
-    cell.selectionStyle = UITableViewCellSelectionStyleGray;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     DCIFont *font = [self.clockState.fontManager fontAtIndex:indexPath.row];
     
@@ -86,6 +100,7 @@
     
     if (self.clockState.fontManager.currentFontIndex == indexPath.row) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        cell.backgroundColor = [UIColor lightGrayColor];
         self.currentCheckedCell = cell;
     }
     
@@ -94,6 +109,24 @@
 
 #pragma mark - Table view delegate
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    CGFloat width = tableView.frame.size.width;
+
+    UIView *sectionHeaderView = [[UIView alloc] initWithFrame:CGRectZero];
+    sectionHeaderView.backgroundColor = [UIColor clearColor];
+    UILabel *sectionHeader = [[UILabel alloc]initWithFrame:CGRectMake(30, 0, width - 30, 32)];
+    [sectionHeaderView addSubview:sectionHeader];
+    
+    sectionHeader.backgroundColor = [UIColor clearColor];
+    sectionHeader.font = [UIFont boldSystemFontOfSize:16];
+    sectionHeader.textColor = [UIColor lightGrayColor];
+    
+    sectionHeader.text = @"Select Font";
+    
+    return sectionHeaderView;
+    
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -102,6 +135,7 @@
     UITableViewCell *tappedCell = [tableView cellForRowAtIndexPath:indexPath];
     
     self.currentCheckedCell.accessoryType = UITableViewCellAccessoryNone;
+    self.currentCheckedCell.backgroundColor = [UIColor darkGrayColor];
     
     [self.clockState changeFontWithFontIndex:selectedRow];
     
@@ -109,6 +143,7 @@
     self.currentCheckedCell = tappedCell;
         
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    tappedCell.backgroundColor = [UIColor lightGrayColor];
     
 }
 
