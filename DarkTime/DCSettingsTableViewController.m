@@ -81,12 +81,21 @@
                                                                              target:self 
                                                                              action:@selector(doneButtonTapped)];
 
+    self.tableView.backgroundView = nil;
+    self.tableView.backgroundView = [[UIView alloc]init];
+    
+    self.tableView.backgroundColor = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
+    
+    self.tableView.separatorColor = [UIColor blackColor];
+
     NSDictionary *timeDisplaySection = @{
         DCSettingsTableViewHeader : @"Clock Display Type",
         DCSettingsTableViewCellText : @"",
         DCSettingsTableViewFooter : @"",
         DCSettingsTableViewCellIdentifier : @"segment",
-        DCSettingsTableViewCell : self.displayTypeCell
+        DCSettingsTableViewCell : self.displayTypeCell,
+        DCSettingsTableViewSectionFooterHeight : @24,
+        DCSettingsTableViewSectionRowHeight : @30
     };
 
     NSDictionary *ampmSection = @{
@@ -94,7 +103,9 @@
         DCSettingsTableViewCellText : @"Display AM/PM",
         DCSettingsTableViewFooter : @"",
         DCSettingsTableViewCellIdentifier : @"switch",
-        DCSettingsTableViewCell : self.ampmCell
+        DCSettingsTableViewCell : self.ampmCell,
+        DCSettingsTableViewSectionFooterHeight : @24,
+        DCSettingsTableViewSectionRowHeight : @44
     };
 
     NSDictionary *secondsSection = @{
@@ -102,15 +113,19 @@
         DCSettingsTableViewCellText : @"Display Seconds",
         DCSettingsTableViewFooter : @"",
         DCSettingsTableViewCellIdentifier : @"switch",
-        DCSettingsTableViewCell : self.secondsDisplayCell
+        DCSettingsTableViewCell : self.secondsDisplayCell,
+        DCSettingsTableViewSectionFooterHeight : @24,
+        DCSettingsTableViewSectionRowHeight : @44
     };
 
     NSDictionary *brightnessSection = @{
         DCSettingsTableViewHeader : @"Brightness",
         DCSettingsTableViewCellText : @"Display Seconds",
-        DCSettingsTableViewFooter : @"You can also swipe left and right on the clock screen to adjust brightness.",
+        DCSettingsTableViewFooter : @"You can also swipe left/right, or up/down, on the clock screen to adjust brightness.",
         DCSettingsTableViewCellIdentifier : @"slider",
-        DCSettingsTableViewCell : self.brightnessCell
+        DCSettingsTableViewCell : self.brightnessCell,
+        DCSettingsTableViewSectionFooterHeight : @50,
+        DCSettingsTableViewSectionRowHeight : @44
     };
     
     NSDictionary *fontSection = @{
@@ -118,7 +133,9 @@
         DCSettingsTableViewCellText : @"",
         DCSettingsTableViewFooter : @"",
         DCSettingsTableViewCellIdentifier : @"disclosure",
-        DCSettingsTableViewCell : self.fontCell
+        DCSettingsTableViewCell : self.fontCell,
+        DCSettingsTableViewSectionFooterHeight : @24,
+        DCSettingsTableViewSectionRowHeight : @44
     };
 
     NSDictionary *sleepSection = @{
@@ -126,7 +143,9 @@
         DCSettingsTableViewCellText : @"Suspend Sleep",
         DCSettingsTableViewFooter : @"Caution: this may affect battery life if not using power source.",
         DCSettingsTableViewCellIdentifier : @"switch",
-        DCSettingsTableViewCell : self.suspendSleepCell
+        DCSettingsTableViewCell : self.suspendSleepCell,
+        DCSettingsTableViewSectionFooterHeight : @50,
+        DCSettingsTableViewSectionRowHeight : @44
     };
     
     NSDictionary *helpSection = @{
@@ -134,7 +153,9 @@
         DCSettingsTableViewCellText : @"Dark Time Help",
         DCSettingsTableViewFooter : @"",
         DCSettingsTableViewCellIdentifier : @"disclosure",
-        DCSettingsTableViewCell : self.helpCell
+        DCSettingsTableViewCell : self.helpCell,
+        DCSettingsTableViewSectionFooterHeight : @24,
+        DCSettingsTableViewSectionRowHeight : @44
     };
 
     NSDictionary *changeLogSection = @{
@@ -142,7 +163,9 @@
         DCSettingsTableViewCellText : @"Current Version",
         DCSettingsTableViewFooter : @"",
         DCSettingsTableViewCellIdentifier : @"disclosure",
-        DCSettingsTableViewCell : self.changeLogCell
+        DCSettingsTableViewCell : self.changeLogCell,
+        DCSettingsTableViewSectionFooterHeight : @24,
+        DCSettingsTableViewSectionRowHeight : @44
     };
 
     
@@ -170,8 +193,8 @@
 {
 
     if (self.fontCell) {
-        self.fontCell.textLabel.text = [self.clockState.fontManager currentFontDisplayName];
-        self.fontCell.textLabel.font = [self.clockState.fontManager.currentFont fontWithSize:18];
+        self.fontCellLabel.text = [self.clockState.fontManager currentFontDisplayName];
+        self.fontCellLabel.font = [self.clockState.fontManager.currentFont fontWithSize:18];
     }
 
 }
@@ -296,6 +319,64 @@
 
 #pragma mark - Table view delegate
 
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    
+    UIView *sectionHeaderView = [[UIView alloc] initWithFrame:CGRectZero];
+    sectionHeaderView.backgroundColor = [UIColor clearColor];
+    UILabel *sectionHeader = [[UILabel alloc]initWithFrame:CGRectMake(30, 0, 200, 32)];
+    [sectionHeaderView addSubview:sectionHeader];
+    
+    sectionHeader.backgroundColor = [UIColor clearColor];
+    sectionHeader.font = [UIFont boldSystemFontOfSize:16];
+    sectionHeader.textColor = [UIColor lightGrayColor];
+    
+    NSDictionary *sectionDictionary = [self.settingsArray objectAtIndex:section];
+    sectionHeader.text = [sectionDictionary objectForKey:DCSettingsTableViewHeader];
+    
+    return sectionHeaderView;
+    
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    
+    CGFloat width = tableView.frame.size.width;
+    
+    UIView *sectionFooterView = [[UIView alloc]initWithFrame:CGRectZero];
+    sectionFooterView.backgroundColor = [UIColor clearColor];
+    UILabel *sectionFooterLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, width - 50, 44)];
+    sectionFooterLabel.numberOfLines = 2;
+    sectionFooterLabel.textAlignment = UITextAlignmentCenter;
+    sectionFooterLabel.contentMode = UIViewContentModeTop;
+    [sectionFooterView addSubview:sectionFooterLabel];
+    
+    sectionFooterLabel.backgroundColor = [UIColor clearColor];
+    sectionFooterLabel.font = [UIFont systemFontOfSize:14];
+    sectionFooterLabel.textColor = [UIColor lightGrayColor];
+    
+    NSDictionary *sectionDictionary = [self.settingsArray objectAtIndex:section];
+    sectionFooterLabel.text = [sectionDictionary objectForKey:DCSettingsTableViewFooter];
+    
+    return sectionFooterView;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    
+    NSDictionary *sectionDictionary = [self.settingsArray objectAtIndex:section];
+    
+    return [[sectionDictionary objectForKey:DCSettingsTableViewSectionFooterHeight] floatValue];
+    
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSDictionary *sectionDictionary = [self.settingsArray objectAtIndex:indexPath.section];
+    
+    return [[sectionDictionary objectForKey:DCSettingsTableViewSectionRowHeight] floatValue];
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

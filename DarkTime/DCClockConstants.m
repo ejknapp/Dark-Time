@@ -18,6 +18,8 @@ NSString * const DCSettingsTableViewCellText = @"cellText";
 NSString * const DCSettingsTableViewFooter = @"footer";
 NSString * const DCSettingsTableViewCellIdentifier = @"cell-identifier";
 NSString * const DCSettingsTableViewCell = @"custom-cell";
+NSString * const DCSettingsTableViewSectionFooterHeight = @"section-footer-height";
+NSString * const DCSettingsTableViewSectionRowHeight = @"section-row-height";
 
 NSString * const DCFontSizeCalculationString = @"8:88";
 
