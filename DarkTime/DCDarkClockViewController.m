@@ -268,8 +268,7 @@
 
 - (IBAction)settingsButtonTapped:(id)sender 
 {
-    NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
-    self.settingsEditor = [[DCSettingsTableViewController alloc] 
+    self.settingsEditor = [[DCSettingsTableViewController alloc]
                                         initWithNibName:@"DCSettingsTableViewController"
                                         bundle:nil];
     self.settingsEditor.clockViewController = self;
@@ -283,7 +282,6 @@
 
     [self presentViewController:self.settingsNavController animated:YES 
                      completion:^{ }];
-    NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
     
 }
 
