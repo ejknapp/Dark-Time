@@ -84,7 +84,7 @@
     self.tableView.backgroundView = nil;
     self.tableView.backgroundView = [[UIView alloc]init];
     
-    self.tableView.backgroundColor = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
+    self.tableView.backgroundColor = [UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:1.0];
     
     self.tableView.separatorColor = [UIColor blackColor];
 
@@ -330,7 +330,7 @@
     
     sectionHeader.backgroundColor = [UIColor clearColor];
     sectionHeader.font = [UIFont boldSystemFontOfSize:16];
-    sectionHeader.textColor = [UIColor lightGrayColor];
+    sectionHeader.textColor = [DCClockConstants settingsSectionFontColor];
     
     NSDictionary *sectionDictionary = [self.settingsArray objectAtIndex:section];
     sectionHeader.text = [sectionDictionary objectForKey:DCSettingsTableViewHeader];
@@ -354,7 +354,7 @@
     
     sectionFooterLabel.backgroundColor = [UIColor clearColor];
     sectionFooterLabel.font = [UIFont systemFontOfSize:14];
-    sectionFooterLabel.textColor = [UIColor lightGrayColor];
+    sectionFooterLabel.textColor = [DCClockConstants settingsSectionFontColor];
     
     NSDictionary *sectionDictionary = [self.settingsArray objectAtIndex:section];
     sectionFooterLabel.text = [sectionDictionary objectForKey:DCSettingsTableViewFooter];

@@ -61,4 +61,9 @@ extern NSInteger const DCInitialFontIndex;
 
 @interface DCClockConstants : NSObject 
 
++(UIColor *)viewBackgroundColor;
++(UIColor *)cellBackgroundColor;
++(UIColor *)highlightedCellBackgroundColor;
++(UIColor *)settingsSectionFontColor;
+
 @end

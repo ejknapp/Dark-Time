@@ -11,9 +11,18 @@
 #import "DCDarkClockViewController.h"
 #import "DCIFontManager.h"
 #import "DCIFont.h"
+#import "DCClockConstants.h"
+
+@interface DCFontSelectTableViewController ()
+
+
+
+@end
+
 
 
 @implementation DCFontSelectTableViewController
+
 
 -(void)viewDidLoad
 {
@@ -22,7 +31,7 @@
     self.tableView.backgroundView = nil;
     self.tableView.backgroundView = [[UIView alloc]init];
     
-    self.tableView.backgroundColor = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
+    self.tableView.backgroundColor = [DCClockConstants viewBackgroundColor];
     
     self.tableView.separatorColor = [UIColor blackColor];
 
@@ -80,12 +89,9 @@
 {
     static NSString *CellIdentifier = @"Cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
-                                       reuseIdentifier:CellIdentifier];
-        cell.backgroundColor = [UIColor darkGrayColor];
-    }
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                   reuseIdentifier:CellIdentifier];
+    cell.backgroundColor = [DCClockConstants cellBackgroundColor];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
@@ -100,7 +106,7 @@
     
     if (self.clockState.fontManager.currentFontIndex == indexPath.row) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        cell.backgroundColor = [UIColor lightGrayColor];
+        cell.backgroundColor = [DCClockConstants highlightedCellBackgroundColor];
         self.currentCheckedCell = cell;
     }
     
@@ -120,7 +126,7 @@
     
     sectionHeader.backgroundColor = [UIColor clearColor];
     sectionHeader.font = [UIFont boldSystemFontOfSize:16];
-    sectionHeader.textColor = [UIColor lightGrayColor];
+    sectionHeader.textColor = [DCClockConstants settingsSectionFontColor];
     
     sectionHeader.text = @"Select Font";
     
@@ -135,15 +141,15 @@
     UITableViewCell *tappedCell = [tableView cellForRowAtIndexPath:indexPath];
     
     self.currentCheckedCell.accessoryType = UITableViewCellAccessoryNone;
-    self.currentCheckedCell.backgroundColor = [UIColor darkGrayColor];
+    self.currentCheckedCell.backgroundColor = [DCClockConstants cellBackgroundColor];
     
     [self.clockState changeFontWithFontIndex:selectedRow];
     
     tappedCell.accessoryType = UITableViewCellAccessoryCheckmark;
     self.currentCheckedCell = tappedCell;
         
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    tappedCell.backgroundColor = [UIColor lightGrayColor];
+//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    tappedCell.backgroundColor = [DCClockConstants highlightedCellBackgroundColor];
     
 }
 
