@@ -145,6 +145,7 @@
     }
     
     return timeString;
+//    return @"20:58";
 }
 
 -(NSString *)currentHourString

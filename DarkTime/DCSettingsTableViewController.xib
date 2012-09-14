@@ -3,12 +3,12 @@
 	<data>
 		<int key="IBDocument.SystemTarget">1536</int>
 		<string key="IBDocument.SystemVersion">12B19</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2829</string>
+		<string key="IBDocument.InterfaceBuilderVersion">2840</string>
 		<string key="IBDocument.AppKitVersion">1187</string>
 		<string key="IBDocument.HIToolboxVersion">624.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">1914</string>
+			<string key="NS.object.0">1926</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>IBProxyObject</string>
@@ -41,6 +41,11 @@
 				<string key="NSFrame">{{0, 44}, {768, 980}}</string>
 				<string key="NSBounds">{{0, 47}, {768, 980}}</string>
 				<reference key="NSSuperview"/>
+				<object class="NSColor" key="IBUIBackgroundColor">
+					<int key="NSColorSpace">1</int>
+					<bytes key="NSRGB">MCAwIDAgMAA</bytes>
+					<string key="IBUIColorCocoaTouchKeyPath">groupTableViewBackgroundColor</string>
+				</object>
 				<bool key="IBUIOpaque">NO</bool>
 				<bool key="IBUIClipsSubviews">YES</bool>
 				<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -57,14 +62,9 @@
 				<float key="IBUIRowHeight">44</float>
 				<float key="IBUISectionHeaderHeight">10</float>
 				<float key="IBUISectionFooterHeight">10</float>
-				<object class="NSColor" key="IBUIBackgroundColor">
-					<int key="NSColorSpace">1</int>
-					<bytes key="NSRGB">MCAwIDAgMAA</bytes>
-					<string key="IBUIColorCocoaTouchKeyPath">groupTableViewBackgroundColor</string>
-				</object>
 			</object>
 			<object class="IBUITableViewCell" id="833481546">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUIView" id="1069887488">
@@ -76,7 +76,6 @@
 								<int key="NSvFlags">290</int>
 								<string key="NSFrameSize">{300, 30}</string>
 								<reference key="NSSuperview" ref="1069887488"/>
-								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<int key="IBSegmentControlStyle">2</int>
@@ -110,7 +109,6 @@
 						</array>
 						<string key="NSFrameSize">{300, 29}</string>
 						<reference key="NSSuperview" ref="833481546"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="987411000"/>
 						<string key="NSReuseIdentifierKey">_NS:11</string>
 						<object class="NSColor" key="IBUIBackgroundColor" id="253879194">
@@ -125,8 +123,6 @@
 					</object>
 				</array>
 				<string key="NSFrameSize">{300, 30}</string>
-				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="1069887488"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -134,7 +130,7 @@
 				<reference key="IBUIContentView" ref="1069887488"/>
 			</object>
 			<object class="IBUITableViewCell" id="281785549">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUIView" id="326119244">
@@ -146,7 +142,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{20, 11}, {130, 21}}</string>
 								<reference key="NSSuperview" ref="326119244"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="39638714"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -154,18 +149,18 @@
 								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-								<object class="NSColor" key="IBUIHighlightedColor" id="1063168096">
-									<int key="NSColorSpace">3</int>
-									<bytes key="NSWhite">MQA</bytes>
-								</object>
-								<int key="IBUIBaselineAdjustment">0</int>
-								<float key="IBUIMinimumFontSize">10</float>
 								<string key="IBUIText">Display AM/PM</string>
 								<object class="NSColor" key="IBUITextColor" id="895927911">
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MCAwIDAAA</bytes>
 									<string key="IBUIColorCocoaTouchKeyPath">darkTextColor</string>
 								</object>
+								<object class="NSColor" key="IBUIHighlightedColor" id="1063168096">
+									<int key="NSColorSpace">3</int>
+									<bytes key="NSWhite">MQA</bytes>
+								</object>
+								<int key="IBUIBaselineAdjustment">0</int>
+								<float key="IBUIMinimumFontSize">10</float>
 								<object class="IBUIFontDescription" key="IBUIFontDescription" id="430849830">
 									<int key="type">2</int>
 									<double key="pointSize">17</double>
@@ -175,14 +170,12 @@
 									<double key="NSSize">17</double>
 									<int key="NSfFlags">16</int>
 								</object>
-								<int key="IBUIAutoshrinkMode">2</int>
 							</object>
 							<object class="IBUISwitch" id="39638714">
 								<reference key="NSNextResponder" ref="326119244"/>
 								<int key="NSvFlags">289</int>
 								<string key="NSFrame">{{186, 8}, {94, 27}}</string>
 								<reference key="NSSuperview" ref="326119244"/>
-								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -194,7 +187,6 @@
 						</array>
 						<string key="NSFrameSize">{300, 43}</string>
 						<reference key="NSSuperview" ref="281785549"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="441116167"/>
 						<string key="NSReuseIdentifierKey">_NS:11</string>
 						<reference key="IBUIBackgroundColor" ref="253879194"/>
@@ -206,8 +198,6 @@
 					</object>
 				</array>
 				<string key="NSFrameSize">{300, 44}</string>
-				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="326119244"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<object class="NSColor" key="IBUIBackgroundColor">
@@ -219,7 +209,7 @@
 				<reference key="IBUIContentView" ref="326119244"/>
 			</object>
 			<object class="IBUITableViewCell" id="630514904">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUIView" id="651131732">
@@ -231,7 +221,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{20, 11}, {149, 21}}</string>
 								<reference key="NSSuperview" ref="651131732"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="631683264"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -239,21 +228,19 @@
 								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+								<string key="IBUIText">Display Seconds</string>
+								<reference key="IBUITextColor" ref="895927911"/>
 								<reference key="IBUIHighlightedColor" ref="1063168096"/>
 								<int key="IBUIBaselineAdjustment">0</int>
 								<float key="IBUIMinimumFontSize">10</float>
-								<string key="IBUIText">Display Seconds</string>
-								<reference key="IBUITextColor" ref="895927911"/>
 								<reference key="IBUIFontDescription" ref="430849830"/>
 								<reference key="IBUIFont" ref="269571516"/>
-								<int key="IBUIAutoshrinkMode">2</int>
 							</object>
 							<object class="IBUISwitch" id="631683264">
 								<reference key="NSNextResponder" ref="651131732"/>
 								<int key="NSvFlags">289</int>
 								<string key="NSFrame">{{186, 8}, {94, 27}}</string>
 								<reference key="NSSuperview" ref="651131732"/>
-								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -265,7 +252,6 @@
 						</array>
 						<string key="NSFrameSize">{300, 43}</string>
 						<reference key="NSSuperview" ref="630514904"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="429185721"/>
 						<string key="NSReuseIdentifierKey">_NS:11</string>
 						<reference key="IBUIBackgroundColor" ref="253879194"/>
@@ -277,8 +263,6 @@
 					</object>
 				</array>
 				<string key="NSFrameSize">{300, 44}</string>
-				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="651131732"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<object class="NSColor" key="IBUIBackgroundColor" id="317932337">
@@ -290,7 +274,7 @@
 				<reference key="IBUIContentView" ref="651131732"/>
 			</object>
 			<object class="IBUITableViewCell" id="377856194">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUIView" id="21935504">
@@ -302,7 +286,6 @@
 								<int key="NSvFlags">290</int>
 								<string key="NSFrame">{{18, 11}, {264, 23}}</string>
 								<reference key="NSSuperview" ref="21935504"/>
-								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -329,7 +312,6 @@
 						</array>
 						<string key="NSFrameSize">{300, 43}</string>
 						<reference key="NSSuperview" ref="377856194"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="683247842"/>
 						<string key="NSReuseIdentifierKey">_NS:11</string>
 						<reference key="IBUIBackgroundColor" ref="253879194"/>
@@ -341,8 +323,6 @@
 					</object>
 				</array>
 				<string key="NSFrameSize">{300, 44}</string>
-				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="21935504"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<reference key="IBUIBackgroundColor" ref="317932337"/>
@@ -351,7 +331,7 @@
 				<reference key="IBUIContentView" ref="21935504"/>
 			</object>
 			<object class="IBUITableViewCell" id="327722614">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUIView" id="201796493">
@@ -363,7 +343,6 @@
 								<int key="NSvFlags">289</int>
 								<string key="NSFrame">{{186, 8}, {94, 27}}</string>
 								<reference key="NSSuperview" ref="201796493"/>
-								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -377,7 +356,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{20, 11}, {149, 21}}</string>
 								<reference key="NSSuperview" ref="201796493"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="1013471139"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -385,19 +363,17 @@
 								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+								<string key="IBUIText">Suspend Sleep</string>
+								<reference key="IBUITextColor" ref="895927911"/>
 								<reference key="IBUIHighlightedColor" ref="1063168096"/>
 								<int key="IBUIBaselineAdjustment">0</int>
 								<float key="IBUIMinimumFontSize">10</float>
-								<string key="IBUIText">Suspend Sleep</string>
-								<reference key="IBUITextColor" ref="895927911"/>
 								<reference key="IBUIFontDescription" ref="430849830"/>
 								<reference key="IBUIFont" ref="269571516"/>
-								<int key="IBUIAutoshrinkMode">2</int>
 							</object>
 						</array>
 						<string key="NSFrameSize">{300, 43}</string>
 						<reference key="NSSuperview" ref="327722614"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="985978519"/>
 						<string key="NSReuseIdentifierKey">_NS:11</string>
 						<reference key="IBUIBackgroundColor" ref="253879194"/>
@@ -409,8 +385,6 @@
 					</object>
 				</array>
 				<string key="NSFrameSize">{300, 44}</string>
-				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="201796493"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<reference key="IBUIBackgroundColor" ref="317932337"/>
@@ -419,7 +393,7 @@
 				<reference key="IBUIContentView" ref="201796493"/>
 			</object>
 			<object class="IBUITableViewCell" id="763654733">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUIView" id="247625765">
@@ -431,26 +405,23 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{20, 11}, {235, 21}}</string>
 								<reference key="NSSuperview" ref="247625765"/>
-								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+								<string key="IBUIText">Font Label</string>
+								<reference key="IBUITextColor" ref="895927911"/>
 								<reference key="IBUIHighlightedColor" ref="1063168096"/>
 								<int key="IBUIBaselineAdjustment">0</int>
 								<float key="IBUIMinimumFontSize">10</float>
-								<string key="IBUIText">Font Label</string>
-								<reference key="IBUITextColor" ref="895927911"/>
 								<reference key="IBUIFontDescription" ref="430849830"/>
 								<reference key="IBUIFont" ref="269571516"/>
-								<int key="IBUIAutoshrinkMode">2</int>
 							</object>
 						</array>
 						<string key="NSFrameSize">{280, 43}</string>
 						<reference key="NSSuperview" ref="763654733"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="284844331"/>
 						<string key="NSReuseIdentifierKey">_NS:11</string>
 						<reference key="IBUIBackgroundColor" ref="253879194"/>
@@ -462,8 +433,6 @@
 					</object>
 				</array>
 				<string key="NSFrameSize">{300, 44}</string>
-				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="247625765"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<reference key="IBUIBackgroundColor" ref="317932337"/>
@@ -473,7 +442,7 @@
 				<reference key="IBUIContentView" ref="247625765"/>
 			</object>
 			<object class="IBUITableViewCell" id="715175083">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUIView" id="53488038">
@@ -485,26 +454,23 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{20, 11}, {235, 21}}</string>
 								<reference key="NSSuperview" ref="53488038"/>
-								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+								<string key="IBUIText">Dark Time Help</string>
+								<reference key="IBUITextColor" ref="895927911"/>
 								<reference key="IBUIHighlightedColor" ref="1063168096"/>
 								<int key="IBUIBaselineAdjustment">0</int>
 								<float key="IBUIMinimumFontSize">10</float>
-								<string key="IBUIText">Dark Time Help</string>
-								<reference key="IBUITextColor" ref="895927911"/>
 								<reference key="IBUIFontDescription" ref="430849830"/>
 								<reference key="IBUIFont" ref="269571516"/>
-								<int key="IBUIAutoshrinkMode">2</int>
 							</object>
 						</array>
 						<string key="NSFrameSize">{280, 43}</string>
 						<reference key="NSSuperview" ref="715175083"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="287314069"/>
 						<string key="NSReuseIdentifierKey">_NS:11</string>
 						<reference key="IBUIBackgroundColor" ref="253879194"/>
@@ -516,8 +482,6 @@
 					</object>
 				</array>
 				<string key="NSFrameSize">{300, 44}</string>
-				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="53488038"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<reference key="IBUIBackgroundColor" ref="317932337"/>
@@ -527,7 +491,7 @@
 				<reference key="IBUIContentView" ref="53488038"/>
 			</object>
 			<object class="IBUITableViewCell" id="93125752">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUIView" id="526526531">
@@ -539,26 +503,23 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{20, 11}, {235, 21}}</string>
 								<reference key="NSSuperview" ref="526526531"/>
-								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+								<string key="IBUIText">Current Version: 1.1</string>
+								<reference key="IBUITextColor" ref="895927911"/>
 								<reference key="IBUIHighlightedColor" ref="1063168096"/>
 								<int key="IBUIBaselineAdjustment">0</int>
 								<float key="IBUIMinimumFontSize">10</float>
-								<string key="IBUIText">Current Version: 1.1</string>
-								<reference key="IBUITextColor" ref="895927911"/>
 								<reference key="IBUIFontDescription" ref="430849830"/>
 								<reference key="IBUIFont" ref="269571516"/>
-								<int key="IBUIAutoshrinkMode">2</int>
 							</object>
 						</array>
 						<string key="NSFrameSize">{280, 43}</string>
 						<reference key="NSSuperview" ref="93125752"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="408665671"/>
 						<string key="NSReuseIdentifierKey">_NS:11</string>
 						<reference key="IBUIBackgroundColor" ref="253879194"/>
@@ -570,8 +531,6 @@
 					</object>
 				</array>
 				<string key="NSFrameSize">{300, 44}</string>
-				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="526526531"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<reference key="IBUIBackgroundColor" ref="317932337"/>
@@ -954,121 +913,7 @@
 			<nil key="sourceID"/>
 			<int key="maxID">66</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes">
-			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
-				<object class="IBPartialClassDescription">
-					<string key="className">DCSettingsTableViewController</string>
-					<string key="superclassName">UITableViewController</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="adjustBrightness:">UISlider</string>
-						<string key="timeDisplaySegmentTapped:">UISegmentedControl</string>
-						<string key="toggleAmPm:">UISwitch</string>
-						<string key="toggleSeconds:">UISwitch</string>
-						<string key="toggleSuspendSleep:">UISwitch</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="adjustBrightness:">
-							<string key="name">adjustBrightness:</string>
-							<string key="candidateClassName">UISlider</string>
-						</object>
-						<object class="IBActionInfo" key="timeDisplaySegmentTapped:">
-							<string key="name">timeDisplaySegmentTapped:</string>
-							<string key="candidateClassName">UISegmentedControl</string>
-						</object>
-						<object class="IBActionInfo" key="toggleAmPm:">
-							<string key="name">toggleAmPm:</string>
-							<string key="candidateClassName">UISwitch</string>
-						</object>
-						<object class="IBActionInfo" key="toggleSeconds:">
-							<string key="name">toggleSeconds:</string>
-							<string key="candidateClassName">UISwitch</string>
-						</object>
-						<object class="IBActionInfo" key="toggleSuspendSleep:">
-							<string key="name">toggleSuspendSleep:</string>
-							<string key="candidateClassName">UISwitch</string>
-						</object>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="ampmCell">UITableViewCell</string>
-						<string key="ampmSwitch">UISwitch</string>
-						<string key="brightnessCell">UITableViewCell</string>
-						<string key="brightnessSlider">UISlider</string>
-						<string key="changeLogCell">UITableViewCell</string>
-						<string key="displayTypeCell">UITableViewCell</string>
-						<string key="displayTypeSegmentedControl">UISegmentedControl</string>
-						<string key="fontCell">UITableViewCell</string>
-						<string key="fontCellLabel">UILabel</string>
-						<string key="helpCell">UITableViewCell</string>
-						<string key="secondsDisplayCell">UITableViewCell</string>
-						<string key="secondsDisplaySwitch">UISwitch</string>
-						<string key="suspendSleepCell">UITableViewCell</string>
-						<string key="suspendSleepSwitch">UISwitch</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="ampmCell">
-							<string key="name">ampmCell</string>
-							<string key="candidateClassName">UITableViewCell</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="ampmSwitch">
-							<string key="name">ampmSwitch</string>
-							<string key="candidateClassName">UISwitch</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="brightnessCell">
-							<string key="name">brightnessCell</string>
-							<string key="candidateClassName">UITableViewCell</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="brightnessSlider">
-							<string key="name">brightnessSlider</string>
-							<string key="candidateClassName">UISlider</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="changeLogCell">
-							<string key="name">changeLogCell</string>
-							<string key="candidateClassName">UITableViewCell</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="displayTypeCell">
-							<string key="name">displayTypeCell</string>
-							<string key="candidateClassName">UITableViewCell</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="displayTypeSegmentedControl">
-							<string key="name">displayTypeSegmentedControl</string>
-							<string key="candidateClassName">UISegmentedControl</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="fontCell">
-							<string key="name">fontCell</string>
-							<string key="candidateClassName">UITableViewCell</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="fontCellLabel">
-							<string key="name">fontCellLabel</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="helpCell">
-							<string key="name">helpCell</string>
-							<string key="candidateClassName">UITableViewCell</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="secondsDisplayCell">
-							<string key="name">secondsDisplayCell</string>
-							<string key="candidateClassName">UITableViewCell</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="secondsDisplaySwitch">
-							<string key="name">secondsDisplaySwitch</string>
-							<string key="candidateClassName">UISwitch</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="suspendSleepCell">
-							<string key="name">suspendSleepCell</string>
-							<string key="candidateClassName">UITableViewCell</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="suspendSleepSwitch">
-							<string key="name">suspendSleepSwitch</string>
-							<string key="candidateClassName">UISwitch</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/DCSettingsTableViewController.h</string>
-					</object>
-				</object>
-			</array>
-		</object>
+		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBIPadFramework</string>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
@@ -1077,6 +922,6 @@
 			<string key="brightness-bright.png">{35, 35}</string>
 			<string key="brightness-dim.png">{26, 26}</string>
 		</dictionary>
-		<string key="IBCocoaTouchPluginVersion">1914</string>
+		<string key="IBCocoaTouchPluginVersion">1926</string>
 	</data>
 </archive>

@@ -31,6 +31,7 @@
 		9F59DA9C142D75100020A795 /* DCSettingsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F59DA9A142D750F0020A795 /* DCSettingsTableViewController.xib */; };
 		9F59DAE8142E5E6C0020A795 /* DCFontSelectTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F59DAE6142E5E6B0020A795 /* DCFontSelectTableViewController.m */; };
 		9F59DAE9142E5E6C0020A795 /* DCFontSelectTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F59DAE7142E5E6B0020A795 /* DCFontSelectTableViewController.xib */; };
+		9F613F9416023E430076F4EE /* Default-iphone-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F613F9316023E430076F4EE /* Default-iphone-568h@2x.png */; };
 		9F67124815503BFA0022DB09 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F67124615503BFA0022DB09 /* settings.png */; };
 		9F67124915503BFA0022DB09 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F67124715503BFA0022DB09 /* settings@2x.png */; };
 		9F67125215503EEE0022DB09 /* DCIWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F67125015503EEE0022DB09 /* DCIWelcomeViewController.m */; };
@@ -100,6 +101,7 @@
 		9F59DAE5142E5E6B0020A795 /* DCFontSelectTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCFontSelectTableViewController.h; sourceTree = "<group>"; };
 		9F59DAE6142E5E6B0020A795 /* DCFontSelectTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCFontSelectTableViewController.m; sourceTree = "<group>"; };
 		9F59DAE7142E5E6B0020A795 /* DCFontSelectTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DCFontSelectTableViewController.xib; sourceTree = "<group>"; };
+		9F613F9316023E430076F4EE /* Default-iphone-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-iphone-568h@2x.png"; sourceTree = "<group>"; };
 		9F67124615503BFA0022DB09 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		9F67124715503BFA0022DB09 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
 		9F67124F15503EEE0022DB09 /* DCIWelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCIWelcomeViewController.h; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 				9F8E45101517AD6C00543A3A /* Default-iphone@2x.png */,
 				9F8E45151517AF1500543A3A /* Default-ipad-Landscape@2x.png */,
 				9F8E45161517AF1500543A3A /* Default-ipad-Portrait@2x.png */,
+				9F613F9316023E430076F4EE /* Default-iphone-568h@2x.png */,
 				9F43F3EC1428DC58003093A8 /* DarkTime-Info.plist */,
 				9F43F3ED1428DC58003093A8 /* InfoPlist.strings */,
 				9F43F3F01428DC58003093A8 /* main.m */,
@@ -400,6 +403,7 @@
 				9F67124915503BFA0022DB09 /* settings@2x.png in Resources */,
 				9F67125315503EEE0022DB09 /* DCIWelcomeViewController.xib in Resources */,
 				9F6712551550423B0022DB09 /* ChangeLog.txt in Resources */,
+				9F613F9416023E430076F4EE /* Default-iphone-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

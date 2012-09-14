@@ -133,6 +133,10 @@
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation 
                                          duration:(NSTimeInterval)duration
 {
+    
+    NSLog(@"ampm label frame: %@", NSStringFromCGRect(self.ampmLabel.frame));
+    NSLog(@"view frame %@", NSStringFromCGRect(self.view.frame));
+    
     self.clockState.currentOrientation = interfaceOrientation;
         
     [self switchToOrientationView:self.clockState.currentOrientation];
