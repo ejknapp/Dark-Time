@@ -34,9 +34,9 @@ NSUInteger const DCiPadLandscapeTimeLabelFontSize = 500;
 NSUInteger const DCiPadPortraitTimeLabelsFontSize = 500;
 
 
-CGFloat const DCMinimumScreenBrightness = 0.01;
+CGFloat const DCMinimumScreenBrightness = 0.005;
 
-NSInteger const DCInitialFontIndex = 7;
+NSInteger const DCInitialFontIndex = 6;
 
 @implementation DCClockConstants
 

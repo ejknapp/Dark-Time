@@ -60,20 +60,6 @@
 	</dict>
 	<dict>
 		<key>fontName</key>
-		<string>Courier-Bold</string>
-		<key>displayName</key>
-		<string>Courier</string>
-		<key>iPhoneHourFrameOffset</key>
-		<string>{0, 0}</string>
-		<key>iPhoneMinuteFrameOffset</key>
-		<string>{0,-8}</string>
-		<key>iPadHourFrameOffset</key>
-		<string>{0, -10}</string>
-		<key>iPadMinuteFrameOffset</key>
-		<string>{0, -40}</string>
-	</dict>
-	<dict>
-		<key>fontName</key>
 		<string>AmericanTypewriter-Bold</string>
 		<key>displayName</key>
 		<string>American Typewriter</string>

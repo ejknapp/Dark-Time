@@ -27,10 +27,6 @@
 @property (nonatomic, weak) IBOutlet UILabel *ampmLabelPortrait;
 @property (nonatomic, weak) IBOutlet UILabel *secondsLabelPortrait;
 @property (nonatomic, weak) IBOutlet UIButton *clockSettingsButtonPortrait;
-@property (nonatomic, weak) IBOutlet DCIDashedDividerView *dottedLine;
-
-@property (nonatomic, weak) IBOutlet UIView *landscapeView;
-@property (nonatomic, weak) IBOutlet UIView *portraitView;
 
 @property (strong, nonatomic) UINavigationController *settingsNavController;
 @property (assign, nonatomic) CGFloat buttonAlphaLandscape;
@@ -66,8 +62,11 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];   
-        
+    [super viewDidLoad];
+    
+    [self.view addSubview:self.landscapeView];
+    [self.view addSubview:self.portraitView];
+    
     self.timeLabel.alpha = 0.0;
     self.ampmLabel.alpha = 0.0;
     self.secondsLabel.alpha = 0.0;
@@ -78,7 +77,6 @@
     self.secondsLabelPortrait.alpha = 0.0;
     self.clockSettingsButtonPortrait.alpha = 0.0;
     self.dottedLine.alpha = 0.0;
-
     
     self.calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
 
@@ -133,10 +131,7 @@
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation 
                                          duration:(NSTimeInterval)duration
 {
-    
-    NSLog(@"ampm label frame: %@", NSStringFromCGRect(self.ampmLabel.frame));
-    NSLog(@"view frame %@", NSStringFromCGRect(self.view.frame));
-    
+        
     self.clockState.currentOrientation = interfaceOrientation;
         
     [self switchToOrientationView:self.clockState.currentOrientation];
@@ -180,9 +175,9 @@
 - (void)createRightSwipeRecognizer
 {
     self.brightnessSwipeRight = 
-    [[UISwipeGestureRecognizer alloc] 
-     initWithTarget:self 
-     action:@selector(handleBrightnessSwipeRight:)];
+            [[UISwipeGestureRecognizer alloc] 
+             initWithTarget:self 
+             action:@selector(handleBrightnessSwipeRight:)];
     
     self.brightnessSwipeRight.numberOfTouchesRequired = 1;
     self.brightnessSwipeRight.direction = UISwipeGestureRecognizerDirectionRight;
@@ -193,9 +188,9 @@
 - (void)createUpSwipeRecognizer
 {
     self.brightnessSwipeUp = 
-    [[UISwipeGestureRecognizer alloc] 
-     initWithTarget:self 
-     action:@selector(handleBrightnessSwipeRight:)];
+            [[UISwipeGestureRecognizer alloc] 
+             initWithTarget:self 
+             action:@selector(handleBrightnessSwipeRight:)];
     
     self.brightnessSwipeUp.numberOfTouchesRequired = 1;
     self.brightnessSwipeUp.direction = UISwipeGestureRecognizerDirectionUp;
@@ -230,19 +225,8 @@
     CGFloat currentBrightness = self.clockState.clockBrightnessLevel;
     
     CGFloat brightness = currentBrightness + 0.05;
-    if (brightness > 1.0) {
-        brightness = 1.0;
-    } else if (brightness <= 0.0) {
-        brightness = DCMinimumScreenBrightness;
-    }
     
-    [UIScreen mainScreen].brightness = brightness;
-
-    self.clockState.clockBrightnessLevel = brightness;
-    [self updateClockDisplayColorWithBrightness:brightness];
-    
-    [[NSUserDefaults standardUserDefaults] setFloat:brightness 
-                                             forKey:@"clockBrightnessLevel"];
+    [self adjustScreenBrightness:brightness];
 
 }
 
@@ -256,19 +240,25 @@
     CGFloat currentBrightness = self.clockState.clockBrightnessLevel;
     
     CGFloat brightness = currentBrightness - 0.05;
+    [self adjustScreenBrightness:brightness];
+
+}
+
+- (void)adjustScreenBrightness:(CGFloat)brightness
+{
     if (brightness > 1.0) {
         brightness = 1.0;
     } else if (brightness <= DCMinimumScreenBrightness) {
         brightness = DCMinimumScreenBrightness;
     }
-
+    
     [UIScreen mainScreen].brightness = brightness;
-
+    
     self.clockState.clockBrightnessLevel = brightness;
     [self updateClockDisplayColorWithBrightness:brightness];
     [[NSUserDefaults standardUserDefaults] setFloat:brightness forKey:@"clockBrightnessLevel"];
-
 }
+
 
 - (IBAction)settingsButtonTapped:(id)sender 
 {
@@ -396,6 +386,7 @@
                 self.ampmLabel.alpha = 1.0;
                 self.secondsLabel.alpha = 1.0;
                 self.clockSettingsButton.alpha = self.buttonAlphaLandscape;
+//                [self.landscapeView setNeedsDisplay];
             }];
         }];
         

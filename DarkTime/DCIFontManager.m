@@ -21,13 +21,6 @@
 @implementation DCIFontManager
 
 
-- (id)init {
-    self = [super init];
-    if (self) {
-    }
-    return self;
-}
-
 -(void)loadFontDictionaries
 {
     NSString *fontDataPath = [[NSBundle mainBundle] pathForResource:@"fontData" ofType:@"plist"];
@@ -35,10 +28,13 @@
     
     self.fonts = [[NSMutableDictionary alloc] init];
     
-    for (NSDictionary *fontDictionary in self.fontDictionaries) {
+    [self.fontDictionaries enumerateObjectsUsingBlock:^(NSDictionary *fontDictionary,
+                                                        NSUInteger idx,
+                                                        BOOL *stop) {
         DCIFont *newFont = [[DCIFont alloc] initWithFontDictionary:fontDictionary];
         [self.fonts setObject:newFont forKey:newFont.fontName];
-    }
+    }];
+    
 }
 
 -(NSString *)currentFontDisplayName
@@ -81,7 +77,6 @@
 
 -(CGRect)adjustMinuteFrame:(CGRect)frame withFont:(UIFont *)font
 {
-    
     DCIFont *dciFont = [self.fonts objectForKey:font.fontName];
     
     CGSize offset = [dciFont minuteOffsetWithDevice:self.clockState.device];

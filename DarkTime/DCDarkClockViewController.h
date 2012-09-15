@@ -18,6 +18,11 @@
 
 @interface DCDarkClockViewController : UIViewController <UIGestureRecognizerDelegate> 
 
+@property (nonatomic, weak) IBOutlet UIView *landscapeView;
+@property (nonatomic, weak) IBOutlet UIView *portraitView;
+@property (nonatomic, weak) IBOutlet DCIDashedDividerView *dottedLine;
+
+
 @property (nonatomic, strong) DCClockState *clockState;
 @property (nonatomic, strong) NSTimer *appTimer;
 
