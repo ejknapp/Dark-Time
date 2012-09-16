@@ -48,12 +48,15 @@ typedef enum {
     DCIClockDisplayType24Hour,
 } DCIClockDisplayType;
 
-extern NSUInteger const iPadAmPmSecondsFontSize;
-extern NSUInteger const iPhoneAmPmSecondsFontSize;
-extern NSUInteger const DCiPhoneLandscapeTimeLabelFontSize;
-extern NSUInteger const DCiPhonePortraitTimeLabelsFontSize;
-extern NSUInteger const DCiPadLandscapeTimeLabelFontSize;
-extern NSUInteger const DCiPadPortraitTimeLabelsFontSize;
+extern NSUInteger const DCIiPadAmPmSecondsFontSize;
+extern NSUInteger const DCIiPhoneAmPmSecondsFontSize;
+extern NSUInteger const DCIiPhoneLandscapeTimeLabelFontSize;
+extern NSUInteger const DCIiPhonePortraitTimeLabelsFontSize;
+extern NSUInteger const DCIiPadLandscapeTimeLabelFontSize;
+extern NSUInteger const DCIiPadPortraitTimeLabelsFontSize;
+extern NSUInteger const DCIDashedLineHeightiPad;
+extern NSUInteger const DCIDashedLineHeightiPhone;
+
 
 extern CGFloat const DCMinimumScreenBrightness;
 

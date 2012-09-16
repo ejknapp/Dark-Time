@@ -63,9 +63,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    self.view.frame = [[UIScreen mainScreen]applicationFrame];
+    self.landscapeView.frame = [[UIScreen mainScreen]applicationFrame];
+    self.portraitView.frame = [[UIScreen mainScreen]applicationFrame];
+
     [self.view addSubview:self.landscapeView];
     [self.view addSubview:self.portraitView];
+    
+    [self adjustHourMinuteLabelsForScreenHeight];
+    [self adjustDashedLiveViewForScreenHeight];
+
     
     self.timeLabel.alpha = 0.0;
     self.ampmLabel.alpha = 0.0;
@@ -104,11 +111,28 @@
     
     [self updateClockOnLaunch];
     
-    [self switchToOrientationView:self.interfaceOrientation];
+//    [self switchToOrientationView:self.interfaceOrientation];
+    self.clockState.currentOrientation = self.interfaceOrientation;
     
+    if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) {
+        self.timeLabel.alpha = 1.0;
+        self.ampmLabel.alpha = 1.0;
+        self.secondsLabel.alpha = 1.0;
+        self.clockSettingsButton.alpha = 1.0;
+        [self.view bringSubviewToFront:self.landscapeView];
+    } else {
+        self.timeLabelHoursPortrait.alpha = 1.0;
+        self.timeLabelMinutesPortrait.alpha = 1.0;
+        self.ampmLabelPortrait.alpha = 1.0;
+        self.secondsLabelPortrait.alpha = 1.0;
+        self.clockSettingsButtonPortrait.alpha = 1.0;
+        self.dottedLine.alpha = 1.0;
+        [self.view bringSubviewToFront:self.portraitView];
+    }
+
     [self.view layoutIfNeeded];
 
-    [UIViewController attemptRotationToDeviceOrientation];
+//    [UIViewController attemptRotationToDeviceOrientation];
     
 }
 
@@ -123,20 +147,62 @@
     
 }
 
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskAll;
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return YES;
 }
 
-- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation 
-                                         duration:(NSTimeInterval)duration
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+                                duration:(NSTimeInterval)duration
 {
-        
-    self.clockState.currentOrientation = interfaceOrientation;
-        
-    [self switchToOrientationView:self.clockState.currentOrientation];
+
+    [self.clockState changeFontWithFontIndex:self.clockState.fontManager.currentFontIndex];
+
+    self.clockState.currentOrientation = toInterfaceOrientation;
     
-    [self.view layoutIfNeeded];
+    if (UIInterfaceOrientationIsPortrait(toInterfaceOrientation)) {
+        self.timeLabel.alpha = 0.0;
+        self.ampmLabel.alpha = 0.0;
+        self.secondsLabel.alpha = 0.0;
+        self.clockSettingsButton.alpha = 0.0;
+        [self.view bringSubviewToFront:self.portraitView];
+    } else {
+        self.timeLabelHoursPortrait.alpha = 0.0;
+        self.timeLabelMinutesPortrait.alpha = 0.0;
+        self.ampmLabelPortrait.alpha = 0.0;
+        self.secondsLabelPortrait.alpha = 0.0;
+        self.clockSettingsButtonPortrait.alpha = 0.0;
+        self.dottedLine.alpha = 0.0;
+        [self.view bringSubviewToFront:self.landscapeView];
+    }
+
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+      
+    if (UIInterfaceOrientationIsLandscape(fromInterfaceOrientation)) {
+        [UIView animateWithDuration:0.3 animations:^{
+            self.timeLabelHoursPortrait.alpha = 1.0;
+            self.timeLabelMinutesPortrait.alpha = 1.0;
+            self.ampmLabelPortrait.alpha = 1.0;
+            self.secondsLabelPortrait.alpha = 1.0;
+            self.clockSettingsButtonPortrait.alpha = self.buttonAlphaLandscape;
+            self.dottedLine.alpha = 1.0;
+        }];
+    } else {
+        [UIView animateWithDuration:0.3 animations:^{
+            self.timeLabel.alpha = 1.0;
+            self.ampmLabel.alpha = 1.0;
+            self.secondsLabel.alpha = 1.0;
+            self.clockSettingsButton.alpha = self.buttonAlphaLandscape;
+        }];
+    }
     
 }
 
@@ -352,44 +418,24 @@
     [self.clockState changeFontWithFontIndex:self.clockState.fontManager.currentFontIndex];
     
     if (UIInterfaceOrientationIsPortrait(interfaceOrientation)) {
-        [UIView animateWithDuration:0.6 
-                         animations:^{
-                             self.timeLabel.alpha = 0.0;
-                             self.ampmLabel.alpha = 0.0;
-                             self.secondsLabel.alpha = 0.0;
-                             self.clockSettingsButton.alpha = 0.0;
-                         } 
-                         completion:^(BOOL finished) {
-                             [self.view bringSubviewToFront:self.portraitView];
-                             [UIView animateWithDuration:0.6 animations:^{
-                                 self.timeLabelHoursPortrait.alpha = 1.0;
-                                 self.timeLabelMinutesPortrait.alpha = 1.0;
-                                 self.ampmLabelPortrait.alpha = 1.0;
-                                 self.secondsLabelPortrait.alpha = 1.0;
-                                 self.clockSettingsButtonPortrait.alpha = self.buttonAlphaLandscape;
-                                 self.dottedLine.alpha = 1.0;
-                                 [self.dottedLine setNeedsDisplay];
-                             }];
-                         }];
+//         [self.view bringSubviewToFront:self.portraitView];
+         [UIView animateWithDuration:0.8 animations:^{
+             self.timeLabelHoursPortrait.alpha = 1.0;
+             self.timeLabelMinutesPortrait.alpha = 1.0;
+             self.ampmLabelPortrait.alpha = 1.0;
+             self.secondsLabelPortrait.alpha = 1.0;
+             self.clockSettingsButtonPortrait.alpha = self.buttonAlphaLandscape;
+             self.dottedLine.alpha = 1.0;
+             [self.dottedLine setNeedsDisplay];
+         }];
     } else {
-        [UIView animateWithDuration:0.6 animations:^{
-            self.timeLabelHoursPortrait.alpha = 0.0;
-            self.timeLabelMinutesPortrait.alpha = 0.0;
-            self.ampmLabelPortrait.alpha = 0.0;
-            self.secondsLabelPortrait.alpha = 0.0;
-            self.clockSettingsButtonPortrait.alpha = 0.0;
-            self.dottedLine.alpha = 0.0;
-        } completion:^(BOOL finished) {
-            [self.view bringSubviewToFront:self.landscapeView];
-            [UIView animateWithDuration:0.6 animations:^{
-                self.timeLabel.alpha = 1.0;
-                self.ampmLabel.alpha = 1.0;
-                self.secondsLabel.alpha = 1.0;
-                self.clockSettingsButton.alpha = self.buttonAlphaLandscape;
-//                [self.landscapeView setNeedsDisplay];
-            }];
+//        [self.view bringSubviewToFront:self.landscapeView];
+        [UIView animateWithDuration:0.8 animations:^{
+            self.timeLabel.alpha = 1.0;
+            self.ampmLabel.alpha = 1.0;
+            self.secondsLabel.alpha = 1.0;
+            self.clockSettingsButton.alpha = self.buttonAlphaLandscape;
         }];
-        
     }
     
 }
@@ -410,6 +456,42 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
 }
 
 #pragma mark - Clock Methods
+
+- (void)adjustHourMinuteLabelsForScreenHeight
+{
+    CGFloat halfHeight = [[UIScreen mainScreen]applicationFrame].size.height / 2;
+    CGFloat width = [[UIScreen mainScreen]applicationFrame].size.width;
+    
+    CGFloat adjustFactor = 20.0;
+    
+    CGRect hourFrame = CGRectMake(0,
+                                  adjustFactor,
+                                  width,
+                                  halfHeight - adjustFactor);
+    CGRect minuteFrame = CGRectMake(0,
+                                    halfHeight - (adjustFactor / 2),
+                                    width,
+                                    halfHeight - adjustFactor);
+    
+    
+    self.timeLabelHoursPortrait.frame = hourFrame;
+    self.timeLabelMinutesPortrait.frame = minuteFrame;
+}
+
+-(void)adjustDashedLiveViewForScreenHeight
+{
+    CGFloat halfHeight = [[UIScreen mainScreen]applicationFrame].size.height / 2;
+    CGFloat width = [[UIScreen mainScreen]applicationFrame].size.width;
+    
+    CGFloat dashedViewY = halfHeight - 17;
+    
+    CGRect dashedViewFrame = CGRectMake(9,
+                                        dashedViewY,
+                                        width,
+                                        self.clockState.dashedlineHeight);
+    
+    self.dottedLine.frame = dashedViewFrame;
+}
 
 -(void)updateClockOnLaunch
 {

@@ -88,14 +88,15 @@
     self.fontManager.currentFontIndex = index;
     CGFloat fontSize;
 
-    if (UIInterfaceOrientationIsPortrait(self.currentOrientation)) {
+    if (UIInterfaceOrientationIsLandscape(self.currentOrientation)) {
         fontSize = self.fontSizePortrait;
     } else {
         fontSize = self.fontSizeLandscape;
     }
-        
-    self.fontManager.currentFont = [UIFont fontWithName:[self.fontManager fontNameAtIndex:self.fontManager.currentFontIndex] 
-                                                   size:fontSize];
+    
+    self.fontManager.currentFont = [UIFont fontWithName:[self.fontManager
+                                                         fontNameAtIndex:self.fontManager.currentFontIndex]
+                                                         size:fontSize];
     
 }
 
@@ -113,7 +114,7 @@
 - (NSString *)applicationDocumentsDirectory
 {
      NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-     NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
+     NSString *basePath = ([paths count] > 0) ? paths[0] : nil;
      return basePath;
  }
 

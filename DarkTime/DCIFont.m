@@ -28,12 +28,12 @@
 {
     self = [super init];
     if (self) {
-        _fontName = [fontDictionary objectForKey:@"fontName"];
-        _displayName = [fontDictionary objectForKey:@"displayName"];
-        _iPhoneHourFrameOffset = CGSizeFromString([fontDictionary objectForKey:@"iPhoneHourFrameOffset"]);
-        _iPhoneMinuteFrameOffset = CGSizeFromString([fontDictionary objectForKey:@"iPhoneMinuteFrameOffset"]);
-        _iPadHourFrameOffset = CGSizeFromString([fontDictionary objectForKey:@"iPadHourFrameOffset"]);
-        _iPadMinuteFrameOffset = CGSizeFromString([fontDictionary objectForKey:@"iPadMinuteFrameOffset"]);
+        _fontName = fontDictionary[@"fontName"];
+        _displayName = fontDictionary[@"displayName"];
+        _iPhoneHourFrameOffset = CGSizeFromString(fontDictionary[@"iPhoneHourFrameOffset"]);
+        _iPhoneMinuteFrameOffset = CGSizeFromString(fontDictionary[@"iPhoneMinuteFrameOffset"]);
+        _iPadHourFrameOffset = CGSizeFromString(fontDictionary[@"iPadHourFrameOffset"]);
+        _iPadMinuteFrameOffset = CGSizeFromString(fontDictionary[@"iPadMinuteFrameOffset"]);
     }
     return self;
 }

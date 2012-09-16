@@ -51,7 +51,8 @@
 -(void)updateDisplayFont;
 -(void)updateClockDisplayColorWithBrightness:(CGFloat)brightness;
 -(void)switchToOrientationView:(UIInterfaceOrientation)interfaceOrientation;
-
+- (void)adjustHourMinuteLabelsForScreenHeight;
+-(void)adjustDashedLiveViewForScreenHeight;
 
 
 @end

@@ -219,17 +219,17 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    NSDictionary *sectionDictionary = [self.settingsArray objectAtIndex:section];
+    NSDictionary *sectionDictionary = (self.settingsArray)[section];
     
-    return [sectionDictionary objectForKey:DCSettingsTableViewHeader];
+    return sectionDictionary[DCSettingsTableViewHeader];
 
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
 {
-    NSDictionary *sectionDictionary = [self.settingsArray objectAtIndex:section];
+    NSDictionary *sectionDictionary = (self.settingsArray)[section];
     
-    return [sectionDictionary objectForKey:DCSettingsTableViewFooter];
+    return sectionDictionary[DCSettingsTableViewFooter];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -267,8 +267,8 @@
     self.fontCellLabel.text = [self.clockState.fontManager currentFontDisplayName];
     self.fontCellLabel.font = [self.clockState.fontManager.currentFont fontWithSize:18];
     
-    NSDictionary *section = [self.settingsArray objectAtIndex:indexPath.section];
-    return [section objectForKey:DCSettingsTableViewCell];       
+    NSDictionary *section = (self.settingsArray)[indexPath.section];
+    return section[DCSettingsTableViewCell];       
 
 }
 
@@ -332,8 +332,8 @@
     sectionHeader.font = [UIFont boldSystemFontOfSize:16];
     sectionHeader.textColor = [DCClockConstants settingsSectionFontColor];
     
-    NSDictionary *sectionDictionary = [self.settingsArray objectAtIndex:section];
-    sectionHeader.text = [sectionDictionary objectForKey:DCSettingsTableViewHeader];
+    NSDictionary *sectionDictionary = (self.settingsArray)[section];
+    sectionHeader.text = sectionDictionary[DCSettingsTableViewHeader];
     
     return sectionHeaderView;
     
@@ -356,8 +356,8 @@
     sectionFooterLabel.font = [UIFont systemFontOfSize:14];
     sectionFooterLabel.textColor = [DCClockConstants settingsSectionFontColor];
     
-    NSDictionary *sectionDictionary = [self.settingsArray objectAtIndex:section];
-    sectionFooterLabel.text = [sectionDictionary objectForKey:DCSettingsTableViewFooter];
+    NSDictionary *sectionDictionary = (self.settingsArray)[section];
+    sectionFooterLabel.text = sectionDictionary[DCSettingsTableViewFooter];
     
     return sectionFooterView;
 }
@@ -365,17 +365,17 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     
-    NSDictionary *sectionDictionary = [self.settingsArray objectAtIndex:section];
+    NSDictionary *sectionDictionary = (self.settingsArray)[section];
     
-    return [[sectionDictionary objectForKey:DCSettingsTableViewSectionFooterHeight] floatValue];
+    return [sectionDictionary[DCSettingsTableViewSectionFooterHeight] floatValue];
     
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSDictionary *sectionDictionary = [self.settingsArray objectAtIndex:indexPath.section];
+    NSDictionary *sectionDictionary = (self.settingsArray)[indexPath.section];
     
-    return [[sectionDictionary objectForKey:DCSettingsTableViewSectionRowHeight] floatValue];
+    return [sectionDictionary[DCSettingsTableViewSectionRowHeight] floatValue];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

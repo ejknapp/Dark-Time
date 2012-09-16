@@ -32,14 +32,14 @@
                                                         NSUInteger idx,
                                                         BOOL *stop) {
         DCIFont *newFont = [[DCIFont alloc] initWithFontDictionary:fontDictionary];
-        [self.fonts setObject:newFont forKey:newFont.fontName];
+        (self.fonts)[newFont.fontName] = newFont;
     }];
     
 }
 
 -(NSString *)currentFontDisplayName
 {
-    DCIFont *font = [self.fonts objectForKey:self.currentFont.fontName];
+    DCIFont *font = (self.fonts)[self.currentFont.fontName];
     
     return font.displayName;
 }
@@ -47,12 +47,12 @@
 
 -(DCIFont *)fontAtIndex:(NSUInteger)index
 {
-    return [self.fonts objectForKey:[self fontNameAtIndex:index]];
+    return (self.fonts)[[self fontNameAtIndex:index]];
 }
 
 -(NSString *)fontNameAtIndex:(NSUInteger)index
 {
-    return [[self.fontDictionaries objectAtIndex:index] objectForKey:@"fontName"];
+    return (self.fontDictionaries)[index][@"fontName"];
 }
 
 
@@ -63,7 +63,7 @@
 
 -(CGRect)adjustHourFrame:(CGRect)frame withFont:(UIFont *)font
 {
-    DCIFont *dciFont = [self.fonts objectForKey:font.fontName];
+    DCIFont *dciFont = (self.fonts)[font.fontName];
     
     CGSize offset = [dciFont hourOffsetWithDevice:self.clockState.device];
     
@@ -77,7 +77,7 @@
 
 -(CGRect)adjustMinuteFrame:(CGRect)frame withFont:(UIFont *)font
 {
-    DCIFont *dciFont = [self.fonts objectForKey:font.fontName];
+    DCIFont *dciFont = (self.fonts)[font.fontName];
     
     CGSize offset = [dciFont minuteOffsetWithDevice:self.clockState.device];
     

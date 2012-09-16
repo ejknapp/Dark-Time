@@ -28,6 +28,8 @@
 @property (assign, nonatomic) CGRect timeHourLabelPortraitFrame;
 @property (assign, nonatomic) DCIDarkTimeDevice device;
 @property (strong, nonatomic) DCIFontManager *fontManager;
+@property (assign, nonatomic) NSUInteger dashedlineHeight;
+
 
 
 -(void)loadClockState;

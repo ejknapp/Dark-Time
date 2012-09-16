@@ -17,60 +17,24 @@
 @implementation DCDarkClockViewController_iPhone
 
 
-- (void)adjustHourMinuteLabelsForScreenHeight
-{
-    CGFloat halfHeight = [[UIScreen mainScreen]applicationFrame].size.height / 2;
-    CGFloat width = [[UIScreen mainScreen]applicationFrame].size.width;
-
-    CGFloat adjustFactor = 20.0;
-    
-    CGRect hourFrame = CGRectMake(0,
-                                  adjustFactor,
-                                  width,
-                                  halfHeight - adjustFactor);
-    CGRect minuteFrame = CGRectMake(0,
-                                    halfHeight - (adjustFactor / 2),
-                                    width,
-                                    halfHeight - adjustFactor);
-    
-    self.timeLabelHoursPortrait.frame = hourFrame;
-    self.timeLabelMinutesPortrait.frame = minuteFrame;
-}
-
--(void)adjustDashedLiveViewForScreenHeight
-{
-    CGFloat halfHeight = [[UIScreen mainScreen]applicationFrame].size.height / 2;
-    CGFloat width = [[UIScreen mainScreen]applicationFrame].size.width;
-
-    CGFloat dashedViewY = halfHeight - 17;
-    
-    CGRect dashedViewFrame = CGRectMake(9,
-                                        dashedViewY,
-                                        width, 20);
-    
-    self.dottedLine.frame = dashedViewFrame;
-}
-
 -(void)viewDidLoad
 {
     [super viewDidLoad];
 
-    self.landscapeView.frame = self.view.frame;
-    self.portraitView.frame = self.view.frame;
-    
     [self adjustHourMinuteLabelsForScreenHeight];
-    [self adjustDashedLiveViewForScreenHeight];
-    
-    
+        
     self.modalStyle = UIModalPresentationFormSheet;
     self.settingsViewNib = DCSettingsViewNibNameiPhone;
-    self.clockState.fontSizePortrait = DCiPhonePortraitTimeLabelsFontSize;
-    self.clockState.fontSizeLandscape = DCiPhoneLandscapeTimeLabelFontSize;
+    self.clockState.fontSizePortrait = DCIiPhonePortraitTimeLabelsFontSize;
+    self.clockState.fontSizeLandscape = DCIiPhoneLandscapeTimeLabelFontSize;
     self.clockState.device = DCIDarkTimeDeviceiPhone;
     self.clockState.timeLabelPortraitFrame = self.timeLabelMinutesPortrait.frame;
     self.clockState.timeHourLabelPortraitFrame = self.timeLabelHoursPortrait.frame;
-    
-    [self updateDisplayFontWithFontSize:iPhoneAmPmSecondsFontSize];
+    self.clockState.dashedlineHeight = DCIDashedLineHeightiPhone;
+
+    [self adjustDashedLiveViewForScreenHeight];
+
+    [self updateDisplayFontWithFontSize:DCIiPhoneAmPmSecondsFontSize];
     
 
 }
@@ -79,7 +43,7 @@
 - (void) updateDisplayFont
 {
     
-    [self updateDisplayFontWithFontSize:iPhoneAmPmSecondsFontSize];
+    [self updateDisplayFontWithFontSize:DCIiPhoneAmPmSecondsFontSize];
     
 }
 

@@ -20,7 +20,7 @@
 
 -(void)updateDisplayFont
 {
-    [self updateDisplayFontWithFontSize:iPadAmPmSecondsFontSize];
+    [self updateDisplayFontWithFontSize:DCIiPadAmPmSecondsFontSize];
         
 }
 
@@ -30,17 +30,23 @@
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
+
+    [self adjustHourMinuteLabelsForScreenHeight];
+
     self.modalStyle = UIModalPresentationFormSheet;
     self.settingsViewNib = DCSettingsViewNibNameiPad;
-    self.clockState.fontSizePortrait = DCiPadPortraitTimeLabelsFontSize;
-    self.clockState.fontSizeLandscape = DCiPadLandscapeTimeLabelFontSize;
+    self.clockState.fontSizePortrait = DCIiPadPortraitTimeLabelsFontSize;
+    self.clockState.fontSizeLandscape = DCIiPadLandscapeTimeLabelFontSize;
     self.clockState.device = DCIDarkTimeDeviceiPad;
     self.clockState.timeLabelPortraitFrame = self.timeLabelMinutesPortrait.frame;
     self.clockState.timeHourLabelPortraitFrame = self.timeLabelHoursPortrait.frame;
+    self.clockState.dashedlineHeight = DCIDashedLineHeightiPad;
 
-    [self updateDisplayFontWithFontSize:iPadAmPmSecondsFontSize];
+    [self adjustDashedLiveViewForScreenHeight];
+
+    [self updateDisplayFontWithFontSize:DCIiPadAmPmSecondsFontSize];
     
-    [super viewDidLoad];
     
 }
 

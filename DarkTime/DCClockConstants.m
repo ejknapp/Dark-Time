@@ -26,12 +26,14 @@ NSString * const DCFontSizeCalculationString = @"8:88";
 NSString * const DCSettingsViewNibNameiPad = @"DCSettingsTableViewController";
 NSString * const DCSettingsViewNibNameiPhone = @"DCSettingsTableViewController";
 
-NSUInteger const iPadAmPmSecondsFontSize = 64;
-NSUInteger const iPhoneAmPmSecondsFontSize = 36;
-NSUInteger const DCiPhoneLandscapeTimeLabelFontSize = 260;
-NSUInteger const DCiPhonePortraitTimeLabelsFontSize = 220;
-NSUInteger const DCiPadLandscapeTimeLabelFontSize = 500;
-NSUInteger const DCiPadPortraitTimeLabelsFontSize = 500;
+NSUInteger const DCIiPadAmPmSecondsFontSize = 64;
+NSUInteger const DCIiPhoneAmPmSecondsFontSize = 36;
+NSUInteger const DCIiPhoneLandscapeTimeLabelFontSize = 260;
+NSUInteger const DCIiPhonePortraitTimeLabelsFontSize = 220;
+NSUInteger const DCIiPadLandscapeTimeLabelFontSize = 500;
+NSUInteger const DCIiPadPortraitTimeLabelsFontSize = 500;
+NSUInteger const DCIDashedLineHeightiPad = 30;
+NSUInteger const DCIDashedLineHeightiPhone = 17;
 
 
 CGFloat const DCMinimumScreenBrightness = 0.005;
