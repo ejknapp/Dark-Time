@@ -28,10 +28,10 @@ NSString * const DCSettingsViewNibNameiPhone = @"DCSettingsTableViewController";
 
 NSUInteger const DCIiPadAmPmSecondsFontSize = 64;
 NSUInteger const DCIiPhoneAmPmSecondsFontSize = 36;
-NSUInteger const DCIiPhoneLandscapeTimeLabelFontSize = 260;
-NSUInteger const DCIiPhonePortraitTimeLabelsFontSize = 220;
-NSUInteger const DCIiPadLandscapeTimeLabelFontSize = 500;
-NSUInteger const DCIiPadPortraitTimeLabelsFontSize = 500;
+NSUInteger const DCITimeLabelFontSizeLandscapeiPhone = 260;
+NSUInteger const DCITimeLabelsFontSizePortraitiPhone = 220;
+NSUInteger const DCITimeLabelFontSizeLandscapeiPad = 500;
+NSUInteger const DCITimeLabelsFontSizePortraitiPad = 500;
 NSUInteger const DCIDashedLineHeightiPad = 30;
 NSUInteger const DCIDashedLineHeightiPhone = 17;
 

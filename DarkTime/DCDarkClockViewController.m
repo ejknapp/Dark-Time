@@ -111,7 +111,6 @@
     
     [self updateClockOnLaunch];
     
-//    [self switchToOrientationView:self.interfaceOrientation];
     self.clockState.currentOrientation = self.interfaceOrientation;
     
     if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) {
@@ -160,11 +159,11 @@
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
                                 duration:(NSTimeInterval)duration
 {
-
-    [self.clockState changeFontWithFontIndex:self.clockState.fontManager.currentFontIndex];
-
+    NSLog(@"orientation will %d, to %d", self.interfaceOrientation, toInterfaceOrientation);
     self.clockState.currentOrientation = toInterfaceOrientation;
     
+    [self.clockState changeFontWithFontIndex:self.clockState.fontManager.currentFontIndex];
+
     if (UIInterfaceOrientationIsPortrait(toInterfaceOrientation)) {
         self.timeLabel.alpha = 0.0;
         self.ampmLabel.alpha = 0.0;
@@ -185,7 +184,12 @@
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
-      
+    
+    NSLog(@"orientation did %d, from %d", self.interfaceOrientation, fromInterfaceOrientation);
+    
+    [self adjustHourMinuteLabelsForScreenHeight];
+    
+    self.clockState.currentOrientation = self.interfaceOrientation;
     if (UIInterfaceOrientationIsLandscape(fromInterfaceOrientation)) {
         [UIView animateWithDuration:0.3 animations:^{
             self.timeLabelHoursPortrait.alpha = 1.0;
@@ -204,9 +208,30 @@
         }];
     }
     
+//    UIFont *font = self.timeLabelHoursPortrait.font;
+//    CGFloat width = self.timeLabelHoursPortrait.frame.size.width;
+//    CGFloat actualSize;
+//    CGSize size = [@"20" sizeWithFont:font
+//                             minFontSize:10
+//                          actualFontSize:&actualSize
+//                                forWidth:width
+//                           lineBreakMode:UILineBreakModeHeadTruncation];
+//    
+//    NSLog(@"actual font size hours portrait %f", actualSize);
+    
+//    width = self.timeLabel.frame.size.width;
+//    font = self.timeLabel.font;
+//    size = [@"20" sizeWithFont:font
+//                   minFontSize:10
+//                actualFontSize:&actualSize
+//                      forWidth:width
+//                 lineBreakMode:UILineBreakModeHeadTruncation];
+//    
+//    NSLog(@"actual font size time label %f", actualSize);
+//    NSLog(@"==========================================");
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath 
+- (void)observeValueForKeyPath:(NSString *)keyPath
                       ofObject:(id)object 
                         change:(NSDictionary *)change 
                        context:(void *)context
@@ -389,7 +414,7 @@
     UIColor *color;
     
     if (brightness <= 0.6) {
-        redFactor = brightness + 0.3;
+        redFactor = brightness + 0.2;
     } else {
         redFactor = 1.0;
     }
@@ -459,6 +484,7 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
 
 - (void)adjustHourMinuteLabelsForScreenHeight
 {
+    NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
     CGFloat halfHeight = [[UIScreen mainScreen]applicationFrame].size.height / 2;
     CGFloat width = [[UIScreen mainScreen]applicationFrame].size.width;
     

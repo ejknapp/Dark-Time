@@ -36,8 +36,8 @@
 
     self.modalStyle = UIModalPresentationFormSheet;
     self.settingsViewNib = DCSettingsViewNibNameiPad;
-    self.clockState.fontSizePortrait = DCIiPadPortraitTimeLabelsFontSize;
-    self.clockState.fontSizeLandscape = DCIiPadLandscapeTimeLabelFontSize;
+    self.clockState.fontSizePortrait = DCITimeLabelsFontSizePortraitiPad;
+    self.clockState.fontSizeLandscape = DCITimeLabelFontSizeLandscapeiPad;
     self.clockState.device = DCIDarkTimeDeviceiPad;
     self.clockState.timeLabelPortraitFrame = self.timeLabelMinutesPortrait.frame;
     self.clockState.timeHourLabelPortraitFrame = self.timeLabelHoursPortrait.frame;

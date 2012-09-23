@@ -148,7 +148,6 @@
     tappedCell.accessoryType = UITableViewCellAccessoryCheckmark;
     self.currentCheckedCell = tappedCell;
         
-//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     tappedCell.backgroundColor = [DCClockConstants highlightedCellBackgroundColor];
     
 }

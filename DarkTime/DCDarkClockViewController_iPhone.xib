@@ -41,6 +41,7 @@
 				<string key="NSFrameSize">{320, 568}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
+				<reference key="NSNextKeyView"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
@@ -100,15 +101,15 @@
 						<int key="IBUIBaselineAdjustment">1</int>
 						<float key="IBUIMinimumFontSize">10</float>
 						<int key="IBUITextAlignment">1</int>
-						<object class="IBUIFontDescription" key="IBUIFontDescription" id="2386577">
+						<object class="IBUIFontDescription" key="IBUIFontDescription" id="608428861">
 							<string key="name">Futura-CondensedExtraBold</string>
 							<string key="family">Futura</string>
 							<int key="traits">2</int>
-							<double key="pointSize">250</double>
+							<double key="pointSize">240</double>
 						</object>
-						<object class="NSFont" key="IBUIFont" id="699027734">
+						<object class="NSFont" key="IBUIFont" id="590907432">
 							<string key="NSName">Futura-CondensedExtraBold</string>
-							<double key="NSSize">250</double>
+							<double key="NSSize">240</double>
 							<int key="NSfFlags">16</int>
 						</object>
 					</object>
@@ -130,8 +131,8 @@
 						<nil key="IBUIHighlightedColor"/>
 						<float key="IBUIMinimumFontSize">10</float>
 						<int key="IBUITextAlignment">1</int>
-						<reference key="IBUIFontDescription" ref="2386577"/>
-						<reference key="IBUIFont" ref="699027734"/>
+						<reference key="IBUIFontDescription" ref="608428861"/>
+						<reference key="IBUIFont" ref="590907432"/>
 					</object>
 					<object class="IBUIButton" id="721891203">
 						<reference key="NSNextResponder" ref="444808117"/>
@@ -199,6 +200,7 @@
 						<string key="NSFrame">{{257, 440}, {50, 42}}</string>
 						<reference key="NSSuperview" ref="444808117"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<reference key="IBUIBackgroundColor" ref="89715914"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -297,6 +299,7 @@
 						<string key="NSFrame">{{313, 245}, {149, 92}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<reference key="IBUIBackgroundColor" ref="89715914"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>

@@ -25,8 +25,8 @@
         
     self.modalStyle = UIModalPresentationFormSheet;
     self.settingsViewNib = DCSettingsViewNibNameiPhone;
-    self.clockState.fontSizePortrait = DCIiPhonePortraitTimeLabelsFontSize;
-    self.clockState.fontSizeLandscape = DCIiPhoneLandscapeTimeLabelFontSize;
+    self.clockState.fontSizePortrait = DCITimeLabelsFontSizePortraitiPhone;
+    self.clockState.fontSizeLandscape = DCITimeLabelFontSizeLandscapeiPhone;
     self.clockState.device = DCIDarkTimeDeviceiPhone;
     self.clockState.timeLabelPortraitFrame = self.timeLabelMinutesPortrait.frame;
     self.clockState.timeHourLabelPortraitFrame = self.timeLabelHoursPortrait.frame;

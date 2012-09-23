@@ -50,10 +50,10 @@ typedef enum {
 
 extern NSUInteger const DCIiPadAmPmSecondsFontSize;
 extern NSUInteger const DCIiPhoneAmPmSecondsFontSize;
-extern NSUInteger const DCIiPhoneLandscapeTimeLabelFontSize;
-extern NSUInteger const DCIiPhonePortraitTimeLabelsFontSize;
-extern NSUInteger const DCIiPadLandscapeTimeLabelFontSize;
-extern NSUInteger const DCIiPadPortraitTimeLabelsFontSize;
+extern NSUInteger const DCITimeLabelFontSizeLandscapeiPhone;
+extern NSUInteger const DCITimeLabelsFontSizePortraitiPhone;
+extern NSUInteger const DCITimeLabelFontSizeLandscapeiPad;
+extern NSUInteger const DCITimeLabelsFontSizePortraitiPad;
 extern NSUInteger const DCIDashedLineHeightiPad;
 extern NSUInteger const DCIDashedLineHeightiPhone;
 

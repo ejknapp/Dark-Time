@@ -66,7 +66,6 @@
                   options:NSKeyValueObservingOptionNew
                   context:NULL];
 
-        
     }
     
     return self;
@@ -88,15 +87,19 @@
     self.fontManager.currentFontIndex = index;
     CGFloat fontSize;
 
-    if (UIInterfaceOrientationIsLandscape(self.currentOrientation)) {
+//    NSLog(@"currentOrientation in changeFontWithFontIndex: %d", self.currentOrientation);
+    if (UIInterfaceOrientationIsPortrait(self.currentOrientation)) {
+//        NSLog(@"is portrait");
         fontSize = self.fontSizePortrait;
     } else {
+//        NSLog(@"is landscape");
         fontSize = self.fontSizeLandscape;
     }
     
     self.fontManager.currentFont = [UIFont fontWithName:[self.fontManager
                                                          fontNameAtIndex:self.fontManager.currentFontIndex]
                                                          size:fontSize];
+//    NSLog(@"font size when setting %f", fontSize);
     
 }
 
@@ -249,7 +252,7 @@
     if (fontIndex >= 0) {
         [self changeFontWithFontIndex:fontIndex];
     } else {
-        [self changeFontWithFontIndex:8];
+        [self changeFontWithFontIndex:DCInitialFontIndex];
     }
     
     BOOL ampm = [userDefaults boolForKey:@"displayAmPm"];
