@@ -24,7 +24,7 @@
 @implementation DCIFont
 
 
-- (id)initWithFontDictionary:(NSDictionary *)fontDictionary
+- (instancetype)initWithFontDictionary:(NSDictionary *)fontDictionary
 {
     self = [super init];
     if (self) {

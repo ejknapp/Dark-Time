@@ -18,6 +18,6 @@
 @property (nonatomic, strong) UIWebView *infoWebView;
 @property (nonatomic, weak) DCDarkClockViewController *clockViewController;
 
--(id)initWithViewFrame:(CGRect)viewFrame;
+-(instancetype)initWithViewFrame:(CGRect)viewFrame;
 
 @end

@@ -19,7 +19,7 @@
 
 @implementation DCInfoViewController
 
--(id)initWithViewFrame:(CGRect)viewFrame
+-(instancetype)initWithViewFrame:(CGRect)viewFrame
 {
     
     return self;
