@@ -185,7 +185,7 @@
 
 -(void)doneButtonTapped
 {
-    [self.presentingViewController dismissModalViewControllerAnimated:YES];
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:^{}];
 }
 
 
