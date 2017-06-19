@@ -14,4 +14,6 @@
 
 @property (weak, nonatomic) DCDarkClockViewController *mainController;
 
+-(void)doneButtonTapped;
+
 @end
