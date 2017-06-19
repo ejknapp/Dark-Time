@@ -6,7 +6,7 @@
 //  Copyright 2011 Dovetail Computing, Inc.. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 @class DCClockState;
 @class DCDarkClockViewController;

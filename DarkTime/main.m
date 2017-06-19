@@ -6,7 +6,7 @@
 //  Copyright 2011 Dovetail Computing, Inc.. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 #import "DarkTimeAppDelegate.h"
 
 int main(int argc, char *argv[])

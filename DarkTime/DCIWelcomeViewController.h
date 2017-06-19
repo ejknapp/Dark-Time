@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Madison Area Technical College. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 @class DCDarkClockViewController;
 

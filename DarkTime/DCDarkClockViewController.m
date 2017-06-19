@@ -6,7 +6,7 @@
 //  Copyright 2011 Dovetail Computing, Inc. All rights reserved.
 //
 
-#import <CoreText/CoreText.h>
+@import CoreText;
 #import "DCDarkClockViewController.h"
 #import "DCClockState.h"
 #import "DCSettingsViewController.h"

@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Madison Area Technical College. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 #import "DCClockConstants.h"
 
 @interface DCIFont : NSObject
