@@ -32,7 +32,7 @@
 @property (nonatomic, weak) IBOutlet UILabel *timeLabelHoursPortrait;
 @property (nonatomic, weak) IBOutlet UILabel *timeLabelMinutesPortrait;
 
-@property (nonatomic, assign) NSUInteger savedSeconds;
+@property (nonatomic, assign) NSInteger savedSeconds;
 @property (nonatomic, assign) CGFloat brightnessLevel;
 
 @property (nonatomic, strong) DCSettingsTableViewController *settingsEditor;

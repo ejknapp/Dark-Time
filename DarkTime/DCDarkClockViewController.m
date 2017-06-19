@@ -85,7 +85,7 @@
     self.clockSettingsButtonPortrait.alpha = 0.0;
     self.dottedLine.alpha = 0.0;
     
-    self.calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    self.calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
 
     
     self.appTimer = [NSTimer scheduledTimerWithTimeInterval:0.1
@@ -159,7 +159,7 @@
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
                                 duration:(NSTimeInterval)duration
 {
-    NSLog(@"orientation will %d, to %d", self.interfaceOrientation, toInterfaceOrientation);
+    NSLog(@"orientation will %d, to %d", (int) self.interfaceOrientation, (int) toInterfaceOrientation);
     self.clockState.currentOrientation = toInterfaceOrientation;
     
     [self.clockState changeFontWithFontIndex:self.clockState.fontManager.currentFontIndex];
@@ -185,7 +185,7 @@
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
     
-    NSLog(@"orientation did %d, from %d", self.interfaceOrientation, fromInterfaceOrientation);
+    NSLog(@"orientation did %d, from %d", (int) self.interfaceOrientation, (int) fromInterfaceOrientation);
     
     [self adjustHourMinuteLabelsForScreenHeight];
     
@@ -523,7 +523,7 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
 {
 
     NSDate* now = [NSDate date];
-    int second = [[self.calendar components:NSSecondCalendarUnit fromDate:now] second];
+    NSInteger second = [[self.calendar components:NSCalendarUnitSecond fromDate:now] second];
     self.savedSeconds = second;
     self.timeLabel.text = [self.clockState currentTimeString];
     self.secondsLabel.text = [self.clockState currentSecondsString];
@@ -539,7 +539,7 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
 {
 
     NSDate* now = [NSDate date];
-    int second = [[self.calendar components:NSSecondCalendarUnit fromDate:now] second];
+    NSInteger second = [[self.calendar components:NSCalendarUnitSecond fromDate:now] second];
     
     if (second == self.savedSeconds) {
         return;
