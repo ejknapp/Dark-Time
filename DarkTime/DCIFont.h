@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Madison Area Technical College. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 #import "DCClockConstants.h"
 
 @interface DCIFont : NSObject
@@ -14,7 +14,7 @@
 @property (strong, nonatomic, readonly) NSString *fontName;
 @property (strong, nonatomic, readonly) NSString *displayName;
 
-- (id)initWithFontDictionary:(NSDictionary *)fontDictionary;
+- (instancetype)initWithFontDictionary:(NSDictionary *)fontDictionary;
 -(CGSize)minuteOffsetWithDevice:(DCIDarkTimeDevice)device;
 -(CGSize)hourOffsetWithDevice:(DCIDarkTimeDevice)device;
 

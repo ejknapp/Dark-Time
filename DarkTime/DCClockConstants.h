@@ -6,7 +6,7 @@
 //  Copyright 2011 Dovetail Computing, Inc. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import UIKit;
 
 
 extern NSString * const kNoSeconds;
@@ -27,7 +27,7 @@ extern NSString * const DCFontSizeCalculationString;
 extern NSString * const DCSettingsViewNibNameiPad;
 extern NSString * const DCSettingsViewNibNameiPhone;
 
-typedef enum {
+typedef NS_ENUM(NSUInteger, DCDarkTimeSettingsRow) {
     DCDarkTimeSettingsRowDisplayType = 0,
     DCDarkTimeSettingsRowDisplayAmPm,
     DCDarkTimeSettingsRowDisplaySeconds,
@@ -36,17 +36,17 @@ typedef enum {
     DCDarkTimeSettingsRowSuspendSleep,
     DCDarkTimeSettingsRowHelp,
     DCDarkTimeSettingsRowChangeLog,
-} DCDarkTimeSettingsRow;
+};
 
-typedef enum {
+typedef NS_ENUM(NSUInteger, DCIDarkTimeDevice) {
     DCIDarkTimeDeviceiPhone = 0,
     DCIDarkTimeDeviceiPad
-} DCIDarkTimeDevice;
+};
 
-typedef enum {
+typedef NS_ENUM(NSUInteger, DCIClockDisplayType) {
     DCIClockDisplayType12Hour = 0,
     DCIClockDisplayType24Hour,
-} DCIClockDisplayType;
+};
 
 extern NSUInteger const DCIiPadAmPmSecondsFontSize;
 extern NSUInteger const DCIiPhoneAmPmSecondsFontSize;

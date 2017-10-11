@@ -6,7 +6,7 @@
 //  Copyright 2011 Dovetail Computing, Inc. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 #import "DCClockConstants.h"
 
 @class DCIFontManager;

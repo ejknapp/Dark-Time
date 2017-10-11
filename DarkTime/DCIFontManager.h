@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Madison Area Technical College. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import UIKit;
 
 @class DCClockState;
 @class DCIFont;

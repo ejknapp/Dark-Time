@@ -6,7 +6,7 @@
 //  Copyright 2011 Dovetail Computing, Inc.. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 @class DCClockState;
 @class DCDarkClockViewController;
@@ -18,6 +18,6 @@
 @property (nonatomic, strong) UIWebView *infoWebView;
 @property (nonatomic, weak) DCDarkClockViewController *clockViewController;
 
--(id)initWithViewFrame:(CGRect)viewFrame;
+-(instancetype)initWithViewFrame:(CGRect)viewFrame;
 
 @end

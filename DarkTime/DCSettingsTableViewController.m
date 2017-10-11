@@ -48,7 +48,7 @@
 
 @implementation DCSettingsTableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (instancetype)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
@@ -185,7 +185,7 @@
 
 -(void)doneButtonTapped
 {
-    [self.presentingViewController dismissModalViewControllerAnimated:YES];
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:^{}];
 }
 
 
@@ -348,7 +348,7 @@
     sectionFooterView.backgroundColor = [UIColor clearColor];
     UILabel *sectionFooterLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, width - 50, 44)];
     sectionFooterLabel.numberOfLines = 2;
-    sectionFooterLabel.textAlignment = UITextAlignmentCenter;
+    sectionFooterLabel.textAlignment = NSTextAlignmentCenter;
     sectionFooterLabel.contentMode = UIViewContentModeTop;
     [sectionFooterView addSubview:sectionFooterLabel];
     
